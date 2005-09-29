@@ -6,6 +6,35 @@
 	objectVersion = 42;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		28015B4208EC9D8800C83A75 /* Unit Tests */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 28015B5D08EC9DE300C83A75 /* Build configuration list for PBXAggregateTarget "Unit Tests" */;
+			buildPhases = (
+			);
+			buildSettings = {
+				OPTIMIZATION_CFLAGS = "";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = "Unit Tests";
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+			};
+			dependencies = (
+				28015B4608EC9D9000C83A75 /* PBXTargetDependency */,
+				28015B8D08EC9F4E00C83A75 /* PBXTargetDependency */,
+				28015B4D08EC9D9300C83A75 /* PBXTargetDependency */,
+			);
+			name = "Unit Tests";
+			productName = "Unit Tests";
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		280159CA08EC7BFD00C83A75 /* schema.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2801596A08EC773C00C83A75 /* schema.xml */; };
 		280159CC08EC7BFF00C83A75 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2801597708EC774500C83A75 /* InfoPlist.strings */; };
@@ -60,6 +89,55 @@
 			remoteGlobalIDString = 280159A708EC781900C83A75 /* Patchworks Importer */;
 			remoteInfo = "Patchworks Importer";
 		};
+		28015B4508EC9D9000C83A75 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2A37F4A9FDCFA73011CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 28015AF408EC9C9700C83A75 /* Patchworks Test */;
+			remoteInfo = "Patchworks Test";
+		};
+		28015B4C08EC9D9300C83A75 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2A37F4A9FDCFA73011CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 28015B3308EC9D4800C83A75 /* Shared Source Test */;
+			remoteInfo = "Shared Source Test";
+		};
+		28015B5208EC9DA900C83A75 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2A37F4A9FDCFA73011CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 28015B3308EC9D4800C83A75 /* Shared Source Test */;
+			remoteInfo = "Shared Source Test";
+		};
+		28015B5608EC9DAE00C83A75 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2A37F4A9FDCFA73011CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 28015AF408EC9C9700C83A75 /* Patchworks Test */;
+			remoteInfo = "Patchworks Test";
+		};
+		28015B5A08EC9DB100C83A75 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2A37F4A9FDCFA73011CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 28015B3308EC9D4800C83A75 /* Shared Source Test */;
+			remoteInfo = "Shared Source Test";
+		};
+		28015B8C08EC9F4E00C83A75 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2A37F4A9FDCFA73011CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 28015B7F08EC9F3D00C83A75 /* Patchworks Importer Test */;
+			remoteInfo = "Patchworks Importer Test";
+		};
+		28015B8E08EC9F5300C83A75 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2A37F4A9FDCFA73011CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 28015B7F08EC9F3D00C83A75 /* Patchworks Importer Test */;
+			remoteInfo = "Patchworks Importer Test";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -81,7 +159,6 @@
 		13E42FBA07B3F13500E4EEF1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
 		2801596408EC773200C83A75 /* main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		2801596508EC773200C83A75 /* GetMetadataForFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetMetadataForFile.m; sourceTree = "<group>"; };
-		2801596908EC773C00C83A75 /* version.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = version.plist; sourceTree = "<group>"; };
 		2801596A08EC773C00C83A75 /* schema.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = schema.xml; sourceTree = "<group>"; };
 		2801596B08EC773C00C83A75 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Info.plist; sourceTree = "<group>"; };
 		2801597808EC774500C83A75 /* en */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -90,6 +167,12 @@
 		280159A808EC781900C83A75 /* Patchworks.mdimporter */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Patchworks.mdimporter; sourceTree = BUILT_PRODUCTS_DIR; };
 		28015ABE08EC8E8B00C83A75 /* en */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		28015AC308EC8F1000C83A75 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		28015AF508EC9C9700C83A75 /* Patchworks Test.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Patchworks Test.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		28015AF808EC9C9700C83A75 /* Patchworks Test-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Patchworks Test-Info.plist"; sourceTree = "<group>"; };
+		28015B0E08EC9CDF00C83A75 /* Patchworks Importer Test-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Patchworks Importer Test-Info.plist"; sourceTree = "<group>"; };
+		28015B3408EC9D4800C83A75 /* Shared Source Test.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Shared Source Test.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		28015B3708EC9D4800C83A75 /* Shared Source Test-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Shared Source Test-Info.plist"; sourceTree = "<group>"; };
+		28015B8008EC9F3D00C83A75 /* Patchworks Importer Test.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Patchworks Importer Test.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		28FCD3E208EC577900A970FA /* MyDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDocument.h; sourceTree = "<group>"; };
 		28FCD3E308EC577900A970FA /* MyDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDocument.m; sourceTree = "<group>"; };
 		28FCD3E708EC577900A970FA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -112,6 +195,27 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		28015AF208EC9C9700C83A75 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		28015B3108EC9D4800C83A75 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		28015B7D08EC9F3D00C83A75 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8D15AC330486D014006FF6A4 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -128,6 +232,9 @@
 			children = (
 				8D15AC370486D014006FF6A4 /* Patchworks.app */,
 				280159A808EC781900C83A75 /* Patchworks.mdimporter */,
+				28015AF508EC9C9700C83A75 /* Patchworks Test.octest */,
+				28015B3408EC9D4800C83A75 /* Shared Source Test.octest */,
+				28015B8008EC9F3D00C83A75 /* Patchworks Importer Test.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -187,7 +294,7 @@
 			children = (
 				2801596B08EC773C00C83A75 /* Info.plist */,
 				2801597708EC774500C83A75 /* InfoPlist.strings */,
-				2801596908EC773C00C83A75 /* version.plist */,
+				28015B0E08EC9CDF00C83A75 /* Patchworks Importer Test-Info.plist */,
 				2801596A08EC773C00C83A75 /* schema.xml */,
 				2801597908EC774500C83A75 /* schema.strings */,
 			);
@@ -246,6 +353,7 @@
 		2801595008EC767C00C83A75 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				28015B3708EC9D4800C83A75 /* Shared Source Test-Info.plist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -322,6 +430,7 @@
 			children = (
 				28FCD3F208EC577900A970FA /* Info.plist */,
 				28015ABD08EC8E8B00C83A75 /* InfoPlist.strings */,
+				28015AF808EC9C9700C83A75 /* Patchworks Test-Info.plist */,
 				28FCD3EA08EC577900A970FA /* Credits.rtf */,
 				28FCD3EE08EC577900A970FA /* MainMenu.nib */,
 				28FCD3F008EC577900A970FA /* MyDocument.nib */,
@@ -393,6 +502,8 @@
 				);
 			};
 			dependencies = (
+				28015B8F08EC9F5300C83A75 /* PBXTargetDependency */,
+				28015B5308EC9DA900C83A75 /* PBXTargetDependency */,
 			);
 			name = "Patchworks Importer";
 			productName = "Metadata Importer";
@@ -407,6 +518,207 @@
 	<string>Metadata Importer</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.yourcompany.Metadata_Importer</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleSignature</key>
+	<string>????</string>
+	<key>CFBundleVersion</key>
+	<string>1.0</string>
+</dict>
+</plist>
+";
+			productType = "com.apple.product-type.bundle";
+		};
+		28015AF408EC9C9700C83A75 /* Patchworks Test */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 28015AFB08EC9C9800C83A75 /* Build configuration list for PBXNativeTarget "Patchworks Test" */;
+			buildPhases = (
+				28015AF008EC9C9700C83A75 /* Resources */,
+				28015AF108EC9C9700C83A75 /* Sources */,
+				28015AF208EC9C9700C83A75 /* Frameworks */,
+				28015AF308EC9C9700C83A75 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			buildSettings = {
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Cocoa.framework/Headers/Cocoa.h";
+				INFOPLIST_FILE = "Patchworks Test-Info.plist";
+				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
+				LIBRARY_STYLE = BUNDLE;
+				OPTIMIZATION_CFLAGS = "";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Cocoa,
+					"-framework",
+					SenTestingKit,
+				);
+				OTHER_REZFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = "Patchworks Test";
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+				WRAPPER_EXTENSION = octest;
+			};
+			dependencies = (
+			);
+			name = "Patchworks Test";
+			productName = "Patchworks Test";
+			productReference = 28015AF508EC9C9700C83A75 /* Patchworks Test.octest */;
+			productSettingsXML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
+<!DOCTYPE plist PUBLIC \"-//Apple Computer//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">
+<plist version=\"1.0\">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>English</string>
+	<key>CFBundleExecutable</key>
+	<string>Patchworks Test</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.yourcompany.Patchworks_Test</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleSignature</key>
+	<string>????</string>
+	<key>CFBundleVersion</key>
+	<string>1.0</string>
+</dict>
+</plist>
+";
+			productType = "com.apple.product-type.bundle";
+		};
+		28015B3308EC9D4800C83A75 /* Shared Source Test */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 28015B3E08EC9D4900C83A75 /* Build configuration list for PBXNativeTarget "Shared Source Test" */;
+			buildPhases = (
+				28015B2F08EC9D4800C83A75 /* Resources */,
+				28015B3008EC9D4800C83A75 /* Sources */,
+				28015B3108EC9D4800C83A75 /* Frameworks */,
+				28015B3208EC9D4800C83A75 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			buildSettings = {
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Cocoa.framework/Headers/Cocoa.h";
+				INFOPLIST_FILE = "Shared Source Test-Info.plist";
+				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
+				LIBRARY_STYLE = BUNDLE;
+				OPTIMIZATION_CFLAGS = "";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Cocoa,
+					"-framework",
+					SenTestingKit,
+				);
+				OTHER_REZFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = "Shared Source Test";
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+				WRAPPER_EXTENSION = octest;
+			};
+			dependencies = (
+			);
+			name = "Shared Source Test";
+			productName = "Shared Source Test";
+			productReference = 28015B3408EC9D4800C83A75 /* Shared Source Test.octest */;
+			productSettingsXML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
+<!DOCTYPE plist PUBLIC \"-//Apple Computer//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">
+<plist version=\"1.0\">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>English</string>
+	<key>CFBundleExecutable</key>
+	<string>Shared Source Test</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.yourcompany.Shared_Source_Test</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleSignature</key>
+	<string>????</string>
+	<key>CFBundleVersion</key>
+	<string>1.0</string>
+</dict>
+</plist>
+";
+			productType = "com.apple.product-type.bundle";
+		};
+		28015B7F08EC9F3D00C83A75 /* Patchworks Importer Test */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 28015B8608EC9F3E00C83A75 /* Build configuration list for PBXNativeTarget "Patchworks Importer Test" */;
+			buildPhases = (
+				28015B7B08EC9F3D00C83A75 /* Resources */,
+				28015B7C08EC9F3D00C83A75 /* Sources */,
+				28015B7D08EC9F3D00C83A75 /* Frameworks */,
+				28015B7E08EC9F3D00C83A75 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			buildSettings = {
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Cocoa.framework/Headers/Cocoa.h";
+				INFOPLIST_FILE = "Patchworks Importer Tets-Info.plist";
+				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
+				LIBRARY_STYLE = BUNDLE;
+				OPTIMIZATION_CFLAGS = "";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Cocoa,
+					"-framework",
+					SenTestingKit,
+				);
+				OTHER_REZFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = "Patchworks Importer Tets";
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+				WRAPPER_EXTENSION = octest;
+			};
+			dependencies = (
+			);
+			name = "Patchworks Importer Test";
+			productName = "Patchworks Importer Tets";
+			productReference = 28015B8008EC9F3D00C83A75 /* Patchworks Importer Test.octest */;
+			productSettingsXML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
+<!DOCTYPE plist PUBLIC \"-//Apple Computer//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">
+<plist version=\"1.0\">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>English</string>
+	<key>CFBundleExecutable</key>
+	<string>Patchworks Importer Tets</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.yourcompany.Patchworks_Importer_Tets</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundlePackageType</key>
@@ -443,6 +755,8 @@
 				WRAPPER_EXTENSION = app;
 			};
 			dependencies = (
+				28015B5708EC9DAE00C83A75 /* PBXTargetDependency */,
+				28015B5B08EC9DB100C83A75 /* PBXTargetDependency */,
 				28015AD008EC8FFE00C83A75 /* PBXTargetDependency */,
 			);
 			name = Patchworks;
@@ -477,6 +791,10 @@
 			targets = (
 				8D15AC270486D014006FF6A4 /* Patchworks */,
 				280159A708EC781900C83A75 /* Patchworks Importer */,
+				28015B4208EC9D8800C83A75 /* Unit Tests */,
+				28015AF408EC9C9700C83A75 /* Patchworks Test */,
+				28015B7F08EC9F3D00C83A75 /* Patchworks Importer Test */,
+				28015B3308EC9D4800C83A75 /* Shared Source Test */,
 			);
 		};
 /* End PBXProject section */
@@ -489,6 +807,27 @@
 				280159CA08EC7BFD00C83A75 /* schema.xml in Resources */,
 				280159CC08EC7BFF00C83A75 /* InfoPlist.strings in Resources */,
 				280159CD08EC7C0800C83A75 /* schema.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		28015AF008EC9C9700C83A75 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		28015B2F08EC9D4800C83A75 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		28015B7B08EC9F3D00C83A75 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -506,6 +845,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		28015AF308EC9C9700C83A75 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+		28015B3208EC9D4800C83A75 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+		28015B7E08EC9F3D00C83A75 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		280159A508EC781900C83A75 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -513,6 +894,27 @@
 			files = (
 				280159D008EC7C1B00C83A75 /* main.c in Sources */,
 				280159D108EC7C1C00C83A75 /* GetMetadataForFile.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		28015AF108EC9C9700C83A75 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		28015B3008EC9D4800C83A75 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		28015B7C08EC9F3D00C83A75 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -532,6 +934,41 @@
 			isa = PBXTargetDependency;
 			target = 280159A708EC781900C83A75 /* Patchworks Importer */;
 			targetProxy = 28015ACF08EC8FFE00C83A75 /* PBXContainerItemProxy */;
+		};
+		28015B4608EC9D9000C83A75 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 28015AF408EC9C9700C83A75 /* Patchworks Test */;
+			targetProxy = 28015B4508EC9D9000C83A75 /* PBXContainerItemProxy */;
+		};
+		28015B4D08EC9D9300C83A75 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 28015B3308EC9D4800C83A75 /* Shared Source Test */;
+			targetProxy = 28015B4C08EC9D9300C83A75 /* PBXContainerItemProxy */;
+		};
+		28015B5308EC9DA900C83A75 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 28015B3308EC9D4800C83A75 /* Shared Source Test */;
+			targetProxy = 28015B5208EC9DA900C83A75 /* PBXContainerItemProxy */;
+		};
+		28015B5708EC9DAE00C83A75 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 28015AF408EC9C9700C83A75 /* Patchworks Test */;
+			targetProxy = 28015B5608EC9DAE00C83A75 /* PBXContainerItemProxy */;
+		};
+		28015B5B08EC9DB100C83A75 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 28015B3308EC9D4800C83A75 /* Shared Source Test */;
+			targetProxy = 28015B5A08EC9DB100C83A75 /* PBXContainerItemProxy */;
+		};
+		28015B8D08EC9F4E00C83A75 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 28015B7F08EC9F3D00C83A75 /* Patchworks Importer Test */;
+			targetProxy = 28015B8C08EC9F4E00C83A75 /* PBXContainerItemProxy */;
+		};
+		28015B8F08EC9F5300C83A75 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 28015B7F08EC9F3D00C83A75 /* Patchworks Importer Test */;
+			targetProxy = 28015B8E08EC9F5300C83A75 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -595,18 +1032,11 @@
 				INFOPLIST_FILE = "Importer Source/Resources/Info.plist";
 				INSTALL_PATH = /Library/Spotlight;
 				LIBRARY_STYLE = BUNDLE;
-				OPTIMIZATION_CFLAGS = "";
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
-				OTHER_REZFLAGS = "";
 				PREBINDING = NO;
 				PRODUCT_NAME = Patchworks;
 				SECTORDER_FLAGS = "";
-				WARNING_CFLAGS = (
-					"-Wmost",
-					"-Wno-four-char-constants",
-					"-Wno-unknown-pragmas",
-				);
 				WRAPPER_EXTENSION = mdimporter;
 			};
 			name = Debug;
@@ -619,18 +1049,11 @@
 				INFOPLIST_FILE = "Importer Source/Resources/Info.plist";
 				INSTALL_PATH = /Library/Spotlight;
 				LIBRARY_STYLE = BUNDLE;
-				OPTIMIZATION_CFLAGS = "";
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
-				OTHER_REZFLAGS = "";
 				PREBINDING = NO;
 				PRODUCT_NAME = Patchworks;
 				SECTORDER_FLAGS = "";
-				WARNING_CFLAGS = (
-					"-Wmost",
-					"-Wno-four-char-constants",
-					"-Wno-unknown-pragmas",
-				);
 				WRAPPER_EXTENSION = mdimporter;
 			};
 			name = Release;
@@ -643,19 +1066,247 @@
 				INFOPLIST_FILE = "Importer Source/Resources/Info.plist";
 				INSTALL_PATH = /Library/Spotlight;
 				LIBRARY_STYLE = BUNDLE;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = Patchworks;
+				SECTORDER_FLAGS = "";
+				WRAPPER_EXTENSION = mdimporter;
+			};
+			name = Default;
+		};
+		28015AFC08EC9C9800C83A75 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Cocoa.framework/Headers/Cocoa.h";
+				INFOPLIST_FILE = "Application Source/Resources/Patchworks Test-Info.plist";
+				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
+				LIBRARY_STYLE = BUNDLE;
+				OTHER_LDFLAGS = (
+					"-framework",
+					Cocoa,
+					"-framework",
+					SenTestingKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = "Patchworks Test";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		28015AFD08EC9C9800C83A75 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Cocoa.framework/Headers/Cocoa.h";
+				INFOPLIST_FILE = "Application Source/Resources/Patchworks Test-Info.plist";
+				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
+				LIBRARY_STYLE = BUNDLE;
+				OTHER_LDFLAGS = (
+					"-framework",
+					Cocoa,
+					"-framework",
+					SenTestingKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = "Patchworks Test";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+		28015AFE08EC9C9800C83A75 /* Default */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Cocoa.framework/Headers/Cocoa.h";
+				INFOPLIST_FILE = "Application Source/Resources/Patchworks Test-Info.plist";
+				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
+				LIBRARY_STYLE = BUNDLE;
+				OTHER_LDFLAGS = (
+					"-framework",
+					Cocoa,
+					"-framework",
+					SenTestingKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = "Patchworks Test";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Default;
+		};
+		28015B3F08EC9D4900C83A75 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Cocoa.framework/Headers/Cocoa.h";
+				INFOPLIST_FILE = "Shared Source/Resources/Shared Source Test-Info.plist";
+				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
+				LIBRARY_STYLE = BUNDLE;
+				OTHER_LDFLAGS = (
+					"-framework",
+					Cocoa,
+					"-framework",
+					SenTestingKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = "Shared Source Test";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		28015B4008EC9D4900C83A75 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Cocoa.framework/Headers/Cocoa.h";
+				INFOPLIST_FILE = "Shared Source/Resources/Shared Source Test-Info.plist";
+				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
+				LIBRARY_STYLE = BUNDLE;
+				OTHER_LDFLAGS = (
+					"-framework",
+					Cocoa,
+					"-framework",
+					SenTestingKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = "Shared Source Test";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+		28015B4108EC9D4900C83A75 /* Default */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Cocoa.framework/Headers/Cocoa.h";
+				INFOPLIST_FILE = "Shared Source/Resources/Shared Source Test-Info.plist";
+				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
+				LIBRARY_STYLE = BUNDLE;
+				OTHER_LDFLAGS = (
+					"-framework",
+					Cocoa,
+					"-framework",
+					SenTestingKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = "Shared Source Test";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Default;
+		};
+		28015B5E08EC9DE300C83A75 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				OPTIMIZATION_CFLAGS = "";
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
 				OTHER_REZFLAGS = "";
-				PREBINDING = NO;
-				PRODUCT_NAME = Patchworks;
+				PRODUCT_NAME = "Unit Tests";
 				SECTORDER_FLAGS = "";
 				WARNING_CFLAGS = (
 					"-Wmost",
 					"-Wno-four-char-constants",
 					"-Wno-unknown-pragmas",
 				);
-				WRAPPER_EXTENSION = mdimporter;
+			};
+			name = Debug;
+		};
+		28015B5F08EC9DE300C83A75 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				OPTIMIZATION_CFLAGS = "";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = "Unit Tests";
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+			};
+			name = Release;
+		};
+		28015B6008EC9DE300C83A75 /* Default */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				OPTIMIZATION_CFLAGS = "";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = "Unit Tests";
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+			};
+			name = Default;
+		};
+		28015B8708EC9F3E00C83A75 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Cocoa.framework/Headers/Cocoa.h";
+				INFOPLIST_FILE = "Importer Source/Resources/Patchworks Importer Test-Info.plist";
+				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
+				LIBRARY_STYLE = BUNDLE;
+				OTHER_LDFLAGS = (
+					"-framework",
+					Cocoa,
+					"-framework",
+					SenTestingKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = "Patchworks Importer Test";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		28015B8808EC9F3E00C83A75 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Cocoa.framework/Headers/Cocoa.h";
+				INFOPLIST_FILE = "Importer Source/Resources/Patchworks Importer Test-Info.plist";
+				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
+				LIBRARY_STYLE = BUNDLE;
+				OTHER_LDFLAGS = (
+					"-framework",
+					Cocoa,
+					"-framework",
+					SenTestingKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = "Patchworks Importer Test";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+		28015B8908EC9F3E00C83A75 /* Default */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Cocoa.framework/Headers/Cocoa.h";
+				INFOPLIST_FILE = "Importer Source/Resources/Patchworks Importer Test-Info.plist";
+				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
+				LIBRARY_STYLE = BUNDLE;
+				OTHER_LDFLAGS = (
+					"-framework",
+					Cocoa,
+					"-framework",
+					SenTestingKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = "Patchworks Importer Test";
+				WRAPPER_EXTENSION = octest;
 			};
 			name = Default;
 		};
@@ -705,8 +1356,10 @@
 		28FCD3D608EC56D000A970FA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COPY_PHASE_STRIP = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_FAST_OBJC_DISPATCH = YES;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_SIGN_COMPARE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
@@ -714,6 +1367,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.4;
 				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
+				WARNING_CFLAGS = "-Wmost";
 			};
 			name = Debug;
 		};
@@ -726,6 +1380,8 @@
 				);
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_FAST_OBJC_DISPATCH = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_SIGN_COMPARE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
@@ -733,6 +1389,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.4;
 				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
+				WARNING_CFLAGS = "-Wmost";
 			};
 			name = Release;
 		};
@@ -741,6 +1398,7 @@
 			buildSettings = {
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_FAST_OBJC_DISPATCH = YES;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_SIGN_COMPARE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
@@ -748,6 +1406,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.4;
 				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
+				WARNING_CFLAGS = "-Wmost";
 			};
 			name = Default;
 		};
@@ -760,6 +1419,42 @@
 				280159AB08EC781B00C83A75 /* Debug */,
 				280159AC08EC781B00C83A75 /* Release */,
 				280159AD08EC781B00C83A75 /* Default */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		28015AFB08EC9C9800C83A75 /* Build configuration list for PBXNativeTarget "Patchworks Test" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				28015AFC08EC9C9800C83A75 /* Debug */,
+				28015AFD08EC9C9800C83A75 /* Release */,
+				28015AFE08EC9C9800C83A75 /* Default */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		28015B3E08EC9D4900C83A75 /* Build configuration list for PBXNativeTarget "Shared Source Test" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				28015B3F08EC9D4900C83A75 /* Debug */,
+				28015B4008EC9D4900C83A75 /* Release */,
+				28015B4108EC9D4900C83A75 /* Default */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		28015B5D08EC9DE300C83A75 /* Build configuration list for PBXAggregateTarget "Unit Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				28015B5E08EC9DE300C83A75 /* Debug */,
+				28015B5F08EC9DE300C83A75 /* Release */,
+				28015B6008EC9DE300C83A75 /* Default */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		28015B8608EC9F3E00C83A75 /* Build configuration list for PBXNativeTarget "Patchworks Importer Test" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				28015B8708EC9F3E00C83A75 /* Debug */,
+				28015B8808EC9F3E00C83A75 /* Release */,
+				28015B8908EC9F3E00C83A75 /* Default */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
