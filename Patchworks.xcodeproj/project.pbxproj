@@ -1,0 +1,789 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 42;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		280159CA08EC7BFD00C83A75 /* schema.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2801596A08EC773C00C83A75 /* schema.xml */; };
+		280159CC08EC7BFF00C83A75 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2801597708EC774500C83A75 /* InfoPlist.strings */; };
+		280159CD08EC7C0800C83A75 /* schema.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2801597908EC774500C83A75 /* schema.strings */; };
+		280159D008EC7C1B00C83A75 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 2801596408EC773200C83A75 /* main.c */; };
+		280159D108EC7C1C00C83A75 /* GetMetadataForFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 2801596508EC773200C83A75 /* GetMetadataForFile.m */; };
+		280159D208EC7C2900C83A75 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A37F4C5FDCFA73011CA2CEA /* Foundation.framework */; };
+		280159D308EC7C2B00C83A75 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 280159A008EC77C500C83A75 /* CoreServices.framework */; };
+		28015ABF08EC8E8B00C83A75 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 28015ABD08EC8E8B00C83A75 /* InfoPlist.strings */; };
+		28015AD408EC927600C83A75 /* Patchworks.mdimporter in Copy Importer */ = {isa = PBXBuildFile; fileRef = 280159A808EC781900C83A75 /* Patchworks.mdimporter */; };
+		28FCD3F308EC577900A970FA /* MyDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FCD3E308EC577900A970FA /* MyDocument.m */; };
+		28FCD3F408EC577900A970FA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FCD3E708EC577900A970FA /* main.m */; };
+		28FCD3F508EC577900A970FA /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 28FCD3EA08EC577900A970FA /* Credits.rtf */; };
+		28FCD3F708EC577900A970FA /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = 28FCD3EE08EC577900A970FA /* MainMenu.nib */; };
+		28FCD3F808EC577900A970FA /* MyDocument.nib in Resources */ = {isa = PBXBuildFile; fileRef = 28FCD3F008EC577900A970FA /* MyDocument.nib */; };
+		28FCD3F908EC577900A970FA /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 28FCD3F208EC577900A970FA /* Info.plist */; };
+		8D15AC340486D014006FF6A4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXBuildStyle section */
+		4A9504D0FFE6A4CB11CA0CBA /* Debug */ = {
+			isa = PBXBuildStyle;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				PREBINDING = NO;
+				ZERO_LINK = YES;
+			};
+			name = Debug;
+		};
+		4A9504D1FFE6A4CB11CA0CBA /* Release */ = {
+			isa = PBXBuildStyle;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				PREBINDING = NO;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+/* End PBXBuildStyle section */
+
+/* Begin PBXContainerItemProxy section */
+		28015ACF08EC8FFE00C83A75 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2A37F4A9FDCFA73011CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 280159A708EC781900C83A75 /* Patchworks Importer */;
+			remoteInfo = "Patchworks Importer";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		28015ACD08EC8F8900C83A75 /* Copy Importer */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = Contents/Library/Spotlight;
+			dstSubfolderSpec = 1;
+			files = (
+				28015AD408EC927600C83A75 /* Patchworks.mdimporter in Copy Importer */,
+			);
+			name = "Copy Importer";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
+		13E42FBA07B3F13500E4EEF1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
+		2801596408EC773200C83A75 /* main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		2801596508EC773200C83A75 /* GetMetadataForFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetMetadataForFile.m; sourceTree = "<group>"; };
+		2801596908EC773C00C83A75 /* version.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = version.plist; sourceTree = "<group>"; };
+		2801596A08EC773C00C83A75 /* schema.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = schema.xml; sourceTree = "<group>"; };
+		2801596B08EC773C00C83A75 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Info.plist; sourceTree = "<group>"; };
+		2801597808EC774500C83A75 /* en */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		2801597A08EC774500C83A75 /* en */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/schema.strings; sourceTree = "<group>"; };
+		280159A008EC77C500C83A75 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = /System/Library/Frameworks/CoreServices.framework; sourceTree = "<absolute>"; };
+		280159A808EC781900C83A75 /* Patchworks.mdimporter */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Patchworks.mdimporter; sourceTree = BUILT_PRODUCTS_DIR; };
+		28015ABE08EC8E8B00C83A75 /* en */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		28015AC308EC8F1000C83A75 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		28FCD3E208EC577900A970FA /* MyDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDocument.h; sourceTree = "<group>"; };
+		28FCD3E308EC577900A970FA /* MyDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDocument.m; sourceTree = "<group>"; };
+		28FCD3E708EC577900A970FA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		28FCD3E808EC577900A970FA /* Patchworks_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Patchworks_Prefix.pch; sourceTree = "<group>"; };
+		28FCD3EF08EC577900A970FA /* en */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = en; path = en.lproj/MainMenu.nib; sourceTree = "<group>"; };
+		28FCD3F108EC577900A970FA /* en */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = en; path = en.lproj/MyDocument.nib; sourceTree = "<group>"; };
+		28FCD3F208EC577900A970FA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Info.plist; sourceTree = "<group>"; };
+		2A37F4C4FDCFA73011CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
+		2A37F4C5FDCFA73011CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		8D15AC370486D014006FF6A4 /* Patchworks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Patchworks.app; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		280159A608EC781900C83A75 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				280159D208EC7C2900C83A75 /* Foundation.framework in Frameworks */,
+				280159D308EC7C2B00C83A75 /* CoreServices.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8D15AC330486D014006FF6A4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D15AC340486D014006FF6A4 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		19C28FB0FE9D524F11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8D15AC370486D014006FF6A4 /* Patchworks.app */,
+				280159A808EC781900C83A75 /* Patchworks.mdimporter */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2801594208EC766A00C83A75 /* Importer Source */ = {
+			isa = PBXGroup;
+			children = (
+				2801594308EC766A00C83A75 /* Classes */,
+				2801594708EC766A00C83A75 /* Other Sources */,
+				2801594808EC766A00C83A75 /* Resources */,
+			);
+			path = "Importer Source";
+			sourceTree = "<group>";
+		};
+		2801594308EC766A00C83A75 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				2801594508EC766A00C83A75 /* Model */,
+				2801594408EC766A00C83A75 /* Controller */,
+				2801594608EC766A00C83A75 /* View */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		2801594408EC766A00C83A75 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		2801594508EC766A00C83A75 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2801594608EC766A00C83A75 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2801594708EC766A00C83A75 /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				2801596408EC773200C83A75 /* main.c */,
+				2801596508EC773200C83A75 /* GetMetadataForFile.m */,
+			);
+			path = "Other Sources";
+			sourceTree = "<group>";
+		};
+		2801594808EC766A00C83A75 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				2801596B08EC773C00C83A75 /* Info.plist */,
+				2801597708EC774500C83A75 /* InfoPlist.strings */,
+				2801596908EC773C00C83A75 /* version.plist */,
+				2801596A08EC773C00C83A75 /* schema.xml */,
+				2801597908EC774500C83A75 /* schema.strings */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		2801594A08EC767C00C83A75 /* Shared Source */ = {
+			isa = PBXGroup;
+			children = (
+				2801594B08EC767C00C83A75 /* Classes */,
+				2801595108EC767C00C83A75 /* Tests */,
+				2801594F08EC767C00C83A75 /* Other Sources */,
+				2801595008EC767C00C83A75 /* Resources */,
+			);
+			path = "Shared Source";
+			sourceTree = "<group>";
+		};
+		2801594B08EC767C00C83A75 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				2801594D08EC767C00C83A75 /* Model */,
+				2801594C08EC767C00C83A75 /* Controller */,
+				2801594E08EC767C00C83A75 /* View */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		2801594C08EC767C00C83A75 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		2801594D08EC767C00C83A75 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2801594E08EC767C00C83A75 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2801594F08EC767C00C83A75 /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Other Sources";
+			sourceTree = "<group>";
+		};
+		2801595008EC767C00C83A75 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		2801595108EC767C00C83A75 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		28015AEC08EC995800C83A75 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		28FCD3DF08EC577900A970FA /* Application Source */ = {
+			isa = PBXGroup;
+			children = (
+				28FCD3E008EC577900A970FA /* Classes */,
+				28015AEC08EC995800C83A75 /* Tests */,
+				28FCD3E608EC577900A970FA /* Other Sources */,
+				28FCD3E908EC577900A970FA /* Resources */,
+			);
+			path = "Application Source";
+			sourceTree = "<group>";
+		};
+		28FCD3E008EC577900A970FA /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				28FCD3E408EC577900A970FA /* Model */,
+				28FCD3E108EC577900A970FA /* Controller */,
+				28FCD3E508EC577900A970FA /* View */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		28FCD3E108EC577900A970FA /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				28FCD3E208EC577900A970FA /* MyDocument.h */,
+				28FCD3E308EC577900A970FA /* MyDocument.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		28FCD3E408EC577900A970FA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		28FCD3E508EC577900A970FA /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		28FCD3E608EC577900A970FA /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				28FCD3E708EC577900A970FA /* main.m */,
+				28FCD3E808EC577900A970FA /* Patchworks_Prefix.pch */,
+			);
+			path = "Other Sources";
+			sourceTree = "<group>";
+		};
+		28FCD3E908EC577900A970FA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				28FCD3F208EC577900A970FA /* Info.plist */,
+				28015ABD08EC8E8B00C83A75 /* InfoPlist.strings */,
+				28FCD3EA08EC577900A970FA /* Credits.rtf */,
+				28FCD3EE08EC577900A970FA /* MainMenu.nib */,
+				28FCD3F008EC577900A970FA /* MyDocument.nib */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		2A37F4AAFDCFA73011CA2CEA /* Patchworks */ = {
+			isa = PBXGroup;
+			children = (
+				2801594A08EC767C00C83A75 /* Shared Source */,
+				28FCD3DF08EC577900A970FA /* Application Source */,
+				2801594208EC766A00C83A75 /* Importer Source */,
+				2A37F4C3FDCFA73011CA2CEA /* Frameworks */,
+				19C28FB0FE9D524F11CA2CBB /* Products */,
+			);
+			name = Patchworks;
+			sourceTree = "<group>";
+		};
+		2A37F4C3FDCFA73011CA2CEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */,
+				2A37F4C4FDCFA73011CA2CEA /* AppKit.framework */,
+				2A37F4C5FDCFA73011CA2CEA /* Foundation.framework */,
+				13E42FBA07B3F13500E4EEF1 /* CoreData.framework */,
+				280159A008EC77C500C83A75 /* CoreServices.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		280159A708EC781900C83A75 /* Patchworks Importer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 280159AA08EC781B00C83A75 /* Build configuration list for PBXNativeTarget "Patchworks Importer" */;
+			buildPhases = (
+				280159A408EC781900C83A75 /* Resources */,
+				280159A508EC781900C83A75 /* Sources */,
+				280159A608EC781900C83A75 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			buildSettings = {
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INFOPLIST_FILE = "Metadata Importer-Info.plist";
+				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
+				LIBRARY_STYLE = BUNDLE;
+				OPTIMIZATION_CFLAGS = "";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				OTHER_REZFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = "Metadata Importer";
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+			};
+			dependencies = (
+			);
+			name = "Patchworks Importer";
+			productName = "Metadata Importer";
+			productReference = 280159A808EC781900C83A75 /* Patchworks.mdimporter */;
+			productSettingsXML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
+<!DOCTYPE plist PUBLIC \"-//Apple Computer//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">
+<plist version=\"1.0\">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>English</string>
+	<key>CFBundleExecutable</key>
+	<string>Metadata Importer</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.yourcompany.Metadata_Importer</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleSignature</key>
+	<string>????</string>
+	<key>CFBundleVersion</key>
+	<string>1.0</string>
+</dict>
+</plist>
+";
+			productType = "com.apple.product-type.bundle";
+		};
+		8D15AC270486D014006FF6A4 /* Patchworks */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 28FCD3D108EC56D000A970FA /* Build configuration list for PBXNativeTarget "Patchworks" */;
+			buildPhases = (
+				8D15AC2B0486D014006FF6A4 /* Resources */,
+				8D15AC300486D014006FF6A4 /* Sources */,
+				8D15AC330486D014006FF6A4 /* Frameworks */,
+				28015ACD08EC8F8900C83A75 /* Copy Importer */,
+			);
+			buildRules = (
+			);
+			buildSettings = {
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Patchworks_Prefix.pch;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				PRODUCT_NAME = Patchworks;
+				WRAPPER_EXTENSION = app;
+			};
+			dependencies = (
+				28015AD008EC8FFE00C83A75 /* PBXTargetDependency */,
+			);
+			name = Patchworks;
+			productInstallPath = "$(HOME)/Applications";
+			productName = Patchworks;
+			productReference = 8D15AC370486D014006FF6A4 /* Patchworks.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2A37F4A9FDCFA73011CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 28FCD3D508EC56D000A970FA /* Build configuration list for PBXProject "Patchworks" */;
+			buildSettings = {
+			};
+			buildStyles = (
+				4A9504D0FFE6A4CB11CA0CBA /* Debug */,
+				4A9504D1FFE6A4CB11CA0CBA /* Release */,
+			);
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+				en,
+				de,
+			);
+			mainGroup = 2A37F4AAFDCFA73011CA2CEA /* Patchworks */;
+			projectDirPath = "";
+			targets = (
+				8D15AC270486D014006FF6A4 /* Patchworks */,
+				280159A708EC781900C83A75 /* Patchworks Importer */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		280159A408EC781900C83A75 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				280159CA08EC7BFD00C83A75 /* schema.xml in Resources */,
+				280159CC08EC7BFF00C83A75 /* InfoPlist.strings in Resources */,
+				280159CD08EC7C0800C83A75 /* schema.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8D15AC2B0486D014006FF6A4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28FCD3F508EC577900A970FA /* Credits.rtf in Resources */,
+				28FCD3F708EC577900A970FA /* MainMenu.nib in Resources */,
+				28FCD3F808EC577900A970FA /* MyDocument.nib in Resources */,
+				28FCD3F908EC577900A970FA /* Info.plist in Resources */,
+				28015ABF08EC8E8B00C83A75 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		280159A508EC781900C83A75 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				280159D008EC7C1B00C83A75 /* main.c in Sources */,
+				280159D108EC7C1C00C83A75 /* GetMetadataForFile.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8D15AC300486D014006FF6A4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28FCD3F308EC577900A970FA /* MyDocument.m in Sources */,
+				28FCD3F408EC577900A970FA /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		28015AD008EC8FFE00C83A75 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 280159A708EC781900C83A75 /* Patchworks Importer */;
+			targetProxy = 28015ACF08EC8FFE00C83A75 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		2801597708EC774500C83A75 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2801597808EC774500C83A75 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		2801597908EC774500C83A75 /* schema.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2801597A08EC774500C83A75 /* en */,
+			);
+			name = schema.strings;
+			sourceTree = "<group>";
+		};
+		28015ABD08EC8E8B00C83A75 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				28015ABE08EC8E8B00C83A75 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		28FCD3EA08EC577900A970FA /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				28015AC308EC8F1000C83A75 /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		28FCD3EE08EC577900A970FA /* MainMenu.nib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				28FCD3EF08EC577900A970FA /* en */,
+			);
+			name = MainMenu.nib;
+			sourceTree = "<group>";
+		};
+		28FCD3F008EC577900A970FA /* MyDocument.nib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				28FCD3F108EC577900A970FA /* en */,
+			);
+			name = MyDocument.nib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		280159AB08EC781B00C83A75 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				INFOPLIST_FILE = "Importer Source/Resources/Info.plist";
+				INSTALL_PATH = /Library/Spotlight;
+				LIBRARY_STYLE = BUNDLE;
+				OPTIMIZATION_CFLAGS = "";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				OTHER_REZFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = Patchworks;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+				WRAPPER_EXTENSION = mdimporter;
+			};
+			name = Debug;
+		};
+		280159AC08EC781B00C83A75 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				INFOPLIST_FILE = "Importer Source/Resources/Info.plist";
+				INSTALL_PATH = /Library/Spotlight;
+				LIBRARY_STYLE = BUNDLE;
+				OPTIMIZATION_CFLAGS = "";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				OTHER_REZFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = Patchworks;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+				WRAPPER_EXTENSION = mdimporter;
+			};
+			name = Release;
+		};
+		280159AD08EC781B00C83A75 /* Default */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				INFOPLIST_FILE = "Importer Source/Resources/Info.plist";
+				INSTALL_PATH = /Library/Spotlight;
+				LIBRARY_STYLE = BUNDLE;
+				OPTIMIZATION_CFLAGS = "";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				OTHER_REZFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = Patchworks;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+				WRAPPER_EXTENSION = mdimporter;
+			};
+			name = Default;
+		};
+		28FCD3D208EC56D000A970FA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Application Source/Other Sources/Patchworks_Prefix.pch";
+				INFOPLIST_FILE = "Application Source/Resources/Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				PREBINDING = NO;
+				PRODUCT_NAME = Patchworks;
+				WRAPPER_EXTENSION = app;
+				ZERO_LINK = YES;
+			};
+			name = Debug;
+		};
+		28FCD3D308EC56D000A970FA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Application Source/Other Sources/Patchworks_Prefix.pch";
+				INFOPLIST_FILE = "Application Source/Resources/Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				PREBINDING = NO;
+				PRODUCT_NAME = Patchworks;
+				WRAPPER_EXTENSION = app;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		28FCD3D408EC56D000A970FA /* Default */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Application Source/Other Sources/Patchworks_Prefix.pch";
+				INFOPLIST_FILE = "Application Source/Resources/Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				PRODUCT_NAME = Patchworks;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Default;
+		};
+		28FCD3D608EC56D000A970FA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_FAST_OBJC_DISPATCH = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_SIGN_COMPARE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.4;
+				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
+			};
+			name = Debug;
+		};
+		28FCD3D708EC56D000A970FA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					ppc,
+					i386,
+				);
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_FAST_OBJC_DISPATCH = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_SIGN_COMPARE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.4;
+				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
+			};
+			name = Release;
+		};
+		28FCD3D808EC56D000A970FA /* Default */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_FAST_OBJC_DISPATCH = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_SIGN_COMPARE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.4;
+				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
+			};
+			name = Default;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		280159AA08EC781B00C83A75 /* Build configuration list for PBXNativeTarget "Patchworks Importer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				280159AB08EC781B00C83A75 /* Debug */,
+				280159AC08EC781B00C83A75 /* Release */,
+				280159AD08EC781B00C83A75 /* Default */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		28FCD3D108EC56D000A970FA /* Build configuration list for PBXNativeTarget "Patchworks" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				28FCD3D208EC56D000A970FA /* Debug */,
+				28FCD3D308EC56D000A970FA /* Release */,
+				28FCD3D408EC56D000A970FA /* Default */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Default;
+		};
+		28FCD3D508EC56D000A970FA /* Build configuration list for PBXProject "Patchworks" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				28FCD3D608EC56D000A970FA /* Debug */,
+				28FCD3D708EC56D000A970FA /* Release */,
+				28FCD3D808EC56D000A970FA /* Default */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Default;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2A37F4A9FDCFA73011CA2CEA /* Project object */;
+}
