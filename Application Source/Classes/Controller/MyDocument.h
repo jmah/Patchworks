@@ -11,6 +11,7 @@
 
 @interface MyDocument : NSDocument
 {
+	
 }
 
 @end

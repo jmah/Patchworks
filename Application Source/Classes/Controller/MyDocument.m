@@ -32,7 +32,6 @@
 
 
 
-#pragma mark -
 #pragma mark Window Management
 
 
@@ -52,7 +51,6 @@
 
 
 
-#pragma mark -
 #pragma mark Persistence
 
 - (NSData *)dataRepresentationOfType:(NSString *)aType

@@ -36,7 +36,7 @@
 //
 
 
-#pragma mark -
+
 #pragma mark Typedefs
 
 // The layout for an instance of MetaDataImporterPlugIn 
@@ -48,7 +48,7 @@ typedef struct __MetadataImporterPluginType
 } MetadataImporterPluginType;
 
 
-#pragma mark -
+
 #pragma mark Prototypes
 
 // The import function to be implemented in GetMetadataForFile.m
@@ -65,7 +65,7 @@ ULONG MetadataImporterPluginAddRef(void *thisInstance);
 ULONG MetadataImporterPluginRelease(void *thisInstance);
 
 
-#pragma mark -
+
 #pragma mark Implementations
 
 // The TestInterface function table.
