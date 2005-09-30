@@ -45,6 +45,12 @@
 		280159D308EC7C2B00C83A75 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 280159A008EC77C500C83A75 /* CoreServices.framework */; };
 		28015ABF08EC8E8B00C83A75 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 28015ABD08EC8E8B00C83A75 /* InfoPlist.strings */; };
 		28015AD408EC927600C83A75 /* Patchworks.mdimporter in Copy Importer */ = {isa = PBXBuildFile; fileRef = 280159A808EC781900C83A75 /* Patchworks.mdimporter */; };
+		28015C8F08ED4A1D00C83A75 /* NSData+PWzlib.m in Sources */ = {isa = PBXBuildFile; fileRef = 28015C8E08ED4A1D00C83A75 /* NSData+PWzlib.m */; };
+		28015CBC08ED52AD00C83A75 /* PWzlibTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 28015CBB08ED52AD00C83A75 /* PWzlibTest.m */; };
+		28015CCD08ED54AE00C83A75 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */; };
+		28015CCE08ED54B500C83A75 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */; };
+		28015CCF08ED54B800C83A75 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */; };
+		28015CE408ED550600C83A75 /* libz.1.2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 28015CE308ED550600C83A75 /* libz.1.2.2.dylib */; };
 		28FCD3F308EC577900A970FA /* MyDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FCD3E308EC577900A970FA /* MyDocument.m */; };
 		28FCD3F408EC577900A970FA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FCD3E708EC577900A970FA /* main.m */; };
 		28FCD3F508EC577900A970FA /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 28FCD3EA08EC577900A970FA /* Credits.rtf */; };
@@ -173,6 +179,11 @@
 		28015B3408EC9D4800C83A75 /* Shared Source Test.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Shared Source Test.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		28015B3708EC9D4800C83A75 /* Shared Source Test-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Shared Source Test-Info.plist"; sourceTree = "<group>"; };
 		28015B8008EC9F3D00C83A75 /* Patchworks Importer Test.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Patchworks Importer Test.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		28015C8D08ED4A1C00C83A75 /* NSData+PWzlib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+PWzlib.h"; sourceTree = "<group>"; };
+		28015C8E08ED4A1D00C83A75 /* NSData+PWzlib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+PWzlib.m"; sourceTree = "<group>"; };
+		28015CBA08ED52AD00C83A75 /* PWzlibTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWzlibTest.h; sourceTree = "<group>"; };
+		28015CBB08ED52AD00C83A75 /* PWzlibTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWzlibTest.m; sourceTree = "<group>"; };
+		28015CE308ED550600C83A75 /* libz.1.2.2.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; name = libz.1.2.2.dylib; path = /Developer/SDKs/MacOSX10.4u.sdk/usr/lib/libz.1.2.2.dylib; sourceTree = "<absolute>"; };
 		28FCD3E208EC577900A970FA /* MyDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDocument.h; sourceTree = "<group>"; };
 		28FCD3E308EC577900A970FA /* MyDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDocument.m; sourceTree = "<group>"; };
 		28FCD3E708EC577900A970FA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -199,6 +210,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28015CCF08ED54B800C83A75 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,6 +218,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28015CCD08ED54AE00C83A75 /* Cocoa.framework in Frameworks */,
+				28015CE408ED550600C83A75 /* libz.1.2.2.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -213,6 +227,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28015CCE08ED54B500C83A75 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -332,6 +347,8 @@
 		2801594D08EC767C00C83A75 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				28015C8D08ED4A1C00C83A75 /* NSData+PWzlib.h */,
+				28015C8E08ED4A1D00C83A75 /* NSData+PWzlib.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -361,6 +378,8 @@
 		2801595108EC767C00C83A75 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				28015CBA08ED52AD00C83A75 /* PWzlibTest.h */,
+				28015CBB08ED52AD00C83A75 /* PWzlibTest.m */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -453,6 +472,7 @@
 		2A37F4C3FDCFA73011CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				28015CE308ED550600C83A75 /* libz.1.2.2.dylib */,
 				1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */,
 				2A37F4C4FDCFA73011CA2CEA /* AppKit.framework */,
 				2A37F4C5FDCFA73011CA2CEA /* Foundation.framework */,
@@ -908,6 +928,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28015C8F08ED4A1D00C83A75 /* NSData+PWzlib.m in Sources */,
+				28015CBC08ED52AD00C83A75 /* PWzlibTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
