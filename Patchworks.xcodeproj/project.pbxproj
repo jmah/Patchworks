@@ -186,6 +186,34 @@
 		28015CBB08ED52AD00C83A75 /* PWzlibTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWzlibTest.m; sourceTree = "<group>"; };
 		28015CE308ED550600C83A75 /* libz.1.2.2.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; name = libz.1.2.2.dylib; path = /Developer/SDKs/MacOSX10.4u.sdk/usr/lib/libz.1.2.2.dylib; sourceTree = "<absolute>"; };
 		2803BDAC08ED905C00111E58 /* Test Patches */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Test Patches"; sourceTree = "<group>"; };
+		289F129508F04B4900E9D926 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		289F129608F04B4900E9D926 /* MOAssertions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MOAssertions.h; sourceTree = "<group>"; };
+		289F129708F04B4900E9D926 /* MOAssertions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MOAssertions.m; sourceTree = "<group>"; };
+		289F129808F04B4900E9D926 /* MOKitDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MOKitDefines.h; sourceTree = "<group>"; };
+		289F129A08F04B4900E9D926 /* MORegexpHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MORegexpHelpers.h; sourceTree = "<group>"; };
+		289F129B08F04B4900E9D926 /* MORegexpHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MORegexpHelpers.m; sourceTree = "<group>"; };
+		289F129C08F04B4900E9D926 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
+		289F129D08F04B4900E9D926 /* regc_color.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = regc_color.c; sourceTree = "<group>"; };
+		289F129E08F04B4900E9D926 /* regc_cvec.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = regc_cvec.c; sourceTree = "<group>"; };
+		289F129F08F04B4900E9D926 /* regc_lex.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = regc_lex.c; sourceTree = "<group>"; };
+		289F12A008F04B4900E9D926 /* regc_locale.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = regc_locale.c; sourceTree = "<group>"; };
+		289F12A108F04B4900E9D926 /* regc_nfa.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = regc_nfa.c; sourceTree = "<group>"; };
+		289F12A208F04B4900E9D926 /* regcomp.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = regcomp.c; sourceTree = "<group>"; };
+		289F12A308F04B4900E9D926 /* regcustom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = regcustom.h; sourceTree = "<group>"; };
+		289F12A408F04B4900E9D926 /* rege_dfa.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = rege_dfa.c; sourceTree = "<group>"; };
+		289F12A508F04B4900E9D926 /* regerror.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = regerror.c; sourceTree = "<group>"; };
+		289F12A608F04B4900E9D926 /* regerrs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = regerrs.h; sourceTree = "<group>"; };
+		289F12A708F04B4900E9D926 /* regex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = regex.h; sourceTree = "<group>"; };
+		289F12A808F04B4900E9D926 /* regexec.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = regexec.c; sourceTree = "<group>"; };
+		289F12A908F04B4900E9D926 /* regfree.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = regfree.c; sourceTree = "<group>"; };
+		289F12AA08F04B4900E9D926 /* regguts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = regguts.h; sourceTree = "<group>"; };
+		289F12AB08F04B4900E9D926 /* RESyntax.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = RESyntax.rtf; sourceTree = "<group>"; };
+		289F12AC08F04B4900E9D926 /* MORegularExpression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MORegularExpression.h; sourceTree = "<group>"; };
+		289F12AD08F04B4900E9D926 /* MORegularExpression.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MORegularExpression.m; sourceTree = "<group>"; };
+		289F12AE08F04B4900E9D926 /* MORegularExpression_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MORegularExpression_Private.h; sourceTree = "<group>"; };
+		289F12AF08F04B4900E9D926 /* MORegularExpression_Private.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MORegularExpression_Private.m; sourceTree = "<group>"; };
+		289F12B008F04B4900E9D926 /* MORuntimeUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MORuntimeUtilities.h; sourceTree = "<group>"; };
+		289F12B108F04B4900E9D926 /* MORuntimeUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MORuntimeUtilities.m; sourceTree = "<group>"; };
 		28EB4A0408F02EF000126AE9 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		28FCD3E208EC577900A970FA /* MyDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDocument.h; sourceTree = "<group>"; };
 		28FCD3E308EC577900A970FA /* MyDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDocument.m; sourceTree = "<group>"; };
@@ -366,6 +394,7 @@
 		2801594F08EC767C00C83A75 /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
+				289F129408F04B4900E9D926 /* MOKit */,
 			);
 			path = "Other Sources";
 			sourceTree = "<group>";
@@ -393,6 +422,49 @@
 			children = (
 			);
 			path = Tests;
+			sourceTree = "<group>";
+		};
+		289F129408F04B4900E9D926 /* MOKit */ = {
+			isa = PBXGroup;
+			children = (
+				289F129508F04B4900E9D926 /* LICENSE */,
+				289F129808F04B4900E9D926 /* MOKitDefines.h */,
+				289F129608F04B4900E9D926 /* MOAssertions.h */,
+				289F129708F04B4900E9D926 /* MOAssertions.m */,
+				289F12AC08F04B4900E9D926 /* MORegularExpression.h */,
+				289F12AD08F04B4900E9D926 /* MORegularExpression.m */,
+				289F12AE08F04B4900E9D926 /* MORegularExpression_Private.h */,
+				289F12AF08F04B4900E9D926 /* MORegularExpression_Private.m */,
+				289F12B008F04B4900E9D926 /* MORuntimeUtilities.h */,
+				289F12B108F04B4900E9D926 /* MORuntimeUtilities.m */,
+				289F129908F04B4900E9D926 /* MORegexp */,
+			);
+			path = MOKit;
+			sourceTree = "<group>";
+		};
+		289F129908F04B4900E9D926 /* MORegexp */ = {
+			isa = PBXGroup;
+			children = (
+				289F129C08F04B4900E9D926 /* README */,
+				289F12AB08F04B4900E9D926 /* RESyntax.rtf */,
+				289F129A08F04B4900E9D926 /* MORegexpHelpers.h */,
+				289F129B08F04B4900E9D926 /* MORegexpHelpers.m */,
+				289F129D08F04B4900E9D926 /* regc_color.c */,
+				289F129E08F04B4900E9D926 /* regc_cvec.c */,
+				289F129F08F04B4900E9D926 /* regc_lex.c */,
+				289F12A008F04B4900E9D926 /* regc_locale.c */,
+				289F12A108F04B4900E9D926 /* regc_nfa.c */,
+				289F12A208F04B4900E9D926 /* regcomp.c */,
+				289F12A308F04B4900E9D926 /* regcustom.h */,
+				289F12A408F04B4900E9D926 /* rege_dfa.c */,
+				289F12A508F04B4900E9D926 /* regerror.c */,
+				289F12A608F04B4900E9D926 /* regerrs.h */,
+				289F12A708F04B4900E9D926 /* regex.h */,
+				289F12A808F04B4900E9D926 /* regexec.c */,
+				289F12A908F04B4900E9D926 /* regfree.c */,
+				289F12AA08F04B4900E9D926 /* regguts.h */,
+			);
+			path = MORegexp;
 			sourceTree = "<group>";
 		};
 		28FCD3DF08EC577900A970FA /* Application Source */ = {
