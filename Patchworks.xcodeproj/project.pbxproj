@@ -93,56 +93,56 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = 2A37F4A9FDCFA73011CA2CEA /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 280159A708EC781900C83A75 /* Patchworks Importer */;
+			remoteGlobalIDString = 280159A708EC781900C83A75;
 			remoteInfo = "Patchworks Importer";
 		};
 		28015B4508EC9D9000C83A75 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2A37F4A9FDCFA73011CA2CEA /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 28015AF408EC9C9700C83A75 /* Patchworks Test */;
+			remoteGlobalIDString = 28015AF408EC9C9700C83A75;
 			remoteInfo = "Patchworks Test";
 		};
 		28015B4C08EC9D9300C83A75 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2A37F4A9FDCFA73011CA2CEA /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 28015B3308EC9D4800C83A75 /* Shared Source Test */;
+			remoteGlobalIDString = 28015B3308EC9D4800C83A75;
 			remoteInfo = "Shared Source Test";
 		};
 		28015B5208EC9DA900C83A75 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2A37F4A9FDCFA73011CA2CEA /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 28015B3308EC9D4800C83A75 /* Shared Source Test */;
+			remoteGlobalIDString = 28015B3308EC9D4800C83A75;
 			remoteInfo = "Shared Source Test";
 		};
 		28015B5608EC9DAE00C83A75 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2A37F4A9FDCFA73011CA2CEA /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 28015AF408EC9C9700C83A75 /* Patchworks Test */;
+			remoteGlobalIDString = 28015AF408EC9C9700C83A75;
 			remoteInfo = "Patchworks Test";
 		};
 		28015B5A08EC9DB100C83A75 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2A37F4A9FDCFA73011CA2CEA /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 28015B3308EC9D4800C83A75 /* Shared Source Test */;
+			remoteGlobalIDString = 28015B3308EC9D4800C83A75;
 			remoteInfo = "Shared Source Test";
 		};
 		28015B8C08EC9F4E00C83A75 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2A37F4A9FDCFA73011CA2CEA /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 28015B7F08EC9F3D00C83A75 /* Patchworks Importer Test */;
+			remoteGlobalIDString = 28015B7F08EC9F3D00C83A75;
 			remoteInfo = "Patchworks Importer Test";
 		};
 		28015B8E08EC9F5300C83A75 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2A37F4A9FDCFA73011CA2CEA /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 28015B7F08EC9F3D00C83A75 /* Patchworks Importer Test */;
+			remoteGlobalIDString = 28015B7F08EC9F3D00C83A75;
 			remoteInfo = "Patchworks Importer Test";
 		};
 /* End PBXContainerItemProxy section */
