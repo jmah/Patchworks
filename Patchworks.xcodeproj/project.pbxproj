@@ -186,6 +186,7 @@
 		28015CBB08ED52AD00C83A75 /* PWzlibTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWzlibTest.m; sourceTree = "<group>"; };
 		28015CE308ED550600C83A75 /* libz.1.2.2.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; name = libz.1.2.2.dylib; path = /Developer/SDKs/MacOSX10.4u.sdk/usr/lib/libz.1.2.2.dylib; sourceTree = "<absolute>"; };
 		2803BDAC08ED905C00111E58 /* Test Patches */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Test Patches"; sourceTree = "<group>"; };
+		28EB4A0408F02EF000126AE9 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		28FCD3E208EC577900A970FA /* MyDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDocument.h; sourceTree = "<group>"; };
 		28FCD3E308EC577900A970FA /* MyDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDocument.m; sourceTree = "<group>"; };
 		28FCD3E708EC577900A970FA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -471,6 +472,7 @@
 		2A37F4AAFDCFA73011CA2CEA /* Patchworks */ = {
 			isa = PBXGroup;
 			children = (
+				28EB4A0408F02EF000126AE9 /* LICENSE.txt */,
 				2801594A08EC767C00C83A75 /* Shared Source */,
 				28FCD3DF08EC577900A970FA /* Application Source */,
 				2801594208EC766A00C83A75 /* Importer Source */,
