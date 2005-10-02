@@ -374,6 +374,7 @@
 			isa = PBXGroup;
 			children = (
 				28015B3708EC9D4800C83A75 /* Shared Source Test-Info.plist */,
+				2803BDAC08ED905C00111E58 /* Test Patches */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -383,7 +384,6 @@
 			children = (
 				28015CBA08ED52AD00C83A75 /* PWzlibTest.h */,
 				28015CBB08ED52AD00C83A75 /* PWzlibTest.m */,
-				2803BDAB08ED905600111E58 /* Resources */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -393,14 +393,6 @@
 			children = (
 			);
 			path = Tests;
-			sourceTree = "<group>";
-		};
-		2803BDAB08ED905600111E58 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				2803BDAC08ED905C00111E58 /* Test Patches */,
-			);
-			path = Resources;
 			sourceTree = "<group>";
 		};
 		28FCD3DF08EC577900A970FA /* Application Source */ = {
