@@ -6,22 +6,22 @@
 
 // ABOUT MORegularExpression
 //
-// Just some private functions used by MORegularExpression.  These basically wrap
+// Just some private functions used by MOPWRegularExpression.  These basically wrap
 // the regular expression package that the class is based on.
 
 #if !defined(__MOKIT_MORegularExpression_Private__)
 #define __MOKIT_MORegularExpression_Private__ 1
 
 #import <Foundation/Foundation.h>
-#import <MOKit/MOKitDefines.h>
+#import "MOKitDefines.h"
 
 #if defined(__cplusplus)
 extern "C" {
 #endif
     
-MOKIT_PRIVATE_EXTERN void MO_FreeRegex(void *re);
-MOKIT_PRIVATE_EXTERN void *MO_TestAndCompileExpressionString(NSString *expressionString, BOOL ignoreCase);
-BOOL MO_TestAndMatchCharactersInRangeWithExpression(const unichar *candidateChars, NSRange searchRange, void *re, NSRange *subrangeArray);
+MOKIT_PRIVATE_EXTERN void MOPW_FreeRegex(void *re);
+MOKIT_PRIVATE_EXTERN void *MOPW_TestAndCompileExpressionString(NSString *expressionString, BOOL ignoreCase);
+BOOL MOPW_TestAndMatchCharactersInRangeWithExpression(const unichar *candidateChars, NSRange searchRange, void *re, NSRange *subrangeArray);
 
 #if defined(__cplusplus)
 }

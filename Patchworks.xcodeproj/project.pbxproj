@@ -52,6 +52,15 @@
 		28015CCF08ED54B800C83A75 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */; };
 		28015CE408ED550600C83A75 /* libz.1.2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 28015CE308ED550600C83A75 /* libz.1.2.2.dylib */; };
 		2803BDAF08ED905C00111E58 /* Test Patches in Resources */ = {isa = PBXBuildFile; fileRef = 2803BDAC08ED905C00111E58 /* Test Patches */; };
+		289F12B608F04C0800E9D926 /* MORuntimeUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 289F12B108F04B4900E9D926 /* MORuntimeUtilities.m */; };
+		289F12B708F04C0800E9D926 /* MORegularExpression_Private.m in Sources */ = {isa = PBXBuildFile; fileRef = 289F12AF08F04B4900E9D926 /* MORegularExpression_Private.m */; };
+		289F12B808F04C0900E9D926 /* MORegularExpression.m in Sources */ = {isa = PBXBuildFile; fileRef = 289F12AD08F04B4900E9D926 /* MORegularExpression.m */; };
+		289F12B908F04C0900E9D926 /* MOAssertions.m in Sources */ = {isa = PBXBuildFile; fileRef = 289F129708F04B4900E9D926 /* MOAssertions.m */; };
+		289F12D208F04C1A00E9D926 /* MORegexpHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 289F129B08F04B4900E9D926 /* MORegexpHelpers.m */; };
+		289F12D308F04C2000E9D926 /* regcomp.c in Sources */ = {isa = PBXBuildFile; fileRef = 289F12A208F04B4900E9D926 /* regcomp.c */; };
+		289F12D408F04C2200E9D926 /* regexec.c in Sources */ = {isa = PBXBuildFile; fileRef = 289F12A808F04B4900E9D926 /* regexec.c */; };
+		289F12D508F04C2500E9D926 /* regfree.c in Sources */ = {isa = PBXBuildFile; fileRef = 289F12A908F04B4900E9D926 /* regfree.c */; };
+		289F12D608F04C2A00E9D926 /* regerror.c in Sources */ = {isa = PBXBuildFile; fileRef = 289F12A508F04B4900E9D926 /* regerror.c */; };
 		28FCD3F308EC577900A970FA /* MyDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FCD3E308EC577900A970FA /* MyDocument.m */; };
 		28FCD3F408EC577900A970FA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FCD3E708EC577900A970FA /* main.m */; };
 		28FCD3F508EC577900A970FA /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 28FCD3EA08EC577900A970FA /* Credits.rtf */; };
@@ -214,6 +223,7 @@
 		289F12AF08F04B4900E9D926 /* MORegularExpression_Private.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MORegularExpression_Private.m; sourceTree = "<group>"; };
 		289F12B008F04B4900E9D926 /* MORuntimeUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MORuntimeUtilities.h; sourceTree = "<group>"; };
 		289F12B108F04B4900E9D926 /* MORuntimeUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MORuntimeUtilities.m; sourceTree = "<group>"; };
+		289F12B208F04BFE00E9D926 /* Read Me.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Read Me.txt"; sourceTree = "<group>"; };
 		28EB4A0408F02EF000126AE9 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		28FCD3E208EC577900A970FA /* MyDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDocument.h; sourceTree = "<group>"; };
 		28FCD3E308EC577900A970FA /* MyDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDocument.m; sourceTree = "<group>"; };
@@ -427,16 +437,17 @@
 		289F129408F04B4900E9D926 /* MOKit */ = {
 			isa = PBXGroup;
 			children = (
+				289F12B208F04BFE00E9D926 /* Read Me.txt */,
 				289F129508F04B4900E9D926 /* LICENSE */,
 				289F129808F04B4900E9D926 /* MOKitDefines.h */,
 				289F129608F04B4900E9D926 /* MOAssertions.h */,
 				289F129708F04B4900E9D926 /* MOAssertions.m */,
+				289F12B008F04B4900E9D926 /* MORuntimeUtilities.h */,
+				289F12B108F04B4900E9D926 /* MORuntimeUtilities.m */,
 				289F12AC08F04B4900E9D926 /* MORegularExpression.h */,
 				289F12AD08F04B4900E9D926 /* MORegularExpression.m */,
 				289F12AE08F04B4900E9D926 /* MORegularExpression_Private.h */,
 				289F12AF08F04B4900E9D926 /* MORegularExpression_Private.m */,
-				289F12B008F04B4900E9D926 /* MORuntimeUtilities.h */,
-				289F12B108F04B4900E9D926 /* MORuntimeUtilities.m */,
 				289F129908F04B4900E9D926 /* MORegexp */,
 			);
 			path = MOKit;
@@ -1008,6 +1019,15 @@
 			files = (
 				28015C8F08ED4A1D00C83A75 /* NSData+PWzlib.m in Sources */,
 				28015CBC08ED52AD00C83A75 /* PWzlibTest.m in Sources */,
+				289F12B608F04C0800E9D926 /* MORuntimeUtilities.m in Sources */,
+				289F12B708F04C0800E9D926 /* MORegularExpression_Private.m in Sources */,
+				289F12B808F04C0900E9D926 /* MORegularExpression.m in Sources */,
+				289F12B908F04C0900E9D926 /* MOAssertions.m in Sources */,
+				289F12D208F04C1A00E9D926 /* MORegexpHelpers.m in Sources */,
+				289F12D308F04C2000E9D926 /* regcomp.c in Sources */,
+				289F12D408F04C2200E9D926 /* regexec.c in Sources */,
+				289F12D508F04C2500E9D926 /* regfree.c in Sources */,
+				289F12D608F04C2A00E9D926 /* regerror.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

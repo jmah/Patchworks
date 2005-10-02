@@ -74,7 +74,7 @@ extern "C" {
 /*
  * Add your own defines, if needed, here.
  */
-#import <MOKit/MORegexpHelpers.h>
+#import "MORegexpHelpers.h"
 #import <stdlib.h>
 
 /*

@@ -4,16 +4,16 @@
 // Copyright © 1996-2005, Mike Ferris.  All rights reserved.
 // See bottom of file for license and disclaimer.
 
-#import <MOKit/MORegularExpression_Private.h>
-#import <MOKit/MORegularExpression.h>
+#import "MORegularExpression_Private.h"
+#import "MORegularExpression.h"
 #import "regcustom.h"
 
-void MO_FreeRegex(void *re) {    
+void MOPW_FreeRegex(void *re) {    
     MO_ReFree((regex_t *)re);
     free(re);
 }
 
-void *MO_TestAndCompileExpressionString(NSString *expressionString, BOOL ignoreCase) {
+void *MOPW_TestAndCompileExpressionString(NSString *expressionString, BOOL ignoreCase) {
     // Caller frees return value if non-null.
     regex_t *re = NULL;
     int err;
@@ -39,7 +39,7 @@ void *MO_TestAndCompileExpressionString(NSString *expressionString, BOOL ignoreC
     return re;
 }
 
-BOOL MO_TestAndMatchCharactersInRangeWithExpression(const unichar *candidateChars, NSRange searchRange, void *re, NSRange *subrangeArray) {
+BOOL MOPW_TestAndMatchCharactersInRangeWithExpression(const unichar *candidateChars, NSRange searchRange, void *re, NSRange *subrangeArray) {
     const unichar *theChars;
     BOOL retVal;
     size_t nmatch = MO_REGEXP_MAX_SUBEXPRESSIONS;

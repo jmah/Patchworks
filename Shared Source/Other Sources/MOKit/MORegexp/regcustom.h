@@ -27,7 +27,7 @@
  */
 
 /* headers if any */
-#import <MOKit/MORegexpHelpers.h>
+#import "MORegexpHelpers.h"
 
 /* overrides for regguts.h definitions, if any */
 #define _ANSI_ARGS_(args)       args
@@ -101,10 +101,10 @@ typedef int celt;		/* type to hold chr, MCCE number, or NOCELT */
 #define	CHR_MAX	0xffff		/*  CHR_MAX-CHR_MIN+1 should fit in uchr */
 
 /* functions operating on chr */
-#define	iscalnum(x)	MO_UniCharIsAlnum(x)
-#define	iscalpha(x)	MO_UniCharIsAlpha(x)
-#define	iscdigit(x)	MO_UniCharIsDigit(x)
-#define	iscspace(x)	MO_UniCharIsSpace(x)
+#define	iscalnum(x)	MOPW_UniCharIsAlnum(x)
+#define	iscalpha(x)	MOPW_UniCharIsAlpha(x)
+#define	iscdigit(x)	MOPW_UniCharIsDigit(x)
+#define	iscspace(x)	MOPW_UniCharIsSpace(x)
 
 /* name the external functions */
 #define	compile		MO_ReComp

@@ -4,10 +4,10 @@
 // Copyright © 1996-2005, Mike Ferris.  All rights reserved.
 // See bottom of file for license and disclaimer.
 
-#import <MOKit/MORegexpHelpers.h>
+#import "MORegexpHelpers.h"
 #import <Foundation/Foundation.h>
 
-unsigned char MO_UniCharIsAlnum(MO_unichar x) {
+unsigned char MOPW_UniCharIsAlnum(MO_unichar x) {
     static NSCharacterSet *charSet = nil;
     if (!charSet) {
         charSet = [[NSCharacterSet alphanumericCharacterSet] retain];
@@ -15,7 +15,7 @@ unsigned char MO_UniCharIsAlnum(MO_unichar x) {
     return [charSet characterIsMember:x];
 }
 
-unsigned char MO_UniCharIsAlpha(MO_unichar x) {
+unsigned char MOPW_UniCharIsAlpha(MO_unichar x) {
     static NSCharacterSet *charSet = nil;
     if (!charSet) {
         charSet = [[NSCharacterSet letterCharacterSet] retain];
@@ -23,7 +23,7 @@ unsigned char MO_UniCharIsAlpha(MO_unichar x) {
     return [charSet characterIsMember:x];
 }
 
-unsigned char MO_UniCharIsDigit(MO_unichar x) {
+unsigned char MOPW_UniCharIsDigit(MO_unichar x) {
     static NSCharacterSet *charSet = nil;
     if (!charSet) {
         charSet = [[NSCharacterSet decimalDigitCharacterSet] retain];
@@ -31,7 +31,7 @@ unsigned char MO_UniCharIsDigit(MO_unichar x) {
     return [charSet characterIsMember:x];
 }
 
-unsigned char MO_UniCharIsSpace(MO_unichar x) {
+unsigned char MOPW_UniCharIsSpace(MO_unichar x) {
     static NSCharacterSet *charSet = nil;
     if (!charSet) {
         charSet = [[NSCharacterSet whitespaceCharacterSet] retain];
@@ -42,7 +42,7 @@ unsigned char MO_UniCharIsSpace(MO_unichar x) {
 static CFMutableStringRef _sharedCFStr = NULL;
 static UniChar _sharedCFStrStorage[1];
 
-MO_unichar MO_UniCharToLower(MO_unichar c) {
+MO_unichar MOPW_UniCharToLower(MO_unichar c) {
     if (!_sharedCFStr) {
         _sharedCFStr = CFStringCreateMutableWithExternalCharactersNoCopy(NULL, _sharedCFStrStorage, 1, 1, kCFAllocatorNull);
     }
@@ -51,7 +51,7 @@ MO_unichar MO_UniCharToLower(MO_unichar c) {
     return _sharedCFStrStorage[0];
 }
 
-MO_unichar MO_UniCharToUpper(MO_unichar c) {
+MO_unichar MOPW_UniCharToUpper(MO_unichar c) {
     if (!_sharedCFStr) {
         _sharedCFStr = CFStringCreateMutableWithExternalCharactersNoCopy(NULL, _sharedCFStrStorage, 1, 1, kCFAllocatorNull);
     }
@@ -60,9 +60,9 @@ MO_unichar MO_UniCharToUpper(MO_unichar c) {
     return _sharedCFStrStorage[0];
 }
 
-MO_unichar MO_UniCharToTitle(MO_unichar c) {
+MO_unichar MOPW_UniCharToTitle(MO_unichar c) {
     // !!!:mferris:20010210 Not really correct.  What is "title" case anyway?
-    return MO_UniCharToUpper(c);
+    return MOPW_UniCharToUpper(c);
 }
 
 

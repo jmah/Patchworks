@@ -4,35 +4,35 @@
 // Copyright © 2002-2005, Mike Ferris.  All rights reserved.
 // See bottom of file for license and disclaimer.
 
-#import <MOKit/MOAssertions.h>
-#import <MOKit/MORuntimeUtilities.h>
+#import "MOAssertions.h"
+#import "MORuntimeUtilities.h"
 
-MOKIT_EXTERN void MOHandleAssertionFailure(BOOL raise, SEL selector, id object, const char *functionName, const char *fileName, unsigned line, NSString *format, ...) {
+MOKIT_EXTERN void MOPWHandleAssertionFailure(BOOL raise, SEL selector, id object, const char *functionName, const char *fileName, unsigned line, NSString *format, ...) {
     va_list   args;
 
     va_start(args, format);
     if (selector != NULL) {
-        [[MOAssertionHandler currentHandler] handleFailureWithRaise:raise inMethod:selector object:object file:[NSString stringWithCString:fileName] lineNumber:line description:format arguments:args];
+        [[MOPWAssertionHandler currentHandler] handleFailureWithRaise:raise inMethod:selector object:object file:[NSString stringWithCString:fileName] lineNumber:line description:format arguments:args];
     }
     else {
-        [[MOAssertionHandler currentHandler] handleFailureWithRaise:raise inFunction:[NSString stringWithCString:functionName] file:[NSString stringWithCString:fileName] lineNumber:line description:format arguments:args];
+        [[MOPWAssertionHandler currentHandler] handleFailureWithRaise:raise inFunction:[NSString stringWithCString:functionName] file:[NSString stringWithCString:fileName] lineNumber:line description:format arguments:args];
     }
     va_end(args);
     
 }
 
-@implementation MOAssertionHandler
+@implementation MOPWAssertionHandler
 
-static MOAssertionHandler *_currentHandler = nil;
+static MOPWAssertionHandler *_currentHandler = nil;
 
-+ (MOAssertionHandler *)currentHandler {
++ (MOPWAssertionHandler *)currentHandler {
     if (!_currentHandler) {
-        _currentHandler = [[MOAssertionHandler allocWithZone:NULL] init];
+        _currentHandler = [[MOPWAssertionHandler allocWithZone:NULL] init];
     }
     return _currentHandler;
 }
 
-+ (void)setCurrentHandler:(MOAssertionHandler *)handler {
++ (void)setCurrentHandler:(MOPWAssertionHandler *)handler {
     if (_currentHandler != handler) {
         [_currentHandler release], _currentHandler = nil;
         _currentHandler = [handler retain];
@@ -45,7 +45,7 @@ static MOAssertionHandler *_currentHandler = nil;
     NSException *exception = nil;
 
     msg = [[NSString allocWithZone:[self zone]] initWithFormat:format arguments:args];
-    fullMsg = [[NSString allocWithZone:[self zone]] initWithFormat:@"Assertion failure at %@:%u (%@ <self=0x%u>): %@", fileName, line, MOFullMethodName(object, selector), (unsigned)object, msg];
+    fullMsg = [[NSString allocWithZone:[self zone]] initWithFormat:@"Assertion failure at %@:%u (%@ <self=0x%u>): %@", fileName, line, MOPWFullMethodName(object, selector), (unsigned)object, msg];
     [msg release];
     NSLog(@"%@", fullMsg);
     if (raise) {

@@ -976,7 +976,7 @@ chr *end;			/* end of same */
 
 	/* count occurrences */
 	i = 0;
-	for (p = begin; p <= stop && (i < max || max == INFINITY); p += len) {
+	for (p = begin; p <= stop && (i < max || max == MOPW_INFINITY); p += len) {
 		if ((*v->g->compare)(paren, p, len) != 0)
 				break;
 		i++;
@@ -986,7 +986,7 @@ chr *end;			/* end of same */
 	/* and sort it out */
 	if (p != end)			/* didn't consume all of it */
 		return REG_NOMATCH;
-	if (min <= i && (i <= max || max == INFINITY))
+	if (min <= i && (i <= max || max == MOPW_INFINITY))
 		return REG_OKAY;
 	return REG_NOMATCH;		/* out of range */
 }

@@ -599,9 +599,9 @@ int cases;			/* case-independent? */
 
 	for (c = a; c <= b; c++) {
 		addchr(cv, c);
-		lc = MO_UniCharToLower((chr)c);
-		uc = MO_UniCharToUpper((chr)c);
-		tc = MO_UniCharToTitle((chr)c);
+		lc = MOPW_UniCharToLower((chr)c);
+		uc = MOPW_UniCharToUpper((chr)c);
+		tc = MOPW_UniCharToTitle((chr)c);
 		if (c != lc) {
 			addchr(cv, lc);
 		}
@@ -888,9 +888,9 @@ pchr pc;
 	chr c = (chr)pc;
 	chr lc, uc, tc;
 
-	lc = MO_UniCharToLower((chr)c);
-	uc = MO_UniCharToUpper((chr)c);
-	tc = MO_UniCharToTitle((chr)c);
+	lc = MOPW_UniCharToLower((chr)c);
+	uc = MOPW_UniCharToUpper((chr)c);
+	tc = MOPW_UniCharToTitle((chr)c);
 
 	if (tc != uc) {
 	    cv = getcvec(v, 3, 0, 0);
@@ -941,7 +941,7 @@ size_t len;			/* exact length of comparison */
 	CONST chr *yp;
 
 	for (xp = x, yp = y, i = len; i > 0; i--)
-		if (MO_UniCharToLower(*xp++) != MO_UniCharToLower(*yp++))
+		if (MOPW_UniCharToLower(*xp++) != MOPW_UniCharToLower(*yp++))
 			return 1;
 	return 0;
 }

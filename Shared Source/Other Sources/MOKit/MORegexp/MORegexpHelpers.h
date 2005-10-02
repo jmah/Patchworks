@@ -16,14 +16,14 @@ extern "C" {
 
 typedef unsigned short MO_unichar;
 
-unsigned char MO_UniCharIsAlnum(MO_unichar x);
-unsigned char MO_UniCharIsAlpha(MO_unichar x);
-unsigned char MO_UniCharIsDigit(MO_unichar x);
-unsigned char MO_UniCharIsSpace(MO_unichar x);
+unsigned char MOPW_UniCharIsAlnum(MO_unichar x);
+unsigned char MOPW_UniCharIsAlpha(MO_unichar x);
+unsigned char MOPW_UniCharIsDigit(MO_unichar x);
+unsigned char MOPW_UniCharIsSpace(MO_unichar x);
 
-MO_unichar MO_UniCharToLower(MO_unichar c);
-MO_unichar MO_UniCharToUpper(MO_unichar c);
-MO_unichar MO_UniCharToTitle(MO_unichar c);
+MO_unichar MOPW_UniCharToLower(MO_unichar c);
+MO_unichar MOPW_UniCharToUpper(MO_unichar c);
+MO_unichar MOPW_UniCharToTitle(MO_unichar c);
 
 #if defined(__cplusplus)
 }

@@ -917,13 +917,13 @@ struct subre *top;		/* subtree top */
 	switch (v->nexttype) {
 	case '*':
 		m = 0;
-		n = INFINITY;
+		n = MOPW_INFINITY;
 		qprefer = (v->nextvalue) ? LONGER : SHORTER;
 		NEXT();
 		break;
 	case '+':
 		m = 1;
-		n = INFINITY;
+		n = MOPW_INFINITY;
 		qprefer = (v->nextvalue) ? LONGER : SHORTER;
 		NEXT();
 		break;
@@ -940,7 +940,7 @@ struct subre *top;		/* subtree top */
 			if (SEE(DIGIT))
 				n = scannum(v);
 			else
-				n = INFINITY;
+				n = MOPW_INFINITY;
 			if (m > n) {
 				ERR(REG_BADBR);
 				return;
@@ -1081,8 +1081,8 @@ struct subre *top;		/* subtree top */
 		/* turn x{m,n} into x{m-1,n-1}x, with capturing */
 		/*  parens in only second x */
 		dupnfa(v->nfa, atom->begin, atom->end, s, atom->begin);
-		assert(m >= 1 && m != INFINITY && n >= 1);
-		repeat(v, s, atom->begin, m-1, (n == INFINITY) ? n : n-1);
+		assert(m >= 1 && m != MOPW_INFINITY && n >= 1);
+		repeat(v, s, atom->begin, m-1, (n == MOPW_INFINITY) ? n : n-1);
 		f = COMBINE(qprefer, atom->flags);
 		t = subre(v, '.', f, s, atom->end);	/* prefix and atom */
 		NOERR();
@@ -1183,7 +1183,7 @@ int n;
 #	define	SOME	2
 #	define	INF	3
 #	define	PAIR(x, y)	((x)*4 + (y))
-#	define	REDUCE(x)	( ((x) == INFINITY) ? INF : (((x) > 1) ? SOME : (x)) )
+#	define	REDUCE(x)	( ((x) == MOPW_INFINITY) ? INF : (((x) > 1) ? SOME : (x)) )
 	CONST int rm = REDUCE(m);
 	CONST int rn = REDUCE(n);
 	struct state *s;
@@ -2134,7 +2134,7 @@ int nfapresent;			/* is the original NFA still around? */
 		fprintf(f, " (#%d)", t->subno);
 	if (t->min != 1 || t->max != 1) {
 		fprintf(f, " {%d,", t->min);
-		if (t->max != INFINITY)
+		if (t->max != MOPW_INFINITY)
 			fprintf(f, "%d", t->max);
 		fprintf(f, "}");
 	}

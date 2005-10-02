@@ -43,7 +43,7 @@
 #define __MOKIT_MOAssertions__ 1
 
 #import <Foundation/Foundation.h>
-#import <MOKit/MOKitDefines.h>
+#import "MOKitDefines.h"
 
 #if defined(__cplusplus)
 extern "C" {
@@ -51,9 +51,9 @@ extern "C" {
 
     
 /*!
- @function MOHandleAssertionFailure
+ @function MOPWHandleAssertionFailure
  @abstract Funnel function for MOAssertion macros.  Good for breakpoints.
- @discussion This is the funnel point for assertion failures.  You never call it directly, but it can be useful for setting breakpoints.  The implementation uses +[MOAssertionHandler currentHandler] to get the current assertion handler and sends it either -handleFailureInMethod:object:file:lineNumber:description:arguments: if selector is non-NULL or -handleFailureInFunction:file:lineNumber:description:arguments: if selector is NULL.
+ @discussion This is the funnel point for assertion failures.  You never call it directly, but it can be useful for setting breakpoints.  The implementation uses +[MOPWAssertionHandler currentHandler] to get the current assertion handler and sends it either -handleFailureInMethod:object:file:lineNumber:description:arguments: if selector is non-NULL or -handleFailureInFunction:file:lineNumber:description:arguments: if selector is NULL.
  @param raise If this is YES then the call represents a real assertion.  Otherwise it represent a request for simply logging an error message.
  @param selector If the assertion came from a method, this is the selector of the method (_cmd).  If it came from a function this will be NULL.
  @param object If the assertion came from a method, this is the receiver of the method (self).  If it came from a function this will be nil.
@@ -62,7 +62,7 @@ extern "C" {
  @param line This is the value of the compiler macro __LINE__ in the scope the assertion came from.
  @param format An +[NSString stringWithFormat:]-style format string.  The remaining arguments are the replacement arguments for any % directives in the format string.
  */
-MOKIT_EXTERN void MOHandleAssertionFailure(BOOL raise, SEL selector, id object, const char *functionName, const char *fileName, unsigned line, NSString *format, ...);
+MOKIT_EXTERN void MOPWHandleAssertionFailure(BOOL raise, SEL selector, id object, const char *functionName, const char *fileName, unsigned line, NSString *format, ...);
 
 
 #ifndef MO_BLOCK_ASSERTS
@@ -74,7 +74,7 @@ const static SEL _cmd __attribute__ ((unused)) = NULL;
 /*!
  @define MOAssert
  @abstract Primitive assertion macro.
- @discussion It is the primitive assertion macro.  All the other assertion macros wind up invoking this macro one or more times.  If MO_BLOCK_ASSERTS is defined, this macro does nothing, otherwise if _condition_ is false it calls MOHandleAssertionFailure().  The macro takes a variable number of arguments:
+ @discussion It is the primitive assertion macro.  All the other assertion macros wind up invoking this macro one or more times.  If MO_BLOCK_ASSERTS is defined, this macro does nothing, otherwise if _condition_ is false it calls MOPWHandleAssertionFailure().  The macro takes a variable number of arguments:
 
  _condition_: The conditional expression being asserted.  This can be any expression that is legal within the parens of an if () statement. 
 
@@ -83,7 +83,7 @@ const static SEL _cmd __attribute__ ((unused)) = NULL;
 #define MOAssert(_condition_, _desc_, _args_...) \
 do { \
     if (!(_condition_)) { \
-        MOHandleAssertionFailure(YES, _cmd, self, __PRETTY_FUNCTION__, __FILE__, __LINE__, (_desc_), ## _args_); \
+        MOPWHandleAssertionFailure(YES, _cmd, self, __PRETTY_FUNCTION__, __FILE__, __LINE__, (_desc_), ## _args_); \
     } \
 } while(0)
 
@@ -321,7 +321,7 @@ do { \
  */
 #define MOError(_desc_, _args_...) \
 do { \
-    MOHandleAssertionFailure(YES, _cmd, self, __PRETTY_FUNCTION__, __FILE__, __LINE__, (_desc_), ## _args_); \
+    MOPWHandleAssertionFailure(YES, _cmd, self, __PRETTY_FUNCTION__, __FILE__, __LINE__, (_desc_), ## _args_); \
 } while(0)
 
 /*!
@@ -333,7 +333,7 @@ do { \
  */
 #define MOWarning(_desc_, _args_...) \
 do { \
-    MOHandleAssertionFailure(YES, _cmd, self, __PRETTY_FUNCTION__, __FILE__, __LINE__, (_desc_), ## _args_); \
+    MOPWHandleAssertionFailure(YES, _cmd, self, __PRETTY_FUNCTION__, __FILE__, __LINE__, (_desc_), ## _args_); \
 } while(0)
 
 #else
@@ -361,11 +361,11 @@ do { \
 #endif
 
 /*!
- @class MOAssertionHandler
- @abstract Handler class for the MOAssertions macros and functions.
- @discussion An instance of MOAssertionHandler is used to implement policy for handling assertion failures. A single shared instance is created when needed, or an instance can be set to be used as the shared instance. The default instance created is directly of the class MOAssertionHandler, but subclasses can be created and instances of them used to alter the default handling policies. The default policy for an assertion failure is to log a message about it and then raise an exception.
+ @class MOPWAssertionHandler
+ @abstract Handler class for the MOPWAssertions macros and functions.
+ @discussion An instance of MOPWAssertionHandler is used to implement policy for handling assertion failures. A single shared instance is created when needed, or an instance can be set to be used as the shared instance. The default instance created is directly of the class MOPWAssertionHandler, but subclasses can be created and instances of them used to alter the default handling policies. The default policy for an assertion failure is to log a message about it and then raise an exception.
  */
-@interface MOAssertionHandler : NSObject {
+@interface MOPWAssertionHandler : NSObject {
     @private
     void *_reserved;
 }
@@ -373,10 +373,10 @@ do { \
 /*!
  @method currentHandler
  @abstract Returns the current assertion handler.
- @discussion Returns the current assertion handler. If no assertion handler has been set using +setCurrentHandler: then this method will create an instance of MOAssertionHandler to use as the current handler and return it.
+ @discussion Returns the current assertion handler. If no assertion handler has been set using +setCurrentHandler: then this method will create an instance of MOPWAssertionHandler to use as the current handler and return it.
  @result The current assertion handler.
  */
-+ (MOAssertionHandler *)currentHandler;
++ (MOPWAssertionHandler *)currentHandler;
 
 /*!
  @method setCurrentHandler:
@@ -384,7 +384,7 @@ do { \
  @discussion Sets the current assertion handler. If there was a previous handler it is released and the new one takes its place.
  @param handler The new assertion handler.
  */
-+ (void)setCurrentHandler:(MOAssertionHandler *)handler;
++ (void)setCurrentHandler:(MOPWAssertionHandler *)handler;
 
 /*!
  @method handleFailureWithRaise:inMethod:object:file:lineNumber:description:arguments:

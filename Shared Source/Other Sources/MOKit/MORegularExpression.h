@@ -13,7 +13,7 @@
 #define __MOKIT_MORegularExpression__ 1
 
 #import <Foundation/Foundation.h>
-#import <MOKit/MOKitDefines.h>
+#import "MOKitDefines.h"
 
 #if defined(__cplusplus)
 extern "C" {
@@ -21,22 +21,22 @@ extern "C" {
     
 /*!
  @defined MO_REGEXP_MAX_SUBEXPRESSIONS
- @discussion The maximum number of subexpressions that MORegularExpression can handle.
+ @discussion The maximum number of subexpressions that MOPWRegularExpression can handle.
  */
 #define MO_REGEXP_MAX_SUBEXPRESSIONS 20
 
 /*!
- @class MORegularExpression
+ @class MOPWRegularExpression
  @abstract Represents a regular expression which can be matched against candidate strings.
- @discussion MORegularExpression objects are initialized from a pattern string in something similar to unix-style regular expression syntax (such as used in egrep) and can be used to match other strings against the pattern. In addition to the pattern string you can specify whether the expression should be case-insensitive. They are immutable. If you need to match another pattern, make another MORegularExpression.
+ @discussion MOPWRegularExpression objects are initialized from a pattern string in something similar to unix-style regular expression syntax (such as used in egrep) and can be used to match other strings against the pattern. In addition to the pattern string you can specify whether the expression should be case-insensitive. They are immutable. If you need to match another pattern, make another MOPWRegularExpression.
 
  The implementation is almost entirely provided by Henry Spencer's Uniocode-based regular expression package which is used by the MOKit framework in a (slightly) modified form and was originally taken from TCL (8.3.2). The unmodified code can be found in the HSRegexp group/folder in the Readmes and Notes group of the MOKit_2 project. (Using FileMerge to compare the original HSRegexp folder with the modified MORegexp folder will show the exact changes made.)
 
- MORegularExpression uses the Advanced Regular Expression (ARE) syntax.  This is basically a further extension of POSIX Extended Regular Expression (ERE) syntax (basically, what egrep uses).  Details on the syntax can be found in the document <a href=../../../../DocumentationResources/RESyntax.rtf target=top>RESyntax.rtf</a> included with the MOKit framework (Safari and OmniWeb will show this RTF document directly in the browser, other browsers may need to use a helper application).
+ MOPWRegularExpression uses the Advanced Regular Expression (ARE) syntax.  This is basically a further extension of POSIX Extended Regular Expression (ERE) syntax (basically, what egrep uses).  Details on the syntax can be found in the document <a href=../../../../DocumentationResources/RESyntax.rtf target=top>RESyntax.rtf</a> included with the MOKit framework (Safari and OmniWeb will show this RTF document directly in the browser, other browsers may need to use a helper application).
 
- In addition to simply matching candidate strings, MORegularExpressions can take advantage of the subexpressions defined within the regular expression and can return the matching ranges or substrings for any subexpression from a matching candidate string.
+ In addition to simply matching candidate strings, MOPWRegularExpressions can take advantage of the subexpressions defined within the regular expression and can return the matching ranges or substrings for any subexpression from a matching candidate string.
  */
-@interface MORegularExpression : NSObject <NSCopying, NSCoding> {
+@interface MOPWRegularExpression : NSObject <NSCopying, NSCoding> {
     @private
     NSString *_expressionString;
     NSString *_lastString;
@@ -62,29 +62,29 @@ extern "C" {
 /*!
  @method regularExpressionWithString:ignoreCase:
  @abstract Convenience factory for creating a new regular expression instance.
- @discussion Given a regular expression string and a flag indicating whether the expression should be case insensitive, this method returns a newly allocated, autoreleased MORegularExpression.
+ @discussion Given a regular expression string and a flag indicating whether the expression should be case insensitive, this method returns a newly allocated, autoreleased MOPWRegularExpression.
  @param expressionString The regular expression string.
  @param ignoreCaseFlag Whether the expression object should ignore case differences when matching candidate strings.
- @result The new autoreleased MORegularExpression, or nil if expressionString is not a valid regular expression string.
+ @result The new autoreleased MOPWRegularExpression, or nil if expressionString is not a valid regular expression string.
  */
 + (id)regularExpressionWithString:(NSString *)expressionString ignoreCase:(BOOL)ignoreCaseFlag;
 
 /*!
  @method regularExpressionWithString:
  @abstract Convenience factory for creating a new regular expression instance.
- @discussion Given a regular expression string this method returns a newly allocated, autoreleased MORegularExpression. The new expression will be case sensitive.
+ @discussion Given a regular expression string this method returns a newly allocated, autoreleased MOPWRegularExpression. The new expression will be case sensitive.
  @param expressionString The regular expression string.
- @result The new autoreleased MORegularExpression, or nil if expressionString is not a valid regular expression string.
+ @result The new autoreleased MOPWRegularExpression, or nil if expressionString is not a valid regular expression string.
  */
 + (id)regularExpressionWithString:(NSString *)expressionString;
 
 /*!
  @method initWithExpressionString:ignoreCase:
  @abstract Init method. Designated Initializer.
- @discussion This is the Designated Initializer for the MORegularExpression class.  Given a regular expression string and a flag indicating whether the expression should be case insensitive, this method initializes the receiver.
+ @discussion This is the Designated Initializer for the MOPWRegularExpression class.  Given a regular expression string and a flag indicating whether the expression should be case insensitive, this method initializes the receiver.
  @param expressionString The regular expression string.
  @param ignoreCaseFlag Whether the expression object should ignore case differences when matching candidate strings.
- @result The initialized MORegularExpression, or nil if expressionString is not a valid regular expression string.
+ @result The initialized MOPWRegularExpression, or nil if expressionString is not a valid regular expression string.
  */
 - (id)initWithExpressionString:(NSString *)expressionString ignoreCase:(BOOL)ignoreCaseFlag;
 
@@ -93,7 +93,7 @@ extern "C" {
  @abstract Init method.
  @discussion This simply calls the Designated Initializer with ignoreCase:NO.  Given a regular expression string this method initializes the receiver. The new expression will be case sensitive.
  @param expressionString The regular expression string.
- @result The initialized MORegularExpression, or nil if expressionString is not a valid regular expression string.
+ @result The initialized MOPWRegularExpression, or nil if expressionString is not a valid regular expression string.
  */
 - (id)initWithExpressionString:(NSString *)expressionString;
 

@@ -4,10 +4,10 @@
 // Copyright © 1996-2005, Mike Ferris.  All rights reserved.
 // See bottom of file for license and disclaimer.
 
-#import <MOKit/MORegularExpression.h>
-#import <MOKit/MORegularExpression_Private.h>
-#import <MOKit/MORuntimeUtilities.h>
-#import <MOKit/MOAssertions.h>
+#import "MORegularExpression.h"
+#import "MORegularExpression_Private.h"
+#import "MORuntimeUtilities.h"
+#import "MOAssertions.h"
 
 typedef enum {
     MOInitialVersion = 1,
@@ -16,10 +16,10 @@ typedef enum {
 
 static const MOClassVersion MOCurrentClassVersion = MOIgnoreCaseVersion;
 
-@implementation MORegularExpression
+@implementation MOPWRegularExpression
 
 + (void)initialize {
-    if (self == [MORegularExpression class])  {
+    if (self == [MOPWRegularExpression class])  {
         [self setVersion:MOCurrentClassVersion];
     }
 }
@@ -33,9 +33,9 @@ static const MOClassVersion MOCurrentClassVersion = MOIgnoreCaseVersion;
     if (!expressionString) {
         isValid = NO;
     } else {
-        re = MO_TestAndCompileExpressionString(expressionString, NO);
+        re = MOPW_TestAndCompileExpressionString(expressionString, NO);
         if (re) {
-            MO_FreeRegex(re);
+            MOPW_FreeRegex(re);
             isValid = YES;
         }
     }
@@ -60,13 +60,13 @@ static const MOClassVersion MOCurrentClassVersion = MOIgnoreCaseVersion;
         if (expressionString && [expressionString isKindOfClass:[NSString class]]) {
             _reFlags.ignoreCase = ignoreCaseFlag;
             _expressionString = [expressionString copyWithZone:[self zone]];
-            _compiledExpression = MO_TestAndCompileExpressionString(_expressionString, _reFlags.ignoreCase);
+            _compiledExpression = MOPW_TestAndCompileExpressionString(_expressionString, _reFlags.ignoreCase);
             if (_compiledExpression) {
                 isValid = YES;
             }
         }
         if (!isValid) {
-            //NSLog(@"%@: argument '%@' is not a valid regular expression.  Check the syntax.", MOFullMethodName(self, _cmd), expressionString, [self class]);
+            //NSLog(@"%@: argument '%@' is not a valid regular expression.  Check the syntax.", MOPWFullMethodName(self, _cmd), expressionString, [self class]);
             [self release];
             return nil;
         }
@@ -98,7 +98,7 @@ static const MOClassVersion MOCurrentClassVersion = MOIgnoreCaseVersion;
 - (void)dealloc {
     [_lastString release], _lastString = nil;
     if (_compiledExpression) {
-        MO_FreeRegex(_compiledExpression);
+        MOPW_FreeRegex(_compiledExpression);
         _compiledExpression = NULL;
     }
     [_expressionString release], _compiledExpression = nil;
@@ -110,7 +110,7 @@ static const MOClassVersion MOCurrentClassVersion = MOIgnoreCaseVersion;
         return YES;
     } else if (!otherObj) {
         return NO;
-    } else if ([otherObj isKindOfClass:[MORegularExpression class]]) {
+    } else if ([otherObj isKindOfClass:[MOPWRegularExpression class]]) {
         return ((([self ignoreCase] == [otherObj ignoreCase]) && [[self expressionString] isEqualToString:[otherObj expressionString]]) ? YES : NO);
     } else {
         return NO;
@@ -152,7 +152,7 @@ static const MOClassVersion MOCurrentClassVersion = MOIgnoreCaseVersion;
         // Clear the cache.
         [_lastString release], _lastString = nil;
     }
-    isMatch = MO_TestAndMatchCharactersInRangeWithExpression(candidateChars, searchRange, _compiledExpression, _lastSubexpressionRanges);
+    isMatch = MOPW_TestAndMatchCharactersInRangeWithExpression(candidateChars, searchRange, _compiledExpression, _lastSubexpressionRanges);
     
     // Cache the search string, if it is short enough.
     if (searchRange.length < CACHE_LIMIT) {
@@ -215,7 +215,7 @@ static const MOClassVersion MOCurrentClassVersion = MOIgnoreCaseVersion;
 
 - (NSRange)rangeForSubexpressionAtIndex:(unsigned)index inCharacters:(const unichar *)candidateChars range:(NSRange)searchRange {
     if (index > MO_REGEXP_MAX_SUBEXPRESSIONS) {
-        [NSException raise:NSInvalidArgumentException format:@"*** %@: index '%u' is greater than the supported number of subexpressions (%d).", MOFullMethodName(self, _cmd), index, MO_REGEXP_MAX_SUBEXPRESSIONS];
+        [NSException raise:NSInvalidArgumentException format:@"*** %@: index '%u' is greater than the supported number of subexpressions (%d).", MOPWFullMethodName(self, _cmd), index, MO_REGEXP_MAX_SUBEXPRESSIONS];
     }
     if ([self matchesCharacters:candidateChars inRange:searchRange]) {
         return _lastSubexpressionRanges[index];
@@ -226,7 +226,7 @@ static const MOClassVersion MOCurrentClassVersion = MOIgnoreCaseVersion;
 
 - (NSRange)rangeForSubexpressionAtIndex:(unsigned)index inString:(NSString *)candidate range:(NSRange)searchRange {
     if (index > MO_REGEXP_MAX_SUBEXPRESSIONS) {
-        [NSException raise:NSInvalidArgumentException format:@"*** %@: index '%u' is greater than the supported number of subexpressions (%d).", MOFullMethodName(self, _cmd), index, MO_REGEXP_MAX_SUBEXPRESSIONS];
+        [NSException raise:NSInvalidArgumentException format:@"*** %@: index '%u' is greater than the supported number of subexpressions (%d).", MOPWFullMethodName(self, _cmd), index, MO_REGEXP_MAX_SUBEXPRESSIONS];
     }
     if ([self matchesString:candidate inRange:searchRange]) {
         return _lastSubexpressionRanges[index];
@@ -238,7 +238,7 @@ static const MOClassVersion MOCurrentClassVersion = MOIgnoreCaseVersion;
 - (NSRange)rangeForSubexpressionAtIndex:(unsigned)index inString:(NSString *)candidate {
     // matchesString does the hard work (and avoids the hard work iff it can).  So let it do it and we'll just grab the info out of _lastSubexpressionRanges.
     if (index > MO_REGEXP_MAX_SUBEXPRESSIONS) {
-        [NSException raise:NSInvalidArgumentException format:@"*** %@: index '%u' is greater than the supported number of subexpressions (%d).", MOFullMethodName(self, _cmd), index, MO_REGEXP_MAX_SUBEXPRESSIONS];
+        [NSException raise:NSInvalidArgumentException format:@"*** %@: index '%u' is greater than the supported number of subexpressions (%d).", MOPWFullMethodName(self, _cmd), index, MO_REGEXP_MAX_SUBEXPRESSIONS];
     }
     if ([self matchesString:candidate]) {
         return _lastSubexpressionRanges[index];
@@ -308,10 +308,10 @@ static const MOClassVersion MOCurrentClassVersion = MOIgnoreCaseVersion;
             _reFlags.ignoreCase = NO;
         }
     } else {
-        unsigned classVersion = [coder versionForClassName:@"MORegularExpression"];
+        unsigned classVersion = [coder versionForClassName:@"MOPWRegularExpression"];
 
         if (classVersion > MOCurrentClassVersion)  {
-            NSLog(@"%@: class version %u cannot read instances archived with version %u", MOFullMethodName(self, _cmd), MOCurrentClassVersion, classVersion);
+            NSLog(@"%@: class version %u cannot read instances archived with version %u", MOPWFullMethodName(self, _cmd), MOCurrentClassVersion, classVersion);
             [self release];
             return nil;
         }
@@ -329,7 +329,7 @@ static const MOClassVersion MOCurrentClassVersion = MOIgnoreCaseVersion;
             _reFlags.ignoreCase = (tmpIgnoreCase ? YES : NO);
         }
     }
-    _compiledExpression = MO_TestAndCompileExpressionString(_expressionString, _reFlags.ignoreCase);
+    _compiledExpression = MOPW_TestAndCompileExpressionString(_expressionString, _reFlags.ignoreCase);
     return self;
 }
 
