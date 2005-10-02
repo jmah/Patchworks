@@ -51,6 +51,7 @@
 		28015CCE08ED54B500C83A75 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */; };
 		28015CCF08ED54B800C83A75 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */; };
 		28015CE408ED550600C83A75 /* libz.1.2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 28015CE308ED550600C83A75 /* libz.1.2.2.dylib */; };
+		2803BDAF08ED905C00111E58 /* Test Patches in Resources */ = {isa = PBXBuildFile; fileRef = 2803BDAC08ED905C00111E58 /* Test Patches */; };
 		28FCD3F308EC577900A970FA /* MyDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FCD3E308EC577900A970FA /* MyDocument.m */; };
 		28FCD3F408EC577900A970FA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FCD3E708EC577900A970FA /* main.m */; };
 		28FCD3F508EC577900A970FA /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 28FCD3EA08EC577900A970FA /* Credits.rtf */; };
@@ -184,6 +185,7 @@
 		28015CBA08ED52AD00C83A75 /* PWzlibTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWzlibTest.h; sourceTree = "<group>"; };
 		28015CBB08ED52AD00C83A75 /* PWzlibTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWzlibTest.m; sourceTree = "<group>"; };
 		28015CE308ED550600C83A75 /* libz.1.2.2.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; name = libz.1.2.2.dylib; path = /Developer/SDKs/MacOSX10.4u.sdk/usr/lib/libz.1.2.2.dylib; sourceTree = "<absolute>"; };
+		2803BDAC08ED905C00111E58 /* Test Patches */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Test Patches"; sourceTree = "<group>"; };
 		28FCD3E208EC577900A970FA /* MyDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDocument.h; sourceTree = "<group>"; };
 		28FCD3E308EC577900A970FA /* MyDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDocument.m; sourceTree = "<group>"; };
 		28FCD3E708EC577900A970FA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -380,6 +382,7 @@
 			children = (
 				28015CBA08ED52AD00C83A75 /* PWzlibTest.h */,
 				28015CBB08ED52AD00C83A75 /* PWzlibTest.m */,
+				2803BDAB08ED905600111E58 /* Resources */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -389,6 +392,14 @@
 			children = (
 			);
 			path = Tests;
+			sourceTree = "<group>";
+		};
+		2803BDAB08ED905600111E58 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				2803BDAC08ED905C00111E58 /* Test Patches */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		28FCD3DF08EC577900A970FA /* Application Source */ = {
@@ -841,6 +852,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2803BDAF08ED905C00111E58 /* Test Patches in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

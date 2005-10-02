@@ -15,5 +15,6 @@
 
 
 - (void)testDeflateInflate;
+- (void)testCompressedPatchInflate;
 
 @end

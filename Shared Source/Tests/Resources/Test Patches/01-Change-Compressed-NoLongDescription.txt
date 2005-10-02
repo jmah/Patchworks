@@ -1,0 +1,18 @@
+[Removed pragma mark separators and standardized file spacing
+Jonathon Mah <jonathon@playhaus.org>**20050930003738] {
+hunk ./Application\32\Source/Classes/Controller/MyDocument.h 14
++	
+hunk ./Application\32\Source/Classes/Controller/MyDocument.m 35
+-#pragma mark -
+hunk ./Application\32\Source/Classes/Controller/MyDocument.m 54
+-#pragma mark -
+hunk ./Importer\32\Source/Other\32\Sources/main.c 39
+-#pragma mark -
++
+hunk ./Importer\32\Source/Other\32\Sources/main.c 51
+-#pragma mark -
++
+hunk ./Importer\32\Source/Other\32\Sources/main.c 68
+-#pragma mark -
++
+}

@@ -42,4 +42,28 @@
 }
 
 
+- (void)testCompressedPatchInflate
+{
+	NSBundle *myBundle = [NSBundle bundleForClass:[self class]];
+	NSString *patchPath = [myBundle pathForResource:@"01-Change-Compressed-NoLongDescription"
+	                                         ofType:@"gz"
+	                                    inDirectory:@"Test Patches"];
+	NSString *uncompressedPath = [myBundle pathForResource:@"01-Change-Compressed-NoLongDescription"
+	                                                ofType:@"txt"
+	                                           inDirectory:@"Test Patches"];
+	NSData *compressedPatch = [NSData dataWithContentsOfFile:patchPath];
+	STAssertNotNil(compressedPatch, @"Failed to load compressed patch.");
+	
+	NSData *inflatedPatch = [compressedPatch inflate];
+	STAssertNotNil(inflatedPatch, @"Failed to inflate patch.");
+	
+	NSString *inflatedContents = [[[NSString alloc] initWithData:inflatedPatch encoding:NSASCIIStringEncoding] autorelease];
+	NSString *realContents = [NSString stringWithContentsOfFile:uncompressedPath
+	                                                   encoding:NSASCIIStringEncoding
+	                                                      error:nil];
+
+	STAssertEqualObjects(inflatedContents, realContents, @"Patch was not inflated correctly.");
+}
+
+
 @end

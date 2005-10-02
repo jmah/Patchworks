@@ -34,7 +34,7 @@
 	strm.zalloc = Z_NULL;
 	strm.zfree = Z_NULL;
 	
-	if (inflateInit(&strm) == Z_OK)
+	if (inflateInit2(&strm, (15 + 32)) == Z_OK)
 	{
 		decompressedData = [NSMutableData dataWithLength:(fullLength + halfLength)];
 		BOOL done = NO;
