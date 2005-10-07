@@ -238,6 +238,7 @@
 		28015CBB08ED52AD00C83A75 /* PWzlibTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWzlibTest.m; sourceTree = "<group>"; };
 		2803BDAC08ED905C00111E58 /* Test Patches */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Test Patches"; sourceTree = "<group>"; };
 		289F13DD08F6A3BE00E9D926 /* OgreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OgreKit.framework; sourceTree = "<group>"; };
+		289F142E08F6F93100E9D926 /* Scripts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Scripts; sourceTree = "<group>"; };
 		28EB4A0408F02EF000126AE9 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		28FCD3E208EC577900A970FA /* MyDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDocument.h; sourceTree = "<group>"; };
 		28FCD3E308EC577900A970FA /* MyDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDocument.m; sourceTree = "<group>"; };
@@ -521,6 +522,7 @@
 			isa = PBXGroup;
 			children = (
 				28EB4A0408F02EF000126AE9 /* LICENSE.txt */,
+				289F142E08F6F93100E9D926 /* Scripts */,
 				2801594A08EC767C00C83A75 /* Shared Source */,
 				28FCD3DF08EC577900A970FA /* Application Source */,
 				2801594208EC766A00C83A75 /* Importer Source */,
