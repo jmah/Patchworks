@@ -1086,23 +1086,6 @@
 			};
 			name = Release;
 		};
-		280159AD08EC781B00C83A75 /* Default */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
-				GCC_PRECOMPILE_PREFIX_HEADER = NO;
-				INFOPLIST_FILE = "Importer Source/Resources/Info.plist";
-				INSTALL_PATH = /Library/Spotlight;
-				LIBRARY_STYLE = BUNDLE;
-				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = "";
-				PREBINDING = NO;
-				PRODUCT_NAME = Patchworks;
-				SECTORDER_FLAGS = "";
-				WRAPPER_EXTENSION = mdimporter;
-			};
-			name = Default;
-		};
 		28015AFC08EC9C9800C83A75 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1142,26 +1125,6 @@
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
-		};
-		28015AFE08EC9C9800C83A75 /* Default */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Cocoa.framework/Headers/Cocoa.h";
-				INFOPLIST_FILE = "Application Source/Resources/Patchworks Test-Info.plist";
-				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
-				LIBRARY_STYLE = BUNDLE;
-				OTHER_LDFLAGS = (
-					"-framework",
-					Cocoa,
-					"-framework",
-					SenTestingKit,
-				);
-				PREBINDING = NO;
-				PRODUCT_NAME = "Patchworks Test";
-				WRAPPER_EXTENSION = octest;
-			};
-			name = Default;
 		};
 		28015B3F08EC9D4900C83A75 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -1203,26 +1166,6 @@
 			};
 			name = Release;
 		};
-		28015B4108EC9D4900C83A75 /* Default */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Cocoa.framework/Headers/Cocoa.h";
-				INFOPLIST_FILE = "Shared Source/Resources/Shared Source Test-Info.plist";
-				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
-				LIBRARY_STYLE = BUNDLE;
-				OTHER_LDFLAGS = (
-					"-framework",
-					Cocoa,
-					"-framework",
-					SenTestingKit,
-				);
-				PREBINDING = NO;
-				PRODUCT_NAME = "Shared Source Test";
-				WRAPPER_EXTENSION = octest;
-			};
-			name = Default;
-		};
 		28015B5E08EC9DE300C83A75 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1260,23 +1203,6 @@
 				);
 			};
 			name = Release;
-		};
-		28015B6008EC9DE300C83A75 /* Default */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				OPTIMIZATION_CFLAGS = "-O0";
-				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = "";
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = "Unit Tests";
-				SECTORDER_FLAGS = "";
-				WARNING_CFLAGS = (
-					"-Wmost",
-					"-Wno-four-char-constants",
-					"-Wno-unknown-pragmas",
-				);
-			};
-			name = Default;
 		};
 		28015B8708EC9F3E00C83A75 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -1318,26 +1244,6 @@
 			};
 			name = Release;
 		};
-		28015B8908EC9F3E00C83A75 /* Default */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Cocoa.framework/Headers/Cocoa.h";
-				INFOPLIST_FILE = "Importer Source/Resources/Patchworks Importer Test-Info.plist";
-				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
-				LIBRARY_STYLE = BUNDLE;
-				OTHER_LDFLAGS = (
-					"-framework",
-					Cocoa,
-					"-framework",
-					SenTestingKit,
-				);
-				PREBINDING = NO;
-				PRODUCT_NAME = "Patchworks Importer Test";
-				WRAPPER_EXTENSION = octest;
-			};
-			name = Default;
-		};
 		28FCD3D208EC56D000A970FA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1368,18 +1274,6 @@
 				ZERO_LINK = NO;
 			};
 			name = Release;
-		};
-		28FCD3D408EC56D000A970FA /* Default */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Application Source/Other Sources/Patchworks_Prefix.pch";
-				INFOPLIST_FILE = "Application Source/Resources/Info.plist";
-				INSTALL_PATH = "$(HOME)/Applications";
-				PRODUCT_NAME = Patchworks;
-				WRAPPER_EXTENSION = app;
-			};
-			name = Default;
 		};
 		28FCD3D608EC56D000A970FA /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -1423,24 +1317,6 @@
 			};
 			name = Release;
 		};
-		28FCD3D808EC56D000A970FA /* Default */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_FAST_OBJC_DISPATCH = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_SIGN_COMPARE = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = NO;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.4;
-				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
-				WARNING_CFLAGS = "-Wmost";
-			};
-			name = Default;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1449,65 +1325,63 @@
 			buildConfigurations = (
 				280159AB08EC781B00C83A75 /* Debug */,
 				280159AC08EC781B00C83A75 /* Release */,
-				280159AD08EC781B00C83A75 /* Default */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
 		};
 		28015AFB08EC9C9800C83A75 /* Build configuration list for PBXNativeTarget "Patchworks Test" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				28015AFC08EC9C9800C83A75 /* Debug */,
 				28015AFD08EC9C9800C83A75 /* Release */,
-				28015AFE08EC9C9800C83A75 /* Default */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
 		};
 		28015B3E08EC9D4900C83A75 /* Build configuration list for PBXNativeTarget "Shared Source Test" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				28015B3F08EC9D4900C83A75 /* Debug */,
 				28015B4008EC9D4900C83A75 /* Release */,
-				28015B4108EC9D4900C83A75 /* Default */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
 		};
 		28015B5D08EC9DE300C83A75 /* Build configuration list for PBXAggregateTarget "Unit Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				28015B5E08EC9DE300C83A75 /* Debug */,
 				28015B5F08EC9DE300C83A75 /* Release */,
-				28015B6008EC9DE300C83A75 /* Default */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
 		};
 		28015B8608EC9F3E00C83A75 /* Build configuration list for PBXNativeTarget "Patchworks Importer Test" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				28015B8708EC9F3E00C83A75 /* Debug */,
 				28015B8808EC9F3E00C83A75 /* Release */,
-				28015B8908EC9F3E00C83A75 /* Default */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
 		};
 		28FCD3D108EC56D000A970FA /* Build configuration list for PBXNativeTarget "Patchworks" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				28FCD3D208EC56D000A970FA /* Debug */,
 				28FCD3D308EC56D000A970FA /* Release */,
-				28FCD3D408EC56D000A970FA /* Default */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Default;
+			defaultConfigurationName = Debug;
 		};
 		28FCD3D508EC56D000A970FA /* Build configuration list for PBXProject "Patchworks" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				28FCD3D608EC56D000A970FA /* Debug */,
 				28FCD3D708EC56D000A970FA /* Release */,
-				28FCD3D808EC56D000A970FA /* Default */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Default;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};
