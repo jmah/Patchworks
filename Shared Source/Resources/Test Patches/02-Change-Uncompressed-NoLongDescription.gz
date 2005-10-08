@@ -1,0 +1,4 @@
+[Sample patch description
+Faux patch author <user@example.com>**20050930094810] {
+addfile ./new-stuff
+}

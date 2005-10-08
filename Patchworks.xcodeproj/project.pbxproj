@@ -60,6 +60,12 @@
 		289F141B08F6BCF500E9D926 /* OgreKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 289F13DD08F6A3BE00E9D926 /* OgreKit.framework */; };
 		289F142008F6BCFC00E9D926 /* OgreKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 289F13DD08F6A3BE00E9D926 /* OgreKit.framework */; };
 		289F142308F6BD0000E9D926 /* OgreKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 289F13DD08F6A3BE00E9D926 /* OgreKit.framework */; };
+		289F147C08F7042E00E9D926 /* PWDarcsPatch.m in Sources */ = {isa = PBXBuildFile; fileRef = 289F12DB08F04D3500E9D926 /* PWDarcsPatch.m */; };
+		289F147D08F7043000E9D926 /* PWDarcsChangePatch.m in Sources */ = {isa = PBXBuildFile; fileRef = 289F12DA08F04D3500E9D926 /* PWDarcsChangePatch.m */; };
+		289F147E08F7043100E9D926 /* PWDarcsTagPatch.m in Sources */ = {isa = PBXBuildFile; fileRef = 289F12DD08F04D3500E9D926 /* PWDarcsTagPatch.m */; };
+		289F14EB08F70A4900E9D926 /* PWDarcsPatchTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 289F12E508F04D4A00E9D926 /* PWDarcsPatchTest.m */; };
+		289F159A08F76B3300E9D926 /* PWDarcsChangePatchTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 289F159808F76B3300E9D926 /* PWDarcsChangePatchTest.m */; };
+		289F15D808F7A3C800E9D926 /* PWDarcsPatch+TestingMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 289F15D608F7A3C700E9D926 /* PWDarcsPatch+TestingMethods.m */; };
 		28FCD3F308EC577900A970FA /* MyDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FCD3E308EC577900A970FA /* MyDocument.m */; };
 		28FCD3F408EC577900A970FA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FCD3E708EC577900A970FA /* main.m */; };
 		28FCD3F508EC577900A970FA /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 28FCD3EA08EC577900A970FA /* Credits.rtf */; };
@@ -237,8 +243,21 @@
 		28015CBA08ED52AD00C83A75 /* PWzlibTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWzlibTest.h; sourceTree = "<group>"; };
 		28015CBB08ED52AD00C83A75 /* PWzlibTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWzlibTest.m; sourceTree = "<group>"; };
 		2803BDAC08ED905C00111E58 /* Test Patches */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Test Patches"; sourceTree = "<group>"; };
+		289F12DA08F04D3500E9D926 /* PWDarcsChangePatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWDarcsChangePatch.m; sourceTree = "<group>"; };
+		289F12DB08F04D3500E9D926 /* PWDarcsPatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWDarcsPatch.m; sourceTree = "<group>"; };
+		289F12DC08F04D3500E9D926 /* PWDarcsPatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWDarcsPatch.h; sourceTree = "<group>"; };
+		289F12DD08F04D3500E9D926 /* PWDarcsTagPatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWDarcsTagPatch.m; sourceTree = "<group>"; };
+		289F12DE08F04D3500E9D926 /* PWDarcsChangePatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWDarcsChangePatch.h; sourceTree = "<group>"; };
+		289F12DF08F04D3500E9D926 /* PWDarcsTagPatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWDarcsTagPatch.h; sourceTree = "<group>"; };
+		289F12E508F04D4A00E9D926 /* PWDarcsPatchTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWDarcsPatchTest.m; sourceTree = "<group>"; };
+		289F12E608F04D4A00E9D926 /* PWDarcsPatchTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWDarcsPatchTest.h; sourceTree = "<group>"; };
 		289F13DD08F6A3BE00E9D926 /* OgreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OgreKit.framework; sourceTree = "<group>"; };
 		289F142E08F6F93100E9D926 /* Scripts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Scripts; sourceTree = "<group>"; };
+		289F146008F700C500E9D926 /* PWDarcsPatch+ProtectedMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PWDarcsPatch+ProtectedMethods.h"; sourceTree = "<group>"; };
+		289F159708F76B3300E9D926 /* PWDarcsChangePatchTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWDarcsChangePatchTest.h; sourceTree = "<group>"; };
+		289F159808F76B3300E9D926 /* PWDarcsChangePatchTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWDarcsChangePatchTest.m; sourceTree = "<group>"; };
+		289F15D508F7A3C700E9D926 /* PWDarcsPatch+TestingMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PWDarcsPatch+TestingMethods.h"; sourceTree = "<group>"; };
+		289F15D608F7A3C700E9D926 /* PWDarcsPatch+TestingMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PWDarcsPatch+TestingMethods.m"; sourceTree = "<group>"; };
 		28EB4A0408F02EF000126AE9 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		28FCD3E208EC577900A970FA /* MyDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDocument.h; sourceTree = "<group>"; };
 		28FCD3E308EC577900A970FA /* MyDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDocument.m; sourceTree = "<group>"; };
@@ -409,6 +428,13 @@
 			children = (
 				28015C8D08ED4A1C00C83A75 /* NSData+PWzlib.h */,
 				28015C8E08ED4A1D00C83A75 /* NSData+PWzlib.m */,
+				289F12DC08F04D3500E9D926 /* PWDarcsPatch.h */,
+				289F12DB08F04D3500E9D926 /* PWDarcsPatch.m */,
+				289F146008F700C500E9D926 /* PWDarcsPatch+ProtectedMethods.h */,
+				289F12DE08F04D3500E9D926 /* PWDarcsChangePatch.h */,
+				289F12DA08F04D3500E9D926 /* PWDarcsChangePatch.m */,
+				289F12DF08F04D3500E9D926 /* PWDarcsTagPatch.h */,
+				289F12DD08F04D3500E9D926 /* PWDarcsTagPatch.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -441,6 +467,12 @@
 			children = (
 				28015CBA08ED52AD00C83A75 /* PWzlibTest.h */,
 				28015CBB08ED52AD00C83A75 /* PWzlibTest.m */,
+				289F12E608F04D4A00E9D926 /* PWDarcsPatchTest.h */,
+				289F12E508F04D4A00E9D926 /* PWDarcsPatchTest.m */,
+				289F15D508F7A3C700E9D926 /* PWDarcsPatch+TestingMethods.h */,
+				289F15D608F7A3C700E9D926 /* PWDarcsPatch+TestingMethods.m */,
+				289F159708F76B3300E9D926 /* PWDarcsChangePatchTest.h */,
+				289F159808F76B3300E9D926 /* PWDarcsChangePatchTest.m */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -998,6 +1030,12 @@
 			files = (
 				28015C8F08ED4A1D00C83A75 /* NSData+PWzlib.m in Sources */,
 				28015CBC08ED52AD00C83A75 /* PWzlibTest.m in Sources */,
+				289F147C08F7042E00E9D926 /* PWDarcsPatch.m in Sources */,
+				289F147D08F7043000E9D926 /* PWDarcsChangePatch.m in Sources */,
+				289F147E08F7043100E9D926 /* PWDarcsTagPatch.m in Sources */,
+				289F14EB08F70A4900E9D926 /* PWDarcsPatchTest.m in Sources */,
+				289F159A08F76B3300E9D926 /* PWDarcsChangePatchTest.m in Sources */,
+				289F15D808F7A3C800E9D926 /* PWDarcsPatch+TestingMethods.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

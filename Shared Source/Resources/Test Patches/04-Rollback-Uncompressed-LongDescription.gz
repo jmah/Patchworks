@@ -1,0 +1,6 @@
+[Rolled back patch
+Author <email@unoriginal.com>*-20051002173115
+ A long description
+] {
+rmfile ./newfile2
+}
