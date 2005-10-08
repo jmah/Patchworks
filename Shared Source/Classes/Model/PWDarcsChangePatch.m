@@ -74,6 +74,7 @@
 		OGRegularExpressionMatch *match = [patchRegexp matchInString:patchString];
 		if ([match count] == 0)
 		{
+			[patchRegexp release];
 			[self release];
 			self = nil;
 			[NSException raise:PWDarcsPatchParseException format:@"Could not parse darcs patch"];
@@ -94,6 +95,8 @@
 				[NSException raise:NSInternalInconsistencyException
 				            format:@"Patch regular expression matched patch string, but rollback_flag was '%@' instead of '*' or '-'", rollbackFlag];
 		}
+		
+		[patchRegexp release];
 	}
 	return self;
 }
