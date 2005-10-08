@@ -8,6 +8,8 @@
 //
 
 #import "PWDarcsTagPatch.h"
+#import "PWDarcsPatch+ProtectedMethods.h"
+#import <OgreKit/OgreKit.h>
 
 
 @implementation PWDarcsTagPatch
@@ -18,7 +20,83 @@
 {
 	if (self = [super init])
 	{
-#warning Not yet implemented
+		/*
+		 * Tag Patch Formats
+		 * =================
+		 * 
+		 * Normal tag (note spaces after ']' characters)
+		 * ----------
+		 * [TAG Tag name
+		 * author**1999010816123000] 
+		 * <
+		 * [First change patch
+		 * author**20051008080552] 
+		 * [Second change patch
+		 * author**20051008080552
+		 *  Long description
+		 *  indented by one space
+		 * ] 
+		 * (other patches)
+		 * [TAG Previous tag if any
+		 * author**20051008080552] 
+		 * > {
+		 * }
+		 * 
+		 * Rollback tag
+		 * ------------
+		 * [TAG Tag name
+		 * author*-1999010816123000] 
+		 * <
+		 * [First change patch
+		 * author*-20051008080552] 
+		 * [Second change patch
+		 * author*-20051008080552
+		 *  Long description
+		 *  indented by one space
+		 * ] 
+		 * (other rollback patches)
+		 * [TAG Previous tag if any
+		 * author*-20051008080552] 
+		 * > {
+		 * }
+		 */
+		
+		// Initialize instance variables
+		_patchString = [patchString retain];
+		
+		
+		// Parse patch
+		// patchRegexp unescaped pattern: "^\[TAG (?<name>.*)\n(?<author>.*)\*(?<rollback_flag>\*|-)(?<date>\d{14})] \n<$)";
+		OGRegularExpression *tagRegexp = [[OGRegularExpression alloc] initWithString:@"^\\[TAG (?<name>.*)\\n(?<author>.*)\\*(?<rollback_flag>\\*|-)(?<date>\\d{14})] \\n<$"
+		                                                                     options:OgreCaptureGroupOption
+		                                                                      syntax:OgreRubySyntax
+		                                                             escapeCharacter:OgreBackslashCharacter];
+		
+		OGRegularExpressionMatch *match = [tagRegexp matchInString:patchString];
+		if ([match count] == 0)
+		{
+			[tagRegexp release];
+			[self release];
+			self = nil;
+			[NSException raise:PWDarcsPatchParseException format:@"Could not parse darcs patch"];
+		}
+		else
+		{
+			[self setName:[match substringNamed:@"name"]];
+			[self setAuthor:[match substringNamed:@"author"]];
+			[self setDate:[[self class] calendarDateFromDarcsDateString:[match substringNamed:@"date"]]];
+			
+			NSString *rollbackFlag = [match substringNamed:@"rollback_flag"];
+			if ([rollbackFlag isEqualToString:@"*"])
+				_isRollbackPatch = NO;
+			else if ([rollbackFlag isEqualToString:@"-"])
+				_isRollbackPatch = YES;
+			else
+				[NSException raise:NSInternalInconsistencyException
+				            format:@"Patch regular expression matched patch string, but rollback_flag was '%@' instead of '*' or '-'", rollbackFlag];
+		}
+		
+		[tagRegexp release];
 	}
 	return self;
 }
@@ -26,8 +104,11 @@
 
 - (void)dealloc
 {
+	[_patchString release];
+	
 	[super dealloc];
 }
+
 
 
 #pragma mark Accessor Methods

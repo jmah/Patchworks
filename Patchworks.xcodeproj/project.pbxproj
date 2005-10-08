@@ -51,6 +51,7 @@
 		28015CCE08ED54B500C83A75 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */; };
 		28015CCF08ED54B800C83A75 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */; };
 		2803BDAF08ED905C00111E58 /* Test Patches in Resources */ = {isa = PBXBuildFile; fileRef = 2803BDAC08ED905C00111E58 /* Test Patches */; };
+		2818C4FF08F7BC1700FD8852 /* PWDarcsTagPatchTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2818C4FD08F7BC1600FD8852 /* PWDarcsTagPatchTest.m */; };
 		289F13DE08F6A3BE00E9D926 /* OgreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 289F13DD08F6A3BE00E9D926 /* OgreKit.framework */; };
 		289F13DF08F6A3BE00E9D926 /* OgreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 289F13DD08F6A3BE00E9D926 /* OgreKit.framework */; };
 		289F13E008F6A3BE00E9D926 /* OgreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 289F13DD08F6A3BE00E9D926 /* OgreKit.framework */; };
@@ -243,6 +244,8 @@
 		28015CBA08ED52AD00C83A75 /* PWzlibTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWzlibTest.h; sourceTree = "<group>"; };
 		28015CBB08ED52AD00C83A75 /* PWzlibTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWzlibTest.m; sourceTree = "<group>"; };
 		2803BDAC08ED905C00111E58 /* Test Patches */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Test Patches"; sourceTree = "<group>"; };
+		2818C4FC08F7BC1600FD8852 /* PWDarcsTagPatchTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWDarcsTagPatchTest.h; sourceTree = "<group>"; };
+		2818C4FD08F7BC1600FD8852 /* PWDarcsTagPatchTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWDarcsTagPatchTest.m; sourceTree = "<group>"; };
 		289F12DA08F04D3500E9D926 /* PWDarcsChangePatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWDarcsChangePatch.m; sourceTree = "<group>"; };
 		289F12DB08F04D3500E9D926 /* PWDarcsPatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWDarcsPatch.m; sourceTree = "<group>"; };
 		289F12DC08F04D3500E9D926 /* PWDarcsPatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWDarcsPatch.h; sourceTree = "<group>"; };
@@ -473,6 +476,8 @@
 				289F15D608F7A3C700E9D926 /* PWDarcsPatch+TestingMethods.m */,
 				289F159708F76B3300E9D926 /* PWDarcsChangePatchTest.h */,
 				289F159808F76B3300E9D926 /* PWDarcsChangePatchTest.m */,
+				2818C4FC08F7BC1600FD8852 /* PWDarcsTagPatchTest.h */,
+				2818C4FD08F7BC1600FD8852 /* PWDarcsTagPatchTest.m */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -1036,6 +1041,7 @@
 				289F14EB08F70A4900E9D926 /* PWDarcsPatchTest.m in Sources */,
 				289F159A08F76B3300E9D926 /* PWDarcsChangePatchTest.m in Sources */,
 				289F15D808F7A3C800E9D926 /* PWDarcsPatch+TestingMethods.m in Sources */,
+				2818C4FF08F7BC1700FD8852 /* PWDarcsTagPatchTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

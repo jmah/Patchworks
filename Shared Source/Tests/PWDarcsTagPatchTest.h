@@ -1,30 +1,23 @@
 //
-//  PWDarcsTagPatch.h
+//  PWDarcsTagPatchTest.h
 //  Patchworks
 //
-//  Created by Jonathon Mah on 2005-09-30.
+//  Created by Jonathon Mah on 2005-10-08.
+//  Copyright 2005 Playhaus. All rights reserved.
 //  License information is contained at the bottom of this file and in the
 //  'LICENSE.txt' file.
 //
 
-#import <Cocoa/Cocoa.h>
-#import "PWDarcsPatch.h"
+#import <SenTestingKit/SenTestingKit.h>
 
 
-/*
- * Note that tag patches can be rolled back, but darcs doesn't provide much
- * support for that. For example, 'darcs changes' doesn't list the tag
- * rollback any differently to the initial tag.
- */
-
-@interface PWDarcsTagPatch : PWDarcsPatch
+@interface PWDarcsTagPatchTest : SenTestCase
 {
-	NSString *_patchString;
 }
 
 
-#pragma mark Initialization and Deallocation
-- (id)initWithPatchString:(NSString *)patchString; // Designated initializer
+- (void)testTagPatch;
+- (void)testRollbackTagPatch;
 
 @end
 
