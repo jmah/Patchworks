@@ -92,6 +92,7 @@ NSString *PWDarcsPatchParseException = @"PWDarcsPatchParseException";
 
 - (void)dealloc
 {
+	[_patchString release];
 	[self setName:nil];
 	[self setAuthor:nil];
 	[self setDate:nil];
@@ -102,6 +103,12 @@ NSString *PWDarcsPatchParseException = @"PWDarcsPatchParseException";
 
 
 #pragma mark Accessor Methods
+
+- (NSString *)patchString
+{
+	return _patchString;
+}
+
 
 - (void)setName:(NSString *)newName // PWDarcsPatch (ProtectedMethods)
 {

@@ -14,7 +14,6 @@
 
 @interface PWDarcsChangePatch : PWDarcsPatch
 {
-	NSString *_patchString;
 	NSString *_longDescription;
 }
 

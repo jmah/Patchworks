@@ -104,7 +104,6 @@
 
 - (void)dealloc
 {
-	[_patchString release];
 	[self setLongDescription:nil];
 	
 	[super dealloc];

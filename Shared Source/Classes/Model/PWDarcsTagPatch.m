@@ -104,8 +104,6 @@
 
 - (void)dealloc
 {
-	[_patchString release];
-	
 	[super dealloc];
 }
 

@@ -19,7 +19,6 @@
 
 @interface PWDarcsTagPatch : PWDarcsPatch
 {
-	NSString *_patchString;
 }
 
 

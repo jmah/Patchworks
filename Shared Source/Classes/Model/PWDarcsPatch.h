@@ -22,6 +22,7 @@ typedef enum _PWDarcsPatchType {
 
 @interface PWDarcsPatch : NSObject
 {
+	NSString *_patchString;
 	NSString *_name;
 	NSString *_author;
 	NSString *_authorEmail; // Cached version of the author e-mail address
@@ -38,6 +39,7 @@ typedef enum _PWDarcsPatchType {
 - (id)initWithData:(NSData *)data; // Designated initializer
 
 #pragma mark Accessor Methods
+- (NSString *)patchString;
 - (NSString *)name;
 - (NSString *)author;
 - (NSString *)authorEmail;
