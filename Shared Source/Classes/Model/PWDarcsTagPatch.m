@@ -34,7 +34,7 @@
 
 - (PWDarcsPatchType)patchType
 {
-	return PWDarcsPatchTagType;
+	return PWDarcsTagPatchType;
 }
 
 

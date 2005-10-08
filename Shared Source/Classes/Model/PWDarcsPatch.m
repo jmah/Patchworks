@@ -159,7 +159,7 @@ NSString *PWDarcsPatchParseException = @"PWDarcsPatchParseException";
 - (PWDarcsPatchType)patchType
 {
 	[NSException raise:NSObjectNotAvailableException format:@"-[PWDarcsPatch patchType] not defined for abstract class"];
-	return PWDarcsPatchUnknownType;
+	return PWDarcsUnknownPatchType;
 }
 
 

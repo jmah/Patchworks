@@ -131,7 +131,7 @@
 
 - (PWDarcsPatchType)patchType // PWDarcsPatch
 {
-	return PWDarcsPatchChangeType;
+	return PWDarcsChangePatchType;
 }
 
 

@@ -14,9 +14,9 @@
 extern NSString *PWDarcsPatchParseException;
 
 typedef enum _PWDarcsPatchType {
-	PWDarcsPatchUnknownType = 1,
-	PWDarcsPatchChangeType,
-	PWDarcsPatchTagType,
+	PWDarcsUnknownPatchType = 1,
+	PWDarcsChangePatchType,
+	PWDarcsTagPatchType,
 } PWDarcsPatchType;
 
 

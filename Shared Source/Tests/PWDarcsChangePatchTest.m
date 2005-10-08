@@ -50,7 +50,7 @@
 		                                                 timeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
 		STAssertEqualObjects([patch date], targetDate,
 			@"Patch date didn't correctly parse.");
-		STAssertEquals([patch patchType], PWDarcsPatchChangeType,
+		STAssertEquals([patch patchType], PWDarcsChangePatchType,
 			@"Patch type not correctly set.");
 		STAssertFalse([(PWDarcsChangePatch *)patch isRollbackPatch],
 			@"Rollback flag didn't correctly parse.");
@@ -87,7 +87,7 @@
 		                                                 timeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
 		STAssertEqualObjects([patch date], targetDate,
 			@"Patch date didn't correctly parse.");
-		STAssertEquals([patch patchType], PWDarcsPatchChangeType,
+		STAssertEquals([patch patchType], PWDarcsChangePatchType,
 			@"Patch type not correctly set.");
 		STAssertFalse([(PWDarcsChangePatch *)patch isRollbackPatch],
 			@"Rollback flag didn't correctly parse.");
@@ -126,7 +126,7 @@
 	                                                 timeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
 	STAssertEqualObjects([patch date], targetDate,
 		@"Patch date didn't correctly parse.");
-	STAssertEquals([patch patchType], PWDarcsPatchChangeType,
+	STAssertEquals([patch patchType], PWDarcsChangePatchType,
 		@"Patch type not correctly set.");
 	STAssertFalse([(PWDarcsChangePatch *)patch isRollbackPatch],
 		@"Rollback flag didn't correctly parse.");
@@ -164,7 +164,7 @@
 	                                                 timeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
 	STAssertEqualObjects([patch date], targetDate,
 		@"Patch date didn't correctly parse.");
-	STAssertEquals([patch patchType], PWDarcsPatchChangeType,
+	STAssertEquals([patch patchType], PWDarcsChangePatchType,
 		@"Patch type not correctly set.");
 	STAssertTrue([(PWDarcsChangePatch *)patch isRollbackPatch],
 		@"Rollback flag didn't correctly parse.");
