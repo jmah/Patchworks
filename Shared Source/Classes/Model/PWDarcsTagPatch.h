@@ -11,6 +11,12 @@
 #import "PWDarcsPatch.h"
 
 
+/*
+ * Note that tag patches can be rolled back, but darcs doesn't provide much
+ * support for that. For example, 'darcs changes' doesn't list the tag
+ * rollback any differently to the initial tag.
+ */
+
 @interface PWDarcsTagPatch : PWDarcsPatch
 {
 	

@@ -50,10 +50,10 @@
 		                                                 timeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
 		STAssertEqualObjects([patch date], targetDate,
 			@"Patch date didn't correctly parse.");
+		STAssertFalse([patch isRollbackPatch],
+			@"Rollback flag didn't correctly parse.");
 		STAssertEquals([patch patchType], PWDarcsChangePatchType,
 			@"Patch type not correctly set.");
-		STAssertFalse([(PWDarcsChangePatch *)patch isRollbackPatch],
-			@"Rollback flag didn't correctly parse.");
 		STAssertNil([(PWDarcsChangePatch *)patch longDescription],
 			@"Long description didn't correctly parse.");
 	}
@@ -87,10 +87,10 @@
 		                                                 timeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
 		STAssertEqualObjects([patch date], targetDate,
 			@"Patch date didn't correctly parse.");
+		STAssertFalse([patch isRollbackPatch],
+			@"Rollback flag didn't correctly parse.");
 		STAssertEquals([patch patchType], PWDarcsChangePatchType,
 			@"Patch type not correctly set.");
-		STAssertFalse([(PWDarcsChangePatch *)patch isRollbackPatch],
-			@"Rollback flag didn't correctly parse.");
 		STAssertEqualObjects([(PWDarcsChangePatch *)patch longDescription], @" Some or all of the OgreKit framework's headers have no newlines at the end of\n the file. Enabling this warning triggers it every time one of Patchworks's\n source files includes an OgreKit header. And it's not a big deal anyway.",
 			@"Long description didn't correctly parse.");
 	}
@@ -126,10 +126,10 @@
 	                                                 timeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
 	STAssertEqualObjects([patch date], targetDate,
 		@"Patch date didn't correctly parse.");
+	STAssertFalse([patch isRollbackPatch],
+		@"Rollback flag didn't correctly parse.");
 	STAssertEquals([patch patchType], PWDarcsChangePatchType,
 		@"Patch type not correctly set.");
-	STAssertFalse([(PWDarcsChangePatch *)patch isRollbackPatch],
-		@"Rollback flag didn't correctly parse.");
 	STAssertNil([(PWDarcsChangePatch *)patch longDescription],
 		@"Long description didn't correctly parse.");
 }
@@ -164,10 +164,10 @@
 	                                                 timeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
 	STAssertEqualObjects([patch date], targetDate,
 		@"Patch date didn't correctly parse.");
+	STAssertTrue([patch isRollbackPatch],
+		@"Rollback flag didn't correctly parse.");
 	STAssertEquals([patch patchType], PWDarcsChangePatchType,
 		@"Patch type not correctly set.");
-	STAssertTrue([(PWDarcsChangePatch *)patch isRollbackPatch],
-		@"Rollback flag didn't correctly parse.");
 	STAssertEqualObjects([(PWDarcsChangePatch *)patch longDescription], @" A long description",
 		@"Long description didn't correctly parse.");
 }

@@ -62,7 +62,6 @@
 		// Initialize instance variables
 		_patchString = [patchString retain];
 		_longDescription = nil;
-		_isRollbackPatch = NO;
 		
 		
 		// Parse patch
@@ -83,17 +82,14 @@
 		{
 			[self setName:[match substringNamed:@"name"]];
 			[self setAuthor:[match substringNamed:@"author"]];
+			[self setDate:[[self class] calendarDateFromDarcsDateString:[match substringNamed:@"date"]]];
 			[self setLongDescription:[match substringNamed:@"long_description"]]; // Can be nil
-			
-			NSString *dateString = [[match substringNamed:@"date"] stringByAppendingString:@" +0000"]; // Append UTC timezone
-			NSCalendarDate *newDate = [NSCalendarDate dateWithString:dateString calendarFormat:@"%Y%m%d%H%M%S %z"];
-			[self setDate:newDate];
 			
 			NSString *rollbackFlag = [match substringNamed:@"rollback_flag"];
 			if ([rollbackFlag isEqualToString:@"*"])
-				_isRollbackPatch = NO;
+				[self setRollbackPatch:NO];
 			else if ([rollbackFlag isEqualToString:@"-"])
-				_isRollbackPatch = YES;
+				[self setRollbackPatch:YES];
 			else
 				[NSException raise:NSInternalInconsistencyException
 				            format:@"Patch regular expression matched patch string, but rollback_flag was '%@' instead of '*' or '-'", rollbackFlag];
@@ -132,12 +128,6 @@
 - (PWDarcsPatchType)patchType // PWDarcsPatch
 {
 	return PWDarcsChangePatchType;
-}
-
-
-- (BOOL)isRollbackPatch
-{
-	return _isRollbackPatch;
 }
 
 

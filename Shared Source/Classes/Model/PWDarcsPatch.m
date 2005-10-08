@@ -37,6 +37,13 @@ NSString *PWDarcsPatchParseException = @"PWDarcsPatchParseException";
 }
 
 
++ (NSCalendarDate *)calendarDateFromDarcsDateString:(NSString *)dateString // PWDarcsPatch (ProtectedMethods)
+{
+	NSString *timezoneDateString = [dateString stringByAppendingString:@" +0000"]; // Append UTC timezone
+	return [NSCalendarDate dateWithString:timezoneDateString calendarFormat:@"%Y%m%d%H%M%S %z"];
+}
+
+
 
 #pragma mark Initialization and Deallocation
 
@@ -160,6 +167,18 @@ NSString *PWDarcsPatchParseException = @"PWDarcsPatchParseException";
 {
 	[NSException raise:NSObjectNotAvailableException format:@"-[PWDarcsPatch patchType] not defined for abstract class"];
 	return PWDarcsUnknownPatchType;
+}
+
+
+- (void)setRollbackPatch:(BOOL)isRollbackPatch // PWDarcsPatch (ProtectedMethods)
+{
+	_isRollbackPatch = isRollbackPatch;
+}
+
+
+- (BOOL)isRollbackPatch
+{
+	return _isRollbackPatch;
 }
 
 

@@ -13,9 +13,13 @@
 
 @interface PWDarcsPatch (ProtectedMethods)
 
+#pragma mark Convenience Methods
++ (NSCalendarDate *)calendarDateFromDarcsDateString:(NSString *)dateString;
+
 #pragma mark Accessor Methods
 - (void)setName:(NSString *)newName;
 - (void)setAuthor:(NSString *)newAuthor;
 - (void)setDate:(NSCalendarDate *)newDate;
+- (void)setRollbackPatch:(BOOL)isRollbackPatch;
 
 @end

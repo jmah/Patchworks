@@ -16,7 +16,6 @@
 {
 	NSString *_patchString;
 	NSString *_longDescription;
-	BOOL _isRollbackPatch;
 }
 
 
@@ -25,7 +24,6 @@
 
 #pragma mark Accessor Methods
 - (NSString *)longDescription;
-- (BOOL)isRollbackPatch;
 
 @end
 
