@@ -62,7 +62,7 @@
 		 */
 		
 		// Initialize instance variables
-		_patchString = [patchString retain];
+		PW_patchString = [patchString retain];
 		
 		
 		// Parse patch
@@ -88,9 +88,9 @@
 			
 			NSString *rollbackFlag = [match substringNamed:@"rollback_flag"];
 			if ([rollbackFlag isEqualToString:@"*"])
-				_isRollbackPatch = NO;
+				PW_isRollbackPatch = NO;
 			else if ([rollbackFlag isEqualToString:@"-"])
-				_isRollbackPatch = YES;
+				PW_isRollbackPatch = YES;
 			else
 				[NSException raise:NSInternalInconsistencyException
 				            format:@"Patch regular expression matched patch string, but rollback_flag was '%@' instead of '*' or '-'", rollbackFlag];

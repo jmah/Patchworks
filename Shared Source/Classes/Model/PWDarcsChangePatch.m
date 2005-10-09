@@ -60,8 +60,8 @@
 		 */
 		
 		// Initialize instance variables
-		_patchString = [patchString retain];
-		_longDescription = nil;
+		PW_patchString = [patchString retain];
+		PW_longDescription = nil;
 		
 		
 		// Parse patch
@@ -116,14 +116,14 @@
 - (void)setLongDescription:(NSString *)newLongDescription // PWDarcsChangePatch (PrivateMethods)
 {
 	[newLongDescription retain];
-	[_longDescription release];
-	_longDescription = newLongDescription;
+	[PW_longDescription release];
+	PW_longDescription = newLongDescription;
 }
 
 
 - (NSString *)longDescription
 {
-	return _longDescription;
+	return PW_longDescription;
 }
 
 

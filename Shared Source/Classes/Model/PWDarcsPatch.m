@@ -92,7 +92,7 @@ NSString *PWDarcsPatchParseException = @"PWDarcsPatchParseException";
 
 - (void)dealloc
 {
-	[_patchString release];
+	[PW_patchString release];
 	[self setName:nil];
 	[self setAuthor:nil];
 	[self setDate:nil];
@@ -106,67 +106,67 @@ NSString *PWDarcsPatchParseException = @"PWDarcsPatchParseException";
 
 - (NSString *)patchString
 {
-	return _patchString;
+	return PW_patchString;
 }
 
 
 - (void)setName:(NSString *)newName // PWDarcsPatch (ProtectedMethods)
 {
 	[newName retain];
-	[_name release];
-	_name = newName;
+	[PW_name release];
+	PW_name = newName;
 }
 
 
 - (NSString *)name
 {
-	return _name;
+	return PW_name;
 }
 
 
 - (void)setAuthor:(NSString *)newAuthor // PWDarcsPatch (ProtectedMethods)
 {
 	[newAuthor retain];
-	[_author release];
-	_author = newAuthor;
+	[PW_author release];
+	PW_author = newAuthor;
 	
-	[_authorEmail release];
-	_authorEmail = nil;
+	[PW_authorEmail release];
+	PW_authorEmail = nil;
 }
 
 
 - (NSString *)author
 {
-	return _author;
+	return PW_author;
 }
 
 
 - (NSString *)authorEmail
 {
-	if (!_authorEmail)
+	if (!PW_authorEmail)
 	{
 		// Try to parse the e-mail address out of the author field
 		OGRegularExpression *emailRegexp = [[OGRegularExpression alloc] initWithString:@"([-\\w+.]{1,64}@[-\\w+.]{1,255})"];
 		OGRegularExpressionMatch *match = [emailRegexp matchInString:[self author]];
 		if ([match count] > 0)
-			_authorEmail = [[match lastMatchSubstring] retain];
+			PW_authorEmail = [[match lastMatchSubstring] retain];
 		[emailRegexp release];
 	}
-	return _authorEmail;
+	return PW_authorEmail;
 }
 
 
 - (void)setDate:(NSCalendarDate *)newDate // PWDarcsPatch (ProtectedMethods)
 {
 	[newDate retain];
-	[_date release];
-	_date = newDate;
+	[PW_date release];
+	PW_date = newDate;
 }
 
 
 - (NSCalendarDate *)date
 {
-	return _date;
+	return PW_date;
 }
 
 
@@ -179,13 +179,13 @@ NSString *PWDarcsPatchParseException = @"PWDarcsPatchParseException";
 
 - (void)setRollbackPatch:(BOOL)isRollbackPatch // PWDarcsPatch (ProtectedMethods)
 {
-	_isRollbackPatch = isRollbackPatch;
+	PW_isRollbackPatch = isRollbackPatch;
 }
 
 
 - (BOOL)isRollbackPatch
 {
-	return _isRollbackPatch;
+	return PW_isRollbackPatch;
 }
 
 

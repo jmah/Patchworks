@@ -22,12 +22,12 @@ typedef enum _PWDarcsPatchType {
 
 @interface PWDarcsPatch : NSObject
 {
-	NSString *_patchString;
-	NSString *_name;
-	NSString *_author;
-	NSString *_authorEmail; // Cached version of the author e-mail address
-	NSCalendarDate *_date;
-	BOOL _isRollbackPatch;
+	NSString *PW_patchString;
+	NSString *PW_name;
+	NSString *PW_author;
+	NSString *PW_authorEmail; // Cached version of the author e-mail address
+	NSCalendarDate *PW_date;
+	BOOL PW_isRollbackPatch;
 }
 
 
