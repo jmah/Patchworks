@@ -16,7 +16,6 @@ static NSMutableDictionary *existingWrappers = nil; // Initialized in +initializ
 
 @implementation PWTimeZoneWrapper
 
-
 #pragma mark Convenience Methods
 
 + (id)timeZoneWrapperWithTimeZone:(NSTimeZone *)timeZone
