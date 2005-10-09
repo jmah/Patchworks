@@ -44,7 +44,6 @@
 		280159D208EC7C2900C83A75 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A37F4C5FDCFA73011CA2CEA /* Foundation.framework */; };
 		280159D308EC7C2B00C83A75 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 280159A008EC77C500C83A75 /* CoreServices.framework */; };
 		28015ABF08EC8E8B00C83A75 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 28015ABD08EC8E8B00C83A75 /* InfoPlist.strings */; };
-		28015AD408EC927600C83A75 /* Patchworks.mdimporter in Copy Importer */ = {isa = PBXBuildFile; fileRef = 280159A808EC781900C83A75 /* Patchworks.mdimporter */; };
 		28015C8F08ED4A1D00C83A75 /* NSData+PWzlib.m in Sources */ = {isa = PBXBuildFile; fileRef = 28015C8E08ED4A1D00C83A75 /* NSData+PWzlib.m */; };
 		28015CBC08ED52AD00C83A75 /* PWzlibTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 28015CBB08ED52AD00C83A75 /* PWzlibTest.m */; };
 		28015CCD08ED54AE00C83A75 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */; };
@@ -108,13 +107,6 @@
 /* End PBXBuildStyle section */
 
 /* Begin PBXContainerItemProxy section */
-		28015ACF08EC8FFE00C83A75 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2A37F4A9FDCFA73011CA2CEA /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 280159A708EC781900C83A75;
-			remoteInfo = "Patchworks Importer";
-		};
 		28015B4508EC9D9000C83A75 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2A37F4A9FDCFA73011CA2CEA /* Project object */;
@@ -129,35 +121,7 @@
 			remoteGlobalIDString = 28015B3308EC9D4800C83A75;
 			remoteInfo = "Shared Source Test";
 		};
-		28015B5208EC9DA900C83A75 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2A37F4A9FDCFA73011CA2CEA /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 28015B3308EC9D4800C83A75;
-			remoteInfo = "Shared Source Test";
-		};
-		28015B5608EC9DAE00C83A75 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2A37F4A9FDCFA73011CA2CEA /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 28015AF408EC9C9700C83A75;
-			remoteInfo = "Patchworks Test";
-		};
-		28015B5A08EC9DB100C83A75 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2A37F4A9FDCFA73011CA2CEA /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 28015B3308EC9D4800C83A75;
-			remoteInfo = "Shared Source Test";
-		};
 		28015B8C08EC9F4E00C83A75 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2A37F4A9FDCFA73011CA2CEA /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 28015B7F08EC9F3D00C83A75;
-			remoteInfo = "Patchworks Importer Test";
-		};
-		28015B8E08EC9F5300C83A75 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2A37F4A9FDCFA73011CA2CEA /* Project object */;
 			proxyType = 1;
@@ -173,7 +137,6 @@
 			dstPath = Contents/Library/Spotlight;
 			dstSubfolderSpec = 1;
 			files = (
-				28015AD408EC927600C83A75 /* Patchworks.mdimporter in Copy Importer */,
 			);
 			name = "Copy Importer";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -634,8 +597,6 @@
 				);
 			};
 			dependencies = (
-				28015B8F08EC9F5300C83A75 /* PBXTargetDependency */,
-				28015B5308EC9DA900C83A75 /* PBXTargetDependency */,
 			);
 			name = "Patchworks Importer";
 			productName = "Metadata Importer";
@@ -891,9 +852,6 @@
 				WRAPPER_EXTENSION = app;
 			};
 			dependencies = (
-				28015B5708EC9DAE00C83A75 /* PBXTargetDependency */,
-				28015B5B08EC9DB100C83A75 /* PBXTargetDependency */,
-				28015AD008EC8FFE00C83A75 /* PBXTargetDependency */,
 			);
 			name = Patchworks;
 			productInstallPath = "$(HOME)/Applications";
@@ -1080,11 +1038,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		28015AD008EC8FFE00C83A75 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 280159A708EC781900C83A75 /* Patchworks Importer */;
-			targetProxy = 28015ACF08EC8FFE00C83A75 /* PBXContainerItemProxy */;
-		};
 		28015B4608EC9D9000C83A75 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 28015AF408EC9C9700C83A75 /* Patchworks Test */;
@@ -1095,30 +1048,10 @@
 			target = 28015B3308EC9D4800C83A75 /* Shared Source Test */;
 			targetProxy = 28015B4C08EC9D9300C83A75 /* PBXContainerItemProxy */;
 		};
-		28015B5308EC9DA900C83A75 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 28015B3308EC9D4800C83A75 /* Shared Source Test */;
-			targetProxy = 28015B5208EC9DA900C83A75 /* PBXContainerItemProxy */;
-		};
-		28015B5708EC9DAE00C83A75 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 28015AF408EC9C9700C83A75 /* Patchworks Test */;
-			targetProxy = 28015B5608EC9DAE00C83A75 /* PBXContainerItemProxy */;
-		};
-		28015B5B08EC9DB100C83A75 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 28015B3308EC9D4800C83A75 /* Shared Source Test */;
-			targetProxy = 28015B5A08EC9DB100C83A75 /* PBXContainerItemProxy */;
-		};
 		28015B8D08EC9F4E00C83A75 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 28015B7F08EC9F3D00C83A75 /* Patchworks Importer Test */;
 			targetProxy = 28015B8C08EC9F4E00C83A75 /* PBXContainerItemProxy */;
-		};
-		28015B8F08EC9F5300C83A75 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 28015B7F08EC9F3D00C83A75 /* Patchworks Importer Test */;
-			targetProxy = 28015B8E08EC9F5300C83A75 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
