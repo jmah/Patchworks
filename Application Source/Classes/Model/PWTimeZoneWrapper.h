@@ -21,6 +21,7 @@
 + (id)timeZoneWrapperWithTimeZone:(NSTimeZone *)timeZone;
 + (id)timeZoneWrapperWithName:(NSString *)name;
 + (NSArray *)knownTimeZoneWrappers;
++ (NSArray *)ignoredTimeZoneNames;
 
 #pragma mark Initialization and Deallocation
 - (id)initWithTimeZone:(NSTimeZone *)timeZone; // Designated initializer

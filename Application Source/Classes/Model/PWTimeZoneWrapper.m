@@ -37,9 +37,8 @@ static NSMutableDictionary *existingWrappers = nil; // Initialized in +initializ
 	NSString *currName = nil;
 	while (currName = [nameEnum nextObject])
 	{
-		// Avoid possible bug in NSTimeZone
-		if ([currName isEqualToString:@"zone.tab"])
-			break;
+		if ([[self ignoredTimeZoneNames] containsObject:currName])
+			continue;
 		
 		NSTimeZone *timeZone = [NSTimeZone timeZoneWithName:currName];
 		if (![existingWrappers objectForKey:timeZone])
@@ -47,6 +46,17 @@ static NSMutableDictionary *existingWrappers = nil; // Initialized in +initializ
 	}
 	
 	return [existingWrappers allValues];
+}
+
+
++ (NSArray *)ignoredTimeZoneNames
+{
+	static NSArray *ignoredTimeZoneNames = nil;
+	
+	if (!ignoredTimeZoneNames)
+		ignoredTimeZoneNames = [[NSArray alloc] initWithObjects:@"zone.tab", @"posixrules", nil];
+	
+	return ignoredTimeZoneNames;
 }
 
 
@@ -85,7 +95,13 @@ static NSMutableDictionary *existingWrappers = nil; // Initialized in +initializ
 
 - (id)initWithName:(NSString *)name
 {
-	return [self initWithTimeZone:[NSTimeZone timeZoneWithName:name]];
+	if ([[[self class] ignoredTimeZoneNames] containsObject:name])
+	{
+		[self release];
+		return nil;
+	}
+	else
+		return [self initWithTimeZone:[NSTimeZone timeZoneWithName:name]];
 }
 
 
