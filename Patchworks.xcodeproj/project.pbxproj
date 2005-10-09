@@ -53,7 +53,6 @@
 		2818C4FF08F7BC1700FD8852 /* PWDarcsTagPatchTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2818C4FD08F7BC1600FD8852 /* PWDarcsTagPatchTest.m */; };
 		2818C6C908F90B9700FD8852 /* PWTimeZoneWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2818C6C708F90B9700FD8852 /* PWTimeZoneWrapper.m */; };
 		2818C6CB08F90B9700FD8852 /* PWTimeZoneWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2818C6C708F90B9700FD8852 /* PWTimeZoneWrapper.m */; };
-		2818C6CF08F90BDA00FD8852 /* PWTimeZoneWrapperTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2818C6CD08F90BDA00FD8852 /* PWTimeZoneWrapperTest.m */; };
 		2818C6D108F90BDA00FD8852 /* PWTimeZoneWrapperTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2818C6CD08F90BDA00FD8852 /* PWTimeZoneWrapperTest.m */; };
 		289F13DE08F6A3BE00E9D926 /* OgreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 289F13DD08F6A3BE00E9D926 /* OgreKit.framework */; };
 		289F13DF08F6A3BE00E9D926 /* OgreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 289F13DD08F6A3BE00E9D926 /* OgreKit.framework */; };
@@ -1031,7 +1030,6 @@
 				28FCD3F308EC577900A970FA /* MyDocument.m in Sources */,
 				28FCD3F408EC577900A970FA /* main.m in Sources */,
 				2818C6C908F90B9700FD8852 /* PWTimeZoneWrapper.m in Sources */,
-				2818C6CF08F90BDA00FD8852 /* PWTimeZoneWrapperTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
