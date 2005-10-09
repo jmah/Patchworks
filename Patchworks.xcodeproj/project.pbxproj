@@ -70,6 +70,8 @@
 		289F159A08F76B3300E9D926 /* PWDarcsChangePatchTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 289F159808F76B3300E9D926 /* PWDarcsChangePatchTest.m */; };
 		289F15D808F7A3C800E9D926 /* PWDarcsPatch+TestingMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 289F15D608F7A3C700E9D926 /* PWDarcsPatch+TestingMethods.m */; };
 		28FCD3F308EC577900A970FA /* MyDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FCD3E308EC577900A970FA /* MyDocument.m */; };
+		28BA6C2508F94EAE00333DD4 /* PWApplicationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28BA6C1508F94DF800333DD4 /* PWApplicationController.m */; };
+		28BA6D4308F9601C00333DD4 /* RegistrationDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 28BA6D4108F9601500333DD4 /* RegistrationDefaults.plist */; };
 		28FCD3F408EC577900A970FA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FCD3E708EC577900A970FA /* main.m */; };
 		28FCD3F508EC577900A970FA /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 28FCD3EA08EC577900A970FA /* Credits.rtf */; };
 		28FCD3F708EC577900A970FA /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = 28FCD3EE08EC577900A970FA /* MainMenu.nib */; };
@@ -231,6 +233,10 @@
 		289F159808F76B3300E9D926 /* PWDarcsChangePatchTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWDarcsChangePatchTest.m; sourceTree = "<group>"; };
 		289F15D508F7A3C700E9D926 /* PWDarcsPatch+TestingMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PWDarcsPatch+TestingMethods.h"; sourceTree = "<group>"; };
 		289F15D608F7A3C700E9D926 /* PWDarcsPatch+TestingMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PWDarcsPatch+TestingMethods.m"; sourceTree = "<group>"; };
+		28BA6C0508F94A9D00333DD4 /* PatchworksDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PatchworksDefines.h; sourceTree = "<group>"; };
+		28BA6C1408F94DF800333DD4 /* PWApplicationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWApplicationController.h; sourceTree = "<group>"; };
+		28BA6C1508F94DF800333DD4 /* PWApplicationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWApplicationController.m; sourceTree = "<group>"; };
+		28BA6D4108F9601500333DD4 /* RegistrationDefaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = RegistrationDefaults.plist; path = Resources/RegistrationDefaults.plist; sourceTree = "<group>"; };
 		28EB4A0408F02EF000126AE9 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		28FCD3E208EC577900A970FA /* MyDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDocument.h; sourceTree = "<group>"; };
 		28FCD3E308EC577900A970FA /* MyDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDocument.m; sourceTree = "<group>"; };
@@ -468,6 +474,7 @@
 				28015AEC08EC995800C83A75 /* Tests */,
 				28FCD3E608EC577900A970FA /* Other Sources */,
 				28FCD3E908EC577900A970FA /* Resources */,
+				28BA6D4108F9601500333DD4 /* RegistrationDefaults.plist */,
 			);
 			path = "Application Source";
 			sourceTree = "<group>";
@@ -487,6 +494,8 @@
 			children = (
 				28FCD3E208EC577900A970FA /* MyDocument.h */,
 				28FCD3E308EC577900A970FA /* MyDocument.m */,
+				28BA6C1408F94DF800333DD4 /* PWApplicationController.h */,
+				28BA6C1508F94DF800333DD4 /* PWApplicationController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -512,6 +521,7 @@
 			children = (
 				28FCD3E708EC577900A970FA /* main.m */,
 				28FCD3E808EC577900A970FA /* Patchworks_Prefix.pch */,
+				28BA6C0508F94A9D00333DD4 /* PatchworksDefines.h */,
 			);
 			path = "Other Sources";
 			sourceTree = "<group>";
@@ -934,6 +944,7 @@
 				28FCD3F808EC577900A970FA /* MyDocument.nib in Resources */,
 				28FCD3F908EC577900A970FA /* Info.plist in Resources */,
 				28015ABF08EC8E8B00C83A75 /* InfoPlist.strings in Resources */,
+				28BA6D4308F9601C00333DD4 /* RegistrationDefaults.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1030,6 +1041,7 @@
 				28FCD3F308EC577900A970FA /* MyDocument.m in Sources */,
 				28FCD3F408EC577900A970FA /* main.m in Sources */,
 				2818C6C908F90B9700FD8852 /* PWTimeZoneWrapper.m in Sources */,
+				28BA6C2508F94EAE00333DD4 /* PWApplicationController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
