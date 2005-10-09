@@ -93,6 +93,8 @@ NSString *PWDarcsPatchParseException = @"PWDarcsPatchParseException";
 - (void)dealloc
 {
 	[PW_patchString release];
+	PW_patchString = nil;
+	
 	[self setName:nil];
 	[self setAuthor:nil];
 	[self setDate:nil];
