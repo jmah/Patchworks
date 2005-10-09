@@ -52,6 +52,10 @@
 		28015CCF08ED54B800C83A75 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */; };
 		2803BDAF08ED905C00111E58 /* Test Patches in Resources */ = {isa = PBXBuildFile; fileRef = 2803BDAC08ED905C00111E58 /* Test Patches */; };
 		2818C4FF08F7BC1700FD8852 /* PWDarcsTagPatchTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2818C4FD08F7BC1600FD8852 /* PWDarcsTagPatchTest.m */; };
+		2818C6C908F90B9700FD8852 /* PWTimeZoneWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2818C6C708F90B9700FD8852 /* PWTimeZoneWrapper.m */; };
+		2818C6CB08F90B9700FD8852 /* PWTimeZoneWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2818C6C708F90B9700FD8852 /* PWTimeZoneWrapper.m */; };
+		2818C6CF08F90BDA00FD8852 /* PWTimeZoneWrapperTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2818C6CD08F90BDA00FD8852 /* PWTimeZoneWrapperTest.m */; };
+		2818C6D108F90BDA00FD8852 /* PWTimeZoneWrapperTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2818C6CD08F90BDA00FD8852 /* PWTimeZoneWrapperTest.m */; };
 		289F13DE08F6A3BE00E9D926 /* OgreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 289F13DD08F6A3BE00E9D926 /* OgreKit.framework */; };
 		289F13DF08F6A3BE00E9D926 /* OgreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 289F13DD08F6A3BE00E9D926 /* OgreKit.framework */; };
 		289F13E008F6A3BE00E9D926 /* OgreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 289F13DD08F6A3BE00E9D926 /* OgreKit.framework */; };
@@ -246,6 +250,10 @@
 		2803BDAC08ED905C00111E58 /* Test Patches */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Test Patches"; sourceTree = "<group>"; };
 		2818C4FC08F7BC1600FD8852 /* PWDarcsTagPatchTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWDarcsTagPatchTest.h; sourceTree = "<group>"; };
 		2818C4FD08F7BC1600FD8852 /* PWDarcsTagPatchTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWDarcsTagPatchTest.m; sourceTree = "<group>"; };
+		2818C6C608F90B9700FD8852 /* PWTimeZoneWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWTimeZoneWrapper.h; sourceTree = "<group>"; };
+		2818C6C708F90B9700FD8852 /* PWTimeZoneWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWTimeZoneWrapper.m; sourceTree = "<group>"; };
+		2818C6CC08F90BDA00FD8852 /* PWTimeZoneWrapperTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWTimeZoneWrapperTest.h; sourceTree = "<group>"; };
+		2818C6CD08F90BDA00FD8852 /* PWTimeZoneWrapperTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWTimeZoneWrapperTest.m; sourceTree = "<group>"; };
 		289F12DA08F04D3500E9D926 /* PWDarcsChangePatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWDarcsChangePatch.m; sourceTree = "<group>"; };
 		289F12DB08F04D3500E9D926 /* PWDarcsPatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWDarcsPatch.m; sourceTree = "<group>"; };
 		289F12DC08F04D3500E9D926 /* PWDarcsPatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWDarcsPatch.h; sourceTree = "<group>"; };
@@ -485,6 +493,8 @@
 		28015AEC08EC995800C83A75 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				2818C6CC08F90BDA00FD8852 /* PWTimeZoneWrapperTest.h */,
+				2818C6CD08F90BDA00FD8852 /* PWTimeZoneWrapperTest.m */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -522,6 +532,8 @@
 		28FCD3E408EC577900A970FA /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				2818C6C608F90B9700FD8852 /* PWTimeZoneWrapper.h */,
+				2818C6C708F90B9700FD8852 /* PWTimeZoneWrapper.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1026,6 +1038,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2818C6CB08F90B9700FD8852 /* PWTimeZoneWrapper.m in Sources */,
+				2818C6D108F90BDA00FD8852 /* PWTimeZoneWrapperTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1058,6 +1072,8 @@
 			files = (
 				28FCD3F308EC577900A970FA /* MyDocument.m in Sources */,
 				28FCD3F408EC577900A970FA /* main.m in Sources */,
+				2818C6C908F90B9700FD8852 /* PWTimeZoneWrapper.m in Sources */,
+				2818C6CF08F90BDA00FD8852 /* PWTimeZoneWrapperTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
