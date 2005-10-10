@@ -26,7 +26,7 @@ NSString *PWDarcsPatchErrorDomain = @"PWDarcsPatchErrorDomain";
 + (id)patchWithContentsOfFile:(NSString *)path error:(NSError **)outError
 {
 	NSData *data = [NSData dataWithContentsOfFile:path options:(unsigned int)NULL error:outError];
-	if (!data)
+	if (*outError != nil)
 		return nil;
 	else
 		return [[[self alloc] initWithData:data error:outError] autorelease];
@@ -36,7 +36,7 @@ NSString *PWDarcsPatchErrorDomain = @"PWDarcsPatchErrorDomain";
 + (id)patchWithContentsOfURL:(NSURL *)aURL error:(NSError **)outError
 {
 	NSData *data = [NSData dataWithContentsOfURL:aURL options:(unsigned int)NULL error:outError];
-	if (!data)
+	if (*outError != nil)
 		return nil;
 	else
 		return [[[self alloc] initWithData:data error:outError] autorelease];
