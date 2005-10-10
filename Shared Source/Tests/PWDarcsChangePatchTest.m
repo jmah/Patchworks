@@ -19,82 +19,79 @@
 - (void)testCompressedChangePatch
 {
 	NSBundle *myBundle = [NSBundle bundleForClass:[self class]];
+	NSString *patchPath = [myBundle pathForResource:@"01-Change-Compressed-NoLongDescription"
+	                                         ofType:@"gz"
+	                                    inDirectory:@"Test Patches"];
+	NSError *error = nil;
+	PWDarcsPatch *patch = nil;
+	STAssertNoThrow(patch = [PWDarcsPatch patchWithContentsOfFile:patchPath error:&error],
+		@"Compressed patch threw an exception.");
+	STAssertNotNil(patch,
+		@"Compressed patch failed to initialize.");
+	STAssertNil(error,
+		@"Compressed patch genereated an error.");
 	
-	{
-		// Without long description
-		NSString *patchPath = [myBundle pathForResource:@"01-Change-Compressed-NoLongDescription"
-		                                         ofType:@"gz"
-		                                    inDirectory:@"Test Patches"];
-		NSError *error = nil;
-		PWDarcsPatch *patch = nil;
-		STAssertNoThrow(patch = [PWDarcsPatch patchWithContentsOfFile:patchPath error:&error],
-			@"Compressed patch threw an exception.");
-		STAssertNotNil(patch,
-			@"Compressed patch failed to initialize.");
-		STAssertNil(error,
-			@"Compressed patch genereated an error.");
-		
-		STAssertEqualObjects([patch name], @"Removed pragma mark separators and standardized file spacing",
-			@"Patch name didn't correctly parse.");
-		STAssertEqualObjects([patch author], @"Jonathon Mah <jonathon@playhaus.org>",
-			@"Patch author didn't correctly parse.");
-		STAssertEqualObjects([patch authorEmail], @"jonathon@playhaus.org",
-			@"Author e-mail didn't correctly parse.");
-		
-		NSCalendarDate *targetDate = [NSCalendarDate dateWithYear:2005
-		                                                    month:9
-		                                                      day:30
-		                                                     hour:0
-		                                                   minute:37
-		                                                   second:38
-		                                                 timeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
-		STAssertEqualObjects([patch date], targetDate,
-			@"Patch date didn't correctly parse.");
-		STAssertFalse([patch isRollbackPatch],
-			@"Rollback flag didn't correctly parse.");
-		STAssertEquals([patch patchType], PWDarcsChangePatchType,
-			@"Patch type not correctly set.");
-		STAssertNil([(PWDarcsChangePatch *)patch longDescription],
-			@"Long description didn't correctly parse.");
-	}
+	STAssertEqualObjects([patch name], @"Removed pragma mark separators and standardized file spacing",
+		@"Patch name didn't correctly parse.");
+	STAssertEqualObjects([patch author], @"Jonathon Mah <jonathon@playhaus.org>",
+		@"Patch author didn't correctly parse.");
+	STAssertEqualObjects([patch authorEmail], @"jonathon@playhaus.org",
+		@"Author e-mail didn't correctly parse.");
 	
-	
-	{
-		// With long description
-		NSString *patchPath = [myBundle pathForResource:@"03-Change-Compressed-LongDescription"
-		                                         ofType:@"gz"
-		                                    inDirectory:@"Test Patches"];
-		NSError *error = nil;
-		PWDarcsPatch *patch = nil;
-		STAssertNoThrow(patch = [PWDarcsPatch patchWithContentsOfFile:patchPath error:&error],
-			@"Compressed patch threw an exception.");
-		STAssertNotNil(patch,
-			@"Compressed patch failed to initialize.");
-		STAssertNil(error,
-			@"Compressed patch genereated an error.");
-		
-		STAssertEqualObjects([patch name], @"Disabled missing newline warnings due to some OgreKit headers",
-			@"Patch name didn't correctly parse.");
-		STAssertEqualObjects([patch author], @"Jonathon Mah <jonathon@playhaus.org>",
-			@"Patch author didn't correctly parse.");
-		
-		NSCalendarDate *targetDate = [NSCalendarDate dateWithYear:2005
-		                                                    month:10
-		                                                      day:7
-		                                                     hour:14
-		                                                   minute:30
-		                                                   second:15
-		                                                 timeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
-		STAssertEqualObjects([patch date], targetDate,
-			@"Patch date didn't correctly parse.");
-		STAssertFalse([patch isRollbackPatch],
-			@"Rollback flag didn't correctly parse.");
-		STAssertEquals([patch patchType], PWDarcsChangePatchType,
-			@"Patch type not correctly set.");
-		STAssertEqualObjects([(PWDarcsChangePatch *)patch longDescription], @" Some or all of the OgreKit framework's headers have no newlines at the end of\n the file. Enabling this warning triggers it every time one of Patchworks's\n source files includes an OgreKit header. And it's not a big deal anyway.",
-			@"Long description didn't correctly parse.");
-	}
+	NSCalendarDate *targetDate = [NSCalendarDate dateWithYear:2005
+	                                                    month:9
+	                                                      day:30
+	                                                     hour:0
+	                                                   minute:37
+	                                                   second:38
+	                                                 timeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
+	STAssertEqualObjects([patch date], targetDate,
+		@"Patch date didn't correctly parse.");
+	STAssertFalse([patch isRollbackPatch],
+		@"Rollback flag didn't correctly parse.");
+	STAssertEquals([patch patchType], PWDarcsChangePatchType,
+		@"Patch type not correctly set.");
+	STAssertNil([(PWDarcsChangePatch *)patch longDescription],
+		@"Long description didn't correctly parse.");
 }
+
+
+- (void)testCompressedChangePatchWithLongDescription
+{
+	NSBundle *myBundle = [NSBundle bundleForClass:[self class]];
+	NSString *patchPath = [myBundle pathForResource:@"03-Change-Compressed-LongDescription"
+	                                         ofType:@"gz"
+	                                    inDirectory:@"Test Patches"];
+	NSError *error = nil;
+	PWDarcsPatch *patch = nil;
+	STAssertNoThrow(patch = [PWDarcsPatch patchWithContentsOfFile:patchPath error:&error],
+		@"Compressed patch threw an exception.");
+	STAssertNotNil(patch,
+		@"Compressed patch failed to initialize.");
+	STAssertNil(error,
+		@"Compressed patch genereated an error.");
+	
+	STAssertEqualObjects([patch name], @"Disabled missing newline warnings due to some OgreKit headers",
+		@"Patch name didn't correctly parse.");
+	STAssertEqualObjects([patch author], @"Jonathon Mah <jonathon@playhaus.org>",
+		@"Patch author didn't correctly parse.");
+	
+	NSCalendarDate *targetDate = [NSCalendarDate dateWithYear:2005
+	                                                    month:10
+	                                                      day:7
+	                                                     hour:14
+	                                                   minute:30
+	                                                   second:15
+	                                                 timeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
+	STAssertEqualObjects([patch date], targetDate,
+		@"Patch date didn't correctly parse.");
+	STAssertFalse([patch isRollbackPatch],
+		@"Rollback flag didn't correctly parse.");
+	STAssertEquals([patch patchType], PWDarcsChangePatchType,
+		@"Patch type not correctly set.");
+	STAssertEqualObjects([(PWDarcsChangePatch *)patch longDescription], @" Some or all of the OgreKit framework's headers have no newlines at the end of\n the file. Enabling this warning triggers it every time one of Patchworks's\n source files includes an OgreKit header. And it's not a big deal anyway.",
+		@"Long description didn't correctly parse.");
+	}
 
 
 - (void)testUncompressedChangePatch

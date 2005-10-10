@@ -17,6 +17,7 @@
 
 
 - (void)testCompressedChangePatch;
+- (void)testCompressedChangePatchWithLongDescription;
 - (void)testUncompressedChangePatch;
 - (void)testRollbackChangePatch;
 
