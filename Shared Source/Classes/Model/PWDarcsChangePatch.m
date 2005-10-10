@@ -65,16 +65,18 @@
 		
 		
 		// Parse patch
-		// patchRegexp unescaped pattern: "^\[(?<name>.*)\n(?<author>.*)\*(?<rollback_flag>\*|-)(?<date>\d{14})(?:] {|\n(?<long_description>(?:.|\n)*)\n\] {$)";
-		OGRegularExpression *patchRegexp = [[OGRegularExpression alloc] initWithString:@"^\\[(?<name>.*)\\n(?<author>.*)\\*(?<rollback_flag>\\*|-)(?<date>\\d{14})(?:] {|\\n(?<long_description>(?:.|\\n)*)\\n\\] {$)"
-		                                                                       options:OgreCaptureGroupOption
-		                                                                        syntax:OgreRubySyntax
-		                                                               escapeCharacter:OgreBackslashCharacter];
+		// Cache the patch regular expression
+		static OGRegularExpression *patchRegexp = nil;
+		if (!patchRegexp)
+			// patchRegexp unescaped pattern: "^\[(?<name>.*)\n(?<author>.*)\*(?<rollback_flag>\*|-)(?<date>\d{14})(?:] {|\n(?<long_description>(?:.|\n)*)\n\] {$)";
+			patchRegexp = [[OGRegularExpression alloc] initWithString:@"^\\[(?<name>.*)\\n(?<author>.*)\\*(?<rollback_flag>\\*|-)(?<date>\\d{14})(?:] {|\\n(?<long_description>(?:.|\\n)*)\\n\\] {$)"
+			                                                  options:OgreCaptureGroupOption
+			                                                   syntax:OgreRubySyntax
+			                                          escapeCharacter:OgreBackslashCharacter];
 		
 		OGRegularExpressionMatch *match = [patchRegexp matchInString:patchString];
 		if ([match count] == 0)
 		{
-			[patchRegexp release];
 			[self release];
 			self = nil;
 			*outError = [NSError errorWithDomain:PWDarcsPatchErrorDomain
@@ -97,8 +99,6 @@
 				[NSException raise:NSInternalInconsistencyException
 				            format:@"Patch regular expression matched patch string, but rollback_flag was '%@' instead of '*' or '-'", rollbackFlag];
 		}
-		
-		[patchRegexp release];
 	}
 	return self;
 }

@@ -171,14 +171,17 @@ NSString *PWDarcsPatchErrorDomain = @"PWDarcsPatchErrorDomain";
 
 - (NSString *)authorEmail
 {
+	// Cache the e-mail regular expression
+	static OGRegularExpression *emailRegexp = nil;
+	if (!emailRegexp)
+		emailRegexp = [[OGRegularExpression alloc] initWithString:@"([-\\w+.]{1,64}@[-\\w+.]{1,255})"];
+	
 	if (!PW_authorEmail)
 	{
 		// Try to parse the e-mail address out of the author field
-		OGRegularExpression *emailRegexp = [[OGRegularExpression alloc] initWithString:@"([-\\w+.]{1,64}@[-\\w+.]{1,255})"];
 		OGRegularExpressionMatch *match = [emailRegexp matchInString:[self author]];
 		if ([match count] > 0)
 			PW_authorEmail = [[match lastMatchSubstring] retain];
-		[emailRegexp release];
 	}
 	return PW_authorEmail;
 }
