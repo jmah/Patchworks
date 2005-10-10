@@ -11,8 +11,7 @@
 #import "PWDarcsPatchProxyDocument.h"
 #import "PatchworksDefines.h"
 #import "PWDarcsPatch.h"
-#import "PWDarcsChangePatch.h"
-#import "PWDarcsTagPatch.h"
+#import "PWDarcsPatchProxy.h"
 #import "PWTimeZoneWrapper.h"
 
 
@@ -46,8 +45,7 @@
 		// Initialize instance variables
 		PW_fullPatchFontDescriptor = [[NSFontDescriptor fontDescriptorWithFontAttributes:[[NSUserDefaults standardUserDefaults] objectForKey:PWFullPatchFontDescriptorAttributes]] retain];
 		
-		PW_patch = nil;
-		PW_patchURL = nil;
+		PW_patchProxy = nil;
 		[self setCurrentTimeZoneWrapper:[PWTimeZoneWrapper timeZoneWrapperWithName:defaultTimeZoneName]];
 		
 		PW_dateFormatter = [[NSDateFormatter alloc] init];
@@ -78,11 +76,8 @@
 	[PW_fullPatchFontDescriptor release];
 	PW_fullPatchFontDescriptor = nil;
 	
-	[PW_patch release];
-	PW_patch = nil;
-	
-	[PW_patchURL release];
-	PW_patchURL = nil;
+	[PW_patchProxy release];
+	PW_patchProxy = nil;
 	
 	[PW_currentTimeZoneWrapper release];
 	PW_currentTimeZoneWrapper = nil;
@@ -147,22 +142,10 @@
 - (BOOL)readFromURL:(NSURL *)proxyURL ofType:(NSString *)typeName error:(NSError **)outError // NSDocument
 {
 	*outError = nil;
+	[PW_patchProxy release];
+	PW_patchProxy = [[PWDarcsPatchProxy alloc] initWithURL:proxyURL error:outError];
 	
-	NSString *basename = [[[proxyURL absoluteString] lastPathComponent] stringByDeletingPathExtension];
-	NSString *relativePatchPath = [NSString stringWithFormat:@"../patches/%@", [basename stringByAppendingPathExtension:@"gz"]];
-	NSURL *patchURL = [NSURL URLWithString:relativePatchPath relativeToURL:proxyURL];
-	
-	if (PW_patch)
-		[PW_patch release];
-	PW_patch = [[PWDarcsPatch patchWithContentsOfURL:patchURL error:outError] retain];
-	
-	BOOL success = ((PW_patch != nil) && (*outError == nil));
-	if (success)
-	{
-		[PW_patchURL release];
-		PW_patchURL = [patchURL retain];
-	}
-	
+	BOOL success = ((PW_patchProxy != nil) && (*outError == nil));
 	return success;
 }
 
@@ -185,7 +168,7 @@
 
 - (NSString *)patchName
 {
-	return [PW_patch name];
+	return [PW_patchProxy name];
 }
 
 
@@ -193,22 +176,22 @@
 {
 	NSString *typeString = nil;
 	
-	switch ([PW_patch patchType])
+	switch ([PW_patchProxy type])
 	{
 		case PWDarcsUnknownPatchType:
-			if ([PW_patch isRollbackPatch])
+			if ([PW_patchProxy isRollbackPatch])
 				typeString = NSLocalizedStringFromTable(@"Unknown (Rollback)", @"PWDarcsPatch", @"Unknown rollback patch type");
 			else
 				typeString = NSLocalizedStringFromTable(@"Unknown", @"PWDarcsPatch", @"Unknown patch type");
 			break;
 		case PWDarcsChangePatchType:
-			if ([PW_patch isRollbackPatch])
+			if ([PW_patchProxy isRollbackPatch])
 				typeString = NSLocalizedStringFromTable(@"Change (Rollback)", @"PWDarcsPatch", @"Change rollback patch type");
 			else
 				typeString = NSLocalizedStringFromTable(@"Change", @"PWDarcsPatch", @"Change patch type");
 			break;
 		case PWDarcsTagPatchType:
-			if ([PW_patch isRollbackPatch])
+			if ([PW_patchProxy isRollbackPatch])
 				typeString = NSLocalizedStringFromTable(@"Tag (Rollback)", @"PWDarcsPatch", @"Tag rollback patch type");
 			else
 				typeString = NSLocalizedStringFromTable(@"Tag", @"PWDarcsPatch", @"Tag patch type");
@@ -221,13 +204,13 @@
 
 - (NSString *)patchAuthor
 {
-	return [PW_patch author];
+	return [PW_patchProxy author];
 }
 
 
 - (NSString *)patchAuthorEmail
 {
-	return [PW_patch authorEmail];
+	return [PW_patchProxy authorEmail];
 }
 
 
@@ -239,7 +222,7 @@
 
 - (NSCalendarDate *)patchDate
 {
-	NSCalendarDate *dateWithTimeZone = [[PW_patch date] copy];
+	NSCalendarDate *dateWithTimeZone = [[PW_patchProxy date] copy];
 	[dateWithTimeZone setTimeZone:[[self currentTimeZoneWrapper] timeZone]];
 	return dateWithTimeZone;
 }
@@ -247,7 +230,7 @@
 
 - (NSString *)patchString
 {
-	return [PW_patch patchString];
+	return [PW_patchProxy patchString];
 }
 
 
@@ -271,15 +254,9 @@
 }
 
 
-- (NSURL *)repositoryURL
-{
-	return [NSURL URLWithString:@"../.." relativeToURL:PW_patchURL]; // Climb out of the 'patches' and '_darcs' directories
-}
-
-
 - (NSString *)repositoryPath
 {
-	return [[self repositoryURL] path];
+	return [[PW_patchProxy repositoryURL] path];
 }
 
 

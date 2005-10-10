@@ -10,7 +10,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@class PWDarcsPatch;
+@class PWDarcsPatchProxy;
 @class PWTimeZoneWrapper;
 
 
@@ -20,7 +20,7 @@
 	NSFontDescriptor *PW_fullPatchFontDescriptor;
 	
 	@protected
-	PWDarcsPatch *PW_patch;
+	PWDarcsPatchProxy *PW_patchProxy;
 	NSURL *PW_patchURL;
 	PWTimeZoneWrapper *PW_currentTimeZoneWrapper;
 	NSDateFormatter *PW_dateFormatter;
@@ -45,7 +45,6 @@
 - (NSFont *)fullPatchFont;
 - (void)setCurrentTimeZoneWrapper:(PWTimeZoneWrapper *)timeZoneWrapper;
 - (PWTimeZoneWrapper *)currentTimeZoneWrapper;
-- (NSURL *)repositoryURL;
 - (NSString *)repositoryPath;
 
 @end

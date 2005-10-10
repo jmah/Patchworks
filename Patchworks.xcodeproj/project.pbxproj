@@ -61,6 +61,7 @@
 		2818C6CB08F90B9700FD8852 /* PWTimeZoneWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2818C6C708F90B9700FD8852 /* PWTimeZoneWrapper.m */; };
 		2818C6D108F90BDA00FD8852 /* PWTimeZoneWrapperTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2818C6CD08F90BDA00FD8852 /* PWTimeZoneWrapperTest.m */; };
 		283E482608FA503B00772738 /* Test Repository in Resources */ = {isa = PBXBuildFile; fileRef = 283E481A08FA503B00772738 /* Test Repository */; };
+		283E49D708FA9BBB00772738 /* PWDarcsPatchProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 284841C308FA384700EDFDD3 /* PWDarcsPatchProxy.m */; };
 		284842A208FA451100EDFDD3 /* PWDarcsPatchProxyTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 284841F308FA3E3B00EDFDD3 /* PWDarcsPatchProxyTest.m */; };
 		284842A308FA451200EDFDD3 /* PWDarcsPatchProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 284841C308FA384700EDFDD3 /* PWDarcsPatchProxy.m */; };
 		2866FFA508F98E4800D39E2D /* PWDarcsPatch.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2866FFA308F98E4800D39E2D /* PWDarcsPatch.strings */; };
@@ -1076,6 +1077,7 @@
 				2818C6C908F90B9700FD8852 /* PWTimeZoneWrapper.m in Sources */,
 				28BA6C2508F94EAE00333DD4 /* PWApplicationController.m in Sources */,
 				28BA6C3C08F9512700333DD4 /* PWPreferencesController.m in Sources */,
+				283E49D708FA9BBB00772738 /* PWDarcsPatchProxy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
