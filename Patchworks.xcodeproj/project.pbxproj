@@ -990,7 +990,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+			shellScript = "# Run the unit tests in this test bundle.\n# Limit the amoutn of time and memory.\nlet \"MAXTIME_SECS=30\"\nlet \"MAXRAM_KB=100*1024\"\nulimit -H -m $MAXRAM_KB -t $MAXTIME_SECS\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
 		};
 		28015B3208EC9D4800C83A75 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1003,7 +1003,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+			shellScript = "# Run the unit tests in this test bundle.\n# Limit the amoutn of time and memory.\nlet \"MAXTIME_SECS=30\"\nlet \"MAXRAM_KB=100*1024\"\nulimit -H -m $MAXRAM_KB -t $MAXTIME_SECS\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
 		};
 		28015B7E08EC9F3D00C83A75 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1016,7 +1016,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+			shellScript = "# Run the unit tests in this test bundle.\n# Limit the amoutn of time and memory.\nlet \"MAXTIME_SECS=30\"\nlet \"MAXRAM_KB=100*1024\"\nulimit -H -m $MAXRAM_KB -t $MAXTIME_SECS\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
