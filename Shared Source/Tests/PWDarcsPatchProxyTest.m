@@ -82,15 +82,15 @@
 	STAssertEqualObjects([patchProxy name], [patch name],
 		@"Patch name was not as expected.");
 	STAssertEqualObjects([patchProxy author], [patch author],
-		@"Patch name was not as expected.");
+		@"Patch author was not as expected.");
 	STAssertEqualObjects([patchProxy authorEmail], [patch authorEmail],
-		@"Patch name was not as expected.");
+		@"Patch author e-mail was not as expected.");
 	STAssertEqualObjects([patchProxy date], [patch date],
-		@"Patch name was not as expected.");
+		@"Patch date was not as expected.");
 	STAssertEquals([patchProxy type], [patch type],
-		@"Patch name was not as expected.");
+		@"Patch type was not as expected.");
 	STAssertEquals([patchProxy isRollbackPatch], [patch isRollbackPatch],
-		@"Patch name was not as expected.");
+		@"Patch rollback status was not as expected.");
 	
 	[patchProxy release];
 }
