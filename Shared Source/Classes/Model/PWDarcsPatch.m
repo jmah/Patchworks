@@ -16,7 +16,7 @@
 #import <OgreKit/OgreKit.h>
 
 
-NSString *PWDarcsPatchParseException = @"PWDarcsPatchParseException";
+NSString *PWDarcsPatchErrorDomain = @"PWDarcsPatchErrorDomain";
 
 
 @implementation PWDarcsPatch
@@ -26,14 +26,20 @@ NSString *PWDarcsPatchParseException = @"PWDarcsPatchParseException";
 + (id)patchWithContentsOfFile:(NSString *)path error:(NSError **)outError
 {
 	NSData *data = [NSData dataWithContentsOfFile:path options:(unsigned int)NULL error:outError];
-	return [[[self alloc] initWithData:data] autorelease];
+	if (!data)
+		return nil;
+	else
+		return [[[self alloc] initWithData:data error:outError] autorelease];
 }
 
 
 + (id)patchWithContentsOfURL:(NSURL *)aURL error:(NSError **)outError
 {
 	NSData *data = [NSData dataWithContentsOfURL:aURL options:(unsigned int)NULL error:outError];
-	return [[[self alloc] initWithData:data] autorelease];
+	if (!data)
+		return nil;
+	else
+		return [[[self alloc] initWithData:data error:outError] autorelease];
 }
 
 
@@ -47,7 +53,7 @@ NSString *PWDarcsPatchParseException = @"PWDarcsPatchParseException";
 
 #pragma mark Initialization and Deallocation
 
-- (id)initWithData:(NSData *)data // Designated initializer
+- (id)initWithData:(NSData *)data error:(NSError **)outError // Designated initializer
 {
 	if (self = [super init])
 	{
@@ -79,7 +85,11 @@ NSString *PWDarcsPatchParseException = @"PWDarcsPatchParseException";
 			concretePatchClass = [PWDarcsChangePatch class];
 		
 		if (concretePatchClass)
-			newPatch = [[concretePatchClass alloc] initWithPatchString:patchString];
+			newPatch = [[concretePatchClass alloc] initWithPatchString:patchString error:outError];
+		else
+			*outError = [NSError errorWithDomain:PWDarcsPatchErrorDomain
+			                                code:PWDarcsPatchUnknownTypeError
+			                            userInfo:nil];
 		
 		[patchString release];
 		

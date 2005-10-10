@@ -19,7 +19,7 @@
 
 
 #pragma mark Initialization and Deallocation
-- (id)initWithPatchString:(NSString *)patchString; // Designated initializer
+- (id)initWithPatchString:(NSString *)patchString error:(NSError **)outError; // Designated initializer
 
 #pragma mark Accessor Methods
 - (NSString *)longDescription;

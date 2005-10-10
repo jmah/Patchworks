@@ -23,9 +23,7 @@
 	                                         ofType:@"gz"
 	                                    inDirectory:@"Test Patches"];
 	NSError *error = nil;
-	PWDarcsPatch *patch = nil;
-	STAssertNoThrow(patch = [PWDarcsPatch patchWithContentsOfFile:patchPath error:&error],
-		@"Compressed patch threw an exception.");
+	PWDarcsPatch *patch = [PWDarcsPatch patchWithContentsOfFile:patchPath error:&error];
 	STAssertNotNil(patch,
 		@"Compressed patch failed to initialize.");
 	STAssertNil(error,
@@ -63,9 +61,7 @@
 	                                         ofType:@"gz"
 	                                    inDirectory:@"Test Patches"];
 	NSError *error = nil;
-	PWDarcsPatch *patch = nil;
-	STAssertNoThrow(patch = [PWDarcsPatch patchWithContentsOfFile:patchPath error:&error],
-		@"Compressed patch threw an exception.");
+	PWDarcsPatch *patch = [PWDarcsPatch patchWithContentsOfFile:patchPath error:&error];
 	STAssertNotNil(patch,
 		@"Compressed patch failed to initialize.");
 	STAssertNil(error,
@@ -101,9 +97,7 @@
 	                                         ofType:@"gz"
 	                                    inDirectory:@"Test Patches"];
 	NSError *error = nil;
-	PWDarcsPatch *patch = nil;
-	STAssertNoThrow(patch = [PWDarcsPatch patchWithContentsOfFile:patchPath error:&error],
-		@"Uncompressed patch threw an exception.");
+	PWDarcsPatch *patch = [PWDarcsPatch patchWithContentsOfFile:patchPath error:&error];
 	STAssertNotNil(patch,
 		@"Uncompressed patch failed to initialize.");
 	STAssertNil(error,
@@ -139,9 +133,7 @@
 	                                         ofType:@"gz"
 	                                    inDirectory:@"Test Patches"];
 	NSError *error = nil;
-	PWDarcsPatch *patch = nil;
-	STAssertNoThrow(patch = [PWDarcsPatch patchWithContentsOfFile:patchPath error:&error],
-		@"Rollback patch threw an exception.");
+	PWDarcsPatch *patch = [PWDarcsPatch patchWithContentsOfFile:patchPath error:&error];
 	STAssertNotNil(patch,
 		@"Rollback patch failed to initialize.");
 	STAssertNil(error,

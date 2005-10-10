@@ -23,9 +23,7 @@
 	                                         ofType:@"gz"
 	                                    inDirectory:@"Test Patches"];
 	NSError *error = nil;
-	PWDarcsPatch *patch = nil;
-	STAssertNoThrow(patch = [PWDarcsPatch patchWithContentsOfFile:patchPath error:&error],
-		@"Tag patch threw an exception.");
+	PWDarcsPatch *patch = [PWDarcsPatch patchWithContentsOfFile:patchPath error:&error];
 	STAssertNotNil(patch,
 		@"Tag patch failed to initialize.");
 	STAssertNil(error,
@@ -59,9 +57,7 @@
 	                                         ofType:@"gz"
 	                                    inDirectory:@"Test Patches"];
 	NSError *error = nil;
-	PWDarcsPatch *patch = nil;
-	STAssertNoThrow(patch = [PWDarcsPatch patchWithContentsOfFile:patchPath error:&error],
-		@"Rollback tag patch threw an exception.");
+	PWDarcsPatch *patch = [PWDarcsPatch patchWithContentsOfFile:patchPath error:&error];
 	STAssertNotNil(patch,
 		@"Rollback tag patch failed to initialize.");
 	STAssertNil(error,

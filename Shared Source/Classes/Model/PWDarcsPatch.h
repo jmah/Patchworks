@@ -11,7 +11,12 @@
 #import <Cocoa/Cocoa.h>
 
 
-extern NSString *PWDarcsPatchParseException;
+extern NSString *PWDarcsPatchErrorDomain;
+
+enum {
+	PWDarcsPatchUnknownTypeError = 1,
+	PWDarcsPatchParseError,
+};
 
 typedef enum _PWDarcsPatchType {
 	PWDarcsUnknownPatchType = 1,
@@ -22,10 +27,13 @@ typedef enum _PWDarcsPatchType {
 
 @interface PWDarcsPatch : NSObject
 {
+	@private
+	NSString *PW_authorEmail; // Cached version of the author e-mail address
+	
+	@protected
 	NSString *PW_patchString;
 	NSString *PW_name;
 	NSString *PW_author;
-	NSString *PW_authorEmail; // Cached version of the author e-mail address
 	NSCalendarDate *PW_date;
 	BOOL PW_isRollbackPatch;
 }
@@ -36,7 +44,7 @@ typedef enum _PWDarcsPatchType {
 + (id)patchWithContentsOfURL:(NSURL *)aURL error:(NSError **)outError;
 
 #pragma mark Initialization and Deallocation
-- (id)initWithData:(NSData *)data; // Designated initializer
+- (id)initWithData:(NSData *)data error:(NSError **)outError; // Designated initializer
 
 #pragma mark Accessor Methods
 - (NSString *)patchString;

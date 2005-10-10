@@ -25,7 +25,7 @@
 
 #pragma mark Initialization and Deallocation
 
-- (id)initWithPatchString:(NSString *)patchString // Designated initializer
+- (id)initWithPatchString:(NSString *)patchString error:(NSError **)outError // Designated initializer
 {
 	if (self = [super init])
 	{
@@ -77,7 +77,9 @@
 			[patchRegexp release];
 			[self release];
 			self = nil;
-			[NSException raise:PWDarcsPatchParseException format:@"Could not parse darcs patch"];
+			*outError = [NSError errorWithDomain:PWDarcsPatchErrorDomain
+			                                code:PWDarcsPatchParseError
+			                            userInfo:nil];
 		}
 		else
 		{
