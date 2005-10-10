@@ -69,6 +69,24 @@
 }
 
 
+- (void)testBadPatch
+{
+	NSString *badPatchString = @"Here is a string that doesn't represent a patch.";
+	NSData *patchData = [badPatchString dataUsingEncoding:NSASCIIStringEncoding];
+	NSError *error = nil;
+	PWDarcsPatch *patch = [[PWDarcsPatch alloc] initWithData:patchData error:&error];
+	
+	STAssertNil(patch,
+		@"Initializing a bad patch should return nil.");
+	STAssertNotNil(error,
+		@"Initializing a bad patch should generate an error.");
+	STAssertEqualObjects([error domain], PWDarcsPatchErrorDomain,
+		@"Error should be in the PWDarcsPatchErrorDomain.");
+	STAssertEquals([error code], PWDarcsPatchUnknownTypeError,
+		@"Error should be an unknown type error.");
+}
+
+
 @end
 
 
