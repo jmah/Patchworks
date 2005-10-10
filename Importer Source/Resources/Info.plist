@@ -37,7 +37,7 @@
 	<array>
 		<dict>
 			<key>UTTypeIdentifier</key>
-			<string>net.darcs.patch.proxy</string>
+			<string>org.playhaus.Patchworks.darcs.patch.proxy</string>
 			<key>UTTypeConformsTo</key>
 			<array>
 				<string>public.item</string>
@@ -60,7 +60,7 @@
 			<string>MDImporter</string>
 			<key>LSItemContentTypes</key>
 			<array>
-				<string>net.darcs.patch.proxy</string>
+				<string>org.playhaus.Patchworks.darcs.patch.proxy</string>
 			</array>
 		</dict>
 	</array>
