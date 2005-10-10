@@ -17,6 +17,7 @@
 
 
 - (void)testAuthorEmail;
+- (void)testEquality;
 
 @end
 

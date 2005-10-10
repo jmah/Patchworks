@@ -44,6 +44,31 @@
 }
 
 
+- (void)testEquality
+{
+	NSBundle *myBundle = [NSBundle bundleForClass:[self class]];
+	NSString *patchPath = [myBundle pathForResource:@"03-Change-Compressed-LongDescription"
+	                                         ofType:@"gz"
+	                                    inDirectory:@"Test Patches"];
+	NSError *error1 = nil;
+	PWDarcsPatch *patch1 = [PWDarcsPatch patchWithContentsOfFile:patchPath error:&error1];
+	STAssertNotNil(patch1,
+				   @"Patch failed to initialize.");
+	STAssertNil(error1,
+				@"Patch genereated an error.");
+	
+	NSError *error2 = nil;
+	PWDarcsPatch *patch2 = [PWDarcsPatch patchWithContentsOfURL:[NSURL fileURLWithPath:patchPath] error:&error2];
+	STAssertNotNil(patch2,
+		@"Patch failed to initialize.");
+	STAssertNil(error2,
+		@"Patch genereated an error.");
+	
+	STAssertEqualObjects(patch1, patch2,
+		@"Identical patches were not equal.");
+}
+
+
 @end
 
 

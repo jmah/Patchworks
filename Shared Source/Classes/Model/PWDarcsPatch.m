@@ -114,6 +114,22 @@ NSString *PWDarcsPatchErrorDomain = @"PWDarcsPatchErrorDomain";
 
 
 
+#pragma mark Comparison
+
+- (BOOL)isEqual:(id)otherObject
+{
+	BOOL equal = NO;
+	
+	if ([otherObject isKindOfClass:[PWDarcsPatch class]])
+	{
+		equal = [[(PWDarcsPatch *)otherObject patchString] isEqualToString:[self patchString]];
+	}
+	
+	return equal;
+}
+
+
+
 #pragma mark Accessor Methods
 
 - (NSString *)patchString
