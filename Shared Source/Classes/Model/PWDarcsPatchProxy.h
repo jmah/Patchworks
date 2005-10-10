@@ -47,6 +47,7 @@
 - (NSString *)name;
 - (NSString *)author;
 - (NSString *)authorEmail;
+- (NSString *)authorNameOnly;
 - (NSCalendarDate *)date;
 - (PWDarcsPatchType)type;
 - (BOOL)isRollbackPatch;

@@ -85,6 +85,8 @@
 		@"Patch author was not as expected.");
 	STAssertEqualObjects([patchProxy authorEmail], [patch authorEmail],
 		@"Patch author e-mail was not as expected.");
+	STAssertEqualObjects([patchProxy authorNameOnly], [patch authorNameOnly],
+		@"Patch author name was not as expected.");
 	STAssertEqualObjects([patchProxy date], [patch date],
 		@"Patch date was not as expected.");
 	STAssertEquals([patchProxy type], [patch type],

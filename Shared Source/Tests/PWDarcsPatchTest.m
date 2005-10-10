@@ -24,6 +24,7 @@
 		@"plain@example.org", @"plain@example.org",
 		@"first@example.com", @"<first@example.com> <second@example.com>",
 		@"mailfirst@domain.com", @"<mailfirst@domain.com> Name Second",
+		@"spamproof@domain.com", @"Don't Spam Me <spamproof at domain.com>",
 		nil];
 	NSEnumerator *authorEnum = [emailByAuthor keyEnumerator];
 	NSString *author = nil;
@@ -41,6 +42,35 @@
 	
 	STAssertEquals(count, [emailByAuthor count],
 		@"All authors and e-mails weren't processed.");
+}
+
+
+- (void)testAuthorNameOnly
+{
+	NSDictionary *nameByAuthor = [NSDictionary dictionaryWithObjectsAndKeys:
+		@"Jonathon Mah", @"Jonathon Mah <jonathon@playhaus.org>",
+		@"bracketed@example.org", @"<bracketed@example.org>",
+		@"plain@example.org", @"plain@example.org",
+		@"User Name", @"User <nickname@address.org> Name",
+		@"Name Second", @"<mailfirst@domain.com> Name Second",
+		@"Don't Spam Me", @"Don't Spam Me <spamproof at domain.com>",
+		nil];
+	NSEnumerator *authorEnum = [nameByAuthor keyEnumerator];
+	NSString *author = nil;
+	unsigned count = 0u;
+	while (author = [authorEnum nextObject])
+	{
+		count++;
+		NSString *name = [NSString stringWithFormat:@"Patch %u", count];
+		PWDarcsPatch *patch = [[PWDarcsPatch alloc] initWithName:name
+		                                                  author:author
+		                                                    date:[NSCalendarDate calendarDate]];
+		STAssertEqualObjects([patch authorNameOnly], [nameByAuthor objectForKey:author],
+			@"Author name didn't correctly parse.");
+	}
+	
+	STAssertEquals(count, [nameByAuthor count],
+		@"All authors and names weren't processed.");
 }
 
 

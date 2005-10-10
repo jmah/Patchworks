@@ -19,6 +19,10 @@
 NSString *PWDarcsPatchErrorDomain = @"PWDarcsPatchErrorDomain";
 
 
+// Cache the e-mail regular expression
+static OGRegularExpression *emailRegexp = nil;
+
+
 @implementation PWDarcsPatch
 
 #pragma mark Convenience Methods
@@ -52,6 +56,13 @@ NSString *PWDarcsPatchErrorDomain = @"PWDarcsPatchErrorDomain";
 
 
 #pragma mark Initialization and Deallocation
+
++ (void)initialize
+{
+	if (!emailRegexp)
+		// emailRegexp unescaped pattern: "\s*<?(?<user>[-\w+.]{1,64})(?:@|\s+at\s+)(?<host>[-\w+.]{3,255})>?\s*";
+		emailRegexp = [[OGRegularExpression alloc] initWithString:@"\\s*<?(?<user>[-\\w+.]{1,64})(?:@|\\s+at\\s+)(?<host>[-\\w+.]{3,255})>?\\s*"];	
+}
 
 - (id)initWithData:(NSData *)data error:(NSError **)outError // Designated initializer
 {
@@ -181,19 +192,42 @@ NSString *PWDarcsPatchErrorDomain = @"PWDarcsPatchErrorDomain";
 
 - (NSString *)authorEmail
 {
-	// Cache the e-mail regular expression
-	static OGRegularExpression *emailRegexp = nil;
-	if (!emailRegexp)
-		emailRegexp = [[OGRegularExpression alloc] initWithString:@"([-\\w+.]{1,64}@[-\\w+.]{1,255})"];
-	
 	if (!PW_authorEmail)
 	{
 		// Try to parse the e-mail address out of the author field
 		OGRegularExpressionMatch *match = [emailRegexp matchInString:[self author]];
 		if ([match count] > 0)
-			PW_authorEmail = [[match lastMatchSubstring] retain];
+			// The following format string is unfortunate. It represents:
+			// [string]@[string]
+			PW_authorEmail = [[NSString alloc] initWithFormat:@"%@@%@", [match substringNamed:@"user"], [match substringNamed:@"host"]];
 	}
 	return PW_authorEmail;
+}
+
+
+- (NSString *)authorNameOnly
+{
+	// Cache the trimming character set
+	static NSMutableCharacterSet *trimCharacterSet = nil;
+	if (!trimCharacterSet)
+	{
+		trimCharacterSet = [[NSCharacterSet whitespaceCharacterSet] mutableCopy];
+		[trimCharacterSet addCharactersInString:@"<>"];
+	}
+	
+	if (!PW_authorNameOnly)
+	{
+		// Try to parse only the author name (excluding the e-mail address) out of the author field
+		OGRegularExpressionMatch *match = [emailRegexp matchInString:[self author]];
+		NSString *author = [[NSString stringWithFormat:@"%@ %@", [match prematchString], [match postmatchString]] stringByTrimmingCharactersInSet:trimCharacterSet];
+		
+		if ([author length] > 0)
+			PW_authorNameOnly = [author retain];
+		else
+			PW_authorNameOnly = [[[self author] stringByTrimmingCharactersInSet:trimCharacterSet] retain];
+	}
+	
+	return PW_authorNameOnly;
 }
 
 

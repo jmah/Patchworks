@@ -17,6 +17,7 @@
 
 
 - (void)testAuthorEmail;
+- (void)testAuthorNameOnly;
 - (void)testEquality;
 - (void)testBadPatch;
 

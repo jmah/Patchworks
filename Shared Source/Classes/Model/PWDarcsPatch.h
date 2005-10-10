@@ -29,6 +29,7 @@ typedef enum _PWDarcsPatchType {
 {
 	@private
 	NSString *PW_authorEmail; // Cached version of the author e-mail address
+	NSString *PW_authorNameOnly; // Cached version of the author name only
 	
 	@protected
 	NSString *PW_patchString;
@@ -51,6 +52,7 @@ typedef enum _PWDarcsPatchType {
 - (NSString *)name;
 - (NSString *)author;
 - (NSString *)authorEmail;
+- (NSString *)authorNameOnly;
 - (NSCalendarDate *)date;
 - (PWDarcsPatchType)type;
 - (BOOL)isRollbackPatch;
