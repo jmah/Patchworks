@@ -45,7 +45,7 @@
 		@"Patch date didn't correctly parse.");
 	STAssertFalse([patch isRollbackPatch],
 		@"Rollback flag didn't correctly parse.");
-	STAssertEquals([patch patchType], PWDarcsTagPatchType,
+	STAssertEquals([patch type], PWDarcsTagPatchType,
 		@"Patch type not correctly set.");
 }
 
@@ -79,7 +79,7 @@
 		@"Patch date didn't correctly parse.");
 	STAssertTrue([patch isRollbackPatch],
 		@"Rollback flag didn't correctly parse.");
-	STAssertEquals([patch patchType], PWDarcsTagPatchType,
+	STAssertEquals([patch type], PWDarcsTagPatchType,
 		@"Patch type not correctly set.");
 }
 

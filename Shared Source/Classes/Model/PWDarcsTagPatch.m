@@ -113,7 +113,7 @@
 
 #pragma mark Accessor Methods
 
-- (PWDarcsPatchType)patchType
+- (PWDarcsPatchType)type
 {
 	return PWDarcsTagPatchType;
 }

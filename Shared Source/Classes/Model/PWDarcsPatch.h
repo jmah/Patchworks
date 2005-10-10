@@ -52,7 +52,7 @@ typedef enum _PWDarcsPatchType {
 - (NSString *)author;
 - (NSString *)authorEmail;
 - (NSCalendarDate *)date;
-- (PWDarcsPatchType)patchType;
+- (PWDarcsPatchType)type;
 - (BOOL)isRollbackPatch;
 
 @end

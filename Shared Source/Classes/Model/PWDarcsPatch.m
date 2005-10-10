@@ -182,9 +182,9 @@ NSString *PWDarcsPatchErrorDomain = @"PWDarcsPatchErrorDomain";
 }
 
 
-- (PWDarcsPatchType)patchType
+- (PWDarcsPatchType)type
 {
-	[NSException raise:NSObjectNotAvailableException format:@"-[PWDarcsPatch patchType] not defined for abstract class"];
+	[NSException raise:NSObjectNotAvailableException format:@"-[PWDarcsPatch type] not defined for abstract class"];
 	return PWDarcsUnknownPatchType;
 }
 

@@ -129,7 +129,7 @@
 }
 
 
-- (PWDarcsPatchType)patchType // PWDarcsPatch
+- (PWDarcsPatchType)type // PWDarcsPatch
 {
 	return PWDarcsChangePatchType;
 }
