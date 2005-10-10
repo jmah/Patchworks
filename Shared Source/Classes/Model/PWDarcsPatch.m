@@ -76,13 +76,23 @@ NSString *PWDarcsPatchErrorDomain = @"PWDarcsPatchErrorDomain";
 		PWDarcsPatch *newPatch = nil; // This will be a concrete subclass of PWDarcsPatch
 		
 		// Check if the first five characters are '[TAG '
-		NSString *patchString = [[NSString alloc] initWithData:uncompressedData encoding:NSUTF8StringEncoding];
-		NSString *patchStartString = [patchString substringToIndex:5];
+		static OGRegularExpression *patchTypeRegexp = nil;
+		if (!patchTypeRegexp)
+			// patchTypeRegexp unescaped pattern: "^\[(?<is_tag>TAG )?.+\n.*\*(?:\*|-)\d{14}(?:\] \{?)?$";
+			patchTypeRegexp = [[OGRegularExpression alloc] initWithString:@"^\\[(?<is_tag>TAG )?.+\\n.*\\*(?:\\*|-)\\d{14}(?:\\] \\{?)?$"
+			                                                      options:OgreCaptureGroupOption
+			                                                       syntax:OgreRubySyntax
+			                                              escapeCharacter:OgreBackslashCharacter];
 		
-		if ([patchStartString isEqualToString:@"[TAG "])
-			concretePatchClass = [PWDarcsTagPatch class];
-		else if ([patchStartString characterAtIndex:0] == '[')
-			concretePatchClass = [PWDarcsChangePatch class];
+		NSString *patchString = [[NSString alloc] initWithData:uncompressedData encoding:NSUTF8StringEncoding];
+		OGRegularExpressionMatch *match = [patchTypeRegexp matchInString:patchString];
+		if ([match count] > 0)
+		{
+			if ([[match substringNamed:@"is_tag"] isEqualToString:@"TAG "])
+				concretePatchClass = [PWDarcsTagPatch class];
+			else
+				concretePatchClass = [PWDarcsChangePatch class];
+		}
 		
 		if (concretePatchClass)
 			newPatch = [[concretePatchClass alloc] initWithPatchString:patchString error:outError];
