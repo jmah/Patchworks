@@ -4,6 +4,25 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
+	<key>CFBundleDocumentTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string>darcspatchproxy</string>
+			</array>
+			<key>CFBundleTypeName</key>
+			<string>Darcs Patch</string>
+			<key>CFBundleTypeRole</key>
+			<string>Viewer</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>net.darcs.patch.proxy</string>
+			</array>
+			<key>NSDocumentClass</key>
+			<string>PWDarcsPatchProxyDocument</string>
+		</dict>
+	</array>
 	<key>CFBundleExecutable</key>
 	<string>Patchworks</string>
 	<key>CFBundleIconFile</key>
@@ -22,44 +41,29 @@
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
-	
 	<key>UTExportedTypeDeclarations</key>
 	<array>
 		<dict>
-			<key>UTTypeIdentifier</key>
-			<string>net.darcs.patch</string>
-			<key>UTTypeReferenceURL</key>
-			<string>http://darcs.net/</string>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.item</string>
+				<string>public.content</string>
+			</array>
 			<key>UTTypeDescription</key>
 			<string>Darcs Patch</string>
 			<key>UTTypeIconFile</key>
 			<string>asdfasdf.icns</string>
-			<key>UTTypeConformsTo</key>
-			<array>
-				<string>org.gnu.gnu-zip-archive</string>
-				<string>public.content</string>
-			</array>
+			<key>UTTypeIdentifier</key>
+			<string>net.darcs.patch.proxy</string>
+			<key>UTTypeReferenceURL</key>
+			<string>http://darcs.net/</string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
 				<key>public.filename-extension</key>
 				<array>
-					<string>darcspatch</string>
+					<string>darcspatchproxy</string>
 				</array>
 			</dict>
-		</dict>
-	</array>
-	
-	<key>CFBundleDocumentTypes</key>
-	<array>
-		<dict>
-			<key>LSItemContentTypes</key>
-			<array>
-				<string>net.darcs.patch</string>
-			</array>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>NSDocumentClass</key>
-			<string>MyDocument</string>
 		</dict>
 	</array>
 </dict>

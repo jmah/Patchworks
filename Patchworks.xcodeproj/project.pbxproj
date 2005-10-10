@@ -51,9 +51,16 @@
 		28015CCF08ED54B800C83A75 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */; };
 		2803BDAF08ED905C00111E58 /* Test Patches in Resources */ = {isa = PBXBuildFile; fileRef = 2803BDAC08ED905C00111E58 /* Test Patches */; };
 		2818C4FF08F7BC1700FD8852 /* PWDarcsTagPatchTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2818C4FD08F7BC1600FD8852 /* PWDarcsTagPatchTest.m */; };
+		2818C55E08F8190C00FD8852 /* PWDarcsPatchProxyDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 2818C55D08F8190A00FD8852 /* PWDarcsPatchProxyDocument.m */; };
+		2818C58508F8225E00FD8852 /* PWDarcsPatchProxyDocument.nib in Resources */ = {isa = PBXBuildFile; fileRef = 2818C58308F8225E00FD8852 /* PWDarcsPatchProxyDocument.nib */; };
+		2818C63908F83C9D00FD8852 /* PWDarcsTagPatch.m in Sources */ = {isa = PBXBuildFile; fileRef = 289F12DD08F04D3500E9D926 /* PWDarcsTagPatch.m */; };
+		2818C63A08F83C9D00FD8852 /* PWDarcsChangePatch.m in Sources */ = {isa = PBXBuildFile; fileRef = 289F12DA08F04D3500E9D926 /* PWDarcsChangePatch.m */; };
+		2818C63D08F83CA000FD8852 /* NSData+PWzlib.m in Sources */ = {isa = PBXBuildFile; fileRef = 28015C8E08ED4A1D00C83A75 /* NSData+PWzlib.m */; };
+		2818C63E08F83CA400FD8852 /* PWDarcsPatch.m in Sources */ = {isa = PBXBuildFile; fileRef = 289F12DB08F04D3500E9D926 /* PWDarcsPatch.m */; };
 		2818C6C908F90B9700FD8852 /* PWTimeZoneWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2818C6C708F90B9700FD8852 /* PWTimeZoneWrapper.m */; };
 		2818C6CB08F90B9700FD8852 /* PWTimeZoneWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2818C6C708F90B9700FD8852 /* PWTimeZoneWrapper.m */; };
 		2818C6D108F90BDA00FD8852 /* PWTimeZoneWrapperTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2818C6CD08F90BDA00FD8852 /* PWTimeZoneWrapperTest.m */; };
+		2866FFA508F98E4800D39E2D /* PWDarcsPatch.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2866FFA308F98E4800D39E2D /* PWDarcsPatch.strings */; };
 		289F13DE08F6A3BE00E9D926 /* OgreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 289F13DD08F6A3BE00E9D926 /* OgreKit.framework */; };
 		289F13DF08F6A3BE00E9D926 /* OgreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 289F13DD08F6A3BE00E9D926 /* OgreKit.framework */; };
 		289F13E008F6A3BE00E9D926 /* OgreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 289F13DD08F6A3BE00E9D926 /* OgreKit.framework */; };
@@ -69,14 +76,12 @@
 		289F14EB08F70A4900E9D926 /* PWDarcsPatchTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 289F12E508F04D4A00E9D926 /* PWDarcsPatchTest.m */; };
 		289F159A08F76B3300E9D926 /* PWDarcsChangePatchTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 289F159808F76B3300E9D926 /* PWDarcsChangePatchTest.m */; };
 		289F15D808F7A3C800E9D926 /* PWDarcsPatch+TestingMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 289F15D608F7A3C700E9D926 /* PWDarcsPatch+TestingMethods.m */; };
-		28FCD3F308EC577900A970FA /* MyDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FCD3E308EC577900A970FA /* MyDocument.m */; };
 		28BA6C2508F94EAE00333DD4 /* PWApplicationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28BA6C1508F94DF800333DD4 /* PWApplicationController.m */; };
 		28BA6C3C08F9512700333DD4 /* PWPreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28BA6C3B08F9512400333DD4 /* PWPreferencesController.m */; };
 		28BA6D4308F9601C00333DD4 /* RegistrationDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 28BA6D4108F9601500333DD4 /* RegistrationDefaults.plist */; };
 		28FCD3F408EC577900A970FA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FCD3E708EC577900A970FA /* main.m */; };
 		28FCD3F508EC577900A970FA /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 28FCD3EA08EC577900A970FA /* Credits.rtf */; };
 		28FCD3F708EC577900A970FA /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = 28FCD3EE08EC577900A970FA /* MainMenu.nib */; };
-		28FCD3F808EC577900A970FA /* MyDocument.nib in Resources */ = {isa = PBXBuildFile; fileRef = 28FCD3F008EC577900A970FA /* MyDocument.nib */; };
 		28FCD3F908EC577900A970FA /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 28FCD3F208EC577900A970FA /* Info.plist */; };
 		8D15AC340486D014006FF6A4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */; };
 /* End PBXBuildFile section */
@@ -215,10 +220,14 @@
 		2803BDAC08ED905C00111E58 /* Test Patches */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Test Patches"; sourceTree = "<group>"; };
 		2818C4FC08F7BC1600FD8852 /* PWDarcsTagPatchTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWDarcsTagPatchTest.h; sourceTree = "<group>"; };
 		2818C4FD08F7BC1600FD8852 /* PWDarcsTagPatchTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWDarcsTagPatchTest.m; sourceTree = "<group>"; };
+		2818C55C08F8190A00FD8852 /* PWDarcsPatchProxyDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWDarcsPatchProxyDocument.h; sourceTree = "<group>"; };
+		2818C55D08F8190A00FD8852 /* PWDarcsPatchProxyDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWDarcsPatchProxyDocument.m; sourceTree = "<group>"; };
+		2818C58408F8225E00FD8852 /* en */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = en; path = en.lproj/PWDarcsPatchProxyDocument.nib; sourceTree = "<group>"; };
 		2818C6C608F90B9700FD8852 /* PWTimeZoneWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWTimeZoneWrapper.h; sourceTree = "<group>"; };
 		2818C6C708F90B9700FD8852 /* PWTimeZoneWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWTimeZoneWrapper.m; sourceTree = "<group>"; };
 		2818C6CC08F90BDA00FD8852 /* PWTimeZoneWrapperTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWTimeZoneWrapperTest.h; sourceTree = "<group>"; };
 		2818C6CD08F90BDA00FD8852 /* PWTimeZoneWrapperTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWTimeZoneWrapperTest.m; sourceTree = "<group>"; };
+		2866FFA408F98E4800D39E2D /* en */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/PWDarcsPatch.strings; sourceTree = "<group>"; };
 		289F12DA08F04D3500E9D926 /* PWDarcsChangePatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWDarcsChangePatch.m; sourceTree = "<group>"; };
 		289F12DB08F04D3500E9D926 /* PWDarcsPatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWDarcsPatch.m; sourceTree = "<group>"; };
 		289F12DC08F04D3500E9D926 /* PWDarcsPatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWDarcsPatch.h; sourceTree = "<group>"; };
@@ -241,12 +250,9 @@
 		28BA6C3B08F9512400333DD4 /* PWPreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWPreferencesController.m; sourceTree = "<group>"; };
 		28BA6D4108F9601500333DD4 /* RegistrationDefaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = RegistrationDefaults.plist; path = Resources/RegistrationDefaults.plist; sourceTree = "<group>"; };
 		28EB4A0408F02EF000126AE9 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
-		28FCD3E208EC577900A970FA /* MyDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDocument.h; sourceTree = "<group>"; };
-		28FCD3E308EC577900A970FA /* MyDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDocument.m; sourceTree = "<group>"; };
 		28FCD3E708EC577900A970FA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		28FCD3E808EC577900A970FA /* Patchworks_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Patchworks_Prefix.pch; sourceTree = "<group>"; };
 		28FCD3EF08EC577900A970FA /* en */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = en; path = en.lproj/MainMenu.nib; sourceTree = "<group>"; };
-		28FCD3F108EC577900A970FA /* en */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = en; path = en.lproj/MyDocument.nib; sourceTree = "<group>"; };
 		28FCD3F208EC577900A970FA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Info.plist; sourceTree = "<group>"; };
 		2A37F4C4FDCFA73011CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		2A37F4C5FDCFA73011CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
@@ -495,8 +501,8 @@
 		28FCD3E108EC577900A970FA /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				28FCD3E208EC577900A970FA /* MyDocument.h */,
-				28FCD3E308EC577900A970FA /* MyDocument.m */,
+				2818C55C08F8190A00FD8852 /* PWDarcsPatchProxyDocument.h */,
+				2818C55D08F8190A00FD8852 /* PWDarcsPatchProxyDocument.m */,
 				28BA6C1408F94DF800333DD4 /* PWApplicationController.h */,
 				28BA6C1508F94DF800333DD4 /* PWApplicationController.m */,
 				28BA6C3A08F9512400333DD4 /* PWPreferencesController.h */,
@@ -537,9 +543,10 @@
 				28FCD3F208EC577900A970FA /* Info.plist */,
 				28015ABD08EC8E8B00C83A75 /* InfoPlist.strings */,
 				28015AF808EC9C9700C83A75 /* Patchworks Test-Info.plist */,
+				2866FFA308F98E4800D39E2D /* PWDarcsPatch.strings */,
 				28FCD3EA08EC577900A970FA /* Credits.rtf */,
 				28FCD3EE08EC577900A970FA /* MainMenu.nib */,
-				28FCD3F008EC577900A970FA /* MyDocument.nib */,
+				2818C58308F8225E00FD8852 /* PWDarcsPatchProxyDocument.nib */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -946,10 +953,11 @@
 			files = (
 				28FCD3F508EC577900A970FA /* Credits.rtf in Resources */,
 				28FCD3F708EC577900A970FA /* MainMenu.nib in Resources */,
-				28FCD3F808EC577900A970FA /* MyDocument.nib in Resources */,
 				28FCD3F908EC577900A970FA /* Info.plist in Resources */,
 				28015ABF08EC8E8B00C83A75 /* InfoPlist.strings in Resources */,
+				2818C58508F8225E00FD8852 /* PWDarcsPatchProxyDocument.nib in Resources */,
 				28BA6D4308F9601C00333DD4 /* RegistrationDefaults.plist in Resources */,
+				2866FFA508F98E4800D39E2D /* PWDarcsPatch.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1043,8 +1051,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				28FCD3F308EC577900A970FA /* MyDocument.m in Sources */,
 				28FCD3F408EC577900A970FA /* main.m in Sources */,
+				2818C55E08F8190C00FD8852 /* PWDarcsPatchProxyDocument.m in Sources */,
+				2818C63908F83C9D00FD8852 /* PWDarcsTagPatch.m in Sources */,
+				2818C63A08F83C9D00FD8852 /* PWDarcsChangePatch.m in Sources */,
+				2818C63D08F83CA000FD8852 /* NSData+PWzlib.m in Sources */,
+				2818C63E08F83CA400FD8852 /* PWDarcsPatch.m in Sources */,
 				2818C6C908F90B9700FD8852 /* PWTimeZoneWrapper.m in Sources */,
 				28BA6C2508F94EAE00333DD4 /* PWApplicationController.m in Sources */,
 				28BA6C3C08F9512700333DD4 /* PWPreferencesController.m in Sources */,
@@ -1096,6 +1108,22 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
+		2818C58308F8225E00FD8852 /* PWDarcsPatchProxyDocument.nib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2818C58408F8225E00FD8852 /* en */,
+			);
+			name = PWDarcsPatchProxyDocument.nib;
+			sourceTree = "<group>";
+		};
+		2866FFA308F98E4800D39E2D /* PWDarcsPatch.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2866FFA408F98E4800D39E2D /* en */,
+			);
+			name = PWDarcsPatch.strings;
+			sourceTree = "<group>";
+		};
 		28FCD3EA08EC577900A970FA /* Credits.rtf */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1110,14 +1138,6 @@
 				28FCD3EF08EC577900A970FA /* en */,
 			);
 			name = MainMenu.nib;
-			sourceTree = "<group>";
-		};
-		28FCD3F008EC577900A970FA /* MyDocument.nib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				28FCD3F108EC577900A970FA /* en */,
-			);
-			name = MyDocument.nib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

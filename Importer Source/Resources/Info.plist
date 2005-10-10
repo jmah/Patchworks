@@ -37,17 +37,17 @@
 	<array>
 		<dict>
 			<key>UTTypeIdentifier</key>
-			<string>net.darcs.patch</string>
+			<string>net.darcs.patch.proxy</string>
 			<key>UTTypeConformsTo</key>
 			<array>
-				<string>org.gnu.gnu-zip-archive</string>
+				<string>public.item</string>
 				<string>public.content</string>
 			</array>
 			<key>UTTypeTagSpecification</key>
 			<dict>
 				<key>public.filename-extension</key>
 				<array>
-					<string>darcspatch</string>
+					<string>darcspatchproxy</string>
 				</array>
 			</dict>
 		</dict>
@@ -60,7 +60,7 @@
 			<string>MDImporter</string>
 			<key>LSItemContentTypes</key>
 			<array>
-				<string>net.darcs.patch</string>
+				<string>net.darcs.patch.proxy</string>
 			</array>
 		</dict>
 	</array>

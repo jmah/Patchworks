@@ -1,0 +1,14 @@
+{
+    IBClasses = (
+        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {
+            ACTIONS = {emailAuthor = id; }; 
+            CLASS = PWDarcsPatchProxyDocument; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {dateTextField = NSTextField; }; 
+            SUPERCLASS = NSDocument; 
+        }, 
+        {CLASS = PWTimeZoneWrapper; LANGUAGE = ObjC; SUPERCLASS = NSObject; }
+    ); 
+    IBVersion = 1; 
+}
