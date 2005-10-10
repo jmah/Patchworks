@@ -60,6 +60,9 @@
 		2818C6C908F90B9700FD8852 /* PWTimeZoneWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2818C6C708F90B9700FD8852 /* PWTimeZoneWrapper.m */; };
 		2818C6CB08F90B9700FD8852 /* PWTimeZoneWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2818C6C708F90B9700FD8852 /* PWTimeZoneWrapper.m */; };
 		2818C6D108F90BDA00FD8852 /* PWTimeZoneWrapperTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2818C6CD08F90BDA00FD8852 /* PWTimeZoneWrapperTest.m */; };
+		283E482608FA503B00772738 /* Test Repository in Resources */ = {isa = PBXBuildFile; fileRef = 283E481A08FA503B00772738 /* Test Repository */; };
+		284842A208FA451100EDFDD3 /* PWDarcsPatchProxyTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 284841F308FA3E3B00EDFDD3 /* PWDarcsPatchProxyTest.m */; };
+		284842A308FA451200EDFDD3 /* PWDarcsPatchProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 284841C308FA384700EDFDD3 /* PWDarcsPatchProxy.m */; };
 		2866FFA508F98E4800D39E2D /* PWDarcsPatch.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2866FFA308F98E4800D39E2D /* PWDarcsPatch.strings */; };
 		289F13DE08F6A3BE00E9D926 /* OgreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 289F13DD08F6A3BE00E9D926 /* OgreKit.framework */; };
 		289F13DF08F6A3BE00E9D926 /* OgreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 289F13DD08F6A3BE00E9D926 /* OgreKit.framework */; };
@@ -227,6 +230,11 @@
 		2818C6C708F90B9700FD8852 /* PWTimeZoneWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWTimeZoneWrapper.m; sourceTree = "<group>"; };
 		2818C6CC08F90BDA00FD8852 /* PWTimeZoneWrapperTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWTimeZoneWrapperTest.h; sourceTree = "<group>"; };
 		2818C6CD08F90BDA00FD8852 /* PWTimeZoneWrapperTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWTimeZoneWrapperTest.m; sourceTree = "<group>"; };
+		283E481A08FA503B00772738 /* Test Repository */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Test Repository"; sourceTree = "<group>"; };
+		284841C208FA384600EDFDD3 /* PWDarcsPatchProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWDarcsPatchProxy.h; sourceTree = "<group>"; };
+		284841C308FA384700EDFDD3 /* PWDarcsPatchProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWDarcsPatchProxy.m; sourceTree = "<group>"; };
+		284841F208FA3E3B00EDFDD3 /* PWDarcsPatchProxyTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWDarcsPatchProxyTest.h; sourceTree = "<group>"; };
+		284841F308FA3E3B00EDFDD3 /* PWDarcsPatchProxyTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWDarcsPatchProxyTest.m; sourceTree = "<group>"; };
 		2866FFA408F98E4800D39E2D /* en */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/PWDarcsPatch.strings; sourceTree = "<group>"; };
 		289F12DA08F04D3500E9D926 /* PWDarcsChangePatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWDarcsChangePatch.m; sourceTree = "<group>"; };
 		289F12DB08F04D3500E9D926 /* PWDarcsPatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWDarcsPatch.m; sourceTree = "<group>"; };
@@ -423,6 +431,8 @@
 				289F12DA08F04D3500E9D926 /* PWDarcsChangePatch.m */,
 				289F12DF08F04D3500E9D926 /* PWDarcsTagPatch.h */,
 				289F12DD08F04D3500E9D926 /* PWDarcsTagPatch.m */,
+				284841C208FA384600EDFDD3 /* PWDarcsPatchProxy.h */,
+				284841C308FA384700EDFDD3 /* PWDarcsPatchProxy.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -446,6 +456,7 @@
 			children = (
 				28015B3708EC9D4800C83A75 /* Shared Source Test-Info.plist */,
 				2803BDAC08ED905C00111E58 /* Test Patches */,
+				283E481A08FA503B00772738 /* Test Repository */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -463,6 +474,8 @@
 				289F159808F76B3300E9D926 /* PWDarcsChangePatchTest.m */,
 				2818C4FC08F7BC1600FD8852 /* PWDarcsTagPatchTest.h */,
 				2818C4FD08F7BC1600FD8852 /* PWDarcsTagPatchTest.m */,
+				284841F208FA3E3B00EDFDD3 /* PWDarcsPatchProxyTest.h */,
+				284841F308FA3E3B00EDFDD3 /* PWDarcsPatchProxyTest.m */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -937,6 +950,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2803BDAF08ED905C00111E58 /* Test Patches in Resources */,
+				283E482608FA503B00772738 /* Test Repository in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1037,6 +1051,8 @@
 				289F159A08F76B3300E9D926 /* PWDarcsChangePatchTest.m in Sources */,
 				289F15D808F7A3C800E9D926 /* PWDarcsPatch+TestingMethods.m in Sources */,
 				2818C4FF08F7BC1700FD8852 /* PWDarcsTagPatchTest.m in Sources */,
+				284842A208FA451100EDFDD3 /* PWDarcsPatchProxyTest.m in Sources */,
+				284842A308FA451200EDFDD3 /* PWDarcsPatchProxy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
