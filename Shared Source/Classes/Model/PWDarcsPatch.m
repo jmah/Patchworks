@@ -23,16 +23,16 @@ NSString *PWDarcsPatchParseException = @"PWDarcsPatchParseException";
 
 #pragma mark Convenience Methods
 
-+ (id)patchWithContentsOfFile:(NSString *)path error:(NSError **)errorPtr
++ (id)patchWithContentsOfFile:(NSString *)path error:(NSError **)outError
 {
-	NSData *data = [NSData dataWithContentsOfFile:path options:(unsigned int)NULL error:errorPtr];
+	NSData *data = [NSData dataWithContentsOfFile:path options:(unsigned int)NULL error:outError];
 	return [[[self alloc] initWithData:data] autorelease];
 }
 
 
-+ (id)patchWithContentsOfURL:(NSURL *)aURL error:(NSError **)errorPtr
++ (id)patchWithContentsOfURL:(NSURL *)aURL error:(NSError **)outError
 {
-	NSData *data = [NSData dataWithContentsOfURL:aURL options:(unsigned int)NULL error:errorPtr];
+	NSData *data = [NSData dataWithContentsOfURL:aURL options:(unsigned int)NULL error:outError];
 	return [[[self alloc] initWithData:data] autorelease];
 }
 

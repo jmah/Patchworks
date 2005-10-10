@@ -32,8 +32,8 @@ typedef enum _PWDarcsPatchType {
 
 
 #pragma mark Convenience Methods
-+ (id)patchWithContentsOfFile:(NSString *)path error:(NSError **)errorPtr;
-+ (id)patchWithContentsOfURL:(NSURL *)aURL error:(NSError **)errorPtr;
++ (id)patchWithContentsOfFile:(NSString *)path error:(NSError **)outError;
++ (id)patchWithContentsOfURL:(NSURL *)aURL error:(NSError **)outError;
 
 #pragma mark Initialization and Deallocation
 - (id)initWithData:(NSData *)data; // Designated initializer
