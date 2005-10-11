@@ -26,12 +26,37 @@
 				);
 			};
 			dependencies = (
+				28E7042408FC09C500B5E7CD /* PBXTargetDependency */,
 				28015B4608EC9D9000C83A75 /* PBXTargetDependency */,
 				28015B8D08EC9F4E00C83A75 /* PBXTargetDependency */,
 				28015B4D08EC9D9300C83A75 /* PBXTargetDependency */,
 			);
 			name = "Unit Tests";
 			productName = "Unit Tests";
+		};
+		28E703E808FBFEC000B5E7CD /* Verify Plists */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 28E703F108FBFF0E00B5E7CD /* Build configuration list for PBXAggregateTarget "Verify Plists" */;
+			buildPhases = (
+				28E703E708FBFEC000B5E7CD /* ShellScript */,
+			);
+			buildSettings = {
+				OPTIMIZATION_CFLAGS = "";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = "Verify Plists";
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+			};
+			dependencies = (
+			);
+			name = "Verify Plists";
+			productName = "Verify Plists";
 		};
 /* End PBXAggregateTarget section */
 
@@ -138,6 +163,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 28015B7F08EC9F3D00C83A75;
 			remoteInfo = "Patchworks Importer Test";
+		};
+		28E7042308FC09C500B5E7CD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2A37F4A9FDCFA73011CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 28E703E808FBFEC000B5E7CD;
+			remoteInfo = "Verify Plists";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -924,6 +956,7 @@
 				28015AF408EC9C9700C83A75 /* Patchworks Test */,
 				28015B7F08EC9F3D00C83A75 /* Patchworks Importer Test */,
 				28015B3308EC9D4800C83A75 /* Shared Source Test */,
+				28E703E808FBFEC000B5E7CD /* Verify Plists */,
 			);
 		};
 /* End PBXProject section */
@@ -1018,6 +1051,19 @@
 			shellPath = /bin/sh;
 			shellScript = "# Run the unit tests in this test bundle.\n# Limit the amoutn of time and memory.\nlet \"MAXTIME_SECS=30\"\nlet \"MAXRAM_KB=100*1024\"\nulimit -H -m $MAXRAM_KB -t $MAXTIME_SECS\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
 		};
+		28E703E708FBFEC000B5E7CD /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /usr/bin/ruby;
+			shellScript = "require \"#{ENV['SRCROOT']}/Scripts/check_plists.rb\"\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1098,6 +1144,11 @@
 			isa = PBXTargetDependency;
 			target = 28015B7F08EC9F3D00C83A75 /* Patchworks Importer Test */;
 			targetProxy = 28015B8C08EC9F4E00C83A75 /* PBXContainerItemProxy */;
+		};
+		28E7042408FC09C500B5E7CD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 28E703E808FBFEC000B5E7CD /* Verify Plists */;
+			targetProxy = 28E7042308FC09C500B5E7CD /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1367,6 +1418,44 @@
 			};
 			name = Release;
 		};
+		28E703F208FBFF0E00B5E7CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				OPTIMIZATION_CFLAGS = "-O0";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = "Verify Plists";
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+			};
+			name = Debug;
+		};
+		28E703F308FBFF0E00B5E7CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				OPTIMIZATION_CFLAGS = "-O0";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = "Verify Plists";
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+			};
+			name = Release;
+		};
 		28FCD3D208EC56D000A970FA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1491,6 +1580,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
+		};
+		28E703F108FBFF0E00B5E7CD /* Build configuration list for PBXAggregateTarget "Verify Plists" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				28E703F208FBFF0E00B5E7CD /* Debug */,
+				28E703F308FBFF0E00B5E7CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 		28FCD3D108EC56D000A970FA /* Build configuration list for PBXNativeTarget "Patchworks" */ = {
 			isa = XCConfigurationList;
