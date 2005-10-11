@@ -29,5 +29,6 @@ require 'FileUtils'
 
 Links.each do |path,target|
   puts "Creating symlink #{path} -> #{target}"
+  FileUtils.rm path, :force => true
   FileUtils.ln_s target, path, :force => true
 end
