@@ -63,7 +63,7 @@
 	NSString *realContents = [NSString stringWithContentsOfFile:uncompressedPath
 	                                                   encoding:NSASCIIStringEncoding
 	                                                      error:nil];
-
+	
 	STAssertEqualObjects(inflatedContents, realContents, @"Patch was not inflated correctly.");
 }
 
