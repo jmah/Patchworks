@@ -14,7 +14,7 @@
 
 /*
  * This class represents a darcs patch proxy file, with extension
- * .darcspatchproxy. This class allows access to the represented patch, and
+ * .darcsPatchProxy. This class allows access to the represented patch, and
  * other filesystem-based information such as the path to the repository.
  */
 
