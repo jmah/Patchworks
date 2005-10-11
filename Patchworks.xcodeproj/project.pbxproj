@@ -87,13 +87,22 @@
 		2818C6D108F90BDA00FD8852 /* PWTimeZoneWrapperTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2818C6CD08F90BDA00FD8852 /* PWTimeZoneWrapperTest.m */; };
 		283E482608FA503B00772738 /* Test Repository in Resources */ = {isa = PBXBuildFile; fileRef = 283E481A08FA503B00772738 /* Test Repository */; };
 		283E49D708FA9BBB00772738 /* PWDarcsPatchProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 284841C308FA384700EDFDD3 /* PWDarcsPatchProxy.m */; };
+		283E4BF608FB46B000772738 /* PWDarcsPatchImporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 283E4BB108FB451300772738 /* PWDarcsPatchImporter.m */; };
+		283E4C3208FB4DEE00772738 /* PWDarcsPatchProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 284841C308FA384700EDFDD3 /* PWDarcsPatchProxy.m */; };
+		283E4C3308FB4DEF00772738 /* PWDarcsTagPatch.m in Sources */ = {isa = PBXBuildFile; fileRef = 289F12DD08F04D3500E9D926 /* PWDarcsTagPatch.m */; };
+		283E4C3408FB4DF000772738 /* PWDarcsChangePatch.m in Sources */ = {isa = PBXBuildFile; fileRef = 289F12DA08F04D3500E9D926 /* PWDarcsChangePatch.m */; };
+		283E4C3608FB4DF400772738 /* NSData+PWzlib.m in Sources */ = {isa = PBXBuildFile; fileRef = 28015C8E08ED4A1D00C83A75 /* NSData+PWzlib.m */; };
+		283E4C3708FB4DF400772738 /* PWDarcsPatch.m in Sources */ = {isa = PBXBuildFile; fileRef = 289F12DB08F04D3500E9D926 /* PWDarcsPatch.m */; };
+		283E4C4B08FB4E9E00772738 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 283E4C4908FB4E9E00772738 /* Localizable.strings */; };
+		283E4CE608FB58CC00772738 /* Patchworks.mdimporter in Copy Importer */ = {isa = PBXBuildFile; fileRef = 280159A808EC781900C83A75 /* Patchworks.mdimporter */; };
 		284842A208FA451100EDFDD3 /* PWDarcsPatchProxyTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 284841F308FA3E3B00EDFDD3 /* PWDarcsPatchProxyTest.m */; };
 		284842A308FA451200EDFDD3 /* PWDarcsPatchProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 284841C308FA384700EDFDD3 /* PWDarcsPatchProxy.m */; };
 		2866FFA508F98E4800D39E2D /* PWDarcsPatch.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2866FFA308F98E4800D39E2D /* PWDarcsPatch.strings */; };
+		289A214D08FBA147003EC0F4 /* OgreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 289F13DD08F6A3BE00E9D926 /* OgreKit.framework */; };
+		289A215308FBA1CD003EC0F4 /* OgreKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 289F13DD08F6A3BE00E9D926 /* OgreKit.framework */; };
 		289F13DE08F6A3BE00E9D926 /* OgreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 289F13DD08F6A3BE00E9D926 /* OgreKit.framework */; };
 		289F13DF08F6A3BE00E9D926 /* OgreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 289F13DD08F6A3BE00E9D926 /* OgreKit.framework */; };
 		289F13E008F6A3BE00E9D926 /* OgreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 289F13DD08F6A3BE00E9D926 /* OgreKit.framework */; };
-		289F13E108F6A3BE00E9D926 /* OgreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 289F13DD08F6A3BE00E9D926 /* OgreKit.framework */; };
 		289F13E208F6A3BE00E9D926 /* OgreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 289F13DD08F6A3BE00E9D926 /* OgreKit.framework */; };
 		289F13F308F6A5D300E9D926 /* OgreKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 289F13DD08F6A3BE00E9D926 /* OgreKit.framework */; };
 		289F141B08F6BCF500E9D926 /* OgreKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 289F13DD08F6A3BE00E9D926 /* OgreKit.framework */; };
@@ -108,6 +117,16 @@
 		28BA6C2508F94EAE00333DD4 /* PWApplicationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28BA6C1508F94DF800333DD4 /* PWApplicationController.m */; };
 		28BA6C3C08F9512700333DD4 /* PWPreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28BA6C3B08F9512400333DD4 /* PWPreferencesController.m */; };
 		28BA6D4308F9601C00333DD4 /* RegistrationDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 28BA6D4108F9601500333DD4 /* RegistrationDefaults.plist */; };
+		28BC090108FBBDA000BE7895 /* Test Repository in Resources */ = {isa = PBXBuildFile; fileRef = 283E481A08FA503B00772738 /* Test Repository */; };
+		28BC092108FBBEC800BE7895 /* PWDarcsPatchImporterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 28BC08FB08FBBD3200BE7895 /* PWDarcsPatchImporterTest.m */; };
+		28BC092208FBBEC900BE7895 /* PWDarcsPatchImporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 283E4BB108FB451300772738 /* PWDarcsPatchImporter.m */; };
+		28BC093508FBBF4C00BE7895 /* NSData+PWzlib.m in Sources */ = {isa = PBXBuildFile; fileRef = 28015C8E08ED4A1D00C83A75 /* NSData+PWzlib.m */; };
+		28BC093608FBBF4D00BE7895 /* PWDarcsPatch.m in Sources */ = {isa = PBXBuildFile; fileRef = 289F12DB08F04D3500E9D926 /* PWDarcsPatch.m */; };
+		28BC093808FBBF5000BE7895 /* PWDarcsChangePatch.m in Sources */ = {isa = PBXBuildFile; fileRef = 289F12DA08F04D3500E9D926 /* PWDarcsChangePatch.m */; };
+		28BC093908FBBF5200BE7895 /* PWDarcsTagPatch.m in Sources */ = {isa = PBXBuildFile; fileRef = 289F12DD08F04D3500E9D926 /* PWDarcsTagPatch.m */; };
+		28BC093A08FBBF5200BE7895 /* PWDarcsPatchProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 284841C308FA384700EDFDD3 /* PWDarcsPatchProxy.m */; };
+		28BC093E08FBBF8E00BE7895 /* Test Repository in Resources */ = {isa = PBXBuildFile; fileRef = 283E481A08FA503B00772738 /* Test Repository */; };
+		28BC093F08FBC01D00BE7895 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 283E4C4908FB4E9E00772738 /* Localizable.strings */; };
 		28FCD3F408EC577900A970FA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FCD3E708EC577900A970FA /* main.m */; };
 		28FCD3F508EC577900A970FA /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 28FCD3EA08EC577900A970FA /* Credits.rtf */; };
 		28FCD3F708EC577900A970FA /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = 28FCD3EE08EC577900A970FA /* MainMenu.nib */; };
@@ -164,6 +183,13 @@
 			remoteGlobalIDString = 28015B7F08EC9F3D00C83A75;
 			remoteInfo = "Patchworks Importer Test";
 		};
+		283E4CE708FB58D200772738 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2A37F4A9FDCFA73011CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 280159A708EC781900C83A75;
+			remoteInfo = "Patchworks Importer";
+		};
 		28E7042308FC09C500B5E7CD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2A37F4A9FDCFA73011CA2CEA /* Project object */;
@@ -180,8 +206,20 @@
 			dstPath = Contents/Library/Spotlight;
 			dstSubfolderSpec = 1;
 			files = (
+				283E4CE608FB58CC00772738 /* Patchworks.mdimporter in Copy Importer */,
 			);
 			name = "Copy Importer";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		283E49EF08FA9FEC00772738 /* Copy Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				289A215308FBA1CD003EC0F4 /* OgreKit.framework in Copy Frameworks */,
+			);
+			name = "Copy Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		289F13ED08F6A5B700E9D926 /* Copy Frameworks */ = {
@@ -264,6 +302,9 @@
 		2818C6CC08F90BDA00FD8852 /* PWTimeZoneWrapperTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWTimeZoneWrapperTest.h; sourceTree = "<group>"; };
 		2818C6CD08F90BDA00FD8852 /* PWTimeZoneWrapperTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWTimeZoneWrapperTest.m; sourceTree = "<group>"; };
 		283E481A08FA503B00772738 /* Test Repository */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Test Repository"; sourceTree = "<group>"; };
+		283E4BB008FB451300772738 /* PWDarcsPatchImporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWDarcsPatchImporter.h; sourceTree = "<group>"; };
+		283E4BB108FB451300772738 /* PWDarcsPatchImporter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWDarcsPatchImporter.m; sourceTree = "<group>"; };
+		283E4C4A08FB4E9E00772738 /* en */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		284841C208FA384600EDFDD3 /* PWDarcsPatchProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWDarcsPatchProxy.h; sourceTree = "<group>"; };
 		284841C308FA384700EDFDD3 /* PWDarcsPatchProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWDarcsPatchProxy.m; sourceTree = "<group>"; };
 		284841F208FA3E3B00EDFDD3 /* PWDarcsPatchProxyTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWDarcsPatchProxyTest.h; sourceTree = "<group>"; };
@@ -290,6 +331,8 @@
 		28BA6C3A08F9512400333DD4 /* PWPreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWPreferencesController.h; sourceTree = "<group>"; };
 		28BA6C3B08F9512400333DD4 /* PWPreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWPreferencesController.m; sourceTree = "<group>"; };
 		28BA6D4108F9601500333DD4 /* RegistrationDefaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = RegistrationDefaults.plist; path = Resources/RegistrationDefaults.plist; sourceTree = "<group>"; };
+		28BC08FA08FBBD3200BE7895 /* PWDarcsPatchImporterTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWDarcsPatchImporterTest.h; sourceTree = "<group>"; };
+		28BC08FB08FBBD3200BE7895 /* PWDarcsPatchImporterTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWDarcsPatchImporterTest.m; sourceTree = "<group>"; };
 		28EB4A0408F02EF000126AE9 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		28FCD3E708EC577900A970FA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		28FCD3E808EC577900A970FA /* Patchworks_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Patchworks_Prefix.pch; sourceTree = "<group>"; };
@@ -307,7 +350,7 @@
 			files = (
 				280159D208EC7C2900C83A75 /* Foundation.framework in Frameworks */,
 				280159D308EC7C2B00C83A75 /* CoreServices.framework in Frameworks */,
-				289F13E108F6A3BE00E9D926 /* OgreKit.framework in Frameworks */,
+				289A214D08FBA147003EC0F4 /* OgreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -366,6 +409,7 @@
 			isa = PBXGroup;
 			children = (
 				2801594308EC766A00C83A75 /* Classes */,
+				28BC08F808FBBD1C00BE7895 /* Tests */,
 				2801594708EC766A00C83A75 /* Other Sources */,
 				2801594808EC766A00C83A75 /* Resources */,
 			);
@@ -385,6 +429,8 @@
 		2801594408EC766A00C83A75 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				283E4BB008FB451300772738 /* PWDarcsPatchImporter.h */,
+				283E4BB108FB451300772738 /* PWDarcsPatchImporter.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -420,6 +466,7 @@
 				28015B0E08EC9CDF00C83A75 /* Patchworks Importer Test-Info.plist */,
 				2801596A08EC773C00C83A75 /* schema.xml */,
 				2801597908EC774500C83A75 /* schema.strings */,
+				283E4C4908FB4E9E00772738 /* Localizable.strings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -518,6 +565,15 @@
 			children = (
 				2818C6CC08F90BDA00FD8852 /* PWTimeZoneWrapperTest.h */,
 				2818C6CD08F90BDA00FD8852 /* PWTimeZoneWrapperTest.m */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		28BC08F808FBBD1C00BE7895 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				28BC08FA08FBBD3200BE7895 /* PWDarcsPatchImporterTest.h */,
+				28BC08FB08FBBD3200BE7895 /* PWDarcsPatchImporterTest.m */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -632,6 +688,7 @@
 			buildConfigurationList = 280159AA08EC781B00C83A75 /* Build configuration list for PBXNativeTarget "Patchworks Importer" */;
 			buildPhases = (
 				280159A408EC781900C83A75 /* Resources */,
+				283E49EF08FA9FEC00772738 /* Copy Frameworks */,
 				280159A508EC781900C83A75 /* Sources */,
 				280159A608EC781900C83A75 /* Frameworks */,
 			);
@@ -919,6 +976,7 @@
 				WRAPPER_EXTENSION = app;
 			};
 			dependencies = (
+				283E4CE808FB58D200772738 /* PBXTargetDependency */,
 			);
 			name = Patchworks;
 			productInstallPath = "$(HOME)/Applications";
@@ -969,6 +1027,7 @@
 				280159CA08EC7BFD00C83A75 /* schema.xml in Resources */,
 				280159CC08EC7BFF00C83A75 /* InfoPlist.strings in Resources */,
 				280159CD08EC7C0800C83A75 /* schema.strings in Resources */,
+				283E4C4B08FB4E9E00772738 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -992,6 +1051,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28BC093E08FBBF8E00BE7895 /* Test Repository in Resources */,
+				28BC093F08FBC01D00BE7895 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1006,6 +1067,7 @@
 				2818C58508F8225E00FD8852 /* PWDarcsPatchProxyDocument.nib in Resources */,
 				28BA6D4308F9601C00333DD4 /* RegistrationDefaults.plist in Resources */,
 				2866FFA508F98E4800D39E2D /* PWDarcsPatch.strings in Resources */,
+				28BC090108FBBDA000BE7895 /* Test Repository in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1073,6 +1135,12 @@
 			files = (
 				280159D008EC7C1B00C83A75 /* main.c in Sources */,
 				280159D108EC7C1C00C83A75 /* GetMetadataForFile.m in Sources */,
+				283E4BF608FB46B000772738 /* PWDarcsPatchImporter.m in Sources */,
+				283E4C3208FB4DEE00772738 /* PWDarcsPatchProxy.m in Sources */,
+				283E4C3308FB4DEF00772738 /* PWDarcsTagPatch.m in Sources */,
+				283E4C3408FB4DF000772738 /* PWDarcsChangePatch.m in Sources */,
+				283E4C3608FB4DF400772738 /* NSData+PWzlib.m in Sources */,
+				283E4C3708FB4DF400772738 /* PWDarcsPatch.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1107,6 +1175,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28BC092108FBBEC800BE7895 /* PWDarcsPatchImporterTest.m in Sources */,
+				28BC092208FBBEC900BE7895 /* PWDarcsPatchImporter.m in Sources */,
+				28BC093508FBBF4C00BE7895 /* NSData+PWzlib.m in Sources */,
+				28BC093608FBBF4D00BE7895 /* PWDarcsPatch.m in Sources */,
+				28BC093808FBBF5000BE7895 /* PWDarcsChangePatch.m in Sources */,
+				28BC093908FBBF5200BE7895 /* PWDarcsTagPatch.m in Sources */,
+				28BC093A08FBBF5200BE7895 /* PWDarcsPatchProxy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1144,6 +1219,11 @@
 			isa = PBXTargetDependency;
 			target = 28015B7F08EC9F3D00C83A75 /* Patchworks Importer Test */;
 			targetProxy = 28015B8C08EC9F4E00C83A75 /* PBXContainerItemProxy */;
+		};
+		283E4CE808FB58D200772738 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 280159A708EC781900C83A75 /* Patchworks Importer */;
+			targetProxy = 283E4CE708FB58D200772738 /* PBXContainerItemProxy */;
 		};
 		28E7042408FC09C500B5E7CD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1183,6 +1263,14 @@
 				2818C58408F8225E00FD8852 /* en */,
 			);
 			name = PWDarcsPatchProxyDocument.nib;
+			sourceTree = "<group>";
+		};
+		283E4C4908FB4E9E00772738 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				283E4C4A08FB4E9E00772738 /* en */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 		2866FFA308F98E4800D39E2D /* PWDarcsPatch.strings */ = {

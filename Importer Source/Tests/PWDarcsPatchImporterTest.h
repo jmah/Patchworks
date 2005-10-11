@@ -1,44 +1,25 @@
 //
-//  GetMetadataForFile.m
+//  PWDarcsPatchImporterTest.h
 //  Patchworks
 //
-//  Created by Jonathon Mah on 2005-09-30.
-//  Copyright 2005 Playhaus. All rights reserved.
+//  Created by Jonathon Mah on 2005-10-11.
+//  Copyright Playhaus 2005. All rights reserved.
 //  License information is contained at the bottom of this file and in the
 //  'LICENSE.txt' file.
 //
 
-#import <Foundation/Foundation.h>
-#import <CoreServices/CoreServices.h>
-#import "PWDarcsPatchImporter.h"
+#import <SenTestingKit/SenTestingKit.h>
 
 
-Boolean GetMetadataForFile(void *thisInterface,
-                           CFMutableDictionaryRef attributes,
-                           CFStringRef contentTypeUTI,
-                           CFStringRef pathToFile)
+@interface PWDarcsPatchImporterTest : SenTestCase
 {
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-	Boolean success = FALSE;
-	
-	if ([(NSString *)contentTypeUTI isEqualToString:@"org.playhaus.patchworks.darcspatchproxy"])
-	{
-		NSURL *proxyURL = [NSURL fileURLWithPath:(NSString *)pathToFile];
-		NSError *error = nil;
-		PWDarcsPatchImporter *importer = [[PWDarcsPatchImporter alloc] initWithURL:proxyURL error:&error];
-		
-		if (importer && !error)
-		{
-			[importer addMetadataToCFDictionary:attributes];
-			success = TRUE;
-		}
-		
-		[importer release];
-	}
-	
-	[pool release];
-	return success;
 }
+
+
+- (void)testMetadataDictionary;
+- (void)testAddingMetadataDictionary;
+
+@end
 
 
 
