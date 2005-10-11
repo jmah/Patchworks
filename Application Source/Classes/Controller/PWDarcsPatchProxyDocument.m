@@ -205,7 +205,7 @@
 
 - (NSString *)patchAuthor
 {
-	return [PW_patchProxy author];
+	return [PW_patchProxy authorNameOnly];
 }
 
 
