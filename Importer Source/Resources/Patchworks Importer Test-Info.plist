@@ -7,7 +7,7 @@
 	<key>CFBundleExecutable</key>
 	<string>Patchworks Importer Test</string>
 	<key>CFBundleIdentifier</key>
-	<string>org.playhaus.Patchworks.importer.test</string>
+	<string>org.playhaus.patchworks.importer.test</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundlePackageType</key>

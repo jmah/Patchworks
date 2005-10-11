@@ -2,6 +2,29 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>UTExportedTypeDeclarations</key>
+	<array>
+		<dict>
+			<key>UTTypeIdentifier</key>
+			<string>org.playhaus.patchworks.darcspatchproxy</string>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.data</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>Darcs Patch</string>
+			<key>UTTypeReferenceURL</key>
+			<string>http://darcs.net/</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>darcsPatchProxy</string>
+				</array>
+			</dict>
+		</dict>
+	</array>
+	
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleDocumentTypes</key>
@@ -17,7 +40,7 @@
 			<string>Viewer</string>
 			<key>LSItemContentTypes</key>
 			<array>
-				<string>org.playhaus.Patchworks.darcs.patch.proxy</string>
+				<string>org.playhaus.patchworks.darcspatchproxy</string>
 			</array>
 			<key>NSDocumentClass</key>
 			<string>PWDarcsPatchProxyDocument</string>
@@ -28,7 +51,7 @@
 	<key>CFBundleIconFile</key>
 	<string></string>
 	<key>CFBundleIdentifier</key>
-	<string>org.playhaus.Patchworks</string>
+	<string>org.playhaus.patchworks</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundlePackageType</key>
@@ -41,30 +64,5 @@
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
-	<key>UTExportedTypeDeclarations</key>
-	<array>
-		<dict>
-			<key>UTTypeConformsTo</key>
-			<array>
-				<string>public.item</string>
-				<string>public.content</string>
-			</array>
-			<key>UTTypeDescription</key>
-			<string>Darcs Patch</string>
-			<key>UTTypeIconFile</key>
-			<string>asdfasdf.icns</string>
-			<key>UTTypeIdentifier</key>
-			<string>org.playhaus.Patchworks.darcs.patch.proxy</string>
-			<key>UTTypeReferenceURL</key>
-			<string>http://darcs.net/</string>
-			<key>UTTypeTagSpecification</key>
-			<dict>
-				<key>public.filename-extension</key>
-				<array>
-					<string>darcsPatchProxy</string>
-				</array>
-			</dict>
-		</dict>
-	</array>
 </dict>
 </plist>
