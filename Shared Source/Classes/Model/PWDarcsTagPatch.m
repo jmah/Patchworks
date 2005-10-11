@@ -69,8 +69,8 @@
 		// Cache the tag regular expression
 		static OGRegularExpression *tagRegexp = nil;
 		if (!tagRegexp)
-			// tagRegexp unescaped pattern: "^\[TAG (?<name>.*)\n(?<author>.*)\*(?<rollback_flag>\*|-)(?<date>\d{14})] \n<$)";
-			tagRegexp = [[OGRegularExpression alloc] initWithString:@"^\\[TAG (?<name>.*)\\n(?<author>.*)\\*(?<rollback_flag>\\*|-)(?<date>\\d{14})] \\n<$"
+			// tagRegexp unescaped pattern: "^\[TAG (?<name>.*?)\n(?<author>.*?)\*(?<rollback_flag>\*|-)(?<date>\d{14})] \n<$)";
+			tagRegexp = [[OGRegularExpression alloc] initWithString:@"^\\[TAG (?<name>.*?)\\n(?<author>.*?)\\*(?<rollback_flag>\\*|-)(?<date>\\d{14})] \\n<$"
 			                                                options:OgreCaptureGroupOption
 			                                                 syntax:OgreRubySyntax
 			                                        escapeCharacter:OgreBackslashCharacter];

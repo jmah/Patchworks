@@ -68,8 +68,8 @@
 		// Cache the patch regular expression
 		static OGRegularExpression *patchRegexp = nil;
 		if (!patchRegexp)
-			// patchRegexp unescaped pattern: "^\[(?<name>.*)\n(?<author>.*)\*(?<rollback_flag>\*|-)(?<date>\d{14})(?:] {|\n(?<long_description>(?:.|\n)*)\n\] {$)";
-			patchRegexp = [[OGRegularExpression alloc] initWithString:@"^\\[(?<name>.*)\\n(?<author>.*)\\*(?<rollback_flag>\\*|-)(?<date>\\d{14})(?:] {|\\n(?<long_description>(?:.|\\n)*)\\n\\] {$)"
+			// patchRegexp unescaped pattern: "^\[(?<name>.*?)\n(?<author>.*?)\*(?<rollback_flag>\*|-)(?<date>\d{14})(?:] {|\n(?<long_description>(?:.|\n)*?)\n\] {$)";
+			patchRegexp = [[OGRegularExpression alloc] initWithString:@"^\\[(?<name>.*?)\\n(?<author>.*?)\\*(?<rollback_flag>\\*|-)(?<date>\\d{14})(?:] {|\\n(?<long_description>(?:.|\\n)*?)\\n\\] {$)"
 			                                                  options:OgreCaptureGroupOption
 			                                                   syntax:OgreRubySyntax
 			                                          escapeCharacter:OgreBackslashCharacter];

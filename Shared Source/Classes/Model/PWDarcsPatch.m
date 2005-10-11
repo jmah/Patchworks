@@ -89,8 +89,8 @@ static OGRegularExpression *emailRegexp = nil;
 		// Check if the first five characters are '[TAG '
 		static OGRegularExpression *patchTypeRegexp = nil;
 		if (!patchTypeRegexp)
-			// patchTypeRegexp unescaped pattern: "^\[(?<is_tag>TAG )?.+\n.*\*(?:\*|-)\d{14}(?:\] \{?)?$";
-			patchTypeRegexp = [[OGRegularExpression alloc] initWithString:@"^\\[(?<is_tag>TAG )?.+\\n.*\\*(?:\\*|-)\\d{14}(?:\\] \\{?)?$"
+			// patchTypeRegexp unescaped pattern: "^\[(?<is_tag>TAG )?.+?\n.*?\*(?:\*|-)\d{14}(?:\] \{?)?$";
+			patchTypeRegexp = [[OGRegularExpression alloc] initWithString:@"^\\[(?<is_tag>TAG )?.+?\\n.*?\\*(?:\\*|-)\\d{14}(?:\\] \\{?)?$"
 			                                                      options:OgreCaptureGroupOption
 			                                                       syntax:OgreRubySyntax
 			                                              escapeCharacter:OgreBackslashCharacter];
