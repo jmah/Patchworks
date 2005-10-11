@@ -7,7 +7,7 @@
 //  'LICENSE.txt' file.
 //
 
-#import <Cocoa/Cocoa.h>
+#import <Foundation/Foundation.h>
 #import "PWDarcsPatch.h"
 
 

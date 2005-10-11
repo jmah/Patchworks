@@ -6,7 +6,7 @@
 //  Copyright 2005 Playhaus. All rights reserved.
 //
 
-#import <Cocoa/Cocoa.h>
+#import <Foundation/Foundation.h>
 #import "PWDarcsPatch.h"
 
 
