@@ -23,8 +23,6 @@
 		NSString *relativePatchPath = [NSString stringWithFormat:@"../patches/%@", [basename stringByAppendingPathExtension:@"gz"]];
 		NSURL *patchURL = [NSURL URLWithString:relativePatchPath relativeToURL:proxyURL];
 		
-		if (PW_patch)
-			[PW_patch release];
 		PW_patch = [[PWDarcsPatch patchWithContentsOfURL:patchURL error:outError] retain];
 		
 		BOOL success = ((PW_patch != nil) && (*outError == nil));
