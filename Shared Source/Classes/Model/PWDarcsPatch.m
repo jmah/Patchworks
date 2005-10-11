@@ -29,7 +29,7 @@ static OGRegularExpression *emailRegexp = nil;
 
 + (id)patchWithContentsOfFile:(NSString *)path error:(NSError **)outError
 {
-	NSData *data = [NSData dataWithContentsOfFile:path options:(unsigned int)NULL error:outError];
+	NSData *data = [NSData dataWithContentsOfFile:path options:0 error:outError];
 	if (*outError != nil)
 		return nil;
 	else
@@ -39,7 +39,7 @@ static OGRegularExpression *emailRegexp = nil;
 
 + (id)patchWithContentsOfURL:(NSURL *)aURL error:(NSError **)outError
 {
-	NSData *data = [NSData dataWithContentsOfURL:aURL options:(unsigned int)NULL error:outError];
+	NSData *data = [NSData dataWithContentsOfURL:aURL options:0 error:outError];
 	if (*outError != nil)
 		return nil;
 	else
