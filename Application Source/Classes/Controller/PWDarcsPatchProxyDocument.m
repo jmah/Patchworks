@@ -178,12 +178,6 @@
 	
 	switch ([PW_patchProxy type])
 	{
-		case PWDarcsUnknownPatchType:
-			if ([PW_patchProxy isRollbackPatch])
-				typeString = NSLocalizedStringFromTable(@"Unknown (Rollback)", @"PWDarcsPatch", @"Unknown rollback patch type");
-			else
-				typeString = NSLocalizedStringFromTable(@"Unknown", @"PWDarcsPatch", @"Unknown patch type");
-			break;
 		case PWDarcsChangePatchType:
 			if ([PW_patchProxy isRollbackPatch])
 				typeString = NSLocalizedStringFromTable(@"Change (Rollback)", @"PWDarcsPatch", @"Change rollback patch type");
@@ -195,6 +189,13 @@
 				typeString = NSLocalizedStringFromTable(@"Tag (Rollback)", @"PWDarcsPatch", @"Tag rollback patch type");
 			else
 				typeString = NSLocalizedStringFromTable(@"Tag", @"PWDarcsPatch", @"Tag patch type");
+			break;
+		default: // Code shared with PWDarcsUnknownPatchType
+		case PWDarcsUnknownPatchType:
+			if ([PW_patchProxy isRollbackPatch])
+				typeString = NSLocalizedStringFromTable(@"Unknown (Rollback)", @"PWDarcsPatch", @"Unknown rollback patch type");
+			else
+				typeString = NSLocalizedStringFromTable(@"Unknown", @"PWDarcsPatch", @"Unknown patch type");
 			break;
 	}
 	
