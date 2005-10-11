@@ -95,7 +95,7 @@ static OGRegularExpression *emailRegexp = nil;
 			                                                       syntax:OgreRubySyntax
 			                                              escapeCharacter:OgreBackslashCharacter];
 		
-		NSString *patchString = [[NSString alloc] initWithData:uncompressedData encoding:NSUTF8StringEncoding];
+		NSString *patchString = [[NSString alloc] initWithData:uncompressedData encoding:NSISOLatin1StringEncoding];
 		OGRegularExpressionMatch *match = [patchTypeRegexp matchInString:patchString];
 		if ([match count] > 0)
 		{

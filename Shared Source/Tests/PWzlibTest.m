@@ -26,7 +26,7 @@
 		[sourceString appendFormat:@"This is line %u, and the current sum is %u.\n", i, sum];
 	}
 	
-	NSData *originalData = [sourceString dataUsingEncoding:NSUTF8StringEncoding];
+	NSData *originalData = [sourceString dataUsingEncoding:NSISOLatin1StringEncoding];
 	// originalData has length of 98825 bytes
 	
 	
