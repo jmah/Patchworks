@@ -200,6 +200,8 @@ static OGRegularExpression *emailRegexp = nil;
 			// The following format string is unfortunate. It represents:
 			// [string]@[string]
 			PW_authorEmail = [[NSString alloc] initWithFormat:@"%@@%@", [match substringNamed:@"user"], [match substringNamed:@"host"]];
+		else
+			PW_authorEmail = [[NSString alloc] init];
 	}
 	return PW_authorEmail;
 }
@@ -219,7 +221,9 @@ static OGRegularExpression *emailRegexp = nil;
 	{
 		// Try to parse only the author name (excluding the e-mail address) out of the author field
 		OGRegularExpressionMatch *match = [emailRegexp matchInString:[self author]];
-		NSString *author = [[NSString stringWithFormat:@"%@ %@", [match prematchString], [match postmatchString]] stringByTrimmingCharactersInSet:trimCharacterSet];
+		NSString *prematchString = ([match prematchString] ? [match prematchString] : @"");
+		NSString *postmatchString = ([match postmatchString] ? [match postmatchString] : @"");
+		NSString *author = [[NSString stringWithFormat:@"%@ %@", prematchString, postmatchString] stringByTrimmingCharactersInSet:trimCharacterSet];
 		
 		if ([author length] > 0)
 			PW_authorNameOnly = [author retain];

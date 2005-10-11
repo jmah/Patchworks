@@ -25,6 +25,7 @@
 		@"first@example.com", @"<first@example.com> <second@example.com>",
 		@"mailfirst@domain.com", @"<mailfirst@domain.com> Name Second",
 		@"spamproof@domain.com", @"Don't Spam Me <spamproof at domain.com>",
+		@"", @"No Address",
 		nil];
 	NSEnumerator *authorEnum = [emailByAuthor keyEnumerator];
 	NSString *author = nil;
@@ -54,6 +55,7 @@
 		@"User Name", @"User <nickname@address.org> Name",
 		@"Name Second", @"<mailfirst@domain.com> Name Second",
 		@"Don't Spam Me", @"Don't Spam Me <spamproof at domain.com>",
+		@"No Address", @"No Address",
 		nil];
 	NSEnumerator *authorEnum = [nameByAuthor keyEnumerator];
 	NSString *author = nil;
