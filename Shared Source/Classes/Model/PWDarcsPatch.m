@@ -46,6 +46,12 @@ static OGRegularExpression *emailRegexp = nil;
 }
 
 
++ (NSCalendarDate *)calendarDateFromOldDarcsDateString:(NSString *)dateString // PWDarcsPatch (ProtectedMethods)
+{
+	return [NSCalendarDate dateWithString:dateString calendarFormat:@"%a %b %e %H:%M:%S %Z %Y"];
+}
+
+
 
 #pragma mark Initialization and Deallocation
 
@@ -158,11 +164,11 @@ static OGRegularExpression *emailRegexp = nil;
 		
 		static OGRegularExpression *patchTypeRegexp = nil;
 		if (!patchTypeRegexp)
-			// patchTypeRegexp unescaped pattern: "^\[(?<is_tag>TAG )?.+?\n.*?\*(?:\*|-)\d{14}(?:\] \{?)?$";
-			patchTypeRegexp = [[OGRegularExpression alloc] initWithString:@"^\\[(?<is_tag>TAG )?.+?\\n.*?\\*(?:\\*|-)\\d{14}(?:\\] \\{?)?$"];
+			// patchTypeRegexp unescaped pattern: "^\[(?<is_tag>TAG )?.+?\n.*?\*(?:\*|-)(?:\d{14}|\w{3} \w{3} [\d ]\d \d\d:\d\d:\d\d \w+ \d{4})(?:\] (?: < > )?{?)?$";
+			patchTypeRegexp = [[OGRegularExpression alloc] initWithString:@"^\\[(?<is_tag>TAG )?.+?\\n.*?\\*(?:\\*|-)(?:\\d{14}|\\w{3} \\w{3} [\\d ]\\d \\d\\d:\\d\\d:\\d\\d \\w+ \\d{4})(?:\\] (?: < > )?{?)?$"];
 		
 		OGRegularExpressionMatch *match = [patchTypeRegexp matchInString:currPatchString];
-		if ([match count] > 0)
+		if (match && [match count] > 0)
 		{
 			if ([[match substringNamed:@"is_tag"] isEqualToString:@"TAG "])
 				concretePatchClass = [PWDarcsTagPatch class];

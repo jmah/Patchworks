@@ -20,6 +20,7 @@
 
 #pragma mark Convenience Methods
 + (NSCalendarDate *)calendarDateFromDarcsDateString:(NSString *)dateString;
++ (NSCalendarDate *)calendarDateFromOldDarcsDateString:(NSString *)dateString;
 
 #pragma mark Accessor Methods
 - (void)setName:(NSString *)newName;

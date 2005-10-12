@@ -84,8 +84,8 @@
 		// Cache the patch regular expression
 		static OGRegularExpression *patchRegexp = nil;
 		if (!patchRegexp)
-			// patchRegexp unescaped pattern: "^\[(?<name>.*?)\n(?<author>.*?)\*(?<rollback_flag>\*|-)(?<date>\d{14})(?:] {|\n(?<long_description>(?:.|\n)*?)\n\] {$)";
-			patchRegexp = [[OGRegularExpression alloc] initWithString:@"^\\[(?<name>.*?)\\n(?<author>.*?)\\*(?<rollback_flag>\\*|-)(?<date>\\d{14})(?:] {|\\n(?<long_description>(?:.|\\n)*?)\\n\\] {$)"];
+			// patchRegexp unescaped pattern: "^\[(?<name>.*?)\n(?<author>.*?)\*(?<rollback_flag>\*|-)((?<new_date>\d{14})|(?<old_date>\w{3} \w{3} [\d ]\d \d\d:\d\d:\d\d \w+ \d{4}))(?:] (?: < > )?{|\n(?<long_description>(?:.|\n)*?)\n?\] (?: < > )?{$)";
+			patchRegexp = [[OGRegularExpression alloc] initWithString:@"^\\[(?<name>.*?)\\n(?<author>.*?)\\*(?<rollback_flag>\\*|-)((?<new_date>\\d{14})|(?<old_date>\\w{3} \\w{3} [\\d ]\\d \\d\\d:\\d\\d:\\d\\d \\w+ \\d{4}))(?:] (?: < > )?{|\\n(?<long_description>(?:.|\\n)*?)\\n?\\] (?: < > )?{$)"];
 		
 		OGRegularExpressionMatch *match = nil;
 		
@@ -173,7 +173,10 @@
 		{
 			[self setName:[match substringNamed:@"name"]];
 			[self setAuthor:[match substringNamed:@"author"]];
-			[self setDate:[[self class] calendarDateFromDarcsDateString:[match substringNamed:@"date"]]];
+			if ([match substringNamed:@"old_date"])
+				[self setDate:[[self class] calendarDateFromOldDarcsDateString:[match substringNamed:@"old_date"]]];
+			else
+				[self setDate:[[self class] calendarDateFromDarcsDateString:[match substringNamed:@"new_date"]]];
 			[self setLongDescription:[match substringNamed:@"long_description"]]; // Can be nil
 			
 			NSString *rollbackFlag = [match substringNamed:@"rollback_flag"];

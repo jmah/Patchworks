@@ -85,8 +85,8 @@
 		// Cache the tag regular expression
 		static OGRegularExpression *tagRegexp = nil;
 		if (!tagRegexp)
-			// tagRegexp unescaped pattern: "^\[TAG (?<name>.*?)\n(?<author>.*?)\*(?<rollback_flag>\*|-)(?<date>\d{14})] \n<$)";
-			tagRegexp = [[OGRegularExpression alloc] initWithString:@"^\\[TAG (?<name>.*?)\\n(?<author>.*?)\\*(?<rollback_flag>\\*|-)(?<date>\\d{14})] \\n<$"];
+			// tagRegexp unescaped pattern: "^\[TAG (?<name>.*?)\n(?<author>.*?)\*(?<rollback_flag>\*|-)((?<new_date>\d{14})|(?<old_date>\w{3} \w{3} [\d ]\d \d\d:\d\d:\d\d \w+ \d{4}))] \n<$)";
+			tagRegexp = [[OGRegularExpression alloc] initWithString:@"^\\[TAG (?<name>.*?)\\n(?<author>.*?)\\*(?<rollback_flag>\\*|-)((?<new_date>\\d{14})|(?<old_date>\\w{3} \\w{3} [\\d ]\\d \\d\\d:\\d\\d:\\d\\d \\w+ \\d{4}))] \\n<$"];
 		
 		OGRegularExpressionMatch *match = nil;
 		
@@ -160,7 +160,10 @@
 		{
 			[self setName:[match substringNamed:@"name"]];
 			[self setAuthor:[match substringNamed:@"author"]];
-			[self setDate:[[self class] calendarDateFromDarcsDateString:[match substringNamed:@"date"]]];
+			if ([match substringNamed:@"old_date"])
+				[self setDate:[[self class] calendarDateFromOldDarcsDateString:[match substringNamed:@"old_date"]]];
+			else
+				[self setDate:[[self class] calendarDateFromDarcsDateString:[match substringNamed:@"new_date"]]];
 			
 			NSString *rollbackFlag = [match substringNamed:@"rollback_flag"];
 			if ([rollbackFlag isEqualToString:@"*"])
