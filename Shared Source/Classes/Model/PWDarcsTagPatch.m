@@ -25,7 +25,7 @@
  * author**20051008080552] 
  * [Second change patch
  * author**20051008080552
- *  Long description
+ *  Long comment
  *  indented by one space
  * ] 
  * (other patches)
@@ -43,7 +43,7 @@
  * author*-20051008080552] 
  * [Second change patch
  * author*-20051008080552
- *  Long description
+ *  Long comment
  *  indented by one space
  * ] 
  * (other rollback patches)

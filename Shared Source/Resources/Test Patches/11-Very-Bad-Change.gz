@@ -1,7 +1,7 @@
 [Rolled back patch
 Author <email@unoriginal.com>*-20051002173115
- A long description
- but the file got screwed up somehow so the long description
+ A long comment
+ but the file got screwed up somehow so the long comment
  appears to never end!
 ] { @@#@#$$#@!
 rmfile ./newfile2

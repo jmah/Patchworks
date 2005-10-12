@@ -79,7 +79,7 @@
 - (void)testEquality
 {
 	NSBundle *myBundle = [NSBundle bundleForClass:[self class]];
-	NSString *patchPath = [myBundle pathForResource:@"03-Change-Compressed-LongDescription"
+	NSString *patchPath = [myBundle pathForResource:@"03-Change-Compressed-LongComment"
 	                                         ofType:@"gz"
 	                                    inDirectory:@"Test Patches"];
 	NSError *error1 = nil;

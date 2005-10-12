@@ -47,10 +47,10 @@
 - (void)testCompressedPatchInflate
 {
 	NSBundle *myBundle = [NSBundle bundleForClass:[self class]];
-	NSString *patchPath = [myBundle pathForResource:@"01-Change-Compressed-NoLongDescription"
+	NSString *patchPath = [myBundle pathForResource:@"01-Change-Compressed-NoLongComment"
 	                                         ofType:@"gz"
 	                                    inDirectory:@"Test Patches"];
-	NSString *uncompressedPath = [myBundle pathForResource:@"01-Change-Compressed-NoLongDescription"
+	NSString *uncompressedPath = [myBundle pathForResource:@"01-Change-Compressed-NoLongComment"
 	                                                ofType:@"txt"
 	                                           inDirectory:@"Test Patches"];
 	NSData *compressedPatch = [NSData dataWithContentsOfFile:patchPath];

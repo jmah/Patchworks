@@ -16,7 +16,7 @@
 @interface PWDarcsChangePatch (PrivateMethods)
 
 #pragma mark Accessor Methods
-- (void)setLongDescription:(NSString *)newLongDescription;
+- (void)setLongComment:(NSString *)newLongComment;
 
 @end
 
@@ -36,7 +36,7 @@
  * -----------------
  * [Patch name
  * author**1999010816123000
- *  long description indented by a space
+ *  long comment indented by a space
  * ] {
  * (hunks)
  * }
@@ -45,7 +45,7 @@
  * --------------
  * [Patch name
  * author*-1999010816123000
- *  long description indented by a space
+ *  long comment indented by a space
  * ] {
  * (inverse hunks)
  * }
@@ -61,7 +61,7 @@
 	if (self = [super init])
 	{
 		// Initialize instance variables
-		PW_longDescription = nil;
+		PW_longComment = nil;
 		PW_gzPatchFile = gzPatchFile;
 		PW_isFullPatchRead = (PW_gzPatchFile ? gzeof(PW_gzPatchFile) : YES);
 		
@@ -84,8 +84,8 @@
 		// Cache the patch regular expression
 		static OGRegularExpression *patchRegexp = nil;
 		if (!patchRegexp)
-			// patchRegexp unescaped pattern: "^\[(?<name>.*?)\n(?<author>.*?)\*(?<rollback_flag>\*|-)((?<new_date>\d{14})|(?<old_date>\w{3} \w{3} [\d ]\d \d\d:\d\d:\d\d \w+ \d{4}))(?:] (?: < > )?{|\n(?<long_description>(?:.|\n)*?)\n?\] (?: < > )?{$)";
-			patchRegexp = [[OGRegularExpression alloc] initWithString:@"^\\[(?<name>.*?)\\n(?<author>.*?)\\*(?<rollback_flag>\\*|-)((?<new_date>\\d{14})|(?<old_date>\\w{3} \\w{3} [\\d ]\\d \\d\\d:\\d\\d:\\d\\d \\w+ \\d{4}))(?:] (?: < > )?{|\\n(?<long_description>(?:.|\\n)*?)\\n?\\] (?: < > )?{$)"];
+			// patchRegexp unescaped pattern: "^\[(?<name>.*?)\n(?<author>.*?)\*(?<rollback_flag>\*|-)((?<new_date>\d{14})|(?<old_date>\w{3} \w{3} [\d ]\d \d\d:\d\d:\d\d \w+ \d{4}))(?:] (?: < > )?{|\n(?<long_comment>(?:.|\n)*?)\n?\] (?: < > )?{$)";
+			patchRegexp = [[OGRegularExpression alloc] initWithString:@"^\\[(?<name>.*?)\\n(?<author>.*?)\\*(?<rollback_flag>\\*|-)((?<new_date>\\d{14})|(?<old_date>\\w{3} \\w{3} [\\d ]\\d \\d\\d:\\d\\d:\\d\\d \\w+ \\d{4}))(?:] (?: < > )?{|\\n(?<long_comment>(?:.|\\n)*?)\\n?\\] (?: < > )?{$)"];
 		
 		OGRegularExpressionMatch *match = nil;
 		
@@ -177,7 +177,7 @@
 				[self setDate:[[self class] calendarDateFromOldDarcsDateString:[match substringNamed:@"old_date"]]];
 			else
 				[self setDate:[[self class] calendarDateFromDarcsDateString:[match substringNamed:@"new_date"]]];
-			[self setLongDescription:[match substringNamed:@"long_description"]]; // Can be nil
+			[self setLongComment:[match substringNamed:@"long_comment"]]; // Can be nil
 			
 			NSString *rollbackFlag = [match substringNamed:@"rollback_flag"];
 			if ([rollbackFlag isEqualToString:@"*"])
@@ -204,10 +204,10 @@
 
 - (void)dealloc
 {
-	[PW_cleanedLongDescription release];
-	PW_cleanedLongDescription = nil;
+	[PW_cleanedLongComment release];
+	PW_cleanedLongComment = nil;
 	
-	[self setLongDescription:nil];
+	[self setLongComment:nil];
 	
 	[super dealloc];
 }
@@ -216,42 +216,42 @@
 
 #pragma mark Accessor Methods
 
-- (void)setLongDescription:(NSString *)newLongDescription // PWDarcsChangePatch (PrivateMethods)
+- (void)setLongComment:(NSString *)newLongComment // PWDarcsChangePatch (PrivateMethods)
 {
-	[newLongDescription retain];
-	[PW_longDescription release];
-	PW_longDescription = newLongDescription;
+	[newLongComment retain];
+	[PW_longComment release];
+	PW_longComment = newLongComment;
 }
 
 
-- (NSString *)longDescription
+- (NSString *)longComment
 {
-	return PW_longDescription;
+	return PW_longComment;
 }
 
 
-- (NSString *)cleanedLongDescription
+- (NSString *)cleanedLongComment
 {
-	if (!PW_cleanedLongDescription && [self longDescription])
+	if (!PW_cleanedLongComment && [self longComment])
 	{
-		// Remove newlines from the long description (in a mostly sensible manner)
+		// Remove newlines from the long comment (in a mostly sensible manner)
 		OGRegularExpression *continuingLineRegexp = [OGRegularExpression regularExpressionWithString:@"([^:\\\\])\\n ([^-\\s\\*+])"];
 		OGReplaceExpression *replaceExp = [OGReplaceExpression replaceExpressionWithString:@"\\`\\1 \\2\\'"];
 		OGRegularExpressionMatch *match = nil;
-		NSString *cleanedLongDescription = [self longDescription];
+		NSString *cleanedLongComment = [self longComment];
 		
 		do
 		{
-			match = [continuingLineRegexp matchInString:cleanedLongDescription];
+			match = [continuingLineRegexp matchInString:cleanedLongComment];
 			if (match && ([match count] > 0))
-				cleanedLongDescription = [replaceExp replaceMatchedStringOf:match];
+				cleanedLongComment = [replaceExp replaceMatchedStringOf:match];
 		} while (match && ([match count] > 0));
 		
 		// Remove initial space
-		PW_cleanedLongDescription = [[cleanedLongDescription stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] retain];
+		PW_cleanedLongComment = [[cleanedLongComment stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] retain];
 	}
 	
-	return PW_longDescription;
+	return PW_longComment;
 }
 
 

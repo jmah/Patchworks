@@ -19,7 +19,7 @@
 - (void)testCompressedChangePatch
 {
 	NSBundle *myBundle = [NSBundle bundleForClass:[self class]];
-	NSString *patchPath = [myBundle pathForResource:@"01-Change-Compressed-NoLongDescription"
+	NSString *patchPath = [myBundle pathForResource:@"01-Change-Compressed-NoLongComment"
 	                                         ofType:@"gz"
 	                                    inDirectory:@"Test Patches"];
 	NSError *error = nil;
@@ -49,15 +49,15 @@
 		@"Rollback flag didn't correctly parse.");
 	STAssertEquals([patch type], PWDarcsChangePatchType,
 		@"Patch type not correctly set.");
-	STAssertNil([(PWDarcsChangePatch *)patch longDescription],
-		@"Long description didn't correctly parse.");
+	STAssertNil([(PWDarcsChangePatch *)patch longComment],
+		@"Long comment didn't correctly parse.");
 }
 
 
-- (void)testCompressedChangePatchWithLongDescription
+- (void)testCompressedChangePatchWithLongComment
 {
 	NSBundle *myBundle = [NSBundle bundleForClass:[self class]];
-	NSString *patchPath = [myBundle pathForResource:@"03-Change-Compressed-LongDescription"
+	NSString *patchPath = [myBundle pathForResource:@"03-Change-Compressed-LongComment"
 	                                         ofType:@"gz"
 	                                    inDirectory:@"Test Patches"];
 	NSError *error = nil;
@@ -85,15 +85,15 @@
 		@"Rollback flag didn't correctly parse.");
 	STAssertEquals([patch type], PWDarcsChangePatchType,
 		@"Patch type not correctly set.");
-	STAssertEqualObjects([(PWDarcsChangePatch *)patch longDescription], @" Some or all of the OgreKit framework's headers have no newlines at the end of\n the file. Enabling this warning triggers it every time one of Patchworks's\n source files includes an OgreKit header. And it's not a big deal anyway.",
-		@"Long description didn't correctly parse.");
+	STAssertEqualObjects([(PWDarcsChangePatch *)patch longComment], @" Some or all of the OgreKit framework's headers have no newlines at the end of\n the file. Enabling this warning triggers it every time one of Patchworks's\n source files includes an OgreKit header. And it's not a big deal anyway.",
+		@"Long comment didn't correctly parse.");
 	}
 
 
 - (void)testUncompressedChangePatch
 {
 	NSBundle *myBundle = [NSBundle bundleForClass:[self class]];
-	NSString *patchPath = [myBundle pathForResource:@"02-Change-Uncompressed-NoLongDescription"
+	NSString *patchPath = [myBundle pathForResource:@"02-Change-Uncompressed-NoLongComment"
 	                                         ofType:@"gz"
 	                                    inDirectory:@"Test Patches"];
 	NSError *error = nil;
@@ -103,7 +103,7 @@
 	STAssertNil(error,
 		@"Uncompressed patch genereated an error.");
 	
-	STAssertEqualObjects([patch name], @"Sample patch description",
+	STAssertEqualObjects([patch name], @"Sample patch name",
 		@"Patch name didn't correctly parse.");
 	STAssertEqualObjects([patch author], @"Faux patch author <user@example.com>",
 		@"Patch author didn't correctly parse.");
@@ -121,15 +121,15 @@
 		@"Rollback flag didn't correctly parse.");
 	STAssertEquals([patch type], PWDarcsChangePatchType,
 		@"Patch type not correctly set.");
-	STAssertNil([(PWDarcsChangePatch *)patch longDescription],
-		@"Long description didn't correctly parse.");
+	STAssertNil([(PWDarcsChangePatch *)patch longComment],
+		@"Long comment didn't correctly parse.");
 }
 
 
 - (void)testRollbackChangePatch
 {
 	NSBundle *myBundle = [NSBundle bundleForClass:[self class]];
-	NSString *patchPath = [myBundle pathForResource:@"04-Rollback-Uncompressed-LongDescription"
+	NSString *patchPath = [myBundle pathForResource:@"04-Rollback-Uncompressed-LongComment"
 	                                         ofType:@"gz"
 	                                    inDirectory:@"Test Patches"];
 	NSError *error = nil;
@@ -157,15 +157,15 @@
 		@"Rollback flag didn't correctly parse.");
 	STAssertEquals([patch type], PWDarcsChangePatchType,
 		@"Patch type not correctly set.");
-	STAssertEqualObjects([(PWDarcsChangePatch *)patch longDescription], @" A long description",
-		@"Long description didn't correctly parse.");
+	STAssertEqualObjects([(PWDarcsChangePatch *)patch longComment], @" A long comment",
+		@"Long comment didn't correctly parse.");
 }
 
 
 - (void)testBadChangePatch
 {
 	NSBundle *myBundle = [NSBundle bundleForClass:[self class]];
-	NSArray *badPatchNames = [NSArray arrayWithObjects:@"10-Bad-Change-LongDescription", @"11-Very-Bad-Change", nil];
+	NSArray *badPatchNames = [NSArray arrayWithObjects:@"10-Bad-Change-LongComment", @"11-Very-Bad-Change", nil];
 	NSEnumerator *badPatchNameEnumerator = [badPatchNames objectEnumerator];
 	NSString *currBadPatchName = nil;
 	while (currBadPatchName = [badPatchNameEnumerator nextObject])

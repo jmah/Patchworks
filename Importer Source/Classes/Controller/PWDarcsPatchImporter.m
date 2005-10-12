@@ -91,8 +91,8 @@
 	[mdDictionary setObject:[NSArray arrayWithObject:repoName] forKey:(NSString *)kMDItemProjects];
 	
 	if ([PW_patchProxy type] == PWDarcsChangePatchType)
-		if ([(id)PW_patchProxy longDescription])
-			[mdDictionary setObject:[(id)PW_patchProxy cleanedLongDescription] forKey:(NSString *)kMDItemComment];
+		if ([(id)PW_patchProxy longComment])
+			[mdDictionary setObject:[(id)PW_patchProxy cleanedLongComment] forKey:(NSString *)kMDItemComment];
 	
 	return mdDictionary;
 }

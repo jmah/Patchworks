@@ -15,10 +15,10 @@
 @interface PWDarcsChangePatch : PWDarcsPatch
 {
 	@private
-	NSString *PW_cleanedLongDescription; // Cached version of the cleaned long description
+	NSString *PW_cleanedLongComment; // Cached version of the cleaned long comment
 	
 	@protected
-	NSString *PW_longDescription;
+	NSString *PW_longComment;
 }
 
 
@@ -27,8 +27,8 @@
 - (id)initWithFullPatchString:(NSString *)patchString error:(NSError **)outError;
 
 #pragma mark Accessor Methods
-- (NSString *)longDescription;
-- (NSString *)cleanedLongDescription;
+- (NSString *)longComment;
+- (NSString *)cleanedLongComment;
 
 @end
 
