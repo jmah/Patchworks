@@ -162,6 +162,32 @@
 }
 
 
+- (void)testBadPatch
+{
+	NSBundle *myBundle = [NSBundle bundleForClass:[self class]];
+	NSArray *badPatchNames = [NSArray arrayWithObjects:@"10-Bad-Change-LongDescription", @"11-Very-Bad-Change", nil];
+	NSEnumerator *badPatchNameEnumerator = [badPatchNames objectEnumerator];
+	NSString *currBadPatchName = nil;
+	while (currBadPatchName = [badPatchNameEnumerator nextObject])
+	{
+		NSString *patchPath = [myBundle pathForResource:currBadPatchName
+		                                         ofType:@"gz"
+		                                    inDirectory:@"Test Patches"];
+		NSError *error = nil;
+		PWDarcsPatch *patch = [[PWDarcsPatch alloc] initWithContentsOfURL:[NSURL fileURLWithPath:patchPath] error:&error];
+		
+		STAssertNil(patch,
+					@"Initializing a bad patch should return nil.");
+		STAssertNotNil(error,
+					   @"Initializing a bad patch should generate an error.");
+		STAssertEqualObjects([error domain], PWDarcsPatchErrorDomain,
+							 @"Error should be in the PWDarcsPatchErrorDomain.");
+		STAssertEquals([error code], PWDarcsPatchParseError,
+					   @"Error should be an unknown type error.");
+	}
+}
+
+
 @end
 
 

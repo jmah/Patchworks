@@ -29,21 +29,13 @@ static OGRegularExpression *emailRegexp = nil;
 
 + (id)patchWithContentsOfFile:(NSString *)path error:(NSError **)outError
 {
-	NSData *data = [NSData dataWithContentsOfFile:path options:0 error:outError];
-	if (*outError != nil)
-		return nil;
-	else
-		return [[[self alloc] initWithData:data error:outError] autorelease];
+	return [[[self alloc] initWithContentsOfURL:[NSURL fileURLWithPath:path] error:outError] autorelease];
 }
 
 
 + (id)patchWithContentsOfURL:(NSURL *)patchURL error:(NSError **)outError
 {
-	NSData *data = [NSData dataWithContentsOfURL:patchURL options:0 error:outError];
-	if (*outError != nil)
-		return nil;
-	else
-		return [[[self alloc] initWithData:data error:outError] autorelease];
+	return [[[self alloc] initWithContentsOfURL:patchURL error:outError] autorelease];
 }
 
 
@@ -64,38 +56,112 @@ static OGRegularExpression *emailRegexp = nil;
 		emailRegexp = [[OGRegularExpression alloc] initWithString:@"\\s*<?(?<user>[-\\w+.]{1,64})(?:@|\\s+at\\s+)(?<host>[-\\w+.]{3,255})>?\\s*"];
 }
 
-- (id)initWithData:(NSData *)data error:(NSError **)outError // Designated initializer
+
+- (id)initWithContentsOfURL:(NSURL *)patchURL error:(NSError **)outError // Designated initializer
 {
 	if (self = [super init])
 	{
 		// Do not set any instance variables on this object -- 'self' will be
 		// deallocated shortly below, and so they will not hold.
 		
-		NSData *uncompressedData;
+		NSString *currPatchString = nil;
+		gzFile gzPatchFile = NULL;
 		
-		// Check if data is compressed by testing the first character
-		char firstChar;
-		[data getBytes:&firstChar length:1];
-		if (firstChar == '[')
-			// Data is uncompressed
-			uncompressedData = data;
+		if ([patchURL isFileURL])
+		{
+			if (![[NSFileManager defaultManager] isReadableFileAtPath:[patchURL path]])
+			{
+				[self release];
+				*outError = [NSError errorWithDomain:NSCocoaErrorDomain
+				                                code:NSFileReadNoSuchFileError
+				                            userInfo:nil];
+				return nil;
+			}
+			else
+			{
+				gzPatchFile = gzopen([[patchURL path] cStringUsingEncoding:NSUTF8StringEncoding], "rb");
+				
+				if (!gzPatchFile)
+				{
+					[self release];
+					*outError = [NSError errorWithDomain:NSCocoaErrorDomain
+					                                code:NSFileReadUnknownError
+					                            userInfo:nil];
+					return nil;
+				}
+				else
+				{
+					// Read in the first two lines of the file (as our patch type regexp needs only those two)
+					NSMutableString *patchReadingString = [NSMutableString string];
+					
+					unsigned lineCount = 0;
+					char lineBuffer[LINE_BUFFER_LENGH];
+					char *line;
+					
+					while (lineCount < 2)
+					{
+						line = gzgets(gzPatchFile, lineBuffer, LINE_BUFFER_LENGH);
+						if (line == Z_NULL)
+						{
+							gzclose(gzPatchFile);
+							gzPatchFile = nil;
+							[self release];
+							*outError = [NSError errorWithDomain:NSCocoaErrorDomain
+							                                code:NSFileReadUnknownError
+							                            userInfo:nil];
+							return nil;
+						}
+						else
+						{
+							[patchReadingString appendString:[NSString stringWithCString:line encoding:PATCH_STRING_ENCODING]];
+							char lastChar = line[strlen(line) - 1];
+							if (lastChar == '\n')
+								lineCount++;
+						}
+					}
+					
+					currPatchString = patchReadingString;
+				}
+			}
+		}
 		else
-			// Data is compressed
-			uncompressedData = [data inflate];
+		{
+			// If we can't handle the URL (it isn't a file path), hand it off to NSData to worry about
+			NSData *data = [NSData dataWithContentsOfURL:patchURL options:0 error:outError];
+			if (*outError)
+			{
+				[self release];
+				return nil;
+			}
+			else
+			{
+				NSData *uncompressedData;
+				
+				// Check if data is compressed by testing the first character
+				char firstChar;
+				[data getBytes:&firstChar length:1];
+				if (firstChar == '[')
+					// Data is uncompressed
+					uncompressedData = data;
+				else
+					// Data is compressed
+					uncompressedData = [data inflate];
+				
+				currPatchString = [[[NSString alloc] initWithData:uncompressedData encoding:PATCH_STRING_ENCODING] autorelease];
+				
+			}
+		}
 		
+		// We have at least two lines -- Find the appropriate patch concrete subclass
 		Class concretePatchClass = nil;
 		PWDarcsPatch *newPatch = nil; // This will be a concrete subclass of PWDarcsPatch
 		
 		static OGRegularExpression *patchTypeRegexp = nil;
 		if (!patchTypeRegexp)
 			// patchTypeRegexp unescaped pattern: "^\[(?<is_tag>TAG )?.+?\n.*?\*(?:\*|-)\d{14}(?:\] \{?)?$";
-			patchTypeRegexp = [[OGRegularExpression alloc] initWithString:@"^\\[(?<is_tag>TAG )?.+?\\n.*?\\*(?:\\*|-)\\d{14}(?:\\] \\{?)?$"
-			                                                      options:OgreCaptureGroupOption
-			                                                       syntax:OgreRubySyntax
-			                                              escapeCharacter:OgreBackslashCharacter];
+			patchTypeRegexp = [[OGRegularExpression alloc] initWithString:@"^\\[(?<is_tag>TAG )?.+?\\n.*?\\*(?:\\*|-)\\d{14}(?:\\] \\{?)?$"];
 		
-		NSString *patchString = [[NSString alloc] initWithData:uncompressedData encoding:NSISOLatin1StringEncoding];
-		OGRegularExpressionMatch *match = [patchTypeRegexp matchInString:patchString];
+		OGRegularExpressionMatch *match = [patchTypeRegexp matchInString:currPatchString];
 		if ([match count] > 0)
 		{
 			if ([[match substringNamed:@"is_tag"] isEqualToString:@"TAG "])
@@ -105,13 +171,17 @@ static OGRegularExpression *emailRegexp = nil;
 		}
 		
 		if (concretePatchClass)
-			newPatch = [[concretePatchClass alloc] initWithPatchString:patchString error:outError];
+		{
+			if (gzPatchFile)
+				newPatch = [[concretePatchClass alloc] initWithOpenGzFile:gzPatchFile alreadyReadString:currPatchString error:outError];
+			else
+				// We have the full patch string already
+				newPatch = [[concretePatchClass alloc] initWithFullPatchString:currPatchString error:outError];
+		}
 		else
 			*outError = [NSError errorWithDomain:PWDarcsPatchErrorDomain
 			                                code:PWDarcsPatchUnknownTypeError
 			                            userInfo:nil];
-		
-		[patchString release];
 		
 		[self release];
 		self = newPatch;
@@ -122,8 +192,26 @@ static OGRegularExpression *emailRegexp = nil;
 
 - (void)dealloc
 {
-	[PW_patchString release];
-	PW_patchString = nil;
+	if (PW_gzPatchFile)
+	{
+		int closeErrorCode = gzclose(PW_gzPatchFile);
+		PW_gzPatchFile = nil;
+		NSAssert1(closeErrorCode == Z_OK, @"Gzip file had error on close (%d)", closeErrorCode);
+	}
+	
+	if (PW_isFullPatchRead)
+	{
+		[PW_fullPatchString release];
+		PW_fullPatchString = nil;
+	}
+	else
+	{
+		[PW_currPatchString release];
+		PW_currPatchString = nil;
+	}
+	
+	[PW_fullPatchString release];
+	PW_fullPatchString = nil;
 	
 	[self setName:nil];
 	[self setAuthor:nil];
@@ -154,7 +242,32 @@ static OGRegularExpression *emailRegexp = nil;
 
 - (NSString *)patchString
 {
-	return PW_patchString;
+	if (!PW_isFullPatchRead)
+	{
+		NSMutableData *remainingData = [[NSMutableData alloc] initWithCapacity:FULL_BUFFER_LENGTH];
+		while (!gzeof(PW_gzPatchFile))
+		{
+			char readBuffer[FULL_BUFFER_LENGTH];
+			int byteCount = gzread(PW_gzPatchFile, readBuffer, FULL_BUFFER_LENGTH);
+			NSAssert(byteCount != -1, @"Error reading patch");
+			if (byteCount > 0)
+				[remainingData appendBytes:readBuffer length:byteCount];
+		}
+		gzclose(PW_gzPatchFile);
+		PW_gzPatchFile = nil;
+		
+		NSString *remainingPatchString = [[NSString alloc] initWithData:remainingData encoding:PATCH_STRING_ENCODING];
+		[remainingData release];
+		
+		PW_fullPatchString = [[PW_currPatchString stringByAppendingString:remainingPatchString] retain];
+		[remainingPatchString release];
+		[PW_currPatchString release];
+		PW_currPatchString = nil;
+		
+		PW_isFullPatchRead = YES;
+	}
+	
+	return PW_fullPatchString;
 }
 
 

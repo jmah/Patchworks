@@ -8,6 +8,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <zlib.h>
 #import "PWDarcsPatch.h"
 
 
@@ -23,7 +24,8 @@
 
 
 #pragma mark Initialization and Deallocation
-- (id)initWithPatchString:(NSString *)patchString error:(NSError **)outError; // Designated initializer
+- (id)initWithOpenGzFile:(gzFile)gzPatchFile alreadyReadString:(NSString *)currPatchString error:(NSError **)outError; // Designated initializer
+- (id)initWithFullPatchString:(NSString *)patchString error:(NSError **)outError;
 
 @end
 

@@ -20,6 +20,7 @@
 - (void)testCompressedChangePatchWithLongDescription;
 - (void)testUncompressedChangePatch;
 - (void)testRollbackChangePatch;
+- (void)testBadChangePatch;
 
 @end
 

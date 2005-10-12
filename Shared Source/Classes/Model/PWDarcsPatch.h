@@ -9,6 +9,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <zlib.h>
 
 
 extern NSString *PWDarcsPatchErrorDomain;
@@ -32,7 +33,10 @@ typedef enum _PWDarcsPatchType {
 	NSString *PW_authorNameOnly; // Cached version of the author name only
 	
 	@protected
-	NSString *PW_patchString;
+	gzFile PW_gzPatchFile; // Nil if PW_isFullPatchRead
+	NSMutableString *PW_currPatchString; // Nil if PW_isFullPatchRead
+	BOOL PW_isFullPatchRead;
+	NSString *PW_fullPatchString; // Non-nil if PW_isFullPatchRead
 	NSString *PW_name;
 	NSString *PW_author;
 	NSCalendarDate *PW_date;
@@ -45,7 +49,7 @@ typedef enum _PWDarcsPatchType {
 + (id)patchWithContentsOfURL:(NSURL *)patchURL error:(NSError **)outError;
 
 #pragma mark Initialization and Deallocation
-- (id)initWithData:(NSData *)data error:(NSError **)outError; // Designated initializer
+- (id)initWithContentsOfURL:(NSURL *)patchURL error:(NSError **)outError; // Designated initializer
 
 #pragma mark Accessor Methods
 - (NSString *)patchString;

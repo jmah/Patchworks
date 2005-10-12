@@ -1,0 +1,10 @@
+[Rolled back patch
+Author <email@unoriginal.com>*-20051002173115
+ A long description
+ but the file got screwed up somehow so the long description
+ appears to never end!
+] { @@#@#$$#@!
+rmfile ./newfile2
+hunk ./otherfile
++ more stuff here
+}

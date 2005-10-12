@@ -12,57 +12,73 @@
 #import <OgreKit/OgreKit.h>
 
 
+/*
+ * Tag Patch Formats
+ * =================
+ * 
+ * Normal tag (note spaces after ']' characters)
+ * ----------
+ * [TAG Tag name
+ * author**1999010816123000] 
+ * <
+ * [First change patch
+ * author**20051008080552] 
+ * [Second change patch
+ * author**20051008080552
+ *  Long description
+ *  indented by one space
+ * ] 
+ * (other patches)
+ * [TAG Previous tag if any
+ * author**20051008080552] 
+ * > {
+ * }
+ * 
+ * Rollback tag
+ * ------------
+ * [TAG Tag name
+ * author*-1999010816123000] 
+ * <
+ * [First change patch
+ * author*-20051008080552] 
+ * [Second change patch
+ * author*-20051008080552
+ *  Long description
+ *  indented by one space
+ * ] 
+ * (other rollback patches)
+ * [TAG Previous tag if any
+ * author*-20051008080552] 
+ * > {
+ * }
+ */
+
+
 @implementation PWDarcsTagPatch
 
 #pragma mark Initialization and Deallocation
 
-- (id)initWithPatchString:(NSString *)patchString error:(NSError **)outError // Designated initializer
+- (id)initWithOpenGzFile:(gzFile)gzPatchFile alreadyReadString:(NSString *)currPatchString error:(NSError **)outError // Designated initializer
 {
 	if (self = [super init])
 	{
-		/*
-		 * Tag Patch Formats
-		 * =================
-		 * 
-		 * Normal tag (note spaces after ']' characters)
-		 * ----------
-		 * [TAG Tag name
-		 * author**1999010816123000] 
-		 * <
-		 * [First change patch
-		 * author**20051008080552] 
-		 * [Second change patch
-		 * author**20051008080552
-		 *  Long description
-		 *  indented by one space
-		 * ] 
-		 * (other patches)
-		 * [TAG Previous tag if any
-		 * author**20051008080552] 
-		 * > {
-		 * }
-		 * 
-		 * Rollback tag
-		 * ------------
-		 * [TAG Tag name
-		 * author*-1999010816123000] 
-		 * <
-		 * [First change patch
-		 * author*-20051008080552] 
-		 * [Second change patch
-		 * author*-20051008080552
-		 *  Long description
-		 *  indented by one space
-		 * ] 
-		 * (other rollback patches)
-		 * [TAG Previous tag if any
-		 * author*-20051008080552] 
-		 * > {
-		 * }
-		 */
-		
 		// Initialize instance variables
-		PW_patchString = [patchString retain];
+		PW_gzPatchFile = gzPatchFile;
+		PW_isFullPatchRead = (PW_gzPatchFile ? gzeof(PW_gzPatchFile) : YES);
+		
+		if (PW_isFullPatchRead)
+		{
+			if (PW_gzPatchFile)
+			{
+				int closeError = gzclose(PW_gzPatchFile);
+				PW_gzPatchFile = nil;
+				NSAssert(closeError == Z_OK, @"Patch file failed to close");
+			}
+			
+			PW_fullPatchString = [currPatchString retain];
+		}
+		else
+			PW_currPatchString = [currPatchString mutableCopy];
 		
 		
 		// Parse patch
@@ -70,13 +86,69 @@
 		static OGRegularExpression *tagRegexp = nil;
 		if (!tagRegexp)
 			// tagRegexp unescaped pattern: "^\[TAG (?<name>.*?)\n(?<author>.*?)\*(?<rollback_flag>\*|-)(?<date>\d{14})] \n<$)";
-			tagRegexp = [[OGRegularExpression alloc] initWithString:@"^\\[TAG (?<name>.*?)\\n(?<author>.*?)\\*(?<rollback_flag>\\*|-)(?<date>\\d{14})] \\n<$"
-			                                                options:OgreCaptureGroupOption
-			                                                 syntax:OgreRubySyntax
-			                                        escapeCharacter:OgreBackslashCharacter];
+			tagRegexp = [[OGRegularExpression alloc] initWithString:@"^\\[TAG (?<name>.*?)\\n(?<author>.*?)\\*(?<rollback_flag>\\*|-)(?<date>\\d{14})] \\n<$"];
 		
-		OGRegularExpressionMatch *match = [tagRegexp matchInString:patchString];
-		if ([match count] == 0)
+		OGRegularExpressionMatch *match = nil;
+		
+		BOOL doesMatch = NO, definitelyDoesNotMatch = NO;
+		do
+		{
+			if (PW_isFullPatchRead)
+			{
+				match = [tagRegexp matchInString:PW_fullPatchString];
+				doesMatch = ([match count] > 0);
+				definitelyDoesNotMatch = !doesMatch;
+			}
+			else
+			{
+				// Check if the current patch string matches. If it doesn't, read some more and try again.
+				match = [tagRegexp matchInString:PW_currPatchString];
+				doesMatch = ([match count] > 0);
+				if (!doesMatch)
+				{
+					// Read in the next line of the patch. If we read "<\n" then we know this patch will definitely never match the regexp.
+					char lineBuffer[LINE_BUFFER_LENGH];
+					char *line = gzgets(PW_gzPatchFile, lineBuffer, LINE_BUFFER_LENGH);
+					if (line == Z_NULL)
+					{
+						gzclose(PW_gzPatchFile);
+						PW_gzPatchFile = nil;
+						[self release];
+						*outError = [NSError errorWithDomain:NSCocoaErrorDomain
+						                                code:NSFileReadUnknownError
+						                            userInfo:nil];
+						return nil;
+					}
+					else
+					{
+						NSString *newLine = [NSString stringWithCString:line encoding:PATCH_STRING_ENCODING];
+						[PW_currPatchString appendString:newLine];
+						if ([newLine isEqualToString:@"<\n"])
+						{
+							match = [tagRegexp matchInString:PW_currPatchString];
+							doesMatch = ([match count] > 0);
+							definitelyDoesNotMatch = !doesMatch;
+						}
+						
+						// Since we just read in a chunk, check if we reached the end of file
+						if (gzeof(PW_gzPatchFile))
+						{
+							PW_isFullPatchRead = YES;
+							int closeError = gzclose(PW_gzPatchFile);
+							PW_gzPatchFile = nil;
+							NSAssert(closeError == Z_OK, @"Patch file failed to close");
+							
+							PW_fullPatchString = [currPatchString retain];
+							[PW_currPatchString release];
+							PW_currPatchString = nil;
+						}
+					}
+				}
+			}
+		} while (!doesMatch && !definitelyDoesNotMatch);
+		
+		
+		if (!match || ([match count] == 0))
 		{
 			[self release];
 			self = nil;
@@ -100,7 +172,16 @@
 				            format:@"Patch regular expression matched patch string, but rollback_flag was '%@' instead of '*' or '-'", rollbackFlag];
 		}
 	}
+	else
+		if (gzPatchFile)
+			gzclose(gzPatchFile);
 	return self;
+}
+
+
+- (id)initWithFullPatchString:(NSString *)patchString error:(NSError **)outError
+{
+	return [self initWithOpenGzFile:NULL alreadyReadString:patchString error:outError];
 }
 
 

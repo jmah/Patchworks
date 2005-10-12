@@ -103,19 +103,27 @@
 
 - (void)testBadPatch
 {
-	NSString *badPatchString = @"Here is a string that doesn't represent a patch.";
-	NSData *patchData = [badPatchString dataUsingEncoding:NSASCIIStringEncoding];
-	NSError *error = nil;
-	PWDarcsPatch *patch = [[PWDarcsPatch alloc] initWithData:patchData error:&error];
-	
-	STAssertNil(patch,
-		@"Initializing a bad patch should return nil.");
-	STAssertNotNil(error,
-		@"Initializing a bad patch should generate an error.");
-	STAssertEqualObjects([error domain], PWDarcsPatchErrorDomain,
-		@"Error should be in the PWDarcsPatchErrorDomain.");
-	STAssertEquals([error code], PWDarcsPatchUnknownTypeError,
-		@"Error should be an unknown type error.");
+	NSBundle *myBundle = [NSBundle bundleForClass:[self class]];
+	NSArray *badPatchNames = [NSArray arrayWithObjects:@"07-Bad", @"08-Bad-Change", @"09-Bad-Tag", nil];
+	NSEnumerator *badPatchNameEnumerator = [badPatchNames objectEnumerator];
+	NSString *currBadPatchName = nil;
+	while (currBadPatchName = [badPatchNameEnumerator nextObject])
+	{
+		NSString *patchPath = [myBundle pathForResource:currBadPatchName
+		                                         ofType:@"gz"
+		                                    inDirectory:@"Test Patches"];
+		NSError *error = nil;
+		PWDarcsPatch *patch = [[PWDarcsPatch alloc] initWithContentsOfURL:[NSURL fileURLWithPath:patchPath] error:&error];
+		
+		STAssertNil(patch,
+			@"Initializing a bad patch should return nil.");
+		STAssertNotNil(error,
+			@"Initializing a bad patch should generate an error.");
+		STAssertEqualObjects([error domain], PWDarcsPatchErrorDomain,
+			@"Error should be in the PWDarcsPatchErrorDomain.");
+		STAssertEquals([error code], PWDarcsPatchUnknownTypeError,
+			@"Error should be an unknown type error.");
+	}
 }
 
 
