@@ -83,6 +83,7 @@
 			[mdDictionary setObject:[(id)PW_patchProxy longDescription] forKey:(NSString *)kMDItemComment];
 	[mdDictionary setObject:[PW_patchProxy date] forKey:(NSString *)kMDItemContentCreationDate];
 	[mdDictionary setObject:[PW_patchProxy date] forKey:(NSString *)kMDItemContentModificationDate];
+	[mdDictionary setObject:[PW_patchProxy date] forKey:(NSString *)kMDItemLastUsedDate];
 	[mdDictionary setObject:@"darcs" forKey:(NSString *)kMDItemCreator];
 	[mdDictionary setObject:[NSArray arrayWithObject:[PW_patchProxy authorEmail]] forKey:(NSString *)kMDItemEmailAddresses];
 	[mdDictionary setObject:[NSArray arrayWithObject:[PW_patchProxy authorEmail]] forKey:(NSString *)kMDItemWhereFroms];
