@@ -12,9 +12,18 @@
 			<displayattrs>
 				kMDItemTitle
 				kMDItemAuthors
-				org_playhaus_patchworks_darcs_PatchType
 				kMDItemContentCreationDate
+				org_playhaus_patchworks_darcs_PatchType
+				org_playhaus_patchworks_darcs_IsRollbackPatch
 			</displayattrs>
+			<previewattrs>
+				kMDItemTitle
+				kMDItemAuthors
+				kMDItemContentCreationDate
+				org_playhaus_patchworks_darcs_PatchType
+				org_playhaus_patchworks_darcs_IsRollbackPatch
+				kMDItemComment
+			</previewattrs>
 			<allattrs>
 				kMDItemTitle
 				kMDItemAuthors
