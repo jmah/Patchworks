@@ -37,9 +37,9 @@ static OGRegularExpression *emailRegexp = nil;
 }
 
 
-+ (id)patchWithContentsOfURL:(NSURL *)aURL error:(NSError **)outError
++ (id)patchWithContentsOfURL:(NSURL *)patchURL error:(NSError **)outError
 {
-	NSData *data = [NSData dataWithContentsOfURL:aURL options:0 error:outError];
+	NSData *data = [NSData dataWithContentsOfURL:patchURL options:0 error:outError];
 	if (*outError != nil)
 		return nil;
 	else
