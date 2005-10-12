@@ -127,6 +127,7 @@
 		28BC093A08FBBF5200BE7895 /* PWDarcsPatchProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 284841C308FA384700EDFDD3 /* PWDarcsPatchProxy.m */; };
 		28BC093E08FBBF8E00BE7895 /* Test Repository in Resources */ = {isa = PBXBuildFile; fileRef = 283E481A08FA503B00772738 /* Test Repository */; };
 		28BC093F08FBC01D00BE7895 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 283E4C4908FB4E9E00772738 /* Localizable.strings */; };
+		28F6D06108FD4C7600A4C88D /* org.playhaus.patchworks.darcspatchproxy.icns in Resources */ = {isa = PBXBuildFile; fileRef = 28F6D06008FD4C7600A4C88D /* org.playhaus.patchworks.darcspatchproxy.icns */; };
 		28FCD3F408EC577900A970FA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FCD3E708EC577900A970FA /* main.m */; };
 		28FCD3F508EC577900A970FA /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 28FCD3EA08EC577900A970FA /* Credits.rtf */; };
 		28FCD3F708EC577900A970FA /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = 28FCD3EE08EC577900A970FA /* MainMenu.nib */; };
@@ -334,6 +335,7 @@
 		28BC08FA08FBBD3200BE7895 /* PWDarcsPatchImporterTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWDarcsPatchImporterTest.h; sourceTree = "<group>"; };
 		28BC08FB08FBBD3200BE7895 /* PWDarcsPatchImporterTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWDarcsPatchImporterTest.m; sourceTree = "<group>"; };
 		28EB4A0408F02EF000126AE9 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
+		28F6D06008FD4C7600A4C88D /* org.playhaus.patchworks.darcspatchproxy.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = org.playhaus.patchworks.darcspatchproxy.icns; sourceTree = "<group>"; };
 		28FCD3E708EC577900A970FA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		28FCD3E808EC577900A970FA /* Patchworks_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Patchworks_Prefix.pch; sourceTree = "<group>"; };
 		28FCD3EF08EC577900A970FA /* en */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = en; path = en.lproj/MainMenu.nib; sourceTree = "<group>"; };
@@ -649,6 +651,7 @@
 				28FCD3EA08EC577900A970FA /* Credits.rtf */,
 				28FCD3EE08EC577900A970FA /* MainMenu.nib */,
 				2818C58308F8225E00FD8852 /* PWDarcsPatchProxyDocument.nib */,
+				28F6D06008FD4C7600A4C88D /* org.playhaus.patchworks.darcspatchproxy.icns */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -1068,6 +1071,7 @@
 				28BA6D4308F9601C00333DD4 /* RegistrationDefaults.plist in Resources */,
 				2866FFA508F98E4800D39E2D /* PWDarcsPatch.strings in Resources */,
 				28BC090108FBBDA000BE7895 /* Test Repository in Resources */,
+				28F6D06108FD4C7600A4C88D /* org.playhaus.patchworks.darcspatchproxy.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

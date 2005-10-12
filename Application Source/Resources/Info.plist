@@ -15,6 +15,8 @@
 			<string>Darcs Patch</string>
 			<key>UTTypeReferenceURL</key>
 			<string>http://darcs.net/</string>
+			<key>UTTypeIconFile</key>
+			<string>org.playhaus.patchworks.darcspatchproxy.icns</string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
 				<key>public.filename-extension</key>
@@ -38,6 +40,8 @@
 			<string>Darcs Patch</string>
 			<key>CFBundleTypeRole</key>
 			<string>Viewer</string>
+			<key>CFBundleTypeIconFile</key>
+			<string>org.playhaus.patchworks.darcspatchproxy.icns</string>
 			<key>LSItemContentTypes</key>
 			<array>
 				<string>org.playhaus.patchworks.darcspatchproxy</string>
