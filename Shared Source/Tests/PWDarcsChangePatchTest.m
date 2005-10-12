@@ -162,7 +162,7 @@
 }
 
 
-- (void)testBadPatch
+- (void)testBadChangePatch
 {
 	NSBundle *myBundle = [NSBundle bundleForClass:[self class]];
 	NSArray *badPatchNames = [NSArray arrayWithObjects:@"10-Bad-Change-LongDescription", @"11-Very-Bad-Change", nil];
