@@ -204,6 +204,9 @@
 
 - (void)dealloc
 {
+	[PW_cleanedLongDescription release];
+	PW_cleanedLongDescription = nil;
+	
 	[self setLongDescription:nil];
 	
 	[super dealloc];
@@ -223,6 +226,31 @@
 
 - (NSString *)longDescription
 {
+	return PW_longDescription;
+}
+
+
+- (NSString *)cleanedLongDescription
+{
+	if (!PW_cleanedLongDescription && [self longDescription])
+	{
+		// Remove newlines from the long description (in a mostly sensible manner)
+		OGRegularExpression *continuingLineRegexp = [OGRegularExpression regularExpressionWithString:@"([^:\\\\])\\n ([^-\\s\\*+])"];
+		OGReplaceExpression *replaceExp = [OGReplaceExpression replaceExpressionWithString:@"\\`\\1 \\2\\'"];
+		OGRegularExpressionMatch *match = nil;
+		NSString *cleanedLongDescription = [self longDescription];
+		
+		do
+		{
+			match = [continuingLineRegexp matchInString:cleanedLongDescription];
+			if (match && ([match count] > 0))
+				cleanedLongDescription = [replaceExp replaceMatchedStringOf:match];
+		} while (match && ([match count] > 0));
+		
+		// Remove initial space
+		PW_cleanedLongDescription = [[cleanedLongDescription stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] retain];
+	}
+	
 	return PW_longDescription;
 }
 

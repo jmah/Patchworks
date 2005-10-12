@@ -14,6 +14,10 @@
 
 @interface PWDarcsChangePatch : PWDarcsPatch
 {
+	@private
+	NSString *PW_cleanedLongDescription; // Cached version of the cleaned long description
+	
+	@protected
 	NSString *PW_longDescription;
 }
 
@@ -24,6 +28,7 @@
 
 #pragma mark Accessor Methods
 - (NSString *)longDescription;
+- (NSString *)cleanedLongDescription;
 
 @end
 

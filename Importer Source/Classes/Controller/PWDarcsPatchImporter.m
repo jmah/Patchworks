@@ -78,9 +78,6 @@
 	[mdDictionary setObject:[NSArray arrayWithObject:[PW_patchProxy authorNameOnly]] forKey:(NSString *)kMDItemAuthors];
 	[mdDictionary setObject:localizedType forKey:@"org_playhaus_patchworks_darcs_PatchType"];
 	[mdDictionary setObject:[NSNumber numberWithBool:[PW_patchProxy isRollbackPatch]] forKey:@"org_playhaus_patchworks_darcs_IsRollbackPatch"];
-	if ([PW_patchProxy type] == PWDarcsChangePatchType)
-		if ([(id)PW_patchProxy longDescription])
-			[mdDictionary setObject:[(id)PW_patchProxy longDescription] forKey:(NSString *)kMDItemComment];
 	[mdDictionary setObject:[PW_patchProxy date] forKey:(NSString *)kMDItemContentCreationDate];
 	[mdDictionary setObject:[PW_patchProxy date] forKey:(NSString *)kMDItemContentModificationDate];
 	[mdDictionary setObject:[PW_patchProxy date] forKey:(NSString *)kMDItemLastUsedDate];
@@ -92,6 +89,10 @@
 	// [mdDictionary setObject:changedFilenamesArray forKey:(NSString *)kMDItemKeywords];
 	NSString *repoName = [[[PW_patchProxy repositoryURL] path] lastPathComponent];
 	[mdDictionary setObject:[NSArray arrayWithObject:repoName] forKey:(NSString *)kMDItemProjects];
+	
+	if ([PW_patchProxy type] == PWDarcsChangePatchType)
+		if ([(id)PW_patchProxy longDescription])
+			[mdDictionary setObject:[(id)PW_patchProxy cleanedLongDescription] forKey:(NSString *)kMDItemComment];
 	
 	return mdDictionary;
 }
