@@ -61,7 +61,7 @@ static OGRegularExpression *emailRegexp = nil;
 {
 	if (!emailRegexp)
 		// emailRegexp unescaped pattern: "\s*<?(?<user>[-\w+.]{1,64})(?:@|\s+at\s+)(?<host>[-\w+.]{3,255})>?\s*";
-		emailRegexp = [[OGRegularExpression alloc] initWithString:@"\\s*<?(?<user>[-\\w+.]{1,64})(?:@|\\s+at\\s+)(?<host>[-\\w+.]{3,255})>?\\s*"];	
+		emailRegexp = [[OGRegularExpression alloc] initWithString:@"\\s*<?(?<user>[-\\w+.]{1,64})(?:@|\\s+at\\s+)(?<host>[-\\w+.]{3,255})>?\\s*"];
 }
 
 - (id)initWithData:(NSData *)data error:(NSError **)outError // Designated initializer
@@ -86,7 +86,6 @@ static OGRegularExpression *emailRegexp = nil;
 		Class concretePatchClass = nil;
 		PWDarcsPatch *newPatch = nil; // This will be a concrete subclass of PWDarcsPatch
 		
-		// Check if the first five characters are '[TAG '
 		static OGRegularExpression *patchTypeRegexp = nil;
 		if (!patchTypeRegexp)
 			// patchTypeRegexp unescaped pattern: "^\[(?<is_tag>TAG )?.+?\n.*?\*(?:\*|-)\d{14}(?:\] \{?)?$";
