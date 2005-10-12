@@ -1311,7 +1311,6 @@
 				LIBRARY_STYLE = BUNDLE;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "-lz";
-				PREBINDING = NO;
 				PRODUCT_NAME = Patchworks;
 				SECTORDER_FLAGS = "";
 				WRAPPER_EXTENSION = mdimporter;
@@ -1329,7 +1328,6 @@
 				LIBRARY_STYLE = BUNDLE;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "-lz";
-				PREBINDING = NO;
 				PRODUCT_NAME = Patchworks;
 				SECTORDER_FLAGS = "";
 				WRAPPER_EXTENSION = mdimporter;
@@ -1352,7 +1350,6 @@
 					"-framework",
 					SenTestingKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = "Patchworks Test";
 				WRAPPER_EXTENSION = octest;
 			};
@@ -1374,7 +1371,6 @@
 					"-framework",
 					SenTestingKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = "Patchworks Test";
 				WRAPPER_EXTENSION = octest;
 			};
@@ -1396,7 +1392,6 @@
 					"-framework",
 					SenTestingKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = "Shared Source Test";
 				WRAPPER_EXTENSION = octest;
 			};
@@ -1418,7 +1413,6 @@
 					"-framework",
 					SenTestingKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = "Shared Source Test";
 				WRAPPER_EXTENSION = octest;
 			};
@@ -1478,7 +1472,6 @@
 					"-framework",
 					SenTestingKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = "Patchworks Importer Test";
 				WRAPPER_EXTENSION = octest;
 			};
@@ -1500,7 +1493,6 @@
 					"-framework",
 					SenTestingKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = "Patchworks Importer Test";
 				WRAPPER_EXTENSION = octest;
 			};
@@ -1555,7 +1547,6 @@
 				INFOPLIST_FILE = "Application Source/Resources/Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = "-lz";
-				PREBINDING = NO;
 				PRODUCT_NAME = Patchworks;
 				WRAPPER_EXTENSION = app;
 				ZERO_LINK = YES;
@@ -1572,7 +1563,6 @@
 				INFOPLIST_FILE = "Application Source/Resources/Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = "-lz";
-				PREBINDING = NO;
 				PRODUCT_NAME = Patchworks;
 				WRAPPER_EXTENSION = app;
 				ZERO_LINK = NO;
@@ -1593,6 +1583,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.4;
+				PREBINDING = NO;
 				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
 				WARNING_CFLAGS = "-Wmost";
 			};
@@ -1612,6 +1603,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.4;
+				PREBINDING = NO;
 				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
 				WARNING_CFLAGS = "-Wmost";
 			};
