@@ -105,17 +105,21 @@
 	NSString *currKey = nil;
 	while (currKey = [metadataKeys nextObject])
 	{
-		BOOL isAttributeMultiValued, isBooleanAttribute;
+		BOOL isAttributeMultiValued;
 		
 		CFDictionaryRef metaAttributes = MDSchemaCopyMetaAttributesForAttribute((CFStringRef)currKey);
 		if (!metaAttributes)
 		{
-			// We are probably dealing with our custom org_playhaus_Patchworks_darcs_IsRollbackPatch attribute, and the importer is not currently installed (so the metadata system knows nothing about it). If so, fake it manually:
+			// We are probably dealing with one of our custom attributes, and the importer is not currently installed (so the metadata system knows nothing about them). If so, fake it manually:
 			if ([currKey isEqualToString:@"org_playhaus_patchworks_darcs_IsRollbackPatch"])
 			{
 				NSLog(@"Faking meta-attributes for attribute %@. This should only happen when the importer is not installed.", currKey);
 				isAttributeMultiValued = NO;
-				isBooleanAttribute = YES;
+			}
+			else if ([currKey isEqualToString:@"org_playhaus_patchworks_darcs_PatchType"])
+			{
+				NSLog(@"Faking meta-attributes for attribute %@. This should only happen when the importer is not installed.", currKey);
+				isAttributeMultiValued = NO;
 			}
 			else
 				NSAssert1(NO, @"Copying meta-attributes failed for attribute %@.", currKey);
@@ -123,20 +127,12 @@
 		else
 		{
 			isAttributeMultiValued = CFBooleanGetValue(CFDictionaryGetValue(metaAttributes, kMDAttributeMultiValued));
-			CFTypeID typeID;
-			BOOL isTypeIDOK = CFNumberGetValue(CFDictionaryGetValue(metaAttributes, kMDAttributeType),
-											   kCFNumberSInt32Type,
-											   &typeID);
-			NSAssert1(isTypeIDOK, @"Couldn't get the type of attribute %@.", currKey);
 			CFRelease(metaAttributes);
-			
-			isBooleanAttribute = (typeID == CFBooleanGetTypeID());
 		}
 		
 		if (isAttributeMultiValued && CFDictionaryContainsKey(dictionary, currKey))
 		{
 			// Merge our array with the supplied array
-#warning This code needs to handle arrays of CFBooleans
 			NSMutableArray *newArray = [(NSArray *)CFDictionaryGetValue(dictionary, currKey) mutableCopy];
 			NSEnumerator *newArrayEnumerator = [[mdDictionary objectForKey:currKey] objectEnumerator];
 			id currObject = nil;
@@ -149,12 +145,7 @@
 			[newArray release];
 		}
 		else
-		{
-			if (isBooleanAttribute)
-				CFDictionarySetValue(dictionary, (CFStringRef)currKey, ([[mdDictionary objectForKey:currKey] boolValue] ? kCFBooleanTrue : kCFBooleanFalse));
-			else
-				CFDictionarySetValue(dictionary, currKey, [mdDictionary objectForKey:currKey]);
-		}
+			CFDictionarySetValue(dictionary, currKey, [mdDictionary objectForKey:currKey]);
 	}
 }
 
