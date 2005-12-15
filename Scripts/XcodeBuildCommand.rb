@@ -19,44 +19,49 @@ require 'english'
 class XcodeBuildCommand
   # Build command properties
   attr_reader :project_path, :target, :configuration, :build_actions, :other_settings
-  # Project properties
-  attr_reader :active_target, :active_configuration
-  attr_reader :valid_targets, :valid_configurations, :valid_build_actions
   
   def initialize(project_path = '')
     raise "'#{new_path}' is not a valid path to an Xcode project" unless (File.directory? project_path.to_s and project_path.to_s =~ /.*\.xcode(proj)?/) or project_path.to_s == ''
     @project_path = project_path.to_s
     
-    # Find the valid targets and configurations
-    @valid_targets = []
-    @valid_configurations = []
-    read_state = nil # Valid values are [:targets, :configurations, :end]
-    list_output = `xcodebuild -list`
-    list_output.each do |line|
-      if line =~ /^ {4}[^ ]/
-        # We have a marker of upcoming tokens
-        case line.strip
-        when 'Targets:'
-          read_state = :targets
-        when 'Build Configurations:'
-          read_state = :configurations
-        when /^If no build configuration is specified ".*" is used\.$/
-          read_state = :end
-        end
-      elsif line =~ /^ {8}[^ ]/
-        # We have an interesting token (a target or configuration)
-        case read_state
-        when :targets
-          @valid_targets << line.strip.chomp(' (Active)')
-          @active_target = @valid_targets[-1] if line.strip =~ / \(Active\)$/
-        when :configurations
-          @valid_configurations << line.strip.chomp(' (Active)')
-          @active_configuration = @valid_configurations[-1] if line.strip =~ / \(Active\)$/
-        end
+    # Find the valid targets and configurations in a new thread, because it's really slow
+    @init_thread = Thread.new do
+      @valid_targets = []
+      @valid_configurations = []
+      read_state = nil # Valid values are [:targets, :configurations, :end]
+      if @project_path.empty?
+        list_cmd = "xcodebuild -list"
+      else
+        list_cmd = "xcodebuild -project '#@project_path' -list"
       end
       
-      break if read_state == :end
-    end
+      list_output = `#{list_cmd}`
+      list_output.each do |line|
+        if line =~ /^ {4}[^ ]/
+          # We have a marker of upcoming tokens
+          case line.strip
+          when 'Targets:'
+            read_state = :targets
+          when 'Build Configurations:'
+            read_state = :configurations
+          when /^If no build configuration is specified ".*" is used\.$/
+            read_state = :end
+          end
+        elsif line =~ /^ {8}[^ ]/
+          # We have an interesting token (a target or configuration)
+          case read_state
+          when :targets
+            @valid_targets << line.strip.chomp(' (Active)')
+            @active_target = @valid_targets[-1] if line.strip =~ / \(Active\)$/
+          when :configurations
+            @valid_configurations << line.strip.chomp(' (Active)')
+            @active_configuration = @valid_configurations[-1] if line.strip =~ / \(Active\)$/
+          end
+        end
+        
+        break if read_state == :end
+      end
+    end # init_thread
     
     @valid_build_actions = [ :build, :installsrc, :install, :clean ]
     
@@ -66,6 +71,44 @@ class XcodeBuildCommand
     @build_actions = [:build]
     @other_settings = Hash.new
   end
+  
+  
+  # Project properties
+  
+  attr_reader :valid_build_actions
+  
+  def active_target
+    if @init_thread
+      @init_thread.join
+      @init_thread = nil
+    end
+    @active_target
+  end
+  
+  def active_configuration
+    if @init_thread
+      @init_thread.join
+      @init_thread = nil
+    end
+    @active_configuration
+  end
+  
+  def valid_targets
+    if @init_thread
+      @init_thread.join
+      @init_thread = nil
+    end
+    @valid_targets
+  end
+  
+  def valid_configurations
+    if @init_thread
+      @init_thread.join
+      @init_thread = nil
+    end
+    @valid_configurations
+  end
+  
   
   def target=(new_target)
     valid_target = nil
@@ -191,7 +234,7 @@ QUOTE
     
     # Project path
     if project_path != ''
-      args << "-project #{project_path}"
+      args << "-project '#{project_path}'"
     end
     
     # Target
