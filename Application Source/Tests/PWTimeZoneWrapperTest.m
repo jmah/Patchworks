@@ -40,7 +40,10 @@
 		@"Adelaide wrapper was nil.");
 	STAssertEqualObjects([adelaideWrapper name], @"Australia/Adelaide",
 		@"Wrapper name was not as initialized.");
-	STAssertEquals([adelaideWrapper secondsFromGMT], (int)(9.5 * 60 * 60),
+	int secondsFromGMT = 9.5 * 60 * 60;
+	if ([[NSTimeZone timeZoneWithName:@"Australia/Adelaide"] isDaylightSavingTime])
+		secondsFromGMT += 1 * 60 * 60;
+	STAssertEquals([adelaideWrapper secondsFromGMT], secondsFromGMT,
 		@"Seconds from GMT was not correct.");
 	STAssertEqualObjects([adelaideWrapper abbreviation], @"CST",
 		@"Wrapper abbreviation was not correct.");
