@@ -85,6 +85,9 @@
 		2818C6C908F90B9700FD8852 /* PWTimeZoneWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2818C6C708F90B9700FD8852 /* PWTimeZoneWrapper.m */; };
 		2818C6CB08F90B9700FD8852 /* PWTimeZoneWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2818C6C708F90B9700FD8852 /* PWTimeZoneWrapper.m */; };
 		2818C6D108F90BDA00FD8852 /* PWTimeZoneWrapperTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2818C6CD08F90BDA00FD8852 /* PWTimeZoneWrapperTest.m */; };
+		28261BB40951B680008F1B53 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28261BB30951B680008F1B53 /* SenTestingKit.framework */; };
+		28261BB50951B680008F1B53 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28261BB30951B680008F1B53 /* SenTestingKit.framework */; };
+		28261BB60951B680008F1B53 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28261BB30951B680008F1B53 /* SenTestingKit.framework */; };
 		283E482608FA503B00772738 /* Test Repository in Resources */ = {isa = PBXBuildFile; fileRef = 283E481A08FA503B00772738 /* Test Repository */; };
 		283E49D708FA9BBB00772738 /* PWDarcsPatchProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 284841C308FA384700EDFDD3 /* PWDarcsPatchProxy.m */; };
 		283E4BF608FB46B000772738 /* PWDarcsPatchImporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 283E4BB108FB451300772738 /* PWDarcsPatchImporter.m */; };
@@ -302,6 +305,22 @@
 		2818C6C708F90B9700FD8852 /* PWTimeZoneWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWTimeZoneWrapper.m; sourceTree = "<group>"; };
 		2818C6CC08F90BDA00FD8852 /* PWTimeZoneWrapperTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWTimeZoneWrapperTest.h; sourceTree = "<group>"; };
 		2818C6CD08F90BDA00FD8852 /* PWTimeZoneWrapperTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWTimeZoneWrapperTest.m; sourceTree = "<group>"; };
+		28261B820951B3A7008F1B53 /* 10_4 Shared.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "10_4 Shared.xcconfig"; sourceTree = "<group>"; };
+		28261B830951B3A8008F1B53 /* Cocoa Application Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "Cocoa Application Debug.xcconfig"; sourceTree = "<group>"; };
+		28261B840951B3A8008F1B53 /* Cocoa Application Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "Cocoa Application Release.xcconfig"; sourceTree = "<group>"; };
+		28261B850951B3A8008F1B53 /* Cocoa Application Shared.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "Cocoa Application Shared.xcconfig"; sourceTree = "<group>"; };
+		28261B8C0951B3A8008F1B53 /* Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
+		28261B8D0951B3A8008F1B53 /* Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
+		28261BAC0951B630008F1B53 /* Cocoa Test Suite.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "Cocoa Test Suite.xcconfig"; sourceTree = "<group>"; };
+		28261BB30951B680008F1B53 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = /System/Library/Frameworks/SenTestingKit.framework; sourceTree = "<absolute>"; };
+		28261C040951B85C008F1B53 /* Patchworks Test_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Patchworks Test_Prefix.pch"; sourceTree = "<group>"; };
+		28261C250951B9BE008F1B53 /* Patchworks Importer_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Patchworks Importer_Prefix.pch"; sourceTree = "<group>"; };
+		28261C260951B9BE008F1B53 /* Patchworks Importer Test_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Patchworks Importer Test_Prefix.pch"; sourceTree = "<group>"; };
+		28261C2D0951BA19008F1B53 /* Shared Source Test_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Shared Source Test_Prefix.pch"; sourceTree = "<group>"; };
+		28261C310951BA59008F1B53 /* Metadata Importer Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "Metadata Importer Release.xcconfig"; sourceTree = "<group>"; };
+		28261C320951BA59008F1B53 /* Metadata Importer Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "Metadata Importer Debug.xcconfig"; sourceTree = "<group>"; };
+		28261C330951BA59008F1B53 /* Metadata Importer Shared.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "Metadata Importer Shared.xcconfig"; sourceTree = "<group>"; };
+		28261CB20951C1B7008F1B53 /* Cocoa Test Suite Unit Tests.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "Cocoa Test Suite Unit Tests.xcconfig"; sourceTree = "<group>"; };
 		283E481A08FA503B00772738 /* Test Repository */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Test Repository"; sourceTree = "<group>"; };
 		283E4BB008FB451300772738 /* PWDarcsPatchImporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWDarcsPatchImporter.h; sourceTree = "<group>"; };
 		283E4BB108FB451300772738 /* PWDarcsPatchImporter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWDarcsPatchImporter.m; sourceTree = "<group>"; };
@@ -362,6 +381,7 @@
 			files = (
 				28015CCF08ED54B800C83A75 /* Cocoa.framework in Frameworks */,
 				289F13E208F6A3BE00E9D926 /* OgreKit.framework in Frameworks */,
+				28261BB40951B680008F1B53 /* SenTestingKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -371,6 +391,7 @@
 			files = (
 				28015CCD08ED54AE00C83A75 /* Cocoa.framework in Frameworks */,
 				289F13DE08F6A3BE00E9D926 /* OgreKit.framework in Frameworks */,
+				28261BB60951B680008F1B53 /* SenTestingKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -380,6 +401,7 @@
 			files = (
 				28015CCE08ED54B500C83A75 /* Cocoa.framework in Frameworks */,
 				289F13DF08F6A3BE00E9D926 /* OgreKit.framework in Frameworks */,
+				28261BB50951B680008F1B53 /* SenTestingKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -455,6 +477,8 @@
 			isa = PBXGroup;
 			children = (
 				2801596408EC773200C83A75 /* main.c */,
+				28261C250951B9BE008F1B53 /* Patchworks Importer_Prefix.pch */,
+				28261C260951B9BE008F1B53 /* Patchworks Importer Test_Prefix.pch */,
 				2801596508EC773200C83A75 /* GetMetadataForFile.m */,
 			);
 			path = "Other Sources";
@@ -529,6 +553,7 @@
 		2801594F08EC767C00C83A75 /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
+				28261C2D0951BA19008F1B53 /* Shared Source Test_Prefix.pch */,
 			);
 			path = "Other Sources";
 			sourceTree = "<group>";
@@ -569,6 +594,24 @@
 				2818C6CD08F90BDA00FD8852 /* PWTimeZoneWrapperTest.m */,
 			);
 			path = Tests;
+			sourceTree = "<group>";
+		};
+		28261B810951B3A7008F1B53 /* Common Build Configurations */ = {
+			isa = PBXGroup;
+			children = (
+				28261B820951B3A7008F1B53 /* 10_4 Shared.xcconfig */,
+				28261B8C0951B3A8008F1B53 /* Debug.xcconfig */,
+				28261B8D0951B3A8008F1B53 /* Release.xcconfig */,
+				28261BAC0951B630008F1B53 /* Cocoa Test Suite.xcconfig */,
+				28261CB20951C1B7008F1B53 /* Cocoa Test Suite Unit Tests.xcconfig */,
+				28261B850951B3A8008F1B53 /* Cocoa Application Shared.xcconfig */,
+				28261B830951B3A8008F1B53 /* Cocoa Application Debug.xcconfig */,
+				28261B840951B3A8008F1B53 /* Cocoa Application Release.xcconfig */,
+				28261C330951BA59008F1B53 /* Metadata Importer Shared.xcconfig */,
+				28261C320951BA59008F1B53 /* Metadata Importer Debug.xcconfig */,
+				28261C310951BA59008F1B53 /* Metadata Importer Release.xcconfig */,
+			);
+			path = "Common Build Configurations";
 			sourceTree = "<group>";
 		};
 		28BC08F808FBBD1C00BE7895 /* Tests */ = {
@@ -636,6 +679,7 @@
 			children = (
 				28FCD3E708EC577900A970FA /* main.m */,
 				28FCD3E808EC577900A970FA /* Patchworks_Prefix.pch */,
+				28261C040951B85C008F1B53 /* Patchworks Test_Prefix.pch */,
 				28BA6C0508F94A9D00333DD4 /* PatchworksDefines.h */,
 			);
 			path = "Other Sources";
@@ -664,6 +708,7 @@
 				2801594A08EC767C00C83A75 /* Shared Source */,
 				28FCD3DF08EC577900A970FA /* Application Source */,
 				2801594208EC766A00C83A75 /* Importer Source */,
+				28261B810951B3A7008F1B53 /* Common Build Configurations */,
 				2A37F4C3FDCFA73011CA2CEA /* Frameworks */,
 				19C28FB0FE9D524F11CA2CBB /* Products */,
 			);
@@ -673,8 +718,9 @@
 		2A37F4C3FDCFA73011CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				289F13DD08F6A3BE00E9D926 /* OgreKit.framework */,
 				1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */,
+				289F13DD08F6A3BE00E9D926 /* OgreKit.framework */,
+				28261BB30951B680008F1B53 /* SenTestingKit.framework */,
 				2A37F4C4FDCFA73011CA2CEA /* AppKit.framework */,
 				2A37F4C5FDCFA73011CA2CEA /* Foundation.framework */,
 				13E42FBA07B3F13500E4EEF1 /* CoreData.framework */,
@@ -1306,119 +1352,73 @@
 /* Begin XCBuildConfiguration section */
 		280159AB08EC781B00C83A75 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 28261C320951BA59008F1B53 /* Metadata Importer Debug.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/Frameworks\"";
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "Importer Source/Other Sources/Patchworks Importer_Prefix.pch";
 				INFOPLIST_FILE = "Importer Source/Resources/Info.plist";
-				INSTALL_PATH = /Library/Spotlight;
-				LIBRARY_STYLE = BUNDLE;
-				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "-lz";
 				PRODUCT_NAME = Patchworks;
-				SECTORDER_FLAGS = "";
-				WRAPPER_EXTENSION = mdimporter;
 			};
 			name = Debug;
 		};
 		280159AC08EC781B00C83A75 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 28261C310951BA59008F1B53 /* Metadata Importer Release.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/Frameworks\"";
-				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
-				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "Importer Source/Other Sources/Patchworks Importer_Prefix.pch";
 				INFOPLIST_FILE = "Importer Source/Resources/Info.plist";
-				INSTALL_PATH = /Library/Spotlight;
-				LIBRARY_STYLE = BUNDLE;
-				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "-lz";
 				PRODUCT_NAME = Patchworks;
-				SECTORDER_FLAGS = "";
-				WRAPPER_EXTENSION = mdimporter;
 			};
 			name = Release;
 		};
 		28015AFC08EC9C9800C83A75 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 28261BAC0951B630008F1B53 /* Cocoa Test Suite.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/Frameworks\"";
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Cocoa.framework/Headers/Cocoa.h";
+				GCC_PREFIX_HEADER = "Application Source/Other Sources/Patchworks Test_Prefix.pch";
 				INFOPLIST_FILE = "Application Source/Resources/Patchworks Test-Info.plist";
-				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
-				LIBRARY_STYLE = BUNDLE;
-				OTHER_LDFLAGS = (
-					"-lz",
-					"-framework",
-					Cocoa,
-					"-framework",
-					SenTestingKit,
-				);
+				OTHER_LDFLAGS = "-lz";
 				PRODUCT_NAME = "Patchworks Test";
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
 		};
 		28015AFD08EC9C9800C83A75 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 28261BAC0951B630008F1B53 /* Cocoa Test Suite.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/Frameworks\"";
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Cocoa.framework/Headers/Cocoa.h";
+				GCC_PREFIX_HEADER = "Application Source/Other Sources/Patchworks Test_Prefix.pch";
 				INFOPLIST_FILE = "Application Source/Resources/Patchworks Test-Info.plist";
-				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
-				LIBRARY_STYLE = BUNDLE;
-				OTHER_LDFLAGS = (
-					"-lz",
-					"-framework",
-					Cocoa,
-					"-framework",
-					SenTestingKit,
-				);
+				OTHER_LDFLAGS = "-lz";
 				PRODUCT_NAME = "Patchworks Test";
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
 		};
 		28015B3F08EC9D4900C83A75 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 28261BAC0951B630008F1B53 /* Cocoa Test Suite.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/Frameworks\"";
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Cocoa.framework/Headers/Cocoa.h";
+				GCC_PREFIX_HEADER = "Shared Source/Other Sources/Shared Source Test_Prefix.pch";
 				INFOPLIST_FILE = "Shared Source/Resources/Shared Source Test-Info.plist";
-				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
-				LIBRARY_STYLE = BUNDLE;
-				OTHER_LDFLAGS = (
-					"-lz",
-					"-framework",
-					Cocoa,
-					"-framework",
-					SenTestingKit,
-				);
+				OTHER_LDFLAGS = "-lz";
 				PRODUCT_NAME = "Shared Source Test";
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
 		};
 		28015B4008EC9D4900C83A75 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 28261BAC0951B630008F1B53 /* Cocoa Test Suite.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/Frameworks\"";
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Cocoa.framework/Headers/Cocoa.h";
+				GCC_PREFIX_HEADER = "Shared Source/Other Sources/Shared Source Test_Prefix.pch";
 				INFOPLIST_FILE = "Shared Source/Resources/Shared Source Test-Info.plist";
-				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
-				LIBRARY_STYLE = BUNDLE;
-				OTHER_LDFLAGS = (
-					"-lz",
-					"-framework",
-					Cocoa,
-					"-framework",
-					SenTestingKit,
-				);
+				OTHER_LDFLAGS = "-lz";
 				PRODUCT_NAME = "Shared Source Test";
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
 		};
@@ -1462,31 +1462,22 @@
 		};
 		28015B8708EC9F3E00C83A75 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 28261BAC0951B630008F1B53 /* Cocoa Test Suite.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/Frameworks\"";
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Cocoa.framework/Headers/Cocoa.h";
+				GCC_PREFIX_HEADER = "Importer Source/Other Sources/Patchworks Importer Test_Prefix.pch";
 				INFOPLIST_FILE = "Importer Source/Resources/Patchworks Importer Test-Info.plist";
-				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
-				LIBRARY_STYLE = BUNDLE;
-				OTHER_LDFLAGS = (
-					"-lz",
-					"-framework",
-					Cocoa,
-					"-framework",
-					SenTestingKit,
-				);
+				OTHER_LDFLAGS = "-lz";
 				PRODUCT_NAME = "Patchworks Importer Test";
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
 		};
 		28015B8808EC9F3E00C83A75 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 28261BAC0951B630008F1B53 /* Cocoa Test Suite.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/Frameworks\"";
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Cocoa.framework/Headers/Cocoa.h";
+				GCC_PREFIX_HEADER = "Importer Source/Other Sources/Patchworks Importer Test_Prefix.pch";
 				INFOPLIST_FILE = "Importer Source/Resources/Patchworks Importer Test-Info.plist";
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
 				LIBRARY_STYLE = BUNDLE;
@@ -1501,6 +1492,112 @@
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
+		};
+		28261CB80951C249008F1B53 /* Unit Tests */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 28261C320951BA59008F1B53 /* Metadata Importer Debug.xcconfig */;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/Frameworks\"";
+				GCC_PREFIX_HEADER = "Importer Source/Other Sources/Patchworks Importer_Prefix.pch";
+				INFOPLIST_FILE = "Importer Source/Resources/Info.plist";
+				OTHER_LDFLAGS = "-lz";
+				PRODUCT_NAME = Patchworks;
+			};
+			name = "Unit Tests";
+		};
+		28261CB90951C249008F1B53 /* Unit Tests */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 28261B830951B3A8008F1B53 /* Cocoa Application Debug.xcconfig */;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/Frameworks\"";
+				GCC_PREFIX_HEADER = "Application Source/Other Sources/Patchworks_Prefix.pch";
+				INFOPLIST_FILE = "Application Source/Resources/Info.plist";
+				OTHER_LDFLAGS = "-lz";
+				PRODUCT_NAME = Patchworks;
+			};
+			name = "Unit Tests";
+		};
+		28261CBA0951C249008F1B53 /* Unit Tests */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				OPTIMIZATION_CFLAGS = "-O0";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = "Verify Plists";
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+			};
+			name = "Unit Tests";
+		};
+		28261CBB0951C249008F1B53 /* Unit Tests */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 28261CB20951C1B7008F1B53 /* Cocoa Test Suite Unit Tests.xcconfig */;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/Frameworks\"";
+				GCC_PREFIX_HEADER = "Application Source/Other Sources/Patchworks Test_Prefix.pch";
+				INFOPLIST_FILE = "Application Source/Resources/Patchworks Test-Info.plist";
+				OTHER_LDFLAGS = "-lz";
+				PRODUCT_NAME = "Patchworks Test";
+			};
+			name = "Unit Tests";
+		};
+		28261CBC0951C249008F1B53 /* Unit Tests */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 28261CB20951C1B7008F1B53 /* Cocoa Test Suite Unit Tests.xcconfig */;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/Frameworks\"";
+				GCC_PREFIX_HEADER = "Importer Source/Other Sources/Patchworks Importer Test_Prefix.pch";
+				INFOPLIST_FILE = "Importer Source/Resources/Patchworks Importer Test-Info.plist";
+				OTHER_LDFLAGS = "-lz";
+				PRODUCT_NAME = "Patchworks Importer Test";
+			};
+			name = "Unit Tests";
+		};
+		28261CBD0951C249008F1B53 /* Unit Tests */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 28261CB20951C1B7008F1B53 /* Cocoa Test Suite Unit Tests.xcconfig */;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/Frameworks\"";
+				GCC_PREFIX_HEADER = "Shared Source/Other Sources/Shared Source Test_Prefix.pch";
+				INFOPLIST_FILE = "Shared Source/Resources/Shared Source Test-Info.plist";
+				OTHER_LDFLAGS = "-lz";
+				PRODUCT_NAME = "Shared Source Test";
+			};
+			name = "Unit Tests";
+		};
+		28261CBE0951C249008F1B53 /* Unit Tests */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				OPTIMIZATION_CFLAGS = "-O0";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = "Unit Tests";
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+			};
+			name = "Unit Tests";
+		};
+		28261CBF0951C249008F1B53 /* Unit Tests */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 28261B8C0951B3A8008F1B53 /* Debug.xcconfig */;
+			buildSettings = {
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
+			};
+			name = "Unit Tests";
 		};
 		28E703F208FBFF0E00B5E7CD /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -1542,74 +1639,42 @@
 		};
 		28FCD3D208EC56D000A970FA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 28261B830951B3A8008F1B53 /* Cocoa Application Debug.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/Frameworks\"";
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Application Source/Other Sources/Patchworks_Prefix.pch";
 				INFOPLIST_FILE = "Application Source/Resources/Info.plist";
-				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = "-lz";
 				PRODUCT_NAME = Patchworks;
-				WRAPPER_EXTENSION = app;
-				ZERO_LINK = YES;
 			};
 			name = Debug;
 		};
 		28FCD3D308EC56D000A970FA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 28261B840951B3A8008F1B53 /* Cocoa Application Release.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/Frameworks\"";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Application Source/Other Sources/Patchworks_Prefix.pch";
 				INFOPLIST_FILE = "Application Source/Resources/Info.plist";
-				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = "-lz";
 				PRODUCT_NAME = Patchworks;
-				WRAPPER_EXTENSION = app;
-				ZERO_LINK = NO;
 			};
 			name = Release;
 		};
 		28FCD3D608EC56D000A970FA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 28261B8C0951B3A8008F1B53 /* Debug.xcconfig */;
 			buildSettings = {
-				COPY_PHASE_STRIP = NO;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_FAST_OBJC_DISPATCH = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_SIGN_COMPARE = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = NO;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.4;
-				PREBINDING = NO;
-				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
-				WARNING_CFLAGS = "-Wmost";
 			};
 			name = Debug;
 		};
 		28FCD3D708EC56D000A970FA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 28261B8D0951B3A8008F1B53 /* Release.xcconfig */;
 			buildSettings = {
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_FAST_OBJC_DISPATCH = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
-				GCC_OPTIMIZATION_LEVEL = s;
+				ARCHS = ppc;
 				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_SIGN_COMPARE = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.4;
-				PREBINDING = NO;
-				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
-				WARNING_CFLAGS = "-Wmost";
 			};
 			name = Release;
 		};
@@ -1620,6 +1685,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				280159AB08EC781B00C83A75 /* Debug */,
+				28261CB80951C249008F1B53 /* Unit Tests */,
 				280159AC08EC781B00C83A75 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -1629,6 +1695,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				28015AFC08EC9C9800C83A75 /* Debug */,
+				28261CBB0951C249008F1B53 /* Unit Tests */,
 				28015AFD08EC9C9800C83A75 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -1638,6 +1705,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				28015B3F08EC9D4900C83A75 /* Debug */,
+				28261CBD0951C249008F1B53 /* Unit Tests */,
 				28015B4008EC9D4900C83A75 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -1647,6 +1715,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				28015B5E08EC9DE300C83A75 /* Debug */,
+				28261CBE0951C249008F1B53 /* Unit Tests */,
 				28015B5F08EC9DE300C83A75 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -1656,6 +1725,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				28015B8708EC9F3E00C83A75 /* Debug */,
+				28261CBC0951C249008F1B53 /* Unit Tests */,
 				28015B8808EC9F3E00C83A75 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -1665,14 +1735,17 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				28E703F208FBFF0E00B5E7CD /* Debug */,
+				28261CBA0951C249008F1B53 /* Unit Tests */,
 				28E703F308FBFF0E00B5E7CD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
 		};
 		28FCD3D108EC56D000A970FA /* Build configuration list for PBXNativeTarget "Patchworks" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				28FCD3D208EC56D000A970FA /* Debug */,
+				28261CB90951C249008F1B53 /* Unit Tests */,
 				28FCD3D308EC56D000A970FA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -1682,6 +1755,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				28FCD3D608EC56D000A970FA /* Debug */,
+				28261CBF0951C249008F1B53 /* Unit Tests */,
 				28FCD3D708EC56D000A970FA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;

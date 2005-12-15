@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'Patchworks Importer Test' target in the 'Patchworks' project
+//
+
+#ifdef __OBJC__
+	#import <Cocoa/Cocoa.h>
+#endif

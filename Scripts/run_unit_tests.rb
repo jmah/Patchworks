@@ -20,7 +20,7 @@ if $0 == __FILE__
   
   test_proj = XcodeBuildCommand.new 'Patchworks.xcodeproj'
   test_proj.target = 'Unit Tests'
-  test_proj.configuration = 'Debug'
+  test_proj.configuration = 'Unit Tests'
   
   success = test_proj.run do |line|
     case line
