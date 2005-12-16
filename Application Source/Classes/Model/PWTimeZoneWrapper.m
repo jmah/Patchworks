@@ -35,14 +35,12 @@ static NSMutableDictionary *existingWrappers = nil; // Initialized in +initializ
 	NSEnumerator *nameEnum = [[NSTimeZone knownTimeZoneNames] objectEnumerator];
 	NSString *currName = nil;
 	while (currName = [nameEnum nextObject])
-	{
-		if ([[self ignoredTimeZoneNames] containsObject:currName])
-			continue;
-		
-		NSTimeZone *timeZone = [NSTimeZone timeZoneWithName:currName];
-		if (![existingWrappers objectForKey:timeZone])
-			[existingWrappers setObject:[self timeZoneWrapperWithTimeZone:timeZone] forKey:timeZone];
-	}
+		if (![[self ignoredTimeZoneNames] containsObject:currName])
+		{
+			NSTimeZone *timeZone = [NSTimeZone timeZoneWithName:currName];
+			if (![existingWrappers objectForKey:timeZone])
+				[existingWrappers setObject:[self timeZoneWrapperWithTimeZone:timeZone] forKey:timeZone];
+		}
 	
 	return [existingWrappers allValues];
 }
