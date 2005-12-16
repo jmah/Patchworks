@@ -9,7 +9,7 @@
 # This file is specifically excluded from the conditions in 'LICENSE.txt'.
 
 
-# This file is indented to be run from the project root
+# This file is intented to be run from the project root
 if $0 == __FILE__
   $:.unshift 'Scripts'
   require 'XcodeBuildCommand'
