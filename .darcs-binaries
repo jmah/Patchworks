@@ -37,3 +37,6 @@
 \.EXE$
 \.doc$
 \.DOC$
+
+# Xcode
+\.nib$
