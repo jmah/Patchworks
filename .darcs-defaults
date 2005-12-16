@@ -1,0 +1,17 @@
+record        posthook      ruby Scripts/make_patchworks_proxies.rb
+unrecord      posthook      ruby Scripts/make_patchworks_proxies.rb
+amend-record  posthook      ruby Scripts/make_patchworks_proxies.rb
+rollback      posthook      ruby Scripts/make_patchworks_proxies.rb
+get           posthook      ruby Scripts/build_symlinks.rb ; ruby Scripts/make_patchworks_proxies.rb
+put           posthook      ruby Scripts/build_symlinks.rb
+pull          posthook      ruby Scripts/build_symlinks.rb ; ruby Scripts/make_patchworks_proxies.rb
+apply         posthook      ruby Scripts/build_symlinks.rb ; ruby Scripts/make_patchworks_proxies.rb
+
+record        run-posthook
+unrecord      run-posthook
+amend-record  run-posthook
+rollback      run-posthook
+get           run-posthook
+put           run-posthook
+pull          run-posthook
+apply         run-posthook
