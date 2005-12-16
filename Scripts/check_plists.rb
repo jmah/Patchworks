@@ -1,4 +1,12 @@
 #!/usr/bin/ruby
+#
+# check_plists.rb
+# Patchworks
+#
+# Created by Jonathon Mah on 2005-10-12.
+# Copyright 2005 Playhaus. All rights reserved.
+# This file is in the public domain. Feel free to copy and use it in any way.
+# This file is specifically excluded from the conditions in 'LICENSE.txt'.
 
 
 class XcodeBuildMessage
