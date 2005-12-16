@@ -14,6 +14,16 @@
 
 @implementation PWPreferencesController
 
+#pragma mark Initialization and Deallocation
+
+- (void)awakeFromNib
+{
+#warning This is a workaround for a bug in Interface Builder that doesn't allow a window's min and max width or height to be equal. This needs to be changed if the preferences window layout changes
+	[window setContentMaxSize:NSMakeSize(MAXFLOAT, [window contentMinSize].height)];
+}
+
+
+
 #pragma mark UI Actions
 
 - (IBAction)chooseFullPatchFont:(id)sender

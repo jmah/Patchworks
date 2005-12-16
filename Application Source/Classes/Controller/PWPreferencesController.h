@@ -17,6 +17,9 @@
 }
 
 
+#pragma mark Initialization and Deallocation
+- (void)awakeFromNib;
+
 #pragma mark UI Actions
 - (IBAction)chooseFullPatchFont:(id)sender;
 
