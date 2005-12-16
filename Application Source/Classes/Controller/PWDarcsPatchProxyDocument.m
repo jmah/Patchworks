@@ -122,12 +122,7 @@
 		[self setFullPatchFontDescriptor:newFontDescriptor];
 	}
 	else if ((object == [NSUserDefaults standardUserDefaults]) && [keyPath isEqualToString:PWDefaultTimeZoneName])
-	{
-		// The default time zone was changed. If we were set to the previous default, update our time zone.
-		NSString *oldTimeZoneName = [change objectForKey:NSKeyValueChangeOldKey];
-		if ([[[self currentTimeZoneWrapper] name] isEqualToString:oldTimeZoneName])
-			[self setCurrentTimeZoneWrapper:[PWTimeZoneWrapper timeZoneWrapperWithName:[change objectForKey:NSKeyValueChangeNewKey]]];
-	}
+		[self setCurrentTimeZoneWrapper:[PWTimeZoneWrapper timeZoneWrapperWithName:[change objectForKey:NSKeyValueChangeNewKey]]];
 	else
 		[super observeValueForKeyPath:keyPath
 		                     ofObject:object
