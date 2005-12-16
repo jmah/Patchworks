@@ -16,7 +16,7 @@
 #import <OgreKit/OgreKit.h>
 
 
-NSString *PWDarcsPatchErrorDomain = @"PWDarcsPatchErrorDomain";
+NSString *PWDarcsPatchErrorDomain = @"org.playhaus.patchworks.PWDarcsPatchErrorDomain";
 
 
 // Cache the e-mail regular expression
