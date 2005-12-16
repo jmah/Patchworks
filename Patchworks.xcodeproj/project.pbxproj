@@ -101,8 +101,6 @@
 		284842A208FA451100EDFDD3 /* PWDarcsPatchProxyTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 284841F308FA3E3B00EDFDD3 /* PWDarcsPatchProxyTest.m */; };
 		284842A308FA451200EDFDD3 /* PWDarcsPatchProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 284841C308FA384700EDFDD3 /* PWDarcsPatchProxy.m */; };
 		2866FFA508F98E4800D39E2D /* PWDarcsPatch.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2866FFA308F98E4800D39E2D /* PWDarcsPatch.strings */; };
-		289A214D08FBA147003EC0F4 /* OgreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 289F13DD08F6A3BE00E9D926 /* OgreKit.framework */; };
-		289A215308FBA1CD003EC0F4 /* OgreKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 289F13DD08F6A3BE00E9D926 /* OgreKit.framework */; };
 		289F13DE08F6A3BE00E9D926 /* OgreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 289F13DD08F6A3BE00E9D926 /* OgreKit.framework */; };
 		289F13DF08F6A3BE00E9D926 /* OgreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 289F13DD08F6A3BE00E9D926 /* OgreKit.framework */; };
 		289F13E008F6A3BE00E9D926 /* OgreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 289F13DD08F6A3BE00E9D926 /* OgreKit.framework */; };
@@ -212,17 +210,6 @@
 				283E4CE608FB58CC00772738 /* Patchworks.mdimporter in Copy Importer */,
 			);
 			name = "Copy Importer";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		283E49EF08FA9FEC00772738 /* Copy Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				289A215308FBA1CD003EC0F4 /* OgreKit.framework in Copy Frameworks */,
-			);
-			name = "Copy Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		289F13ED08F6A5B700E9D926 /* Copy Frameworks */ = {
@@ -370,7 +357,6 @@
 			files = (
 				280159D208EC7C2900C83A75 /* Foundation.framework in Frameworks */,
 				280159D308EC7C2B00C83A75 /* CoreServices.framework in Frameworks */,
-				289A214D08FBA147003EC0F4 /* OgreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -530,8 +516,8 @@
 				28015C8D08ED4A1C00C83A75 /* NSData+PWzlib.h */,
 				28015C8E08ED4A1D00C83A75 /* NSData+PWzlib.m */,
 				289F12DC08F04D3500E9D926 /* PWDarcsPatch.h */,
-				289F12DB08F04D3500E9D926 /* PWDarcsPatch.m */,
 				289F146008F700C500E9D926 /* PWDarcsPatch+ProtectedMethods.h */,
+				289F12DB08F04D3500E9D926 /* PWDarcsPatch.m */,
 				289F12DE08F04D3500E9D926 /* PWDarcsChangePatch.h */,
 				289F12DA08F04D3500E9D926 /* PWDarcsChangePatch.m */,
 				289F12DF08F04D3500E9D926 /* PWDarcsTagPatch.h */,
@@ -736,7 +722,6 @@
 			buildConfigurationList = 280159AA08EC781B00C83A75 /* Build configuration list for PBXNativeTarget "Patchworks Importer" */;
 			buildPhases = (
 				280159A408EC781900C83A75 /* Resources */,
-				283E49EF08FA9FEC00772738 /* Copy Frameworks */,
 				280159A508EC781900C83A75 /* Sources */,
 				280159A608EC781900C83A75 /* Frameworks */,
 			);
@@ -1355,7 +1340,11 @@
 				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/Frameworks\"";
 				GCC_PREFIX_HEADER = "Importer Source/Other Sources/Patchworks Importer_Prefix.pch";
 				INFOPLIST_FILE = "Importer Source/Resources/Info.plist";
-				OTHER_LDFLAGS = "-lz";
+				OTHER_LDFLAGS = (
+					"-lz",
+					"-weak_framework",
+					OgreKit,
+				);
 				PRODUCT_NAME = Patchworks;
 			};
 			name = Debug;
@@ -1367,7 +1356,11 @@
 				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/Frameworks\"";
 				GCC_PREFIX_HEADER = "Importer Source/Other Sources/Patchworks Importer_Prefix.pch";
 				INFOPLIST_FILE = "Importer Source/Resources/Info.plist";
-				OTHER_LDFLAGS = "-lz";
+				OTHER_LDFLAGS = (
+					"-lz",
+					"-weak_framework",
+					OgreKit,
+				);
 				PRODUCT_NAME = Patchworks;
 			};
 			name = Release;
@@ -1498,7 +1491,11 @@
 				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/Frameworks\"";
 				GCC_PREFIX_HEADER = "Importer Source/Other Sources/Patchworks Importer_Prefix.pch";
 				INFOPLIST_FILE = "Importer Source/Resources/Info.plist";
-				OTHER_LDFLAGS = "-lz";
+				OTHER_LDFLAGS = (
+					"-lz",
+					"-weak_framework",
+					OgreKit,
+				);
 				PRODUCT_NAME = Patchworks;
 			};
 			name = "Unit Tests";

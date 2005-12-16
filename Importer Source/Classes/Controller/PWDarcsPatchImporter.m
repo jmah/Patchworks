@@ -22,6 +22,41 @@
 {
 	if (self = [super init])
 	{
+		// Load weakly-linked frameworks
+		static NSString *frameworksPath = nil;
+		if (!frameworksPath)
+		{
+			NSString *myPath = [[NSBundle bundleForClass:[self class]] bundlePath];
+			// Move from Library/Spotlight/Patchworks.mdimporter/ into Frameworks/
+			frameworksPath = [[NSString pathWithComponents:[NSArray arrayWithObjects:myPath, @"..", @"..", @"..", @"Frameworks", nil]] stringByStandardizingPath];
+		}
+		static BOOL loadedOgreKit = NO;
+		if (!loadedOgreKit)
+		{
+			if ([NSBundle bundleWithIdentifier:@"isao.sonobe.OgreKit"])
+				loadedOgreKit = YES;
+			else
+			{
+				NSString *ogreKitPath = [frameworksPath stringByAppendingPathComponent:@"OgreKit.framework"];
+				NSBundle *ogreKitBundle = [NSBundle bundleWithPath:ogreKitPath];
+				
+				if (ogreKitBundle)
+				{
+					// Load in OgreKit classes
+					[ogreKitBundle principalClass];
+					loadedOgreKit = YES;
+				}
+				else
+				{
+					*outError = [NSError errorWithDomain:NSCocoaErrorDomain code:NSFileReadNoSuchFileError userInfo:nil];
+					NSLog(@"Couldn't load OgreKit.framework at path: %@", ogreKitPath);
+					[self release];
+					return nil;
+				}
+			}
+		}
+		
+		// Initialize instance variables
 		PW_patchProxy = [[PWDarcsPatchProxy alloc] initWithURL:proxyURL error:outError];
 		
 		if (*outError)
