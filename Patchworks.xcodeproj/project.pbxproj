@@ -120,7 +120,6 @@
 		28BA6C2508F94EAE00333DD4 /* PWApplicationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28BA6C1508F94DF800333DD4 /* PWApplicationController.m */; };
 		28BA6C3C08F9512700333DD4 /* PWPreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28BA6C3B08F9512400333DD4 /* PWPreferencesController.m */; };
 		28BA6D4308F9601C00333DD4 /* RegistrationDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 28BA6D4108F9601500333DD4 /* RegistrationDefaults.plist */; };
-		28BC090108FBBDA000BE7895 /* Test Repository in Resources */ = {isa = PBXBuildFile; fileRef = 283E481A08FA503B00772738 /* Test Repository */; };
 		28BC092108FBBEC800BE7895 /* PWDarcsPatchImporterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 28BC08FB08FBBD3200BE7895 /* PWDarcsPatchImporterTest.m */; };
 		28BC092208FBBEC900BE7895 /* PWDarcsPatchImporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 283E4BB108FB451300772738 /* PWDarcsPatchImporter.m */; };
 		28BC093508FBBF4C00BE7895 /* NSData+PWzlib.m in Sources */ = {isa = PBXBuildFile; fileRef = 28015C8E08ED4A1D00C83A75 /* NSData+PWzlib.m */; };
@@ -1116,7 +1115,6 @@
 				2818C58508F8225E00FD8852 /* PWDarcsPatchProxyDocument.nib in Resources */,
 				28BA6D4308F9601C00333DD4 /* RegistrationDefaults.plist in Resources */,
 				2866FFA508F98E4800D39E2D /* PWDarcsPatch.strings in Resources */,
-				28BC090108FBBDA000BE7895 /* Test Repository in Resources */,
 				28F6D06108FD4C7600A4C88D /* org.playhaus.patchworks.darcspatchproxy.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
