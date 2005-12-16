@@ -21,7 +21,7 @@
 	NSBundle *myBundle = [NSBundle bundleForClass:[self class]];
 	NSString *proxyPath = [myBundle pathForResource:@"20050921185738-39b7c-f542daa22cf0b6005eba8536150de8b36bf44b2d"
 	                                         ofType:@"darcsPatchProxy"
-	                                    inDirectory:@"Test Repository/darcs/patchworks"];
+	                                    inDirectory:@"Test Repository/darcs/third_party/patchworks"];
 	NSString *patchPath = [myBundle pathForResource:@"20050921185738-39b7c-f542daa22cf0b6005eba8536150de8b36bf44b2d"
 	                                         ofType:@"gz"
 	                                    inDirectory:@"Test Repository/darcs/patches"];
@@ -59,7 +59,7 @@
 	NSBundle *myBundle = [NSBundle bundleForClass:[self class]];
 	NSString *proxyPath = [myBundle pathForResource:@"20050921202143-39b7c-447d042ca05732eef5811e9cf80114117532a2d4"
 	                                         ofType:@"darcsPatchProxy"
-	                                    inDirectory:@"Test Repository/darcs/patchworks"];
+	                                    inDirectory:@"Test Repository/darcs/third_party/patchworks"];
 	NSError *proxyError = nil;
 	PWDarcsPatchProxy *patchProxy = [[PWDarcsPatchProxy alloc] initWithURL:[NSURL fileURLWithPath:proxyPath] error:&proxyError];
 	STAssertNotNil(patchProxy,

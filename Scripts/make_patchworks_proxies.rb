@@ -8,6 +8,8 @@
 # License information is contained at the bottom of this file and in the
 # 'LICENSE.txt' file.
 
+require 'FileUtils'
+
 
 gz_patches = Dir::glob '_darcs/patches/*.gz'
 
@@ -16,9 +18,9 @@ if gz_patches.empty?
   exit 1
 end
 
-ProxyDirPath = '_darcs/patchworks'
+ProxyDirPath = '_darcs/third_party/patchworks'
 ProxyExtension = 'darcsPatchProxy'
-Dir::mkdir ProxyDirPath unless File.directory? ProxyDirPath
+FileUtils::mkdir_p ProxyDirPath unless File.directory? ProxyDirPath
 
 patch_basenames = gz_patches.collect {|gz| File::basename gz, '.gz' }
 proxy_basenames = Dir::glob("#{ProxyDirPath}/*.#{ProxyExtension}").collect {|proxy| File::basename proxy, ".#{ProxyExtension}" }

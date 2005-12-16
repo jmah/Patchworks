@@ -21,7 +21,7 @@
 	NSBundle *myBundle = [NSBundle bundleForClass:[self class]];
 	NSString *proxyPath = [myBundle pathForResource:@"20050921202143-39b7c-447d042ca05732eef5811e9cf80114117532a2d4"
 	                                         ofType:@"darcsPatchProxy"
-	                                    inDirectory:@"Test Repository/darcs/patchworks"];
+	                                    inDirectory:@"Test Repository/darcs/third_party/patchworks"];
 	NSError *error = nil;
 	PWDarcsPatchImporter *importer = [[PWDarcsPatchImporter alloc] initWithURL:[NSURL fileURLWithPath:proxyPath] error:&error];
 	STAssertNotNil(importer,
@@ -44,7 +44,7 @@
 	NSBundle *myBundle = [NSBundle bundleForClass:[self class]];
 	NSString *proxyPath = [myBundle pathForResource:@"20050921202143-39b7c-447d042ca05732eef5811e9cf80114117532a2d4"
 	                                         ofType:@"darcsPatchProxy"
-	                                    inDirectory:@"Test Repository/darcs/patchworks"];
+	                                    inDirectory:@"Test Repository/darcs/third_party/patchworks"];
 	NSError *error = nil;
 	PWDarcsPatchImporter *importer = [[PWDarcsPatchImporter alloc] initWithURL:[NSURL fileURLWithPath:proxyPath] error:&error];
 	STAssertNotNil(importer,

@@ -20,7 +20,7 @@
 	if (self = [super init])
 	{
 		NSString *basename = [[[proxyURL path] lastPathComponent] stringByDeletingPathExtension];
-		NSString *relativePatchPath = [NSString stringWithFormat:@"../patches/%@", [basename stringByAppendingPathExtension:@"gz"]];
+		NSString *relativePatchPath = [NSString stringWithFormat:@"../../patches/%@", [basename stringByAppendingPathExtension:@"gz"]];
 		NSURL *patchURL = [NSURL URLWithString:relativePatchPath relativeToURL:proxyURL];
 		
 		PW_patch = [[PWDarcsPatch patchWithContentsOfURL:patchURL error:outError] retain];
