@@ -10,16 +10,17 @@
 	<types>
 		<type name="org.playhaus.patchworks.darcspatchproxy">
 			<displayattrs>
-				kMDItemTitle
-				kMDItemAuthors
 				kMDItemContentCreationDate
+				kMDItemAuthors
+				kMDItemWhereFroms
 				org_playhaus_patchworks_darcs_PatchType
 				org_playhaus_patchworks_darcs_IsRollbackPatch
+				kMDItemComment
 			</displayattrs>
 			<previewattrs>
-				kMDItemTitle
-				kMDItemAuthors
 				kMDItemContentCreationDate
+				kMDItemAuthors
+				kMDItemWhereFroms
 				org_playhaus_patchworks_darcs_PatchType
 				org_playhaus_patchworks_darcs_IsRollbackPatch
 				kMDItemComment
