@@ -34,7 +34,7 @@ if $0 == __FILE__
     when /^Test /
       # Assume this is test output
       print line
-    when /^(Passed |Failed )/
+    when /^(Passed |Failed |Executed )/
       # Assume this is the end of each test output
       print line
       puts
