@@ -52,20 +52,6 @@
 		[PW_dateFormatter setFormatterBehavior:NSDateFormatterBehavior10_4];
 		[PW_dateFormatter setDateStyle:NSDateFormatterShortStyle];
 		[PW_dateFormatter setTimeStyle:NSDateFormatterLongStyle];
-		[PW_dateFormatter bind:@"timeZone"
-		              toObject:self
-		           withKeyPath:@"currentTimeZoneWrapper.timeZone"
-		               options:nil];
-		
-		// Observe objects
-		[[NSUserDefaults standardUserDefaults] addObserver:self
-		                                        forKeyPath:PWDefaultTimeZoneName
-		                                           options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld)
-		                                           context:NULL];
-		[[NSUserDefaults standardUserDefaults] addObserver:self
-		                                        forKeyPath:PWFullPatchFontDescriptorAttributes
-		                                           options:NSKeyValueObservingOptionNew
-		                                           context:NULL];
 	}
 	return self;
 }
@@ -82,6 +68,7 @@
 	[PW_currentTimeZoneWrapper release];
 	PW_currentTimeZoneWrapper = nil;
 	
+	[PW_dateFormatter removeObserver:self forKeyPath:@"timeZone"];
 	[PW_dateFormatter release];
 	PW_dateFormatter = nil;
 	
@@ -102,6 +89,11 @@
 {
 	[super windowControllerDidLoadNib:controller];
 	
+	[PW_dateFormatter bind:@"timeZone"
+	              toObject:self
+	           withKeyPath:@"currentTimeZoneWrapper.timeZone"
+	               options:nil];
+	
 	// Watch the current time zone so we can update the formatter as necessary
 	[PW_dateFormatter addObserver:self
 	                   forKeyPath:@"timeZone"
@@ -109,6 +101,29 @@
 	                      context:NULL];
 	[dateTextField setFormatter:PW_dateFormatter];
 	[dateTextField setNeedsDisplay];
+	
+	// Observe objects
+	[[NSUserDefaults standardUserDefaults] addObserver:self
+	                                        forKeyPath:PWDefaultTimeZoneName
+	                                           options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld)
+	                                           context:NULL];
+	[[NSUserDefaults standardUserDefaults] addObserver:self
+	                                        forKeyPath:PWFullPatchFontDescriptorAttributes
+	                                           options:NSKeyValueObservingOptionNew
+	                                           context:NULL];
+}
+
+
+- (void)removeWindowController:(NSWindowController *)windowController // NSDocument
+{
+	[PW_dateFormatter removeObserver:self forKeyPath:@"timeZone"];
+	[PW_dateFormatter release];
+	PW_dateFormatter = nil;
+	
+	[[NSUserDefaults standardUserDefaults] removeObserver:self forKeyPath:PWDefaultTimeZoneName];
+	[[NSUserDefaults standardUserDefaults] removeObserver:self forKeyPath:PWFullPatchFontDescriptorAttributes];
+	
+	[super removeWindowController:windowController];
 }
 
 
