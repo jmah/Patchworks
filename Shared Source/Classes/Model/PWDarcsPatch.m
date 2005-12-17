@@ -29,13 +29,13 @@ static OGRegularExpression *emailRegexp = nil;
 
 + (id)patchWithContentsOfFile:(NSString *)path error:(NSError **)outError
 {
-	return [[[self alloc] initWithContentsOfURL:[NSURL fileURLWithPath:path] error:outError] autorelease];
+	return [[(PWDarcsPatch *)[self alloc] initWithContentsOfURL:[NSURL fileURLWithPath:path] error:outError] autorelease];
 }
 
 
 + (id)patchWithContentsOfURL:(NSURL *)patchURL error:(NSError **)outError
 {
-	return [[[self alloc] initWithContentsOfURL:patchURL error:outError] autorelease];
+	return [[(PWDarcsPatch *)[self alloc] initWithContentsOfURL:patchURL error:outError] autorelease];
 }
 
 

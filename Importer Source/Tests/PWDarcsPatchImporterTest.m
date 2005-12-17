@@ -61,7 +61,7 @@
 		@"Custom string", @"Custom attribute",
 		nil];
 	
-	STAssertNoThrow([importer addMetadataToCFDictionary:(CFDictionaryRef)dictionary],
+	STAssertNoThrow([importer addMetadataToCFDictionary:(CFMutableDictionaryRef)dictionary],
 		@"Adding metadata to dictionary threw an exception.");
 	
 	STAssertEqualObjects([dictionary objectForKey:(NSString *)kMDItemTitle], [proxy name],
