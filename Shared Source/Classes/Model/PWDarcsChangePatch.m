@@ -108,32 +108,9 @@
 					// Read in the next line of the patch. If we read "] {\n" then we know this patch will definitely never match the regexp.
 					char lineBuffer[LINE_BUFFER_LENGH];
 					char *line = gzgets(PW_gzPatchFile, lineBuffer, LINE_BUFFER_LENGH);
-					if (line == Z_NULL)
+					if (line != Z_NULL)
 					{
-						// This is contrary to the zlib.h file, but this can often signal the end-of-file, so we need to check it here
-						if (gzeof(PW_gzPatchFile))
-						{
-							PW_isFullPatchRead = YES;
-							int closeError = gzclose(PW_gzPatchFile);
-							NSAssert(closeError == Z_OK, @"Patch file failed to close");
-							PW_gzPatchFile = nil;
-							
-							PW_fullPatchString = [currPatchString retain];
-							[PW_currPatchString release];
-							PW_currPatchString = nil;
-						}
-						else
-						{
-							PW_gzPatchFile = nil;
-							[self release];
-							*outError = [NSError errorWithDomain:NSCocoaErrorDomain
-							                                code:NSFileReadUnknownError
-							                            userInfo:nil];
-							return nil;
-						}
-					}
-					else
-					{
+						// zlib.h says gzgets should never return Z_NULL, but this can often signal the end-of-file, so we need to check it here
 						NSString *newLine = [NSString stringWithCString:line encoding:PATCH_STRING_ENCODING];
 						[PW_currPatchString appendString:newLine];
 						if ([newLine isEqualToString:@"] {\n"])
@@ -142,19 +119,29 @@
 							doesMatch = ([match count] > 0);
 							definitelyDoesNotMatch = !doesMatch;
 						}
+					}
+					
+					// Since we just read in a chunk, check if we reached the end of file
+					if (gzeof(PW_gzPatchFile))
+					{
+						PW_isFullPatchRead = YES;
+						int closeError = gzclose(PW_gzPatchFile);
+						NSAssert(closeError == Z_OK, @"Patch file failed to close");
+						PW_gzPatchFile = nil;
 						
-						// Since we just read in a chunk, check if we reached the end of file
-						if (gzeof(PW_gzPatchFile))
-						{
-							PW_isFullPatchRead = YES;
-							int closeError = gzclose(PW_gzPatchFile);
-							NSAssert(closeError == Z_OK, @"Patch file failed to close");
-							PW_gzPatchFile = nil;
-							
-							PW_fullPatchString = [currPatchString retain];
-							[PW_currPatchString release];
-							PW_currPatchString = nil;
-						}
+						PW_fullPatchString = [currPatchString retain];
+						[PW_currPatchString release];
+						PW_currPatchString = nil;
+					}
+					else if (line == Z_NULL)
+					{
+						// line was Z_NULL but we're not at the end of file -- there was an error
+						PW_gzPatchFile = nil;
+						[self release];
+						*outError = [NSError errorWithDomain:NSCocoaErrorDomain
+														code:NSFileReadUnknownError
+													userInfo:nil];
+						return nil;
 					}
 				}
 			}
