@@ -188,6 +188,78 @@
 }
 
 
+- (void)testChangePatchWithExplicitDependencies
+{
+	NSBundle *myBundle = [NSBundle bundleForClass:[self class]];
+	NSString *patchPath = [myBundle pathForResource:@"13-Change-Compressed-ExplicitDeps"
+	                                         ofType:@"gz"
+	                                    inDirectory:@"Test Patches"];
+	NSError *error = nil;
+	PWDarcsPatch *patch = [PWDarcsPatch patchWithContentsOfFile:patchPath error:&error];
+	STAssertNotNil(patch,
+		@"Patch with explicit dependencies failed to initialize.");
+	STAssertNil(error,
+		@"Patch with explicit dependencies genereated an error.");
+	
+	STAssertEqualObjects([patch name], @"Test patch with lots of explicit dependencies",
+		@"Patch name didn't correctly parse.");
+	STAssertEqualObjects([patch author], @"author",
+		@"Patch author didn't correctly parse.");
+	
+	NSCalendarDate *targetDate = [NSCalendarDate dateWithYear:2005
+	                                                    month:12
+	                                                      day:17
+	                                                     hour:15
+	                                                   minute:15
+	                                                   second:26
+	                                                 timeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
+	STAssertEqualObjects([patch date], targetDate,
+		@"Patch date didn't correctly parse.");
+	STAssertFalse([patch isRollbackPatch],
+		@"Rollback flag didn't correctly parse.");
+	STAssertEquals([patch type], PWDarcsChangePatchType,
+		@"Patch type not correctly set.");
+	STAssertNil([(PWDarcsChangePatch *)patch longComment],
+		@"Long comment didn't correctly parse.");;
+}
+
+
+- (void)testChangePatchWithExplicitDependenciesAndLongComment
+{
+	NSBundle *myBundle = [NSBundle bundleForClass:[self class]];
+	NSString *patchPath = [myBundle pathForResource:@"12-Change-Compressed-ExplicitDeps-LongComment"
+	                                         ofType:@"gz"
+	                                    inDirectory:@"Test Patches"];
+	NSError *error = nil;
+	PWDarcsPatch *patch = [PWDarcsPatch patchWithContentsOfFile:patchPath error:&error];
+	STAssertNotNil(patch,
+		@"Patch with explicit dependencies failed to initialize.");
+	STAssertNil(error,
+		@"Patch with explicit dependencies genereated an error.");
+	
+	STAssertEqualObjects([patch name], @"Test long comment with explicit dependencies given with --ask-deps",
+		@"Patch name didn't correctly parse.");
+	STAssertEqualObjects([patch author], @"Author Dude <author@dude.dom>",
+		@"Patch author didn't correctly parse.");
+	
+	NSCalendarDate *targetDate = [NSCalendarDate dateWithYear:2005
+	                                                    month:12
+	                                                      day:17
+	                                                     hour:15
+	                                                   minute:37
+	                                                   second:46
+	                                                 timeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
+	STAssertEqualObjects([patch date], targetDate,
+		@"Patch date didn't correctly parse.");
+	STAssertFalse([patch isRollbackPatch],
+		@"Rollback flag didn't correctly parse.");
+	STAssertEquals([patch type], PWDarcsChangePatchType,
+		@"Patch type not correctly set.");
+	STAssertEqualObjects([(PWDarcsChangePatch *)patch longComment], @" This is the long comment part, right here!",
+		@"Long comment didn't correctly parse.");
+}
+
+
 @end
 
 

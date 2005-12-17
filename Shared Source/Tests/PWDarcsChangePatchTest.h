@@ -21,6 +21,8 @@
 - (void)testUncompressedChangePatch;
 - (void)testRollbackChangePatch;
 - (void)testBadChangePatch;
+- (void)testChangePatchWithExplicitDependencies;
+- (void)testChangePatchWithExplicitDependenciesAndLongComment;
 
 @end
 

@@ -41,6 +41,21 @@
  * (hunks)
  * }
  * 
+ * Explicit dependencies
+ * ---------------------
+ * [Patch name
+ * author**1999010816123000]
+ * <
+ * [Dependency patch name
+ * author**1992011109123539]
+ * [Dependency patch two
+ * author**1992011109123539
+ *  long comment indented by a space
+ * ]
+ * > {
+ * (hunks)
+ * }
+ * 
  * Rollback patch
  * --------------
  * [Patch name
@@ -84,8 +99,9 @@
 		// Cache the patch regular expression
 		static OGRegularExpression *patchRegexp = nil;
 		if (!patchRegexp)
-			// patchRegexp unescaped pattern: "^\[(?<name>.*?)\n(?<author>.*?)\*(?<rollback_flag>\*|-)((?<new_date>\d{14})|(?<old_date>\w{3} \w{3} [\d ]\d \d\d:\d\d:\d\d \w+ \d{4}))(?:] (?: < > )?{|\n(?<long_comment>(?:.|\n)*?)\n?\] (?: < > )?{$)";
-			patchRegexp = [[OGRegularExpression alloc] initWithString:@"^\\[(?<name>.*?)\\n(?<author>.*?)\\*(?<rollback_flag>\\*|-)((?<new_date>\\d{14})|(?<old_date>\\w{3} \\w{3} [\\d ]\\d \\d\\d:\\d\\d:\\d\\d \\w+ \\d{4}))(?:] (?: < > )?{|\\n(?<long_comment>(?:.|\\n)*?)\\n?\\] (?: < > )?{$)"];
+			// Oh my god. This regexp gives me nightmares.
+			// patchRegexp unescaped pattern: "^\[(?<name>.*?)\n(?<author>.*?)\*(?<rollback_flag>\*|-)((?<new_date>\d{14})|(?<old_date>\w{3} \w{3} [\d ]\d \d\d:\d\d:\d\d \w+ \d{4}))(?:\]|\n(?<long_comment>(?:.|\n)*?)\n?\]) (?: < > |\n<\n(?<explicit_dependencies>(\[(.*?)\n(.*?)\*(\*|-)(\d{14}|\w{3} \w{3} [\d ]\d \d\d:\d\d:\d\d \w+ \d{4})(?:\] \n|\n((?:.|\n)*?)\n?\] \n))+)> )?{$";
+			patchRegexp = [[OGRegularExpression alloc] initWithString:@"^\\[(?<name>.*?)\\n(?<author>.*?)\\*(?<rollback_flag>\\*|-)((?<new_date>\\d{14})|(?<old_date>\\w{3} \\w{3} [\\d ]\\d \\d\\d:\\d\\d:\\d\\d \\w+ \\d{4}))(?:\\]|\\n(?<long_comment>(?:.|\\n)*?)\\n?\\]) (?: < > |\\n<\\n(?<explicit_dependencies>(\\[(.*?)\\n(.*?)\\*(\\*|-)(\\d{14}|\\w{3} \\w{3} [\\d ]\\d \\d\\d:\\d\\d:\\d\\d \\w+ \\d{4})(?:\\] \\n|\\n((?:.|\\n)*?)\\n?\\] \\n))+)> )?{$"];
 		
 		OGRegularExpressionMatch *match = nil;
 		
@@ -100,49 +116,44 @@
 			}
 			else
 			{
-				// Check if the current patch string matches. If it doesn't, read some more and try again.
-				match = [patchRegexp matchInString:PW_currPatchString];
-				doesMatch = ([match count] > 0);
-				if (!doesMatch)
+				// Read in the next line of the patch. If we read "] {\n" then we know this patch will definitely never match the regexp.
+				char lineBuffer[LINE_BUFFER_LENGH];
+				char *line = gzgets(PW_gzPatchFile, lineBuffer, LINE_BUFFER_LENGH);
+				// zlib.h says gzgets should never return Z_NULL, but this can often signal the end-of-file, so we need to check it here
+				if (line != Z_NULL)
 				{
-					// Read in the next line of the patch. If we read "] {\n" then we know this patch will definitely never match the regexp.
-					char lineBuffer[LINE_BUFFER_LENGH];
-					char *line = gzgets(PW_gzPatchFile, lineBuffer, LINE_BUFFER_LENGH);
-					// zlib.h says gzgets should never return Z_NULL, but this can often signal the end-of-file, so we need to check it here
-					if (line != Z_NULL)
+					NSString *newLine = [NSString stringWithCString:line encoding:PATCH_STRING_ENCODING];
+					[PW_currPatchString appendString:newLine];
+					if ([newLine isEqualToString:@"] {\n"] || [newLine isEqualToString:@"> {\n"])
 					{
-						NSString *newLine = [NSString stringWithCString:line encoding:PATCH_STRING_ENCODING];
-						[PW_currPatchString appendString:newLine];
-						if ([newLine isEqualToString:@"] {\n"])
-						{
-							match = [patchRegexp matchInString:PW_currPatchString];
-							doesMatch = ([match count] > 0);
-							definitelyDoesNotMatch = !doesMatch;
-						}
+						// We're at the end of the patch header -- check if it matches
+						match = [patchRegexp matchInString:PW_currPatchString];
+						doesMatch = ([match count] > 0);
+						definitelyDoesNotMatch = !doesMatch;
 					}
+				}
+				
+				// Since we just read in a chunk, check if we reached the end of file
+				if (gzeof(PW_gzPatchFile))
+				{
+					PW_isFullPatchRead = YES;
+					int closeError = gzclose(PW_gzPatchFile);
+					NSAssert(closeError == Z_OK, @"Patch file failed to close");
+					PW_gzPatchFile = nil;
 					
-					// Since we just read in a chunk, check if we reached the end of file
-					if (gzeof(PW_gzPatchFile))
-					{
-						PW_isFullPatchRead = YES;
-						int closeError = gzclose(PW_gzPatchFile);
-						NSAssert(closeError == Z_OK, @"Patch file failed to close");
-						PW_gzPatchFile = nil;
-						
-						PW_fullPatchString = [currPatchString retain];
-						[PW_currPatchString release];
-						PW_currPatchString = nil;
-					}
-					else if (line == Z_NULL)
-					{
-						// line was Z_NULL but we're not at the end of file -- there was an error
-						PW_gzPatchFile = nil;
-						[self release];
-						*outError = [NSError errorWithDomain:NSCocoaErrorDomain
-														code:NSFileReadUnknownError
-													userInfo:nil];
-						return nil;
-					}
+					PW_fullPatchString = [currPatchString retain];
+					[PW_currPatchString release];
+					PW_currPatchString = nil;
+				}
+				else if (line == Z_NULL)
+				{
+					// line was Z_NULL but we're not at the end of file -- there was an error
+					PW_gzPatchFile = nil;
+					[self release];
+					*outError = [NSError errorWithDomain:NSCocoaErrorDomain
+					                                code:NSFileReadUnknownError
+					                            userInfo:nil];
+					return nil;
 				}
 			}
 		} while (!doesMatch && !definitelyDoesNotMatch);
