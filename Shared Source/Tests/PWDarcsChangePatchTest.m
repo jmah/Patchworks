@@ -87,7 +87,7 @@
 		@"Patch type not correctly set.");
 	STAssertEqualObjects([(PWDarcsChangePatch *)patch longComment], @" Some or all of the OgreKit framework's headers have no newlines at the end of\n the file. Enabling this warning triggers it every time one of Patchworks's\n source files includes an OgreKit header. And it's not a big deal anyway.",
 		@"Long comment didn't correctly parse.");
-	}
+}
 
 
 - (void)testUncompressedChangePatch

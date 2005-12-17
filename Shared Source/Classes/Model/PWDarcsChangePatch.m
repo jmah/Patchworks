@@ -108,9 +108,9 @@
 					// Read in the next line of the patch. If we read "] {\n" then we know this patch will definitely never match the regexp.
 					char lineBuffer[LINE_BUFFER_LENGH];
 					char *line = gzgets(PW_gzPatchFile, lineBuffer, LINE_BUFFER_LENGH);
+					// zlib.h says gzgets should never return Z_NULL, but this can often signal the end-of-file, so we need to check it here
 					if (line != Z_NULL)
 					{
-						// zlib.h says gzgets should never return Z_NULL, but this can often signal the end-of-file, so we need to check it here
 						NSString *newLine = [NSString stringWithCString:line encoding:PATCH_STRING_ENCODING];
 						[PW_currPatchString appendString:newLine];
 						if ([newLine isEqualToString:@"] {\n"])
