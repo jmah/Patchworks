@@ -106,7 +106,21 @@
 		OGRegularExpressionMatch *match = nil;
 		
 		BOOL doesMatch = NO, definitelyDoesNotMatch = NO;
-		do
+		
+		// Check if the existing string is enough to be certain of a match
+		unsigned int currPatchStringLength = [currPatchString length];
+		if ((currPatchStringLength >= 4) && ([[currPatchString substringFromIndex:(currPatchStringLength - 4)] isEqualToString:@"] {\n"] ||
+		                                     [[currPatchString substringFromIndex:(currPatchStringLength - 4)] isEqualToString:@"> {\n"]))
+		{
+			match = [patchRegexp matchInString:currPatchString];
+			doesMatch = ([match count] > 0);
+			if (((currPatchStringLength >= 5) && ([currPatchString characterAtIndex:(currPatchStringLength - 5)] == '\n')) ||
+			    ((currPatchStringLength >= 9) && [[currPatchString substringFromIndex:(currPatchStringLength - 9)] isEqualToString:@"]  < > {\n"]))
+				definitelyDoesNotMatch = !doesMatch;
+		}
+		
+		// Read in more lines to see if we get a match
+		while (!doesMatch && !definitelyDoesNotMatch)
 		{
 			if (PW_isFullPatchRead)
 			{
@@ -116,7 +130,7 @@
 			}
 			else
 			{
-				// Read in the next line of the patch. If we read "] {\n" then we know this patch will definitely never match the regexp.
+				// Read in the next line of the patch. If we read "] {\n" or "> {\n" then we know this patch will definitely never match the regexp.
 				char lineBuffer[LINE_BUFFER_LENGH];
 				char *line = gzgets(PW_gzPatchFile, lineBuffer, LINE_BUFFER_LENGH);
 				// zlib.h says gzgets should never return Z_NULL, but this can often signal the end-of-file, so we need to check it here
@@ -124,12 +138,15 @@
 				{
 					NSString *newLine = [NSString stringWithCString:line encoding:PATCH_STRING_ENCODING];
 					[PW_currPatchString appendString:newLine];
-					if ([newLine isEqualToString:@"] {\n"] || [newLine isEqualToString:@"> {\n"])
+					unsigned int length = [newLine length];
+					if ((length >= 4) && ([[newLine substringFromIndex:(length - 4)] isEqualToString:@"] {\n"] ||
+					                      [[newLine substringFromIndex:(length - 4)] isEqualToString:@"> {\n"]))
 					{
 						// We're at the end of the patch header -- check if it matches
 						match = [patchRegexp matchInString:PW_currPatchString];
 						doesMatch = ([match count] > 0);
-						definitelyDoesNotMatch = !doesMatch;
+						if ((length == 4) || ((length == 9) && [newLine isEqualToString:@"]  < > {\n"]))
+							definitelyDoesNotMatch = !doesMatch;
 					}
 				}
 				
@@ -156,7 +173,7 @@
 					return nil;
 				}
 			}
-		} while (!doesMatch && !definitelyDoesNotMatch);
+		}
 		
 		
 		if (!match || [match count] == 0)
