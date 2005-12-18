@@ -15,15 +15,6 @@
 #import "PWTimeZoneWrapper.h"
 
 
-@interface PWDarcsPatchProxyDocument (PrivateMethods)
-
-#pragma mark Accessor Methods
-- (NSFontDescriptor *)fullPatchFontDescriptor;
-- (void)setFullPatchFontDescriptor:(NSFontDescriptor *)newFontDescriptor;
-
-@end
-
-
 @implementation PWDarcsPatchProxyDocument
 
 #pragma mark Initialization and Deallocation
@@ -40,13 +31,8 @@
 {
 	if (self = [super init])
 	{
-		NSString *defaultTimeZoneName = [[NSUserDefaults standardUserDefaults] objectForKey:PWDefaultTimeZoneName];
-		
 		// Initialize instance variables
-		PW_fullPatchFontDescriptor = [[NSFontDescriptor fontDescriptorWithFontAttributes:[[NSUserDefaults standardUserDefaults] objectForKey:PWFullPatchFontDescriptorAttributes]] retain];
-		
 		PW_patchProxy = nil;
-		[self setCurrentTimeZoneWrapper:[PWTimeZoneWrapper timeZoneWrapperWithName:defaultTimeZoneName]];
 		
 		PW_dateFormatter = [[NSDateFormatter alloc] init];
 		[PW_dateFormatter setFormatterBehavior:NSDateFormatterBehavior10_4];
@@ -59,14 +45,8 @@
 
 - (void)dealloc
 {
-	[PW_fullPatchFontDescriptor release];
-	PW_fullPatchFontDescriptor = nil;
-	
 	[PW_patchProxy release];
 	PW_patchProxy = nil;
-	
-	[PW_currentTimeZoneWrapper release];
-	PW_currentTimeZoneWrapper = nil;
 	
 	[PW_dateFormatter removeObserver:self forKeyPath:@"timeZone"];
 	[PW_dateFormatter release];
@@ -90,27 +70,17 @@
 	[super windowControllerDidLoadNib:controller];
 	
 	[PW_dateFormatter bind:@"timeZone"
-	              toObject:self
-	           withKeyPath:@"currentTimeZoneWrapper.timeZone"
-	               options:nil];
+	              toObject:[NSUserDefaults standardUserDefaults]
+	           withKeyPath:PWDefaultTimeZoneName
+	               options:[NSDictionary dictionaryWithObject:@"PWNameToTimeZoneTransformer" forKey:NSValueTransformerNameBindingOption]];
 	
-	// Watch the current time zone so we can update the formatter as necessary
+	// NSDateFormatter does not update its display when its time zone changes, so we must watch it and update it as necessary
 	[PW_dateFormatter addObserver:self
 	                   forKeyPath:@"timeZone"
 	                      options:(NSKeyValueObservingOptions)NULL
 	                      context:NULL];
 	[dateTextField setFormatter:PW_dateFormatter];
 	[dateTextField setNeedsDisplay];
-	
-	// Observe objects
-	[[NSUserDefaults standardUserDefaults] addObserver:self
-	                                        forKeyPath:PWDefaultTimeZoneName
-	                                           options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld)
-	                                           context:NULL];
-	[[NSUserDefaults standardUserDefaults] addObserver:self
-	                                        forKeyPath:PWFullPatchFontDescriptorAttributes
-	                                           options:NSKeyValueObservingOptionNew
-	                                           context:NULL];
 }
 
 
@@ -120,9 +90,6 @@
 	[PW_dateFormatter release];
 	PW_dateFormatter = nil;
 	
-	[[NSUserDefaults standardUserDefaults] removeObserver:self forKeyPath:PWDefaultTimeZoneName];
-	[[NSUserDefaults standardUserDefaults] removeObserver:self forKeyPath:PWFullPatchFontDescriptorAttributes];
-	
 	[super removeWindowController:windowController];
 }
 
@@ -131,13 +98,6 @@
 {
 	if ((object == PW_dateFormatter) && [keyPath isEqualToString:@"timeZone"])
 		[dateTextField setNeedsDisplay];
-	else if ((object == [NSUserDefaults standardUserDefaults]) && [keyPath isEqualToString:PWFullPatchFontDescriptorAttributes])
-	{
-		NSFontDescriptor *newFontDescriptor = [NSFontDescriptor fontDescriptorWithFontAttributes:[change objectForKey:NSKeyValueChangeNewKey]];
-		[self setFullPatchFontDescriptor:newFontDescriptor];
-	}
-	else if ((object == [NSUserDefaults standardUserDefaults]) && [keyPath isEqualToString:PWDefaultTimeZoneName])
-		[self setCurrentTimeZoneWrapper:[PWTimeZoneWrapper timeZoneWrapperWithName:[change objectForKey:NSKeyValueChangeNewKey]]];
 	else
 		[super observeValueForKeyPath:keyPath
 		                     ofObject:object
@@ -234,7 +194,7 @@
 - (NSCalendarDate *)patchDate
 {
 	NSCalendarDate *dateWithTimeZone = [[PW_patchProxy date] copy];
-	[dateWithTimeZone setTimeZone:[[self currentTimeZoneWrapper] timeZone]];
+	[dateWithTimeZone setTimeZone:[NSTimeZone timeZoneWithName:[[NSUserDefaults standardUserDefaults] objectForKey:PWDefaultTimeZoneName]]];
 	return dateWithTimeZone;
 }
 
@@ -245,43 +205,9 @@
 }
 
 
-- (NSFont *)fullPatchFont
-{
-	return [NSFont fontWithDescriptor:[self fullPatchFontDescriptor] size:[[self fullPatchFontDescriptor] pointSize]];
-}
-
-
-- (void)setCurrentTimeZoneWrapper:(PWTimeZoneWrapper *)timeZoneWrapper
-{
-	[timeZoneWrapper retain];
-	[PW_currentTimeZoneWrapper release];
-	PW_currentTimeZoneWrapper = timeZoneWrapper;
-}
-
-
-- (PWTimeZoneWrapper *)currentTimeZoneWrapper
-{
-	return PW_currentTimeZoneWrapper;
-}
-
-
 - (NSString *)repositoryPath
 {
 	return [[PW_patchProxy repositoryURL] path];
-}
-
-
-- (NSFontDescriptor *)fullPatchFontDescriptor // PWDarcsPatchProxyDocument (PrivateMethods)
-{
-	return PW_fullPatchFontDescriptor;
-}
-
-
-- (void)setFullPatchFontDescriptor:(NSFontDescriptor *)newFontDescriptor // PWDarcsPatchProxyDocument (PrivateMethods)
-{
-	[newFontDescriptor retain];
-	[PW_fullPatchFontDescriptor release];
-	PW_fullPatchFontDescriptor = newFontDescriptor;
 }
 
 

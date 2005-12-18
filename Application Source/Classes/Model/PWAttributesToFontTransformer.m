@@ -1,43 +1,43 @@
 //
-//  PWDarcsPatchProxyDocument.h
+//  PWAttributesToFontTransformer.m
 //  Patchworks
 //
-//  Created by Jonathon Mah on 2005-10-09.
+//  Created by Jonathon Mah on 2005-12-18.
 //  Copyright Playhaus 2005. All rights reserved.
 //  License information is contained at the bottom of this file and in the
 //  'LICENSE.txt' file.
 //
 
-#import <Cocoa/Cocoa.h>
-
-@class PWDarcsPatchProxy;
-@class PWTimeZoneWrapper;
+#import "PWAttributesToFontTransformer.h"
 
 
-@interface PWDarcsPatchProxyDocument : NSDocument
+@implementation PWAttributesToFontTransformer
+
+
++ (Class)transformedValueClass // NSValueTransformer
 {
-	@protected
-	PWDarcsPatchProxy *PW_patchProxy;
-	NSURL *PW_patchURL;
-	NSDateFormatter *PW_dateFormatter;
-	
-	@public
-	IBOutlet NSTextField *dateTextField;
+	return [NSFont class];
 }
 
 
-#pragma mark UI Actions
-- (IBAction)emailAuthor:(id)sender;
++ (BOOL)allowsReverseTransformation // NSValueTransformer
+{
+	return YES;
+}
 
-#pragma mark Accessor Methods
-- (NSString *)patchName;
-- (NSString *)localizedPatchType;
-- (NSString *)patchAuthor;
-- (NSString *)patchAuthorEmail;
-- (NSString *)emailAuthorButtonToolTip;
-- (NSCalendarDate *)patchDate;
-- (NSString *)patchString;
-- (NSString *)repositoryPath;
+
+- (id)transformedValue:(id)value // NSValueTransformer
+{
+	NSFontDescriptor *fontDescriptor = [NSFontDescriptor fontDescriptorWithFontAttributes:value];
+	return [NSFont fontWithDescriptor:fontDescriptor size:[fontDescriptor pointSize]];
+}
+
+
+- (id)reverseTransformedValue:(id)value // NSValueTransformer
+{
+	return [[(NSFont *)value fontDescriptor] fontAttributes];
+}
+
 
 @end
 

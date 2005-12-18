@@ -1,43 +1,19 @@
 //
-//  PWDarcsPatchProxyDocument.h
+//  PWNameToTimeZoneTransformer.h
 //  Patchworks
 //
-//  Created by Jonathon Mah on 2005-10-09.
-//  Copyright Playhaus 2005. All rights reserved.
+//  Created by Jonathon Mah on 2005-12-18.
+//  Copyright 2005 Playhaus. All rights reserved.
 //  License information is contained at the bottom of this file and in the
 //  'LICENSE.txt' file.
 //
 
 #import <Cocoa/Cocoa.h>
 
-@class PWDarcsPatchProxy;
-@class PWTimeZoneWrapper;
 
-
-@interface PWDarcsPatchProxyDocument : NSDocument
+@interface PWNameToTimeZoneTransformer : NSValueTransformer
 {
-	@protected
-	PWDarcsPatchProxy *PW_patchProxy;
-	NSURL *PW_patchURL;
-	NSDateFormatter *PW_dateFormatter;
-	
-	@public
-	IBOutlet NSTextField *dateTextField;
 }
-
-
-#pragma mark UI Actions
-- (IBAction)emailAuthor:(id)sender;
-
-#pragma mark Accessor Methods
-- (NSString *)patchName;
-- (NSString *)localizedPatchType;
-- (NSString *)patchAuthor;
-- (NSString *)patchAuthorEmail;
-- (NSString *)emailAuthorButtonToolTip;
-- (NSCalendarDate *)patchDate;
-- (NSString *)patchString;
-- (NSString *)repositoryPath;
 
 @end
 

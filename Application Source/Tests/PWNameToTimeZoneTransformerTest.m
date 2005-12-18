@@ -1,43 +1,51 @@
 //
-//  PWDarcsPatchProxyDocument.h
+//  PWNameToTimeZoneTransformerTest.m
 //  Patchworks
 //
-//  Created by Jonathon Mah on 2005-10-09.
-//  Copyright Playhaus 2005. All rights reserved.
+//  Created by Jonathon Mah on 2005-12-18.
+//  Copyright 2005 Playhaus. All rights reserved.
 //  License information is contained at the bottom of this file and in the
 //  'LICENSE.txt' file.
 //
 
-#import <Cocoa/Cocoa.h>
-
-@class PWDarcsPatchProxy;
-@class PWTimeZoneWrapper;
+#import "PWNameToTimeZoneTransformerTest.h"
+#import "PWNameToTimeZoneTransformer.h"
 
 
-@interface PWDarcsPatchProxyDocument : NSDocument
+@implementation PWNameToTimeZoneTransformerTest
+
+
+- (void)testTransformation
 {
-	@protected
-	PWDarcsPatchProxy *PW_patchProxy;
-	NSURL *PW_patchURL;
-	NSDateFormatter *PW_dateFormatter;
+	PWNameToTimeZoneTransformer *trans = [[PWNameToTimeZoneTransformer alloc] init];
 	
-	@public
-	IBOutlet NSTextField *dateTextField;
+	NSString *zoneName = @"Australia/Adelaide";
+	NSTimeZone *adelaide = [NSTimeZone timeZoneWithName:zoneName];
+	id transformed = [trans transformedValue:zoneName];
+	STAssertEqualObjects(adelaide, transformed,
+		@"Transformed value was not correct.");
+	STAssertTrue([transformed isKindOfClass:[PWNameToTimeZoneTransformer transformedValueClass]],
+		@"Transformed value was not of stated class.");
+	
+	[trans release];
 }
 
 
-#pragma mark UI Actions
-- (IBAction)emailAuthor:(id)sender;
+- (void)testReverseTransformation
+{
+	PWNameToTimeZoneTransformer *trans = [[PWNameToTimeZoneTransformer alloc] init];
+	
+	NSString *zoneName = @"UTC";
+	NSTimeZone *utc = [NSTimeZone timeZoneWithName:zoneName];
+	id transformed = [trans reverseTransformedValue:utc];
+	STAssertTrue([PWNameToTimeZoneTransformer allowsReverseTransformation],
+		@"Reverse transformation was not allowed.");
+	STAssertEqualObjects(zoneName, transformed,
+		@"Reversed transformed value was not correct.");
+	
+	[trans release];
+}
 
-#pragma mark Accessor Methods
-- (NSString *)patchName;
-- (NSString *)localizedPatchType;
-- (NSString *)patchAuthor;
-- (NSString *)patchAuthorEmail;
-- (NSString *)emailAuthorButtonToolTip;
-- (NSCalendarDate *)patchDate;
-- (NSString *)patchString;
-- (NSString *)repositoryPath;
 
 @end
 

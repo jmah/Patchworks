@@ -128,6 +128,12 @@
 		28BC093E08FBBF8E00BE7895 /* Test Repository in Resources */ = {isa = PBXBuildFile; fileRef = 283E481A08FA503B00772738 /* Test Repository */; };
 		28BC093F08FBC01D00BE7895 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 283E4C4908FB4E9E00772738 /* Localizable.strings */; };
 		28F6D06108FD4C7600A4C88D /* org.playhaus.patchworks.darcspatchproxy.icns in Resources */ = {isa = PBXBuildFile; fileRef = 28F6D06008FD4C7600A4C88D /* org.playhaus.patchworks.darcspatchproxy.icns */; };
+		28FC64F70954997E0001DF54 /* PWNameToTimeZoneTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FC64F50954997E0001DF54 /* PWNameToTimeZoneTransformer.m */; };
+		28FC651C09549C210001DF54 /* PWAttributesToFontTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FC651A09549C210001DF54 /* PWAttributesToFontTransformer.m */; };
+		28FC666C095518420001DF54 /* PWNameToTimeZoneTransformerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FC666A0955183E0001DF54 /* PWNameToTimeZoneTransformerTest.m */; };
+		28FC667909551F6E0001DF54 /* PWNameToTimeZoneTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FC64F50954997E0001DF54 /* PWNameToTimeZoneTransformer.m */; };
+		28FC6713095520430001DF54 /* PWAttributesToFontTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FC651A09549C210001DF54 /* PWAttributesToFontTransformer.m */; };
+		28FC6719095520670001DF54 /* PWAttributesToFontTransformerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FC6717095520670001DF54 /* PWAttributesToFontTransformerTest.m */; };
 		28FCD3F408EC577900A970FA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FCD3E708EC577900A970FA /* main.m */; };
 		28FCD3F508EC577900A970FA /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 28FCD3EA08EC577900A970FA /* Credits.rtf */; };
 		28FCD3F708EC577900A970FA /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = 28FCD3EE08EC577900A970FA /* MainMenu.nib */; };
@@ -341,6 +347,14 @@
 		28BC08FB08FBBD3200BE7895 /* PWDarcsPatchImporterTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWDarcsPatchImporterTest.m; sourceTree = "<group>"; };
 		28EB4A0408F02EF000126AE9 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		28F6D06008FD4C7600A4C88D /* org.playhaus.patchworks.darcspatchproxy.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = org.playhaus.patchworks.darcspatchproxy.icns; sourceTree = "<group>"; };
+		28FC64F40954997E0001DF54 /* PWNameToTimeZoneTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWNameToTimeZoneTransformer.h; sourceTree = "<group>"; };
+		28FC64F50954997E0001DF54 /* PWNameToTimeZoneTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWNameToTimeZoneTransformer.m; sourceTree = "<group>"; };
+		28FC651909549C210001DF54 /* PWAttributesToFontTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWAttributesToFontTransformer.h; sourceTree = "<group>"; };
+		28FC651A09549C210001DF54 /* PWAttributesToFontTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWAttributesToFontTransformer.m; sourceTree = "<group>"; };
+		28FC66690955183E0001DF54 /* PWNameToTimeZoneTransformerTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWNameToTimeZoneTransformerTest.h; sourceTree = "<group>"; };
+		28FC666A0955183E0001DF54 /* PWNameToTimeZoneTransformerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWNameToTimeZoneTransformerTest.m; sourceTree = "<group>"; };
+		28FC6716095520670001DF54 /* PWAttributesToFontTransformerTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWAttributesToFontTransformerTest.h; sourceTree = "<group>"; };
+		28FC6717095520670001DF54 /* PWAttributesToFontTransformerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWAttributesToFontTransformerTest.m; sourceTree = "<group>"; };
 		28FCD3E708EC577900A970FA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		28FCD3E808EC577900A970FA /* Patchworks_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Patchworks_Prefix.pch; sourceTree = "<group>"; };
 		28FCD3EF08EC577900A970FA /* en */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = en; path = en.lproj/MainMenu.nib; sourceTree = "<group>"; };
@@ -577,6 +591,10 @@
 			children = (
 				2818C6CC08F90BDA00FD8852 /* PWTimeZoneWrapperTest.h */,
 				2818C6CD08F90BDA00FD8852 /* PWTimeZoneWrapperTest.m */,
+				28FC6716095520670001DF54 /* PWAttributesToFontTransformerTest.h */,
+				28FC6717095520670001DF54 /* PWAttributesToFontTransformerTest.m */,
+				28FC66690955183E0001DF54 /* PWNameToTimeZoneTransformerTest.h */,
+				28FC666A0955183E0001DF54 /* PWNameToTimeZoneTransformerTest.m */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -648,6 +666,10 @@
 			children = (
 				2818C6C608F90B9700FD8852 /* PWTimeZoneWrapper.h */,
 				2818C6C708F90B9700FD8852 /* PWTimeZoneWrapper.m */,
+				28FC651909549C210001DF54 /* PWAttributesToFontTransformer.h */,
+				28FC651A09549C210001DF54 /* PWAttributesToFontTransformer.m */,
+				28FC64F40954997E0001DF54 /* PWNameToTimeZoneTransformer.h */,
+				28FC64F50954997E0001DF54 /* PWNameToTimeZoneTransformer.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1183,6 +1205,10 @@
 			files = (
 				2818C6CB08F90B9700FD8852 /* PWTimeZoneWrapper.m in Sources */,
 				2818C6D108F90BDA00FD8852 /* PWTimeZoneWrapperTest.m in Sources */,
+				28FC666C095518420001DF54 /* PWNameToTimeZoneTransformerTest.m in Sources */,
+				28FC667909551F6E0001DF54 /* PWNameToTimeZoneTransformer.m in Sources */,
+				28FC6713095520430001DF54 /* PWAttributesToFontTransformer.m in Sources */,
+				28FC6719095520670001DF54 /* PWAttributesToFontTransformerTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1232,6 +1258,8 @@
 				28BA6C2508F94EAE00333DD4 /* PWApplicationController.m in Sources */,
 				28BA6C3C08F9512700333DD4 /* PWPreferencesController.m in Sources */,
 				283E49D708FA9BBB00772738 /* PWDarcsPatchProxy.m in Sources */,
+				28FC64F70954997E0001DF54 /* PWNameToTimeZoneTransformer.m in Sources */,
+				28FC651C09549C210001DF54 /* PWAttributesToFontTransformer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

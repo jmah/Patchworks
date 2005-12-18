@@ -11,6 +11,8 @@
 #import "PWApplicationController.h"
 #import "PatchworksDefines.h"
 #import "PWTimeZoneWrapper.h"
+#import "PWAttributesToFontTransformer.h"
+#import "PWNameToTimeZoneTransformer.h"
 
 
 @implementation PWApplicationController
@@ -26,6 +28,10 @@
 		NSDictionary *registrationDefaults = [NSDictionary dictionaryWithContentsOfFile:registrationDefaultsPath];
 		
 		[[NSUserDefaults standardUserDefaults] registerDefaults:registrationDefaults];
+		
+		// Set up value transfomers
+		[NSValueTransformer setValueTransformer:[[[PWAttributesToFontTransformer alloc] init] autorelease] forName:@"PWAttributesToFontTransformer"];
+		[NSValueTransformer setValueTransformer:[[[PWNameToTimeZoneTransformer alloc] init] autorelease] forName:@"PWNameToTimeZoneTransformer"];
 	}
 }
 
