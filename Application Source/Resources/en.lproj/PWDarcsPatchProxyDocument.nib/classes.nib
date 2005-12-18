@@ -8,6 +8,12 @@
             OUTLETS = {dateTextField = NSTextField; }; 
             SUPERCLASS = NSDocument; 
         }, 
+        {
+            CLASS = PWDarcsPatchProxyWindowController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {dateTextField = NSTextField; }; 
+            SUPERCLASS = NSWindowController; 
+        }, 
         {CLASS = PWTimeZoneWrapper; LANGUAGE = ObjC; SUPERCLASS = NSObject; }
     ); 
     IBVersion = 1; 

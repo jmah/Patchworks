@@ -9,6 +9,7 @@
 //
 
 #import "PWDarcsPatchProxyDocument.h"
+#import "PWDarcsPatchProxyWindowController.h"
 #import "PatchworksDefines.h"
 #import "PWDarcsPatch.h"
 #import "PWDarcsPatchProxy.h"
@@ -33,11 +34,6 @@
 	{
 		// Initialize instance variables
 		PW_patchProxy = nil;
-		
-		PW_dateFormatter = [[NSDateFormatter alloc] init];
-		[PW_dateFormatter setFormatterBehavior:NSDateFormatterBehavior10_4];
-		[PW_dateFormatter setDateStyle:NSDateFormatterShortStyle];
-		[PW_dateFormatter setTimeStyle:NSDateFormatterLongStyle];
 	}
 	return self;
 }
@@ -48,10 +44,6 @@
 	[PW_patchProxy release];
 	PW_patchProxy = nil;
 	
-	[PW_dateFormatter removeObserver:self forKeyPath:@"timeZone"];
-	[PW_dateFormatter release];
-	PW_dateFormatter = nil;
-	
 	[super dealloc];
 }
 
@@ -59,50 +51,9 @@
 
 #pragma mark UI Management
 
-- (NSString *)windowNibName // NSDocument
+- (void)makeWindowControllers // NSDocument
 {
-	return @"PWDarcsPatchProxyDocument";
-}
-
-
-- (void)windowControllerDidLoadNib:(NSWindowController *)controller // NSDocument
-{
-	[super windowControllerDidLoadNib:controller];
-	
-	[PW_dateFormatter bind:@"timeZone"
-	              toObject:[NSUserDefaults standardUserDefaults]
-	           withKeyPath:PWDefaultTimeZoneName
-	               options:[NSDictionary dictionaryWithObject:@"PWNameToTimeZoneTransformer" forKey:NSValueTransformerNameBindingOption]];
-	
-	// NSDateFormatter does not update its display when its time zone changes, so we must watch it and update it as necessary
-	[PW_dateFormatter addObserver:self
-	                   forKeyPath:@"timeZone"
-	                      options:(NSKeyValueObservingOptions)NULL
-	                      context:NULL];
-	[dateTextField setFormatter:PW_dateFormatter];
-	[dateTextField setNeedsDisplay];
-}
-
-
-- (void)removeWindowController:(NSWindowController *)windowController // NSDocument
-{
-	[PW_dateFormatter removeObserver:self forKeyPath:@"timeZone"];
-	[PW_dateFormatter release];
-	PW_dateFormatter = nil;
-	
-	[super removeWindowController:windowController];
-}
-
-
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
-{
-	if ((object == PW_dateFormatter) && [keyPath isEqualToString:@"timeZone"])
-		[dateTextField setNeedsDisplay];
-	else
-		[super observeValueForKeyPath:keyPath
-		                     ofObject:object
-		                       change:change
-		                      context:context];
+	[self addWindowController:[[[PWDarcsPatchProxyWindowController alloc] initWithWindowNibName:@"PWDarcsPatchProxyDocument"] autorelease]];
 }
 
 
