@@ -141,7 +141,7 @@
 					NSAssert(closeError == Z_OK, @"Patch file failed to close");
 					PW_gzPatchFile = nil;
 					
-					PW_fullPatchString = [currPatchString retain];
+					PW_fullPatchString = [PW_currPatchString retain];
 					[PW_currPatchString release];
 					PW_currPatchString = nil;
 				}
