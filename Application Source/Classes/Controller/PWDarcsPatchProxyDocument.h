@@ -11,7 +11,6 @@
 #import <Cocoa/Cocoa.h>
 
 @class PWDarcsPatchProxy;
-@class PWTimeZoneWrapper;
 
 
 @interface PWDarcsPatchProxyDocument : NSDocument

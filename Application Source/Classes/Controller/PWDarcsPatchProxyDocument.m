@@ -20,14 +20,6 @@
 
 #pragma mark Initialization and Deallocation
 
-+ (void)initialize
-{
-	// Set KVO dependent keys
-	[self setKeys:[NSArray arrayWithObject:@"currentTimeZoneWrapper"] triggerChangeNotificationsForDependentKey:@"patchDate"];
-	[self setKeys:[NSArray arrayWithObject:@"fullPatchFontDescriptor"] triggerChangeNotificationsForDependentKey:@"fullPatchFont"];
-}
-
-
 - (id)init // Designated Initializer
 {
 	if (self = [super init])
