@@ -34,18 +34,21 @@
 	
 	// Deflate the data
 	NSData *deflatedData = [originalData deflate];
-	STAssertNotNil(deflatedData, @"Deflated data was nil.");
+	STAssertNotNil(deflatedData,
+		@"Deflated data was nil.");
 	STAssertTrue([deflatedData isZlibCompressed],
 		@"Deflated data incorrectly reported as uncompressed.");
 	
-	
 	// Inflate the data
 	NSData *inflatedData = [deflatedData inflate];
-	STAssertNotNil(inflatedData, @"Inflated data was nil.");
+	STAssertNotNil(inflatedData,
+		@"Inflated data was nil.");
 	STAssertFalse([inflatedData isZlibCompressed],
 		@"Inflated data incorrectly reported as compressed.");
-	STAssertEquals([inflatedData length], [originalData length], @"Inflated data differed in length from original data.");
-	STAssertEqualObjects(inflatedData, originalData, @"Inflated data was not equal to original data.");
+	STAssertEquals([inflatedData length], [originalData length],
+		@"Inflated data differed in length from original data.");
+	STAssertEqualObjects(inflatedData, originalData,
+		@"Inflated data was not equal to original data.");
 }
 
 
@@ -59,17 +62,20 @@
 	                                                ofType:@"txt"
 	                                           inDirectory:@"Test Patches"];
 	NSData *compressedPatch = [NSData dataWithContentsOfFile:patchPath];
-	STAssertNotNil(compressedPatch, @"Failed to load compressed patch.");
+	STAssertNotNil(compressedPatch,
+		@"Failed to load compressed patch.");
 	
 	NSData *inflatedPatch = [compressedPatch inflate];
-	STAssertNotNil(inflatedPatch, @"Failed to inflate patch.");
+	STAssertNotNil(inflatedPatch,
+		@"Failed to inflate patch.");
 	
 	NSString *inflatedContents = [[[NSString alloc] initWithData:inflatedPatch encoding:NSASCIIStringEncoding] autorelease];
 	NSString *realContents = [NSString stringWithContentsOfFile:uncompressedPath
 	                                                   encoding:NSASCIIStringEncoding
 	                                                      error:nil];
 	
-	STAssertEqualObjects(inflatedContents, realContents, @"Patch was not inflated correctly.");
+	STAssertEqualObjects(inflatedContents, realContents,
+		@"Patch was not inflated correctly.");
 }
 
 
