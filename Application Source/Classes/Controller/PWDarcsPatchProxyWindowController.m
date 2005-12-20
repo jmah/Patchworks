@@ -17,6 +17,16 @@
 
 #pragma mark Initiailization and Deallocation
 
+- (void)dealloc
+{
+	[PW_dateFormatter removeObserver:self forKeyPath:@"timeZone"];
+	[PW_dateFormatter release];
+	PW_dateFormatter = nil;
+	
+	[super dealloc];
+}
+
+
 - (void)windowDidLoad // NSWindowController
 {
 	PW_dateFormatter = [[NSDateFormatter alloc] init];
@@ -55,14 +65,6 @@
 
 
 #pragma mark UI Management
-
-- (void)close // NSWindowController
-{
-	[PW_dateFormatter removeObserver:self forKeyPath:@"timeZone"];
-	[PW_dateFormatter release];
-	PW_dateFormatter = nil;
-}
-
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
