@@ -16,6 +16,40 @@
 
 #pragma mark zlib Extensions
 
+- (BOOL)isZlibCompressed
+{
+	BOOL isCompressed = NO;
+	
+	// Magic numbers defined in big-endian order
+	static const char magicNumbers[][2] = {
+		{0x1f, 0x8b}, // gzip
+		{0x78, 0x9c}, // zlib
+		{0x78, 0xda}, // zlib
+		{0x78, 0x5e}, // zlib
+	};
+	static const unsigned int magicNumberCount = 4; // Be sure to update this when updating the magic number array!
+	
+	if ([self length] >= 2)
+	{
+		for (unsigned int i = 0; (i < magicNumberCount) && !isCompressed; i++)
+		{
+			const char *charBytes = (const char *)[self bytes];
+#ifdef __BIG_ENDIAN__
+			BOOL match = ((charBytes[0] == magicNumbers[i][0]) &&
+			              (charBytes[1] == magicNumbers[i][1]));
+#else
+			BOOL match = ((charBytes[0] == magicNumbers[i][1]) &&
+			              (charBytes[1] == magicNumbers[i][0]));
+#endif
+			if (match)
+				isCompressed = YES;
+		}
+	}
+	
+	return isCompressed;
+}
+
+
 - (NSData *)inflate
 {
 	// Based on public-domain code from <http://cocoadev.com/index.pl?NSDataCategory>

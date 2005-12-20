@@ -29,16 +29,21 @@
 	NSData *originalData = [sourceString dataUsingEncoding:NSISOLatin1StringEncoding];
 	// originalData has length of 98825 bytes
 	
+	STAssertFalse([originalData isZlibCompressed],
+		@"Uncompressed data incorrectly reported as compressed.");
 	
 	// Deflate the data
 	NSData *deflatedData = [originalData deflate];
 	STAssertNotNil(deflatedData, @"Deflated data was nil.");
-	// STAssertTrue([deflatedData length] <= [originalData length], @"Deflated data was larger than original data");
+	STAssertTrue([deflatedData isZlibCompressed],
+		@"Deflated data incorrectly reported as uncompressed.");
 	
 	
 	// Inflate the data
 	NSData *inflatedData = [deflatedData inflate];
 	STAssertNotNil(inflatedData, @"Inflated data was nil.");
+	STAssertFalse([inflatedData isZlibCompressed],
+		@"Inflated data incorrectly reported as compressed.");
 	STAssertEquals([inflatedData length], [originalData length], @"Inflated data differed in length from original data.");
 	STAssertEqualObjects(inflatedData, originalData, @"Inflated data was not equal to original data.");
 }

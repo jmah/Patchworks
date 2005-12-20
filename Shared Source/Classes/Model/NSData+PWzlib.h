@@ -14,6 +14,7 @@
 @interface NSData (PWzlib)
 
 #pragma mark zlib Extensions
+- (BOOL)isZlibCompressed;
 - (NSData *)inflate;
 - (NSData *)deflate;
 

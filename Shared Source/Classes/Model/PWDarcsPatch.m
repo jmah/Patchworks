@@ -143,15 +143,10 @@ static OGRegularExpression *emailRegexp = nil;
 			{
 				NSData *uncompressedData;
 				
-				// Check if data is compressed by testing the first character
-				char firstChar;
-				[data getBytes:&firstChar length:1];
-				if (firstChar == '[')
-					// Data is uncompressed
-					uncompressedData = data;
-				else
-					// Data is compressed
+				if ([data isZlibCompressed])
 					uncompressedData = [data inflate];
+				else
+					uncompressedData = data;
 				
 				currPatchString = [[[NSString alloc] initWithData:uncompressedData encoding:PATCH_STRING_ENCODING] autorelease];
 				
