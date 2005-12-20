@@ -21,9 +21,6 @@
 }
 
 
-#pragma mark UI Actions
-- (IBAction)emailAuthor:(id)sender;
-
 #pragma mark Accessor Methods
 - (NSString *)patchName;
 - (NSString *)localizedPatchType;

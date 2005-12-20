@@ -40,6 +40,20 @@
 
 
 
+#pragma mark UI Actions
+
+- (IBAction)emailAuthor:(id)sender
+{
+	NSString *authorEmail = [[self document] patchAuthorEmail];
+	if (authorEmail)
+	{
+		NSURL *authorEmailURL = [NSURL URLWithString:[@"mailto:" stringByAppendingString:authorEmail]];
+		[[NSWorkspace sharedWorkspace] openURL:authorEmailURL];
+	}
+}
+
+
+
 #pragma mark UI Management
 
 - (void)close // NSWindowController

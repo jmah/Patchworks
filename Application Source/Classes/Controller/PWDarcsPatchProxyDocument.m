@@ -64,19 +64,6 @@
 
 
 
-#pragma mark UI Actions
-
-- (IBAction)emailAuthor:(id)sender
-{
-	if ([self patchAuthorEmail])
-	{
-		NSURL *authorEmailURL = [NSURL URLWithString:[@"mailto:" stringByAppendingString:[self patchAuthorEmail]]];
-		[[NSWorkspace sharedWorkspace] openURL:authorEmailURL];
-	}
-}
-
-
-
 #pragma mark Accessor Methods
 
 - (NSString *)patchName

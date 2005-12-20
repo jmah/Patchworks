@@ -20,6 +20,10 @@
 	IBOutlet NSTextField *dateTextField;
 }
 
+
+#pragma mark UI Actions
+- (IBAction)emailAuthor:(id)sender;
+
 @end
 
 
