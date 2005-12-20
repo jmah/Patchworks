@@ -60,8 +60,8 @@
 	float pointSize = [fullPatchFontDescriptor pointSize];
 	
 	if (pointSize == 0.f)
-#warning I don't like having to hard-code this value
-		pointSize = 12.f;
+		// A point size of 0 means "defualt size". We need to ask NSFont for the actual size.
+		pointSize = [[NSFont userFontOfSize:0.f] pointSize];
 	
 	return [NSString stringWithFormat:@"%@ - %.1f", [[fullPatchFontDescriptor fontAttributes] objectForKey:NSFontNameAttribute], pointSize];
 }
