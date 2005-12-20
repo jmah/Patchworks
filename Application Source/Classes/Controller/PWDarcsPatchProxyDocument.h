@@ -17,7 +17,6 @@
 {
 	@protected
 	PWDarcsPatchProxy *PW_patchProxy;
-	NSURL *PW_patchURL;
 }
 
 
