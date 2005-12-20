@@ -12,6 +12,8 @@
 #import <zlib.h>
 
 
+#define PWDarcsPatchStringEncoding NSISOLatin1StringEncoding
+
 extern NSString *PWDarcsPatchErrorDomain;
 
 enum {

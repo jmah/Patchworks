@@ -11,7 +11,6 @@
 
 #define LINE_BUFFER_LENGH 256
 #define FULL_BUFFER_LENGTH 16384
-#define PATCH_STRING_ENCODING NSISOLatin1StringEncoding
 
 
 // Methods for use by concrete subclasses of PWDarcsPatch

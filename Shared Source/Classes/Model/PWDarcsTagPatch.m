@@ -121,7 +121,7 @@
 					}
 					else
 					{
-						NSString *newLine = [NSString stringWithCString:line encoding:PATCH_STRING_ENCODING];
+						NSString *newLine = [NSString stringWithCString:line encoding:PWDarcsPatchStringEncoding];
 						[PW_currPatchString appendString:newLine];
 						if ([newLine isEqualToString:@"<\n"])
 						{

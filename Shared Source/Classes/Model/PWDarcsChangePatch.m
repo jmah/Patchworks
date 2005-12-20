@@ -136,7 +136,7 @@
 				// zlib.h says gzgets should never return Z_NULL, but this can often signal the end-of-file, so we need to check it here
 				if (line != Z_NULL)
 				{
-					NSString *newLine = [NSString stringWithCString:line encoding:PATCH_STRING_ENCODING];
+					NSString *newLine = [NSString stringWithCString:line encoding:PWDarcsPatchStringEncoding];
 					[PW_currPatchString appendString:newLine];
 					unsigned int length = [newLine length];
 					if ((length >= 4) && ([[newLine substringFromIndex:(length - 4)] isEqualToString:@"] {\n"] ||

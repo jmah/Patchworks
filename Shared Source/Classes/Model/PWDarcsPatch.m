@@ -119,7 +119,7 @@ static OGRegularExpression *emailRegexp = nil;
 						}
 						else
 						{
-							[patchReadingString appendString:[NSString stringWithCString:line encoding:PATCH_STRING_ENCODING]];
+							[patchReadingString appendString:[NSString stringWithCString:line encoding:PWDarcsPatchStringEncoding]];
 							char lastChar = line[strlen(line) - 1];
 							if (lastChar == '\n')
 								lineCount++;
@@ -148,7 +148,7 @@ static OGRegularExpression *emailRegexp = nil;
 				else
 					uncompressedData = data;
 				
-				currPatchString = [[[NSString alloc] initWithData:uncompressedData encoding:PATCH_STRING_ENCODING] autorelease];
+				currPatchString = [[[NSString alloc] initWithData:uncompressedData encoding:PWDarcsPatchStringEncoding] autorelease];
 				
 			}
 		}
@@ -257,7 +257,7 @@ static OGRegularExpression *emailRegexp = nil;
 		gzclose(PW_gzPatchFile);
 		PW_gzPatchFile = nil;
 		
-		NSString *remainingPatchString = [[NSString alloc] initWithData:remainingData encoding:PATCH_STRING_ENCODING];
+		NSString *remainingPatchString = [[NSString alloc] initWithData:remainingData encoding:PWDarcsPatchStringEncoding];
 		[remainingData release];
 		
 		PW_fullPatchString = [[PW_currPatchString stringByAppendingString:remainingPatchString] retain];
