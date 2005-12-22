@@ -20,7 +20,6 @@
 {
 	BOOL isCompressed = NO;
 	
-	// Magic numbers defined in big-endian order
 	static const char magicNumbers[][2] = {
 		{0x1f, 0x8b}, // gzip
 		{0x78, 0x9c}, // zlib
@@ -34,13 +33,8 @@
 		for (unsigned int i = 0; (i < magicNumberCount) && !isCompressed; i++)
 		{
 			const char *charBytes = (const char *)[self bytes];
-#ifdef __BIG_ENDIAN__
 			BOOL match = ((charBytes[0] == magicNumbers[i][0]) &&
 			              (charBytes[1] == magicNumbers[i][1]));
-#else
-			BOOL match = ((charBytes[0] == magicNumbers[i][1]) &&
-			              (charBytes[1] == magicNumbers[i][0]));
-#endif
 			if (match)
 				isCompressed = YES;
 		}
