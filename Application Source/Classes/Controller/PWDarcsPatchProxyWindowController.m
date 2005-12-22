@@ -19,7 +19,6 @@
 
 - (void)dealloc
 {
-	[PW_dateFormatter removeObserver:self forKeyPath:@"timeZone"];
 	[PW_dateFormatter release];
 	PW_dateFormatter = nil;
 	
@@ -84,6 +83,16 @@
 	if ([self document] && [[self document] isKindOfClass:[PWDarcsPatchProxyDocument class]])
 		newName = [[self document] patchName];
 	return newName;
+}
+
+
+- (void)windowWillClose:(NSNotification *)notification // NSWindow delegate method
+{
+	if ([notification object] == [self window])
+	{
+		[PW_dateFormatter unbind:@"timeZone"];
+		[PW_dateFormatter removeObserver:self forKeyPath:@"timeZone"];
+	}
 }
 
 
