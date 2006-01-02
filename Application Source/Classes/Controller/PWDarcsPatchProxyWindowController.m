@@ -45,6 +45,9 @@
 	                      context:NULL];
 	[dateTextField setFormatter:PW_dateFormatter];
 	[dateTextField setNeedsDisplay];
+	
+#warning This is a workaround for a bug in Interface Builder that doesn't allow a window's min and max width or height to be equal. This needs to be changed if the preferences window layout changes
+	[[self window] setContentMaxSize:NSMakeSize(MAXFLOAT, [[self window] contentMinSize].height)];
 }
 
 
@@ -59,6 +62,12 @@
 		NSURL *authorEmailURL = [NSURL URLWithString:[@"mailto:" stringByAppendingString:authorEmail]];
 		[[NSWorkspace sharedWorkspace] openURL:authorEmailURL];
 	}
+}
+
+
+- (IBAction)showFullPatch:(id)sender
+{
+	[[self document] showFullPatch];
 }
 
 

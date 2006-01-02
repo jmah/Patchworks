@@ -10,6 +10,7 @@
 
 #import "PWDarcsPatchProxyDocument.h"
 #import "PWDarcsPatchProxyWindowController.h"
+#import "PWDarcsFullPatchWindowController.h"
 #import "PatchworksDefines.h"
 #import "PWDarcsPatch.h"
 #import "PWDarcsPatchProxy.h"
@@ -46,6 +47,30 @@
 - (void)makeWindowControllers // NSDocument
 {
 	[self addWindowController:[[[PWDarcsPatchProxyWindowController alloc] initWithWindowNibName:@"PWDarcsPatchProxyDocument"] autorelease]];
+}
+
+
+
+#pragma mark User Interface
+
+- (void)showFullPatch
+{
+	NSWindow *fullPatchWindow = nil;
+	
+	NSEnumerator *windowControllers = [[self windowControllers] objectEnumerator];
+	NSWindowController *currWinController;
+	while (!fullPatchWindow && (currWinController = [windowControllers nextObject]))
+		if ([currWinController isKindOfClass:[PWDarcsFullPatchWindowController class]])
+			fullPatchWindow = [currWinController window];
+	
+	if (!fullPatchWindow)
+	{
+		PWDarcsFullPatchWindowController *fullPatchController = [[PWDarcsFullPatchWindowController alloc] initWithWindowNibName:@"PWDarcsFullPatch"];
+		[self addWindowController:fullPatchController];
+		fullPatchWindow = [fullPatchController window];
+	}
+	
+	[fullPatchWindow makeKeyAndOrderFront:self];
 }
 
 

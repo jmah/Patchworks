@@ -9,7 +9,7 @@
             SUPERCLASS = NSDocument; 
         }, 
         {
-            ACTIONS = {emailAuthor = id; }; 
+            ACTIONS = {emailAuthor = id; showFullPatch = id; }; 
             CLASS = PWDarcsPatchProxyWindowController; 
             LANGUAGE = ObjC; 
             OUTLETS = {dateTextField = NSTextField; }; 

@@ -23,6 +23,7 @@
 
 #pragma mark UI Actions
 - (IBAction)emailAuthor:(id)sender;
+- (IBAction)showFullPatch:(id)sender;
 
 @end
 

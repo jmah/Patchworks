@@ -1,8 +1,8 @@
 //
-//  PWDarcsPatchProxyDocument.h
+//  PWDarcsFullPatchWindowController.h
 //  Patchworks
 //
-//  Created by Jonathon Mah on 2005-10-09.
+//  Created by Jonathon Mah on 2005-12-20.
 //  Copyright Playhaus 2005. All rights reserved.
 //  License information is contained at the bottom of this file and in the
 //  'LICENSE.txt' file.
@@ -10,28 +10,11 @@
 
 #import <Cocoa/Cocoa.h>
 
-@class PWDarcsPatchProxy;
 
-
-@interface PWDarcsPatchProxyDocument : NSDocument
+@interface PWDarcsFullPatchWindowController : NSWindowController
 {
-	@protected
-	PWDarcsPatchProxy *PW_patchProxy;
 }
 
-
-#pragma mark User Interface
-- (void)showFullPatch;
-
-#pragma mark Accessor Methods
-- (NSString *)patchName;
-- (NSString *)localizedPatchType;
-- (NSString *)patchAuthor;
-- (NSString *)patchAuthorEmail;
-- (NSString *)emailAuthorButtonToolTip;
-- (NSCalendarDate *)patchDate;
-- (NSString *)patchString;
-- (NSString *)repositoryPath;
 
 @end
 
