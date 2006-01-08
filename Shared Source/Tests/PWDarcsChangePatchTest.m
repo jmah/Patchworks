@@ -177,13 +177,13 @@
 		PWDarcsPatch *patch = [(PWDarcsPatch *)[PWDarcsPatch alloc] initWithContentsOfURL:[NSURL fileURLWithPath:patchPath] error:&error];
 		
 		STAssertNil(patch,
-					@"Initializing a bad patch should return nil.");
+			@"Initializing a bad patch should return nil.");
 		STAssertNotNil(error,
-					   @"Initializing a bad patch should generate an error.");
+			@"Initializing a bad patch should generate an error.");
 		STAssertEqualObjects([error domain], PWDarcsPatchErrorDomain,
-							 @"Error should be in the PWDarcsPatchErrorDomain.");
+			@"Error should be in the PWDarcsPatchErrorDomain.");
 		STAssertEquals([error code], PWDarcsPatchParseError,
-					   @"Error should be an unknown type error.");
+			@"Error should be an unknown type error.");
 	}
 }
 
