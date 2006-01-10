@@ -21,6 +21,7 @@ if $0 == __FILE__
   test_proj = XcodeBuildCommand.new 'Patchworks.xcodeproj'
   test_proj.target = 'Unit Tests'
   test_proj.configuration = 'Unit Tests'
+  test_proj.other_settings = { 'OPEN_OUTPUT_FILES' => 'NO' }
   
   success = test_proj.run do |line|
     case line

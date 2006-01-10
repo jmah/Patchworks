@@ -306,6 +306,7 @@
 		2818C6C708F90B9700FD8852 /* PWTimeZoneWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWTimeZoneWrapper.m; sourceTree = "<group>"; };
 		2818C6CC08F90BDA00FD8852 /* PWTimeZoneWrapperTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWTimeZoneWrapperTest.h; sourceTree = "<group>"; };
 		2818C6CD08F90BDA00FD8852 /* PWTimeZoneWrapperTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWTimeZoneWrapperTest.m; sourceTree = "<group>"; };
+		281F11910973F72A00193CB1 /* Cocoa Test Suite Code Coverage.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "Cocoa Test Suite Code Coverage.xcconfig"; sourceTree = "<group>"; };
 		28261B820951B3A7008F1B53 /* 10_4 Shared.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "10_4 Shared.xcconfig"; sourceTree = "<group>"; };
 		28261B830951B3A8008F1B53 /* Cocoa Application Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "Cocoa Application Debug.xcconfig"; sourceTree = "<group>"; };
 		28261B840951B3A8008F1B53 /* Cocoa Application Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "Cocoa Application Release.xcconfig"; sourceTree = "<group>"; };
@@ -380,7 +381,7 @@
 		28FCD3F208EC577900A970FA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Info.plist; sourceTree = "<group>"; };
 		2A37F4C4FDCFA73011CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		2A37F4C5FDCFA73011CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
-		8D15AC370486D014006FF6A4 /* Patchworks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Patchworks.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D15AC370486D014006FF6A4 /* Patchworks.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Patchworks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -631,6 +632,7 @@
 				28261B8D0951B3A8008F1B53 /* Release.xcconfig */,
 				28261BAC0951B630008F1B53 /* Cocoa Test Suite.xcconfig */,
 				28261CB20951C1B7008F1B53 /* Cocoa Test Suite Unit Tests.xcconfig */,
+				281F11910973F72A00193CB1 /* Cocoa Test Suite Code Coverage.xcconfig */,
 				28261B850951B3A8008F1B53 /* Cocoa Application Shared.xcconfig */,
 				28261B830951B3A8008F1B53 /* Cocoa Application Debug.xcconfig */,
 				28261B840951B3A8008F1B53 /* Cocoa Application Release.xcconfig */,
@@ -1170,8 +1172,8 @@
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Run the unit tests in this test bundle.\n# Limit the amoutn of time and memory.\nlet \"MAXTIME_SECS=30\"\nlet \"MAXRAM_KB=100*1024\"\nulimit -H -m $MAXRAM_KB -t $MAXTIME_SECS\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+			shellPath = /bin/bash;
+			shellScript = "# Run the unit tests in this test bundle.\n# Limit the amount of time and memory.\nlet \"MAXTIME_SECS=30\"\nlet \"MAXRAM_KB=100*1024\"\n\nTEST_OUTPUT_FILE=\"${TEMP_FILE_DIR}/UnitTests.out\"\necho \"Unit test output for target '${TARGETNAME}' in project '${PROJECT}'\" | tee \"${TEST_OUTPUT_FILE}\"\necho \"------------------------------------------------------------------------------\" | tee -a \"${TEST_OUTPUT_FILE}\"\necho | tee -a \"${TEST_OUTPUT_FILE}\"\necho | tee -a \"${TEST_OUTPUT_FILE}\"\nenv\n\nulimit -S -m $MAXRAM_KB -t $MAXTIME_SECS\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\" 2>&1 | tee -a \"${TEST_OUTPUT_FILE}\"\nulimit unlimited\n\nif [ \"${CONFIGURATION}\" = 'Unit Tests' ]; then\n\tif [ \"${OPEN_OUTPUT_FILES}\" = 'YES' ]; then\n\t\topen -b com.apple.Xcode \"${TEST_OUTPUT_FILE}\"\n\tfi\nfi\n\n# Show code coverage results\nif [ \"${CONFIGURATION}\" = 'Code Coverage' ]; then\n\tCOVERAGE_OUTPUT_FILE=\"${TEMP_FILE_DIR}/CodeCoverage.out\"\n\techo \"Code coverage for target '${TARGETNAME}' in project '${PROJECT}'\" | tee \"${COVERAGE_OUTPUT_FILE}\"\n\techo \"------------------------------------------------------------------------------\" | tee -a \"${COVERAGE_OUTPUT_FILE}\"\n\techo | tee -a \"${COVERAGE_OUTPUT_FILE}\"\n\techo | tee -a \"${COVERAGE_OUTPUT_FILE}\"\n\t\n\tTARGET_OBJ_DIR=\"${OBJROOT}/${PROJECT}.build/${CONFIGURATION}/${TARGETNAME}.build/Objects-normal/${NATIVE_ARCH}\"\n\tmkdir -p \"${TEMP_FILE_DIR}/coverage\"\n\tcd \"${TEMP_FILE_DIR}/coverage\"\n\tfind \"${OBJROOT}\" -name *.gcda -exec gcov --branch-probabilities --object-directory \"${TARGET_OBJ_DIR}\" {} \\; 2>&1 | tee -a \"${COVERAGE_OUTPUT_FILE}\"\n\tcd -\n\t\n\tif [ \"${OPEN_OUTPUT_FILES}\" = 'YES' ]; then\n\t\topen -b com.apple.Xcode \"${COVERAGE_OUTPUT_FILE}\"\n\tfi\nfi\n";
 		};
 		28015B3208EC9D4800C83A75 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1183,8 +1185,8 @@
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Run the unit tests in this test bundle.\n# Limit the amoutn of time and memory.\nlet \"MAXTIME_SECS=30\"\nlet \"MAXRAM_KB=100*1024\"\nulimit -H -m $MAXRAM_KB -t $MAXTIME_SECS\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+			shellPath = /bin/bash;
+			shellScript = "# Run the unit tests in this test bundle.\n# Limit the amount of time and memory.\nlet \"MAXTIME_SECS=30\"\nlet \"MAXRAM_KB=100*1024\"\n\nTEST_OUTPUT_FILE=\"${TEMP_FILE_DIR}/UnitTests.out\"\necho \"Unit test output for target '${TARGETNAME}' in project '${PROJECT}'\" | tee \"${TEST_OUTPUT_FILE}\"\necho \"------------------------------------------------------------------------------\" | tee -a \"${TEST_OUTPUT_FILE}\"\necho | tee -a \"${TEST_OUTPUT_FILE}\"\necho | tee -a \"${TEST_OUTPUT_FILE}\"\nenv\n\nulimit -S -m $MAXRAM_KB -t $MAXTIME_SECS\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\" 2>&1 | tee -a \"${TEST_OUTPUT_FILE}\"\nulimit unlimited\n\nif [ \"${CONFIGURATION}\" = 'Unit Tests' ]; then\n\tif [ \"${OPEN_OUTPUT_FILES}\" = 'YES' ]; then\n\t\topen -b com.apple.Xcode \"${TEST_OUTPUT_FILE}\"\n\tfi\nfi\n\n# Show code coverage results\nif [ \"${CONFIGURATION}\" = 'Code Coverage' ]; then\n\tCOVERAGE_OUTPUT_FILE=\"${TEMP_FILE_DIR}/CodeCoverage.out\"\n\techo \"Code coverage for target '${TARGETNAME}' in project '${PROJECT}'\" | tee \"${COVERAGE_OUTPUT_FILE}\"\n\techo \"------------------------------------------------------------------------------\" | tee -a \"${COVERAGE_OUTPUT_FILE}\"\n\techo | tee -a \"${COVERAGE_OUTPUT_FILE}\"\n\techo | tee -a \"${COVERAGE_OUTPUT_FILE}\"\n\t\n\tTARGET_OBJ_DIR=\"${OBJROOT}/${PROJECT}.build/${CONFIGURATION}/${TARGETNAME}.build/Objects-normal/${NATIVE_ARCH}\"\n\tmkdir -p \"${TEMP_FILE_DIR}/coverage\"\n\tcd \"${TEMP_FILE_DIR}/coverage\"\n\tfind \"${OBJROOT}\" -name *.gcda -exec gcov --branch-probabilities --object-directory \"${TARGET_OBJ_DIR}\" {} \\; 2>&1 | tee -a \"${COVERAGE_OUTPUT_FILE}\"\n\tcd -\n\t\n\tif [ \"${OPEN_OUTPUT_FILES}\" = 'YES' ]; then\n\t\topen -b com.apple.Xcode \"${COVERAGE_OUTPUT_FILE}\"\n\tfi\nfi\n";
 		};
 		28015B7E08EC9F3D00C83A75 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1196,8 +1198,8 @@
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Run the unit tests in this test bundle.\n# Limit the amoutn of time and memory.\nlet \"MAXTIME_SECS=30\"\nlet \"MAXRAM_KB=100*1024\"\nulimit -H -m $MAXRAM_KB -t $MAXTIME_SECS\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+			shellPath = /bin/bash;
+			shellScript = "# Run the unit tests in this test bundle.\n# Limit the amount of time and memory.\nlet \"MAXTIME_SECS=30\"\nlet \"MAXRAM_KB=100*1024\"\n\nTEST_OUTPUT_FILE=\"${TEMP_FILE_DIR}/UnitTests.out\"\necho \"Unit test output for target '${TARGETNAME}' in project '${PROJECT}'\" | tee \"${TEST_OUTPUT_FILE}\"\necho \"------------------------------------------------------------------------------\" | tee -a \"${TEST_OUTPUT_FILE}\"\necho | tee -a \"${TEST_OUTPUT_FILE}\"\necho | tee -a \"${TEST_OUTPUT_FILE}\"\nenv\n\nulimit -S -m $MAXRAM_KB -t $MAXTIME_SECS\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\" 2>&1 | tee -a \"${TEST_OUTPUT_FILE}\"\nulimit unlimited\n\nif [ \"${CONFIGURATION}\" = 'Unit Tests' ]; then\n\tif [ \"${OPEN_OUTPUT_FILES}\" = 'YES' ]; then\n\t\topen -b com.apple.Xcode \"${TEST_OUTPUT_FILE}\"\n\tfi\nfi\n\n# Show code coverage results\nif [ \"${CONFIGURATION}\" = 'Code Coverage' ]; then\n\tCOVERAGE_OUTPUT_FILE=\"${TEMP_FILE_DIR}/CodeCoverage.out\"\n\techo \"Code coverage for target '${TARGETNAME}' in project '${PROJECT}'\" | tee \"${COVERAGE_OUTPUT_FILE}\"\n\techo \"------------------------------------------------------------------------------\" | tee -a \"${COVERAGE_OUTPUT_FILE}\"\n\techo | tee -a \"${COVERAGE_OUTPUT_FILE}\"\n\techo | tee -a \"${COVERAGE_OUTPUT_FILE}\"\n\t\n\tTARGET_OBJ_DIR=\"${OBJROOT}/${PROJECT}.build/${CONFIGURATION}/${TARGETNAME}.build/Objects-normal/${NATIVE_ARCH}\"\n\tmkdir -p \"${TEMP_FILE_DIR}/coverage\"\n\tcd \"${TEMP_FILE_DIR}/coverage\"\n\tfind \"${OBJROOT}\" -name *.gcda -exec gcov --branch-probabilities --object-directory \"${TARGET_OBJ_DIR}\" {} \\; 2>&1 | tee -a \"${COVERAGE_OUTPUT_FILE}\"\n\tcd -\n\t\n\tif [ \"${OPEN_OUTPUT_FILES}\" = 'YES' ]; then\n\t\topen -b com.apple.Xcode \"${COVERAGE_OUTPUT_FILE}\"\n\tfi\nfi\n";
 		};
 		28E703E708FBFEC000B5E7CD /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1558,6 +1560,125 @@
 			};
 			name = Release;
 		};
+		281F11800973F65300193CB1 /* Code Coverage */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 28261C320951BA59008F1B53 /* Metadata Importer Debug.xcconfig */;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/Frameworks\"";
+				GCC_PREFIX_HEADER = "Importer Source/Other Sources/Patchworks Importer_Prefix.pch";
+				INFOPLIST_FILE = "Importer Source/Resources/Info.plist";
+				OTHER_LDFLAGS = (
+					"-lz",
+					"-weak_framework",
+					OgreKit,
+				);
+				PRODUCT_NAME = Patchworks;
+			};
+			name = "Code Coverage";
+		};
+		281F11810973F65300193CB1 /* Code Coverage */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 28261B830951B3A8008F1B53 /* Cocoa Application Debug.xcconfig */;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/Frameworks\"";
+				GCC_PREFIX_HEADER = "Application Source/Other Sources/Patchworks_Prefix.pch";
+				INFOPLIST_FILE = "Application Source/Resources/Info.plist";
+				OTHER_LDFLAGS = "-lz";
+				PRODUCT_NAME = Patchworks;
+			};
+			name = "Code Coverage";
+		};
+		281F11820973F65300193CB1 /* Code Coverage */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				OPTIMIZATION_CFLAGS = "-O0";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = "Verify Plists";
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+			};
+			name = "Code Coverage";
+		};
+		281F11830973F65300193CB1 /* Code Coverage */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 28261CB20951C1B7008F1B53 /* Cocoa Test Suite Unit Tests.xcconfig */;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/Frameworks\"";
+				GCC_PREFIX_HEADER = "Application Source/Other Sources/Patchworks Test_Prefix.pch";
+				INFOPLIST_FILE = "Application Source/Resources/Patchworks Test-Info.plist";
+				OTHER_LDFLAGS = (
+					"-lz",
+					"-lgcov",
+				);
+				PRODUCT_NAME = "Patchworks Test";
+			};
+			name = "Code Coverage";
+		};
+		281F11840973F65300193CB1 /* Code Coverage */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 28261CB20951C1B7008F1B53 /* Cocoa Test Suite Unit Tests.xcconfig */;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/Frameworks\"";
+				GCC_PREFIX_HEADER = "Importer Source/Other Sources/Patchworks Importer Test_Prefix.pch";
+				INFOPLIST_FILE = "Importer Source/Resources/Patchworks Importer Test-Info.plist";
+				OTHER_LDFLAGS = (
+					"-lz",
+					"-lgcov",
+				);
+				PRODUCT_NAME = "Patchworks Importer Test";
+			};
+			name = "Code Coverage";
+		};
+		281F11850973F65300193CB1 /* Code Coverage */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 28261CB20951C1B7008F1B53 /* Cocoa Test Suite Unit Tests.xcconfig */;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/Frameworks\"";
+				GCC_PREFIX_HEADER = "Shared Source/Other Sources/Shared Source Test_Prefix.pch";
+				INFOPLIST_FILE = "Shared Source/Resources/Shared Source Test-Info.plist";
+				OTHER_LDFLAGS = (
+					"-lz",
+					"-lgcov",
+				);
+				PRODUCT_NAME = "Shared Source Test";
+			};
+			name = "Code Coverage";
+		};
+		281F11860973F65300193CB1 /* Code Coverage */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				OPTIMIZATION_CFLAGS = "-O0";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = "Unit Tests";
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+			};
+			name = "Code Coverage";
+		};
+		281F11870973F65300193CB1 /* Code Coverage */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 28261B8C0951B3A8008F1B53 /* Debug.xcconfig */;
+			buildSettings = {
+				OPEN_OUTPUT_FILES = YES;
+			};
+			name = "Code Coverage";
+		};
 		28261CB80951C249008F1B53 /* Unit Tests */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 28261C320951BA59008F1B53 /* Metadata Importer Debug.xcconfig */;
@@ -1664,6 +1785,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 28261B8C0951B3A8008F1B53 /* Debug.xcconfig */;
 			buildSettings = {
+				OPEN_OUTPUT_FILES = YES;
 			};
 			name = "Unit Tests";
 		};
@@ -1752,6 +1874,7 @@
 			buildConfigurations = (
 				280159AB08EC781B00C83A75 /* Debug */,
 				28261CB80951C249008F1B53 /* Unit Tests */,
+				281F11800973F65300193CB1 /* Code Coverage */,
 				280159AC08EC781B00C83A75 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -1762,6 +1885,7 @@
 			buildConfigurations = (
 				28015AFC08EC9C9800C83A75 /* Debug */,
 				28261CBB0951C249008F1B53 /* Unit Tests */,
+				281F11830973F65300193CB1 /* Code Coverage */,
 				28015AFD08EC9C9800C83A75 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -1772,6 +1896,7 @@
 			buildConfigurations = (
 				28015B3F08EC9D4900C83A75 /* Debug */,
 				28261CBD0951C249008F1B53 /* Unit Tests */,
+				281F11850973F65300193CB1 /* Code Coverage */,
 				28015B4008EC9D4900C83A75 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -1782,6 +1907,7 @@
 			buildConfigurations = (
 				28015B5E08EC9DE300C83A75 /* Debug */,
 				28261CBE0951C249008F1B53 /* Unit Tests */,
+				281F11860973F65300193CB1 /* Code Coverage */,
 				28015B5F08EC9DE300C83A75 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -1792,6 +1918,7 @@
 			buildConfigurations = (
 				28015B8708EC9F3E00C83A75 /* Debug */,
 				28261CBC0951C249008F1B53 /* Unit Tests */,
+				281F11840973F65300193CB1 /* Code Coverage */,
 				28015B8808EC9F3E00C83A75 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -1802,6 +1929,7 @@
 			buildConfigurations = (
 				28E703F208FBFF0E00B5E7CD /* Debug */,
 				28261CBA0951C249008F1B53 /* Unit Tests */,
+				281F11820973F65300193CB1 /* Code Coverage */,
 				28E703F308FBFF0E00B5E7CD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -1812,6 +1940,7 @@
 			buildConfigurations = (
 				28FCD3D208EC56D000A970FA /* Debug */,
 				28261CB90951C249008F1B53 /* Unit Tests */,
+				281F11810973F65300193CB1 /* Code Coverage */,
 				28FCD3D308EC56D000A970FA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -1822,6 +1951,7 @@
 			buildConfigurations = (
 				28FCD3D608EC56D000A970FA /* Debug */,
 				28261CBF0951C249008F1B53 /* Unit Tests */,
+				281F11870973F65300193CB1 /* Code Coverage */,
 				28FCD3D708EC56D000A970FA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
