@@ -85,9 +85,9 @@
 	NSError *error1 = nil;
 	PWDarcsPatch *patch1 = [PWDarcsPatch patchWithContentsOfFile:patchPath error:&error1];
 	STAssertNotNil(patch1,
-				   @"Patch failed to initialize.");
+		@"Patch failed to initialize.");
 	STAssertNil(error1,
-				@"Patch genereated an error.");
+		@"Patch genereated an error.");
 	
 	NSError *error2 = nil;
 	PWDarcsPatch *patch2 = [PWDarcsPatch patchWithContentsOfURL:[NSURL fileURLWithPath:patchPath] error:&error2];
