@@ -1664,7 +1664,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 28261B8C0951B3A8008F1B53 /* Debug.xcconfig */;
 			buildSettings = {
-				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
 			};
 			name = "Unit Tests";
 		};
@@ -1734,7 +1733,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 28261B8C0951B3A8008F1B53 /* Debug.xcconfig */;
 			buildSettings = {
-				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
 			};
 			name = Debug;
 		};
@@ -1743,7 +1741,6 @@
 			baseConfigurationReference = 28261B8D0951B3A8008F1B53 /* Release.xcconfig */;
 			buildSettings = {
 				ARCHS = ppc;
-				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
 			};
 			name = Release;
 		};
