@@ -1,5 +1,5 @@
 //
-//  PWDarcsPatch+TestingMethods.h
+//  PWDarcsPatch+PWTestingMethods.h
 //  Patchworks
 //
 //  Created by Jonathon Mah on 2005-10-08.
@@ -10,7 +10,7 @@
 #import "PWDarcsPatch.h"
 
 
-@interface PWDarcsPatch (TestingMethods)
+@interface PWDarcsPatch (PWTestingMethods)
 
 #pragma mark Initialization and Deallocation
 - (id)initWithName:(NSString *)name author:(NSString *)author date:(NSCalendarDate *)date;

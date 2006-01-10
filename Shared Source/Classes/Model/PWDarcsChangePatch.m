@@ -9,11 +9,15 @@
 //
 
 #import "PWDarcsChangePatch.h"
-#import "PWDarcsPatch+ProtectedMethods.h"
+#import "PWDarcsPatch+PWProtectedMethods.h"
+#import "PWGzipFileReader.h"
 #import <OgreKit/OgreKit.h>
 
 
-@interface PWDarcsChangePatch (PrivateMethods)
+@interface PWDarcsChangePatch (PWPrivateMethods)
+
+#pragma mark Initialization and Deallocation
+- (id)commonInitError:(NSError **)outError;
 
 #pragma mark Accessor Methods
 - (void)setLongComment:(NSString *)newLongComment;
@@ -71,149 +75,132 @@
 
 #pragma mark Initialization and Deallocation
 
-- (id)initWithOpenGzFile:(gzFile)gzPatchFile alreadyReadString:(NSString *)currPatchString error:(NSError **)outError // Designated initializer
+- (id)initWithGzipFile:(PWGzipFileReader *)gzipFile error:(NSError **)outError
 {
 	if (self = [super init])
 	{
-		// Initialize instance variables
-		PW_longComment = nil;
-		PW_gzPatchFile = gzPatchFile;
-		PW_isFullPatchRead = (PW_gzPatchFile ? gzeof(PW_gzPatchFile) : YES);
-		
-		if (PW_isFullPatchRead)
-		{
-			if (PW_gzPatchFile)
-			{
-				int closeError = gzclose(PW_gzPatchFile);
-				PW_gzPatchFile = nil;
-				NSAssert(closeError == Z_OK, @"Patch file failed to close");
-			}
-			
-			PW_fullPatchString = [currPatchString retain];
-		}
-		else
-			PW_currPatchString = [currPatchString mutableCopy];
-		
-		
-		// Parse patch
-		// Cache the patch regular expression
-		static OGRegularExpression *patchRegexp = nil;
-		if (!patchRegexp)
-			// Oh my god. This regexp gives me nightmares.
-			// patchRegexp unescaped pattern: "^\[(?<name>.*?)\n(?<author>.*?)\*(?<rollback_flag>\*|-)((?<new_date>\d{14})|(?<old_date>\w{3} \w{3} [\d ]\d \d\d:\d\d:\d\d \w+ \d{4}))(?:\]|\n(?<long_comment>(?:.|\n)*?)\n?\]) (?: < > |\n<\n(?<explicit_dependencies>(\[(.*?)\n(.*?)\*(\*|-)(\d{14}|\w{3} \w{3} [\d ]\d \d\d:\d\d:\d\d \w+ \d{4})(?:\] \n|\n((?:.|\n)*?)\n?\] \n))+)> )?{$";
-			patchRegexp = [[OGRegularExpression alloc] initWithString:@"^\\[(?<name>.*?)\\n(?<author>.*?)\\*(?<rollback_flag>\\*|-)((?<new_date>\\d{14})|(?<old_date>\\w{3} \\w{3} [\\d ]\\d \\d\\d:\\d\\d:\\d\\d \\w+ \\d{4}))(?:\\]|\\n(?<long_comment>(?:.|\\n)*?)\\n?\\]) (?: < > |\\n<\\n(?<explicit_dependencies>(\\[(.*?)\\n(.*?)\\*(\\*|-)(\\d{14}|\\w{3} \\w{3} [\\d ]\\d \\d\\d:\\d\\d:\\d\\d \\w+ \\d{4})(?:\\] \\n|\\n((?:.|\\n)*?)\\n?\\] \\n))+)> )?{$"];
-		
-		OGRegularExpressionMatch *match = nil;
-		
-		BOOL doesMatch = NO, definitelyDoesNotMatch = NO;
-		
-		// Check if the existing string is enough to be certain of a match
-		unsigned int currPatchStringLength = [currPatchString length];
-		if ((currPatchStringLength >= 4) && ([[currPatchString substringFromIndex:(currPatchStringLength - 4)] isEqualToString:@"] {\n"] ||
-		                                     [[currPatchString substringFromIndex:(currPatchStringLength - 4)] isEqualToString:@"> {\n"]))
-		{
-			match = [patchRegexp matchInString:currPatchString];
-			doesMatch = ([match count] > 0);
-			if (((currPatchStringLength >= 5) && ([currPatchString characterAtIndex:(currPatchStringLength - 5)] == '\n')) ||
-			    ((currPatchStringLength >= 9) && [[currPatchString substringFromIndex:(currPatchStringLength - 9)] isEqualToString:@"]  < > {\n"]))
-				definitelyDoesNotMatch = !doesMatch;
-		}
-		
-		// Read in more lines to see if we get a match
-		while (!doesMatch && !definitelyDoesNotMatch)
-		{
-			if (PW_isFullPatchRead)
-			{
-				match = [patchRegexp matchInString:PW_fullPatchString];
-				doesMatch = ([match count] > 0);
-				definitelyDoesNotMatch = !doesMatch;
-			}
-			else
-			{
-				// Read in the next line of the patch. If we read "] {\n" or "> {\n" then we know this patch will definitely never match the regexp.
-				char lineBuffer[LINE_BUFFER_LENGH];
-				char *line = gzgets(PW_gzPatchFile, lineBuffer, LINE_BUFFER_LENGH);
-				// zlib.h says gzgets should never return Z_NULL, but this can often signal the end-of-file, so we need to check it here
-				if (line != Z_NULL)
-				{
-					NSString *newLine = [NSString stringWithCString:line encoding:PWDarcsPatchStringEncoding];
-					[PW_currPatchString appendString:newLine];
-					unsigned int length = [newLine length];
-					if ((length >= 4) && ([[newLine substringFromIndex:(length - 4)] isEqualToString:@"] {\n"] ||
-					                      [[newLine substringFromIndex:(length - 4)] isEqualToString:@"> {\n"]))
-					{
-						// We're at the end of the patch header -- check if it matches
-						match = [patchRegexp matchInString:PW_currPatchString];
-						doesMatch = ([match count] > 0);
-						if ((length == 4) || ((length == 9) && [newLine isEqualToString:@"]  < > {\n"]))
-							definitelyDoesNotMatch = !doesMatch;
-					}
-				}
-				
-				// Since we just read in a chunk, check if we reached the end of file
-				if (gzeof(PW_gzPatchFile))
-				{
-					PW_isFullPatchRead = YES;
-					int closeError = gzclose(PW_gzPatchFile);
-					NSAssert(closeError == Z_OK, @"Patch file failed to close");
-					PW_gzPatchFile = nil;
-					
-					PW_fullPatchString = [PW_currPatchString retain];
-					[PW_currPatchString release];
-					PW_currPatchString = nil;
-				}
-				else if (line == Z_NULL)
-				{
-					// line was Z_NULL but we're not at the end of file -- there was an error
-					PW_gzPatchFile = nil;
-					[self release];
-					*outError = [NSError errorWithDomain:NSCocoaErrorDomain
-					                                code:NSFileReadUnknownError
-					                            userInfo:nil];
-					return nil;
-				}
-			}
-		}
-		
-		
-		if (!match || [match count] == 0)
-		{
-			[self release];
-			self = nil;
-			*outError = [NSError errorWithDomain:PWDarcsPatchErrorDomain
-			                                code:PWDarcsPatchParseError
-			                            userInfo:nil];
-		}
-		else
-		{
-			[self setName:[match substringNamed:@"name"]];
-			[self setAuthor:[match substringNamed:@"author"]];
-			if ([match substringNamed:@"old_date"])
-				[self setDate:[[self class] calendarDateFromOldDarcsDateString:[match substringNamed:@"old_date"]]];
-			else
-				[self setDate:[[self class] calendarDateFromDarcsDateString:[match substringNamed:@"new_date"]]];
-			[self setLongComment:[match substringNamed:@"long_comment"]]; // Can be nil
-			
-			NSString *rollbackFlag = [match substringNamed:@"rollback_flag"];
-			if ([rollbackFlag isEqualToString:@"*"])
-				[self setRollbackPatch:NO];
-			else if ([rollbackFlag isEqualToString:@"-"])
-				[self setRollbackPatch:YES];
-			else
-				[NSException raise:NSInternalInconsistencyException
-				            format:@"Patch regular expression matched patch string, but rollback_flag was '%@' instead of '*' or '-'", rollbackFlag];
-		}
+		PW_patchFile = [gzipFile retain];
+		PW_fullPatchString = nil;
+		self = [self commonInitError:outError];
 	}
-	else
-		if (gzPatchFile)
-			gzclose(gzPatchFile);
 	return self;
 }
 
 
 - (id)initWithFullPatchString:(NSString *)patchString error:(NSError **)outError
 {
-	return [self initWithOpenGzFile:NULL alreadyReadString:patchString error:outError];
+	if (self = [super init])
+	{
+		PW_patchFile = nil;
+		PW_fullPatchString = [patchString retain];
+		self = [self commonInitError:outError];
+	}
+	return self;
+}
+
+
+- (id)commonInitError:(NSError **)outError // PWDarcsChangePatch (PWPrivateMethods)
+{
+	// Parse patch
+	// Cache the patch regular expression
+	static OGRegularExpression *patchRegexp = nil;
+	if (!patchRegexp)
+		// Oh my god. This regexp gives me nightmares.
+		// patchRegexp unescaped pattern: "^\[(?<name>.*?)\n(?<author>.*?)\*(?<rollback_flag>\*|-)((?<new_date>\d{14})|(?<old_date>\w{3} \w{3} [\d ]\d \d\d:\d\d:\d\d \w+ \d{4}))(?:\]|\n(?<long_comment>(?:.|\n)*?)\n?\]) (?: < > |\n<\n(?<explicit_dependencies>(\[(.*?)\n(.*?)\*(\*|-)(\d{14}|\w{3} \w{3} [\d ]\d \d\d:\d\d:\d\d \w+ \d{4})(?:\] \n|\n((?:.|\n)*?)\n?\] \n))+)> )?{$";
+		patchRegexp = [[OGRegularExpression alloc] initWithString:@"^\\[(?<name>.*?)\\n(?<author>.*?)\\*(?<rollback_flag>\\*|-)((?<new_date>\\d{14})|(?<old_date>\\w{3} \\w{3} [\\d ]\\d \\d\\d:\\d\\d:\\d\\d \\w+ \\d{4}))(?:\\]|\\n(?<long_comment>(?:.|\\n)*?)\\n?\\]) (?: < > |\\n<\\n(?<explicit_dependencies>(\\[(.*?)\\n(.*?)\\*(\\*|-)(\\d{14}|\\w{3} \\w{3} [\\d ]\\d \\d\\d:\\d\\d:\\d\\d \\w+ \\d{4})(?:\\] \\n|\\n((?:.|\\n)*?)\\n?\\] \\n))+)> )?{$"];
+	
+	OGRegularExpressionMatch *match = nil;
+	
+	BOOL doesMatch = NO, definitelyDoesNotMatch = NO;
+	
+	// Check if the existing string is enough to be certain of a match
+	NSString *currPatchString = nil;
+	if (PW_fullPatchString)
+		currPatchString = PW_fullPatchString;
+	else
+		currPatchString = [PW_patchFile cachedFileContent];
+	
+	unsigned int currPatchStringLength = [currPatchString length];
+	if ((currPatchStringLength >= 4) && ([[currPatchString substringFromIndex:(currPatchStringLength - 4)] isEqualToString:@"] {\n"] ||
+	                                     [[currPatchString substringFromIndex:(currPatchStringLength - 4)] isEqualToString:@"> {\n"]))
+	{
+		match = [patchRegexp matchInString:currPatchString];
+		doesMatch = ([match count] > 0);
+		if (((currPatchStringLength >= 5) && ([currPatchString characterAtIndex:(currPatchStringLength - 5)] == '\n')) ||
+		    ((currPatchStringLength >= 9) && [[currPatchString substringFromIndex:(currPatchStringLength - 9)] isEqualToString:@"]  < > {\n"]))
+			definitelyDoesNotMatch = !doesMatch;
+	}
+	
+	// Read in more lines to see if we get a match
+	while (!doesMatch && !definitelyDoesNotMatch)
+	{
+		if (PW_fullPatchString || [PW_patchFile isFullFileRead])
+		{
+			if (PW_fullPatchString)
+				match = [patchRegexp matchInString:PW_fullPatchString];
+			else
+				match = [patchRegexp matchInString:[PW_patchFile fullFileContent]];
+			doesMatch = ([match count] > 0);
+			definitelyDoesNotMatch = !doesMatch;
+		}
+		else
+		{
+			// Read in the next line of the patch. If we read "] {\n" or "> {\n" then we know this patch will definitely never match the regexp.
+			NSString *newLine = [PW_patchFile readNextLine:YES];
+			if (!newLine)
+			{
+				[self release];
+				*outError = [NSError errorWithDomain:NSCocoaErrorDomain
+				                                code:NSFileReadUnknownError
+				                            userInfo:nil];
+				return nil;
+			}
+			else
+			{
+				unsigned int length = [newLine length];
+				if ((length >= 4) && ([[newLine substringFromIndex:(length - 4)] isEqualToString:@"] {\n"] ||
+				                      [[newLine substringFromIndex:(length - 4)] isEqualToString:@"> {\n"]))
+				{
+					// We're at the end of the patch header -- check if it matches
+					match = [patchRegexp matchInString:[PW_patchFile cachedFileContent]];
+					doesMatch = ([match count] > 0);
+					if ((length == 4) || ((length == 9) && [newLine isEqualToString:@"]  < > {\n"]))
+						definitelyDoesNotMatch = !doesMatch;
+				}
+			}
+		}
+	}
+	
+	
+	if (!match || [match count] == 0)
+	{
+		[self release];
+		self = nil;
+		*outError = [NSError errorWithDomain:PWDarcsPatchErrorDomain
+		                                code:PWDarcsPatchParseError
+		                            userInfo:nil];
+	}
+	else
+	{
+		[self setName:[match substringNamed:@"name"]];
+		[self setAuthor:[match substringNamed:@"author"]];
+		if ([match substringNamed:@"old_date"])
+			[self setDate:[[self class] calendarDateFromOldDarcsDateString:[match substringNamed:@"old_date"]]];
+		else
+			[self setDate:[[self class] calendarDateFromDarcsDateString:[match substringNamed:@"new_date"]]];
+		[self setLongComment:[match substringNamed:@"long_comment"]]; // Can be nil
+		
+		NSString *rollbackFlag = [match substringNamed:@"rollback_flag"];
+		if ([rollbackFlag isEqualToString:@"*"])
+			[self setRollbackPatch:NO];
+		else if ([rollbackFlag isEqualToString:@"-"])
+			[self setRollbackPatch:YES];
+		else
+			[NSException raise:NSInternalInconsistencyException
+			            format:@"Patch regular expression matched patch string, but rollback_flag was '%@' instead of '*' or '-'", rollbackFlag];
+	}
+	
+	return self;
 }
 
 
@@ -231,7 +218,7 @@
 
 #pragma mark Accessor Methods
 
-- (void)setLongComment:(NSString *)newLongComment // PWDarcsChangePatch (PrivateMethods)
+- (void)setLongComment:(NSString *)newLongComment // PWDarcsChangePatch (PWPrivateMethods)
 {
 	[newLongComment retain];
 	[PW_longComment release];

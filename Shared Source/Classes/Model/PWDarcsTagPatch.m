@@ -8,8 +8,17 @@
 //
 
 #import "PWDarcsTagPatch.h"
-#import "PWDarcsPatch+ProtectedMethods.h"
+#import "PWDarcsPatch+PWProtectedMethods.h"
+#import "PWGzipFileReader.h"
 #import <OgreKit/OgreKit.h>
+
+
+@interface PWDarcsTagPatch (PWPrivateMethods)
+
+#pragma mark Initialization and Deallocation
+- (id)commonInitError:(NSError **)outError;
+
+@end
 
 
 /*
@@ -58,133 +67,112 @@
 
 #pragma mark Initialization and Deallocation
 
-- (id)initWithOpenGzFile:(gzFile)gzPatchFile alreadyReadString:(NSString *)currPatchString error:(NSError **)outError // Designated initializer
+- (id)initWithGzipFile:(PWGzipFileReader *)gzipFile error:(NSError **)outError
 {
 	if (self = [super init])
 	{
-		// Initialize instance variables
-		PW_gzPatchFile = gzPatchFile;
-		PW_isFullPatchRead = (PW_gzPatchFile ? gzeof(PW_gzPatchFile) : YES);
-		
-		if (PW_isFullPatchRead)
-		{
-			if (PW_gzPatchFile)
-			{
-				int closeError = gzclose(PW_gzPatchFile);
-				PW_gzPatchFile = nil;
-				NSAssert(closeError == Z_OK, @"Patch file failed to close");
-			}
-			
-			PW_fullPatchString = [currPatchString retain];
-		}
-		else
-			PW_currPatchString = [currPatchString mutableCopy];
-		
-		
-		// Parse patch
-		// Cache the tag regular expression
-		static OGRegularExpression *tagRegexp = nil;
-		if (!tagRegexp)
-			// tagRegexp unescaped pattern: "^\[TAG (?<name>.*?)\n(?<author>.*?)\*(?<rollback_flag>\*|-)((?<new_date>\d{14})|(?<old_date>\w{3} \w{3} [\d ]\d \d\d:\d\d:\d\d \w+ \d{4}))] \n<$)";
-			tagRegexp = [[OGRegularExpression alloc] initWithString:@"^\\[TAG (?<name>.*?)\\n(?<author>.*?)\\*(?<rollback_flag>\\*|-)((?<new_date>\\d{14})|(?<old_date>\\w{3} \\w{3} [\\d ]\\d \\d\\d:\\d\\d:\\d\\d \\w+ \\d{4}))] \\n<$"];
-		
-		OGRegularExpressionMatch *match = nil;
-		
-		BOOL doesMatch = NO, definitelyDoesNotMatch = NO;
-		do
-		{
-			if (PW_isFullPatchRead)
-			{
-				match = [tagRegexp matchInString:PW_fullPatchString];
-				doesMatch = ([match count] > 0);
-				definitelyDoesNotMatch = !doesMatch;
-			}
-			else
-			{
-				// Check if the current patch string matches. If it doesn't, read some more and try again.
-				match = [tagRegexp matchInString:PW_currPatchString];
-				doesMatch = ([match count] > 0);
-				if (!doesMatch)
-				{
-					// Read in the next line of the patch. If we read "<\n" then we know this patch will definitely never match the regexp.
-					char lineBuffer[LINE_BUFFER_LENGH];
-					char *line = gzgets(PW_gzPatchFile, lineBuffer, LINE_BUFFER_LENGH);
-					if (line == Z_NULL)
-					{
-						gzclose(PW_gzPatchFile);
-						PW_gzPatchFile = nil;
-						[self release];
-						*outError = [NSError errorWithDomain:NSCocoaErrorDomain
-						                                code:NSFileReadUnknownError
-						                            userInfo:nil];
-						return nil;
-					}
-					else
-					{
-						NSString *newLine = [NSString stringWithCString:line encoding:PWDarcsPatchStringEncoding];
-						[PW_currPatchString appendString:newLine];
-						if ([newLine isEqualToString:@"<\n"])
-						{
-							match = [tagRegexp matchInString:PW_currPatchString];
-							doesMatch = ([match count] > 0);
-							definitelyDoesNotMatch = !doesMatch;
-						}
-						
-						// Since we just read in a chunk, check if we reached the end of file
-						if (gzeof(PW_gzPatchFile))
-						{
-							PW_isFullPatchRead = YES;
-							int closeError = gzclose(PW_gzPatchFile);
-							PW_gzPatchFile = nil;
-							NSAssert(closeError == Z_OK, @"Patch file failed to close");
-							
-							PW_fullPatchString = [currPatchString retain];
-							[PW_currPatchString release];
-							PW_currPatchString = nil;
-						}
-					}
-				}
-			}
-		} while (!doesMatch && !definitelyDoesNotMatch);
-		
-		
-		if (!match || ([match count] == 0))
-		{
-			[self release];
-			self = nil;
-			*outError = [NSError errorWithDomain:PWDarcsPatchErrorDomain
-			                                code:PWDarcsPatchParseError
-			                            userInfo:nil];
-		}
-		else
-		{
-			[self setName:[match substringNamed:@"name"]];
-			[self setAuthor:[match substringNamed:@"author"]];
-			if ([match substringNamed:@"old_date"])
-				[self setDate:[[self class] calendarDateFromOldDarcsDateString:[match substringNamed:@"old_date"]]];
-			else
-				[self setDate:[[self class] calendarDateFromDarcsDateString:[match substringNamed:@"new_date"]]];
-			
-			NSString *rollbackFlag = [match substringNamed:@"rollback_flag"];
-			if ([rollbackFlag isEqualToString:@"*"])
-				PW_isRollbackPatch = NO;
-			else if ([rollbackFlag isEqualToString:@"-"])
-				PW_isRollbackPatch = YES;
-			else
-				[NSException raise:NSInternalInconsistencyException
-				            format:@"Patch regular expression matched patch string, but rollback_flag was '%@' instead of '*' or '-'", rollbackFlag];
-		}
+		PW_patchFile = [gzipFile retain];
+		PW_fullPatchString = nil;
+		self = [self commonInitError:outError];
 	}
-	else
-		if (gzPatchFile)
-			gzclose(gzPatchFile);
 	return self;
 }
 
 
 - (id)initWithFullPatchString:(NSString *)patchString error:(NSError **)outError
 {
-	return [self initWithOpenGzFile:NULL alreadyReadString:patchString error:outError];
+	if (self = [super init])
+	{
+		PW_patchFile = nil;
+		PW_fullPatchString = [patchString retain];
+		self = [self commonInitError:outError];
+	}
+	return self;
+}
+
+
+- (id)commonInitError:(NSError **)outError // PWDarcsTagPatch (PWPrivateMethods)
+{
+	// Parse patch
+	// Cache the tag regular expression
+	static OGRegularExpression *tagRegexp = nil;
+	if (!tagRegexp)
+		// tagRegexp unescaped pattern: "^\[TAG (?<name>.*?)\n(?<author>.*?)\*(?<rollback_flag>\*|-)((?<new_date>\d{14})|(?<old_date>\w{3} \w{3} [\d ]\d \d\d:\d\d:\d\d \w+ \d{4}))] \n<$)";
+		tagRegexp = [[OGRegularExpression alloc] initWithString:@"^\\[TAG (?<name>.*?)\\n(?<author>.*?)\\*(?<rollback_flag>\\*|-)((?<new_date>\\d{14})|(?<old_date>\\w{3} \\w{3} [\\d ]\\d \\d\\d:\\d\\d:\\d\\d \\w+ \\d{4}))] \\n<$"];
+	
+	OGRegularExpressionMatch *match = nil;
+	
+	BOOL doesMatch = NO, definitelyDoesNotMatch = NO;
+	do
+	{
+		if (PW_fullPatchString || [PW_patchFile isFullFileRead])
+		{
+			if (PW_fullPatchString)
+				match = [tagRegexp matchInString:PW_fullPatchString];
+			else
+				match = [tagRegexp matchInString:[PW_patchFile fullFileContent]];
+			doesMatch = ([match count] > 0);
+			definitelyDoesNotMatch = !doesMatch;
+		}
+		else
+		{
+			// Check if the current patch string matches. If it doesn't, read some more and try again.
+			match = [tagRegexp matchInString:[PW_patchFile cachedFileContent]];
+			doesMatch = ([match count] > 0);
+			if (!doesMatch)
+			{
+				// Read in the next line of the patch. If we read "<\n" then we know this patch will definitely never match the regexp.
+				NSString *newLine = [PW_patchFile readNextLine:YES];
+				if (!newLine)
+				{
+					[self release];
+					*outError = [NSError errorWithDomain:NSCocoaErrorDomain
+					                                code:NSFileReadUnknownError
+					                            userInfo:nil];
+					return nil;
+				}
+				else
+				{
+					if ([newLine isEqualToString:@"<\n"])
+					{
+						match = [tagRegexp matchInString:[PW_patchFile cachedFileContent]];
+						doesMatch = ([match count] > 0);
+						definitelyDoesNotMatch = !doesMatch;
+					}
+				}
+			}
+		}
+	} while (!doesMatch && !definitelyDoesNotMatch);
+	
+	
+	if (!match || ([match count] == 0))
+	{
+		[self release];
+		self = nil;
+		*outError = [NSError errorWithDomain:PWDarcsPatchErrorDomain
+		                                code:PWDarcsPatchParseError
+		                            userInfo:nil];
+	}
+	else
+	{
+		[self setName:[match substringNamed:@"name"]];
+		[self setAuthor:[match substringNamed:@"author"]];
+		if ([match substringNamed:@"old_date"])
+			[self setDate:[[self class] calendarDateFromOldDarcsDateString:[match substringNamed:@"old_date"]]];
+		else
+			[self setDate:[[self class] calendarDateFromDarcsDateString:[match substringNamed:@"new_date"]]];
+		
+		NSString *rollbackFlag = [match substringNamed:@"rollback_flag"];
+		if ([rollbackFlag isEqualToString:@"*"])
+			PW_isRollbackPatch = NO;
+		else if ([rollbackFlag isEqualToString:@"-"])
+			PW_isRollbackPatch = YES;
+		else
+			[NSException raise:NSInternalInconsistencyException
+			            format:@"Patch regular expression matched patch string, but rollback_flag was '%@' instead of '*' or '-'", rollbackFlag];
+	}
+	
+	return self;
 }
 
 

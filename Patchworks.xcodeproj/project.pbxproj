@@ -85,6 +85,9 @@
 		2818C6C908F90B9700FD8852 /* PWTimeZoneWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2818C6C708F90B9700FD8852 /* PWTimeZoneWrapper.m */; };
 		2818C6CB08F90B9700FD8852 /* PWTimeZoneWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2818C6C708F90B9700FD8852 /* PWTimeZoneWrapper.m */; };
 		2818C6D108F90BDA00FD8852 /* PWTimeZoneWrapperTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2818C6CD08F90BDA00FD8852 /* PWTimeZoneWrapperTest.m */; };
+		281F10930973D84E00193CB1 /* PWGzipFileReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D4FA5C09729996004679E0 /* PWGzipFileReader.m */; };
+		281F10940973D85300193CB1 /* PWGzipFileReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D4FA5C09729996004679E0 /* PWGzipFileReader.m */; };
+		281F109B0973D89200193CB1 /* PWGzipFileReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D4FA5C09729996004679E0 /* PWGzipFileReader.m */; };
 		28261BB40951B680008F1B53 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28261BB30951B680008F1B53 /* SenTestingKit.framework */; };
 		28261BB50951B680008F1B53 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28261BB30951B680008F1B53 /* SenTestingKit.framework */; };
 		28261BB60951B680008F1B53 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28261BB30951B680008F1B53 /* SenTestingKit.framework */; };
@@ -114,7 +117,7 @@
 		289F147E08F7043100E9D926 /* PWDarcsTagPatch.m in Sources */ = {isa = PBXBuildFile; fileRef = 289F12DD08F04D3500E9D926 /* PWDarcsTagPatch.m */; };
 		289F14EB08F70A4900E9D926 /* PWDarcsPatchTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 289F12E508F04D4A00E9D926 /* PWDarcsPatchTest.m */; };
 		289F159A08F76B3300E9D926 /* PWDarcsChangePatchTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 289F159808F76B3300E9D926 /* PWDarcsChangePatchTest.m */; };
-		289F15D808F7A3C800E9D926 /* PWDarcsPatch+TestingMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 289F15D608F7A3C700E9D926 /* PWDarcsPatch+TestingMethods.m */; };
+		289F15D808F7A3C800E9D926 /* PWDarcsPatch+PWTestingMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 289F15D608F7A3C700E9D926 /* PWDarcsPatch+PWTestingMethods.m */; };
 		28BA6C2508F94EAE00333DD4 /* PWApplicationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28BA6C1508F94DF800333DD4 /* PWApplicationController.m */; };
 		28BA6C3C08F9512700333DD4 /* PWPreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28BA6C3B08F9512400333DD4 /* PWPreferencesController.m */; };
 		28BA6D4308F9601C00333DD4 /* RegistrationDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 28BA6D4108F9601500333DD4 /* RegistrationDefaults.plist */; };
@@ -129,6 +132,9 @@
 		28BC093F08FBC01D00BE7895 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 283E4C4908FB4E9E00772738 /* Localizable.strings */; };
 		28C2F2CA095AC3AD00D564A0 /* PWDarcsFullPatch.nib in Resources */ = {isa = PBXBuildFile; fileRef = 28C2F2C8095AC3AD00D564A0 /* PWDarcsFullPatch.nib */; };
 		28C2F2CF095AC3C700D564A0 /* PWDarcsFullPatchWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C2F2CD095AC3C700D564A0 /* PWDarcsFullPatchWindowController.m */; };
+		28D4FA63097299AC004679E0 /* PWGzipFileReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D4FA5C09729996004679E0 /* PWGzipFileReader.m */; };
+		28D4FA8609729ECA004679E0 /* PWGzipFileReaderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D4FA8409729ECA004679E0 /* PWGzipFileReaderTest.m */; };
+		28D4FB600973C876004679E0 /* Test Gzip File.gz in Resources */ = {isa = PBXBuildFile; fileRef = 28D4FB5F0973C875004679E0 /* Test Gzip File.gz */; };
 		28F6D06108FD4C7600A4C88D /* org.playhaus.patchworks.darcspatchproxy.icns in Resources */ = {isa = PBXBuildFile; fileRef = 28F6D06008FD4C7600A4C88D /* org.playhaus.patchworks.darcspatchproxy.icns */; };
 		28FC64F70954997E0001DF54 /* PWNameToTimeZoneTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FC64F50954997E0001DF54 /* PWNameToTimeZoneTransformer.m */; };
 		28FC651C09549C210001DF54 /* PWAttributesToFontTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FC651A09549C210001DF54 /* PWAttributesToFontTransformer.m */; };
@@ -335,11 +341,11 @@
 		289F12E608F04D4A00E9D926 /* PWDarcsPatchTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWDarcsPatchTest.h; sourceTree = "<group>"; };
 		289F13DD08F6A3BE00E9D926 /* OgreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OgreKit.framework; sourceTree = "<group>"; };
 		289F142E08F6F93100E9D926 /* Scripts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Scripts; sourceTree = "<group>"; };
-		289F146008F700C500E9D926 /* PWDarcsPatch+ProtectedMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PWDarcsPatch+ProtectedMethods.h"; sourceTree = "<group>"; };
+		289F146008F700C500E9D926 /* PWDarcsPatch+PWProtectedMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PWDarcsPatch+PWProtectedMethods.h"; sourceTree = "<group>"; };
 		289F159708F76B3300E9D926 /* PWDarcsChangePatchTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWDarcsChangePatchTest.h; sourceTree = "<group>"; };
 		289F159808F76B3300E9D926 /* PWDarcsChangePatchTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWDarcsChangePatchTest.m; sourceTree = "<group>"; };
-		289F15D508F7A3C700E9D926 /* PWDarcsPatch+TestingMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PWDarcsPatch+TestingMethods.h"; sourceTree = "<group>"; };
-		289F15D608F7A3C700E9D926 /* PWDarcsPatch+TestingMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PWDarcsPatch+TestingMethods.m"; sourceTree = "<group>"; };
+		289F15D508F7A3C700E9D926 /* PWDarcsPatch+PWTestingMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PWDarcsPatch+PWTestingMethods.h"; sourceTree = "<group>"; };
+		289F15D608F7A3C700E9D926 /* PWDarcsPatch+PWTestingMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PWDarcsPatch+PWTestingMethods.m"; sourceTree = "<group>"; };
 		28BA6C0508F94A9D00333DD4 /* PatchworksDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PatchworksDefines.h; sourceTree = "<group>"; };
 		28BA6C1408F94DF800333DD4 /* PWApplicationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWApplicationController.h; sourceTree = "<group>"; };
 		28BA6C1508F94DF800333DD4 /* PWApplicationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWApplicationController.m; sourceTree = "<group>"; };
@@ -351,6 +357,11 @@
 		28C2F2C9095AC3AD00D564A0 /* en */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = en; path = en.lproj/PWDarcsFullPatch.nib; sourceTree = "<group>"; };
 		28C2F2CC095AC3C700D564A0 /* PWDarcsFullPatchWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWDarcsFullPatchWindowController.h; sourceTree = "<group>"; };
 		28C2F2CD095AC3C700D564A0 /* PWDarcsFullPatchWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWDarcsFullPatchWindowController.m; sourceTree = "<group>"; };
+		28D4FA5B09729996004679E0 /* PWGzipFileReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWGzipFileReader.h; sourceTree = "<group>"; };
+		28D4FA5C09729996004679E0 /* PWGzipFileReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWGzipFileReader.m; sourceTree = "<group>"; };
+		28D4FA8309729ECA004679E0 /* PWGzipFileReaderTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWGzipFileReaderTest.h; sourceTree = "<group>"; };
+		28D4FA8409729ECA004679E0 /* PWGzipFileReaderTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWGzipFileReaderTest.m; sourceTree = "<group>"; };
+		28D4FB5F0973C875004679E0 /* Test Gzip File.gz */ = {isa = PBXFileReference; lastKnownFileType = archive.gzip; path = "Test Gzip File.gz"; sourceTree = "<group>"; };
 		28EB4A0408F02EF000126AE9 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		28F6D06008FD4C7600A4C88D /* org.playhaus.patchworks.darcspatchproxy.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = org.playhaus.patchworks.darcspatchproxy.icns; sourceTree = "<group>"; };
 		28FC64F40954997E0001DF54 /* PWNameToTimeZoneTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWNameToTimeZoneTransformer.h; sourceTree = "<group>"; };
@@ -537,8 +548,10 @@
 			children = (
 				28015C8D08ED4A1C00C83A75 /* NSData+PWzlib.h */,
 				28015C8E08ED4A1D00C83A75 /* NSData+PWzlib.m */,
+				28D4FA5B09729996004679E0 /* PWGzipFileReader.h */,
+				28D4FA5C09729996004679E0 /* PWGzipFileReader.m */,
 				289F12DC08F04D3500E9D926 /* PWDarcsPatch.h */,
-				289F146008F700C500E9D926 /* PWDarcsPatch+ProtectedMethods.h */,
+				289F146008F700C500E9D926 /* PWDarcsPatch+PWProtectedMethods.h */,
 				289F12DB08F04D3500E9D926 /* PWDarcsPatch.m */,
 				289F12DE08F04D3500E9D926 /* PWDarcsChangePatch.h */,
 				289F12DA08F04D3500E9D926 /* PWDarcsChangePatch.m */,
@@ -569,6 +582,7 @@
 			isa = PBXGroup;
 			children = (
 				28015B3708EC9D4800C83A75 /* Shared Source Test-Info.plist */,
+				28D4FB5F0973C875004679E0 /* Test Gzip File.gz */,
 				2803BDAC08ED905C00111E58 /* Test Patches */,
 				283E481A08FA503B00772738 /* Test Repository */,
 			);
@@ -580,10 +594,12 @@
 			children = (
 				28015CBA08ED52AD00C83A75 /* PWzlibTest.h */,
 				28015CBB08ED52AD00C83A75 /* PWzlibTest.m */,
+				28D4FA8309729ECA004679E0 /* PWGzipFileReaderTest.h */,
+				28D4FA8409729ECA004679E0 /* PWGzipFileReaderTest.m */,
 				289F12E608F04D4A00E9D926 /* PWDarcsPatchTest.h */,
 				289F12E508F04D4A00E9D926 /* PWDarcsPatchTest.m */,
-				289F15D508F7A3C700E9D926 /* PWDarcsPatch+TestingMethods.h */,
-				289F15D608F7A3C700E9D926 /* PWDarcsPatch+TestingMethods.m */,
+				289F15D508F7A3C700E9D926 /* PWDarcsPatch+PWTestingMethods.h */,
+				289F15D608F7A3C700E9D926 /* PWDarcsPatch+PWTestingMethods.m */,
 				289F159708F76B3300E9D926 /* PWDarcsChangePatchTest.h */,
 				289F159808F76B3300E9D926 /* PWDarcsChangePatchTest.m */,
 				2818C4FC08F7BC1600FD8852 /* PWDarcsTagPatchTest.h */,
@@ -1112,6 +1128,7 @@
 			files = (
 				2803BDAF08ED905C00111E58 /* Test Patches in Resources */,
 				283E482608FA503B00772738 /* Test Repository in Resources */,
+				28D4FB600973C876004679E0 /* Test Gzip File.gz in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1210,6 +1227,7 @@
 				283E4C3408FB4DF000772738 /* PWDarcsChangePatch.m in Sources */,
 				283E4C3608FB4DF400772738 /* NSData+PWzlib.m in Sources */,
 				283E4C3708FB4DF400772738 /* PWDarcsPatch.m in Sources */,
+				281F10940973D85300193CB1 /* PWGzipFileReader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1237,10 +1255,12 @@
 				289F147E08F7043100E9D926 /* PWDarcsTagPatch.m in Sources */,
 				289F14EB08F70A4900E9D926 /* PWDarcsPatchTest.m in Sources */,
 				289F159A08F76B3300E9D926 /* PWDarcsChangePatchTest.m in Sources */,
-				289F15D808F7A3C800E9D926 /* PWDarcsPatch+TestingMethods.m in Sources */,
+				289F15D808F7A3C800E9D926 /* PWDarcsPatch+PWTestingMethods.m in Sources */,
 				2818C4FF08F7BC1700FD8852 /* PWDarcsTagPatchTest.m in Sources */,
 				284842A208FA451100EDFDD3 /* PWDarcsPatchProxyTest.m in Sources */,
 				284842A308FA451200EDFDD3 /* PWDarcsPatchProxy.m in Sources */,
+				28D4FA63097299AC004679E0 /* PWGzipFileReader.m in Sources */,
+				28D4FA8609729ECA004679E0 /* PWGzipFileReaderTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1255,6 +1275,7 @@
 				28BC093808FBBF5000BE7895 /* PWDarcsChangePatch.m in Sources */,
 				28BC093908FBBF5200BE7895 /* PWDarcsTagPatch.m in Sources */,
 				28BC093A08FBBF5200BE7895 /* PWDarcsPatchProxy.m in Sources */,
+				281F109B0973D89200193CB1 /* PWGzipFileReader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1276,6 +1297,7 @@
 				28FC651C09549C210001DF54 /* PWAttributesToFontTransformer.m in Sources */,
 				28FC65790954FF620001DF54 /* PWDarcsPatchProxyWindowController.m in Sources */,
 				28C2F2CF095AC3C700D564A0 /* PWDarcsFullPatchWindowController.m in Sources */,
+				281F10930973D84E00193CB1 /* PWGzipFileReader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

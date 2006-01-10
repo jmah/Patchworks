@@ -10,7 +10,7 @@
 
 #import "PWDarcsPatchTest.h"
 #import "PWDarcsPatch.h"
-#import "PWDarcsPatch+TestingMethods.h"
+#import "PWDarcsPatch+PWTestingMethods.h"
 
 
 @implementation PWDarcsPatchTest

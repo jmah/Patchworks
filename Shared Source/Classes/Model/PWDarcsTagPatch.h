@@ -8,8 +8,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <zlib.h>
 #import "PWDarcsPatch.h"
+
+@class PWGzipFileReader;
 
 
 /*
@@ -24,7 +25,7 @@
 
 
 #pragma mark Initialization and Deallocation
-- (id)initWithOpenGzFile:(gzFile)gzPatchFile alreadyReadString:(NSString *)currPatchString error:(NSError **)outError; // Designated initializer
+- (id)initWithGzipFile:(PWGzipFileReader *)gzipFile error:(NSError **)outError; // Designated initializer
 - (id)initWithFullPatchString:(NSString *)patchString error:(NSError **)outError;
 
 @end

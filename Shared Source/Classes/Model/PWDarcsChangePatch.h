@@ -11,6 +11,8 @@
 #import <Foundation/Foundation.h>
 #import "PWDarcsPatch.h"
 
+@class PWGzipFileReader;
+
 
 @interface PWDarcsChangePatch : PWDarcsPatch
 {
@@ -23,7 +25,7 @@
 
 
 #pragma mark Initialization and Deallocation
-- (id)initWithOpenGzFile:(gzFile)gzPatchFile alreadyReadString:(NSString *)currPatchString error:(NSError **)outError; // Designated initializer
+- (id)initWithGzipFile:(PWGzipFileReader *)gzipFile error:(NSError **)outError;
 - (id)initWithFullPatchString:(NSString *)patchString error:(NSError **)outError;
 
 #pragma mark Accessor Methods

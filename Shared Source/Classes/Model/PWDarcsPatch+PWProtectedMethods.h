@@ -1,5 +1,5 @@
 //
-//  PWDarcsPatch+ProtectedMethods.h
+//  PWDarcsPatch+PWProtectedMethods.h
 //  Patchworks
 //
 //  Created by Jonathon Mah on 2005-10-08.
@@ -15,7 +15,7 @@
 
 // Methods for use by concrete subclasses of PWDarcsPatch
 
-@interface PWDarcsPatch (ProtectedMethods)
+@interface PWDarcsPatch (PWProtectedMethods)
 
 #pragma mark Convenience Methods
 + (NSCalendarDate *)calendarDateFromDarcsDateString:(NSString *)dateString;

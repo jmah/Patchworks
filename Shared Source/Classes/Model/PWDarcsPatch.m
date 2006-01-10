@@ -9,10 +9,11 @@
 //
 
 #import "PWDarcsPatch.h"
-#import "PWDarcsPatch+ProtectedMethods.h"
+#import "PWDarcsPatch+PWProtectedMethods.h"
 #import "PWDarcsChangePatch.h"
 #import "PWDarcsTagPatch.h"
 #import "NSData+PWzlib.h"
+#import "PWGzipFileReader.h"
 #import <OgreKit/OgreKit.h>
 
 
@@ -39,14 +40,14 @@ static OGRegularExpression *emailRegexp = nil;
 }
 
 
-+ (NSCalendarDate *)calendarDateFromDarcsDateString:(NSString *)dateString // PWDarcsPatch (ProtectedMethods)
++ (NSCalendarDate *)calendarDateFromDarcsDateString:(NSString *)dateString // PWDarcsPatch (PWProtectedMethods)
 {
 	NSString *timezoneDateString = [dateString stringByAppendingString:@" +0000"]; // Append UTC timezone
 	return [NSCalendarDate dateWithString:timezoneDateString calendarFormat:@"%Y%m%d%H%M%S %z"];
 }
 
 
-+ (NSCalendarDate *)calendarDateFromOldDarcsDateString:(NSString *)dateString // PWDarcsPatch (ProtectedMethods)
++ (NSCalendarDate *)calendarDateFromOldDarcsDateString:(NSString *)dateString // PWDarcsPatch (PWProtectedMethods)
 {
 	return [NSCalendarDate dateWithString:dateString calendarFormat:@"%a %b %e %H:%M:%S %Z %Y"];
 }
@@ -57,9 +58,12 @@ static OGRegularExpression *emailRegexp = nil;
 
 + (void)initialize
 {
-	if (!emailRegexp)
-		// emailRegexp unescaped pattern: "\s*<?(?<user>[-\w+.]{1,64})(?:@|\s+at\s+)(?<host>[-\w+.]{3,255})>?\s*";
-		emailRegexp = [[OGRegularExpression alloc] initWithString:@"\\s*<?(?<user>[-\\w+.]{1,64})(?:@|\\s+at\\s+)(?<host>[-\\w+.]{3,255})>?\\s*"];
+	if ([self class] == [PWDarcsPatch class])
+	{
+		if (!emailRegexp)
+			// emailRegexp unescaped pattern: "\s*<?(?<user>[-\w+.]{1,64})(?:@|\s+at\s+)(?<host>[-\w+.]{3,255})>?\s*";
+			emailRegexp = [[OGRegularExpression alloc] initWithString:@"\\s*<?(?<user>[-\\w+.]{1,64})(?:@|\\s+at\\s+)(?<host>[-\\w+.]{3,255})>?\\s*"];
+	}
 }
 
 
@@ -70,64 +74,24 @@ static OGRegularExpression *emailRegexp = nil;
 		// Do not set any instance variables on this object -- 'self' will be
 		// deallocated shortly below, and so they will not hold.
 		
+		PWGzipFileReader *patchFile = nil;
 		NSString *currPatchString = nil;
-		gzFile gzPatchFile = NULL;
-		
 		if ([patchURL isFileURL])
 		{
-			if (![[NSFileManager defaultManager] isReadableFileAtPath:[patchURL path]])
+			patchFile = [[[PWGzipFileReader alloc] initWithContentsOfURL:patchURL encoding:PWDarcsPatchStringEncoding error:outError] autorelease];
+			
+			if (*outError)
 			{
 				[self release];
-				*outError = [NSError errorWithDomain:NSCocoaErrorDomain
-				                                code:NSFileReadNoSuchFileError
-				                            userInfo:nil];
 				return nil;
 			}
 			else
 			{
-				gzPatchFile = gzopen([[patchURL path] cStringUsingEncoding:NSUTF8StringEncoding], "rb");
+				// Read in the first two lines of the file (as our patch type regexp needs only those two)
+				[patchFile readNextLine:YES];
+				[patchFile readNextLine:YES];
 				
-				if (!gzPatchFile)
-				{
-					[self release];
-					*outError = [NSError errorWithDomain:NSCocoaErrorDomain
-					                                code:NSFileReadUnknownError
-					                            userInfo:nil];
-					return nil;
-				}
-				else
-				{
-					// Read in the first two lines of the file (as our patch type regexp needs only those two)
-					NSMutableString *patchReadingString = [NSMutableString string];
-					
-					unsigned lineCount = 0;
-					char lineBuffer[LINE_BUFFER_LENGH];
-					char *line;
-					
-					while (lineCount < 2)
-					{
-						line = gzgets(gzPatchFile, lineBuffer, LINE_BUFFER_LENGH);
-						if (line == Z_NULL)
-						{
-							gzclose(gzPatchFile);
-							gzPatchFile = nil;
-							[self release];
-							*outError = [NSError errorWithDomain:NSCocoaErrorDomain
-							                                code:NSFileReadUnknownError
-							                            userInfo:nil];
-							return nil;
-						}
-						else
-						{
-							[patchReadingString appendString:[NSString stringWithCString:line encoding:PWDarcsPatchStringEncoding]];
-							char lastChar = line[strlen(line) - 1];
-							if (lastChar == '\n')
-								lineCount++;
-						}
-					}
-					
-					currPatchString = patchReadingString;
-				}
+				currPatchString = [patchFile cachedFileContent];
 			}
 		}
 		else
@@ -173,8 +137,8 @@ static OGRegularExpression *emailRegexp = nil;
 		
 		if (concretePatchClass)
 		{
-			if (gzPatchFile)
-				newPatch = [[concretePatchClass alloc] initWithOpenGzFile:gzPatchFile alreadyReadString:currPatchString error:outError];
+			if (patchFile)
+				newPatch = [[concretePatchClass alloc] initWithGzipFile:patchFile error:outError];
 			else
 				// We have the full patch string already
 				newPatch = [[concretePatchClass alloc] initWithFullPatchString:currPatchString error:outError];
@@ -193,26 +157,16 @@ static OGRegularExpression *emailRegexp = nil;
 
 - (void)dealloc
 {
-	if (PW_gzPatchFile)
-	{
-		int closeErrorCode = gzclose(PW_gzPatchFile);
-		PW_gzPatchFile = nil;
-		NSAssert1(closeErrorCode == Z_OK, @"Gzip file had error on close (%d)", closeErrorCode);
-	}
-	
-	if (PW_isFullPatchRead)
+	if (PW_fullPatchString)
 	{
 		[PW_fullPatchString release];
 		PW_fullPatchString = nil;
 	}
 	else
 	{
-		[PW_currPatchString release];
-		PW_currPatchString = nil;
+		[PW_patchFile release];
+		PW_patchFile = nil;
 	}
-	
-	[PW_fullPatchString release];
-	PW_fullPatchString = nil;
 	
 	[self setName:nil];
 	[self setAuthor:nil];
@@ -243,40 +197,12 @@ static OGRegularExpression *emailRegexp = nil;
 
 - (NSString *)patchString
 {
-	if (!PW_isFullPatchRead)
-	{
-		NSMutableData *remainingData = [[NSMutableData alloc] initWithCapacity:FULL_BUFFER_LENGTH];
-		while (!gzeof(PW_gzPatchFile))
-		{
-			char readBuffer[FULL_BUFFER_LENGTH];
-			int byteCount = gzread(PW_gzPatchFile, readBuffer, FULL_BUFFER_LENGTH);
-			NSAssert(byteCount != -1, @"Error reading patch");
-			if (byteCount > 0)
-				[remainingData appendBytes:readBuffer length:byteCount];
-		}
-		gzclose(PW_gzPatchFile);
-		PW_gzPatchFile = nil;
-		
-		NSString *remainingPatchString = [[NSString alloc] initWithData:remainingData encoding:PWDarcsPatchStringEncoding];
-		[remainingData release];
-		
-		PW_fullPatchString = [[PW_currPatchString stringByAppendingString:remainingPatchString] retain];
-		[remainingPatchString release];
-		[PW_currPatchString release];
-		PW_currPatchString = nil;
-		
-		PW_isFullPatchRead = YES;
-	}
-	
-	return PW_fullPatchString;
-}
-
-
-- (void)setName:(NSString *)newName // PWDarcsPatch (ProtectedMethods)
-{
-	[newName retain];
-	[PW_name release];
-	PW_name = newName;
+	NSString *patchString = nil;
+	if (PW_fullPatchString)
+		patchString = PW_fullPatchString;
+	else
+		patchString = [PW_patchFile fullFileContent];
+	return patchString;
 }
 
 
@@ -286,7 +212,21 @@ static OGRegularExpression *emailRegexp = nil;
 }
 
 
-- (void)setAuthor:(NSString *)newAuthor // PWDarcsPatch (ProtectedMethods)
+- (void)setName:(NSString *)newName // PWDarcsPatch (PWProtectedMethods)
+{
+	[newName retain];
+	[PW_name release];
+	PW_name = newName;
+}
+
+
+- (NSString *)author
+{
+	return PW_author;
+}
+
+
+- (void)setAuthor:(NSString *)newAuthor // PWDarcsPatch (PWProtectedMethods)
 {
 	[newAuthor retain];
 	[PW_author release];
@@ -294,12 +234,6 @@ static OGRegularExpression *emailRegexp = nil;
 	
 	[PW_authorEmail release];
 	PW_authorEmail = nil;
-}
-
-
-- (NSString *)author
-{
-	return PW_author;
 }
 
 
@@ -348,17 +282,17 @@ static OGRegularExpression *emailRegexp = nil;
 }
 
 
-- (void)setDate:(NSCalendarDate *)newDate // PWDarcsPatch (ProtectedMethods)
+- (NSCalendarDate *)date
+{
+	return PW_date;
+}
+
+
+- (void)setDate:(NSCalendarDate *)newDate // PWDarcsPatch (PWProtectedMethods)
 {
 	[newDate retain];
 	[PW_date release];
 	PW_date = newDate;
-}
-
-
-- (NSCalendarDate *)date
-{
-	return PW_date;
 }
 
 
@@ -369,15 +303,15 @@ static OGRegularExpression *emailRegexp = nil;
 }
 
 
-- (void)setRollbackPatch:(BOOL)isRollbackPatch // PWDarcsPatch (ProtectedMethods)
-{
-	PW_isRollbackPatch = isRollbackPatch;
-}
-
-
 - (BOOL)isRollbackPatch
 {
 	return PW_isRollbackPatch;
+}
+
+
+- (void)setRollbackPatch:(BOOL)isRollbackPatch // PWDarcsPatch (PWProtectedMethods)
+{
+	PW_isRollbackPatch = isRollbackPatch;
 }
 
 

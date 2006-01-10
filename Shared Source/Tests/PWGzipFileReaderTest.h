@@ -1,66 +1,23 @@
 //
-//  PWDarcsPatch.h
+//  PWGzipFileReaderTest.h
 //  Patchworks
 //
-//  Created by Jonathon Mah on 2005-09-30.
-//  Copyright 2005 Playhaus. All rights reserved.
+//  Created by Jonathon Mah on 2006-01-10.
+//  Copyright 2006 Playhaus. All rights reserved.
 //  License information is contained at the bottom of this file and in the
 //  'LICENSE.txt' file.
 //
 
-#import <Foundation/Foundation.h>
-
-@class PWGzipFileReader;
+#import <SenTestingKit/SenTestingKit.h>
 
 
-#define PWDarcsPatchStringEncoding NSISOLatin1StringEncoding
-
-extern NSString *PWDarcsPatchErrorDomain;
-
-enum {
-	PWDarcsPatchUnknownTypeError = 1,
-	PWDarcsPatchParseError,
-};
-
-typedef enum _PWDarcsPatchType {
-	PWDarcsUnknownPatchType = 1,
-	PWDarcsChangePatchType,
-	PWDarcsTagPatchType,
-} PWDarcsPatchType;
-
-
-@interface PWDarcsPatch : NSObject
+@interface PWGzipFileReaderTest : SenTestCase
 {
-	@private
-	NSString *PW_authorEmail; // Cached version of the author e-mail address
-	NSString *PW_authorNameOnly; // Cached version of the author name only
-	
-	@protected
-	PWGzipFileReader *PW_patchFile; // Nil if PW_fullPatchString is non-nil
-	NSString *PW_fullPatchString; // Nil if PW_patchFile is non-nil
-	NSString *PW_name;
-	NSString *PW_author;
-	NSCalendarDate *PW_date;
-	BOOL PW_isRollbackPatch;
 }
 
 
-#pragma mark Convenience Methods
-+ (id)patchWithContentsOfFile:(NSString *)path error:(NSError **)outError;
-+ (id)patchWithContentsOfURL:(NSURL *)patchURL error:(NSError **)outError;
-
-#pragma mark Initialization and Deallocation
-- (id)initWithContentsOfURL:(NSURL *)patchURL error:(NSError **)outError; // Designated initializer
-
-#pragma mark Accessor Methods
-- (NSString *)patchString;
-- (NSString *)name;
-- (NSString *)author;
-- (NSString *)authorEmail;
-- (NSString *)authorNameOnly;
-- (NSCalendarDate *)date;
-- (PWDarcsPatchType)type;
-- (BOOL)isRollbackPatch;
+- (void)testFullReading;
+- (void)testReadingByLine;
 
 @end
 

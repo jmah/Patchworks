@@ -1,16 +1,16 @@
 //
-//  PWDarcsPatch+TestingMethods.m
+//  PWDarcsPatch+PWTestingMethods.m
 //  Patchworks
 //
 //  Created by Jonathon Mah on 2005-10-08.
 //  Copyright 2005 Playhaus. All rights reserved.
 //
 
-#import "PWDarcsPatch+TestingMethods.h"
-#import "PWDarcsPatch+ProtectedMethods.h"
+#import "PWDarcsPatch+PWTestingMethods.h"
+#import "PWDarcsPatch+PWProtectedMethods.h"
 
 
-@implementation PWDarcsPatch (TestingMethods)
+@implementation PWDarcsPatch (PWTestingMethods)
 
 #pragma mark Initialization and Deallocation
 
