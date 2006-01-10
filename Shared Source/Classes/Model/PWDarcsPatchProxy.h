@@ -21,6 +21,7 @@
 
 @interface PWDarcsPatchProxy : NSObject
 {
+	@protected
 	NSURL *PW_proxyURL;
 	NSURL *PW_patchURL;
 	PWDarcsPatch *PW_patch;
