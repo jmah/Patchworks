@@ -67,6 +67,7 @@
 	{
 		PWDarcsFullPatchWindowController *fullPatchController = [[PWDarcsFullPatchWindowController alloc] initWithWindowNibName:@"PWDarcsFullPatch"];
 		[self addWindowController:fullPatchController];
+		[fullPatchController release];
 		fullPatchWindow = [fullPatchController window];
 	}
 	
@@ -150,7 +151,7 @@
 {
 	NSCalendarDate *dateWithTimeZone = [[PW_patchProxy date] copy];
 	[dateWithTimeZone setTimeZone:[NSTimeZone timeZoneWithName:[[NSUserDefaults standardUserDefaults] objectForKey:PWDefaultTimeZoneName]]];
-	return dateWithTimeZone;
+	return [dateWithTimeZone autorelease];
 }
 
 
