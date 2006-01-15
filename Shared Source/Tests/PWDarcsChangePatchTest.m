@@ -174,7 +174,7 @@
 		                                         ofType:@"gz"
 		                                    inDirectory:@"Test Patches"];
 		NSError *error = nil;
-		PWDarcsPatch *patch = [(PWDarcsPatch *)[PWDarcsPatch alloc] initWithContentsOfURL:[NSURL fileURLWithPath:patchPath] error:&error];
+		PWDarcsPatch *patch = [PWDarcsPatch patchWithContentsOfURL:[NSURL fileURLWithPath:patchPath] error:&error];
 		
 		STAssertNil(patch,
 			@"Initializing a bad patch should return nil.");

@@ -13,14 +13,6 @@
 #define FULL_BUFFER_LENGTH 16384
 
 
-@interface PWGzipFileReader (PWPrivateMethods)
-
-#pragma mark Reading
-- (void)cacheUntilOffset:(z_off_t)offset;
-
-@end
-
-
 @implementation PWGzipFileReader
 
 #pragma mark Initialization and Deallocation
@@ -62,7 +54,6 @@
 		PW_lastLine = nil;
 		PW_rewoundLine = nil;
 		PW_isLastLineInCache = YES;
-		PW_lastLineLength = 0;
 	}
 	return self;
 }
@@ -90,59 +81,21 @@
 
 
 
-#pragma mark Reading
+#pragma mark Reading <PWReader>
 
-- (void)cacheUntilOffset:(z_off_t)offset // PWGzipFileReader (PWPrivateMethods)
-{
-	if (offset > PW_currCachedOffset)
-	{
-		z_off_t currOffset = gzseek(PW_gzFile, PW_currCachedOffset, SEEK_SET);
-		NSAssert(currOffset != -1, @"Error seeking in gzip file.");
-		
-		long remainingLength = offset - currOffset;
-		NSMutableData *data = [[NSMutableData alloc] initWithLength:remainingLength];
-		void *readBuffer = [data mutableBytes];
-		int byteCount = gzread(PW_gzFile, readBuffer, remainingLength);
-		NSAssert(byteCount != -1, @"Error reading gzip file.");
-		
-		NSString *newString = [[NSString alloc] initWithData:data encoding:PW_fileEncoding];
-		[PW_cachedFileContent appendString:newString];
-		[data release];
-		[newString release];
-		
-		PW_currCachedOffset = gztell(PW_gzFile);
-		
-		NSAssert(PW_currCachedOffset == offset, @"Offsets should be equal after reading.");
-		
-		if (gzeof(PW_gzFile))
-		{
-			gzclose(PW_gzFile);
-			PW_gzFile = Z_NULL;
-			
-			[PW_lastLine release];
-			PW_lastLine = nil;
-			
-			PW_isFullFileCached = YES;
-			PW_cachedFileContentEndIndex = [PW_cachedFileContent length];
-			PW_isLastLineInCache = YES;
-		}
-	}
-}
-
-
-- (BOOL)isFullFileRead
+- (BOOL)isEntireContentRead // <PWReader>
 {
 	return (PW_isFullFileCached && !PW_rewoundLine);
 }
 
 
-- (NSString *)cachedFileContent
+- (NSString *)cachedContent // <PWReader>
 {
 	return [PW_cachedFileContent substringToIndex:PW_cachedFileContentEndIndex];
 }
 
 
-- (NSString *)fullFileContent
+- (NSString *)fullContent // <PWReader>
 {
 	if (PW_isFullFileCached)
 		PW_cachedFileContentEndIndex = [PW_cachedFileContent length];
@@ -182,20 +135,19 @@
 		PW_isFullFileCached = YES;
 		PW_cachedFileContentEndIndex = [PW_cachedFileContent length];
 		PW_isLastLineInCache = YES;
-		PW_lastLineLength = 0;
 	}
 	
-	return [self cachedFileContent];
+	return [self cachedContent];
 }
 
 
-- (NSString *)readNextLine:(BOOL)cacheText
+- (NSString *)readNextLine:(BOOL)cacheText // <PWReader>
 {
-	if ([self isFullFileRead])
+	if ([self isEntireContentRead])
 		return nil;
 	
 	if (cacheText && (PW_currCachedOffset != gztell(PW_gzFile)))
-		[self cacheUntilOffset:gztell(PW_gzFile)];
+		[self cacheUpToIndex:([self currentIndex] + [PW_lastLine length])];
 	
 	if (PW_rewoundLine)
 	{
@@ -204,11 +156,7 @@
 		PW_rewoundLine = nil;
 		if (cacheText)
 		{
-			if (!PW_isLastLineInCache)
-			{
-				[PW_cachedFileContent appendString:PW_lastLine];
-				PW_isLastLineInCache = YES;
-			}
+			PW_isLastLineInCache = YES;
 			PW_cachedFileContentEndIndex = [PW_cachedFileContent length];
 		}
 	}
@@ -244,7 +192,6 @@
 		
 		[PW_lastLine release];
 		PW_lastLine = [lineString retain];
-		PW_lastLineLength = [PW_lastLine length];
 		
 		if (cacheText)
 		{
@@ -261,13 +208,71 @@
 				PW_isFullFileCached = YES;
 			}
 		}
+		else
+			PW_isLastLineInCache = NO;
 	}
 	
 	return PW_lastLine;
 }
 
 
-- (BOOL)rewindLine
+- (unsigned int)currentIndex // <PWReader>
+{
+	unsigned int index;
+	if (PW_gzFile)
+#warning This assumes there is a one-to-one relationship between characters and bytes, which is not true
+		index = (unsigned int)gztell(PW_gzFile);
+	else
+		index = [PW_cachedFileContent length];
+	
+	if (PW_rewoundLine)
+		index -= [PW_lastLine length];
+	
+	return index;
+}
+
+
+- (void)cacheUpToIndex:(unsigned int)index // <PWReader>
+{
+#warning This assumes there is a one-to-one relationship between characters and bytes, which is not true
+	z_off_t offset = index;
+	if (offset > PW_currCachedOffset)
+	{
+		z_off_t currOffset = gzseek(PW_gzFile, PW_currCachedOffset, SEEK_SET);
+		NSAssert(currOffset != -1, @"Error seeking in gzip file.");
+		
+		long remainingLength = offset - currOffset;
+		NSMutableData *data = [[NSMutableData alloc] initWithLength:remainingLength];
+		void *readBuffer = [data mutableBytes];
+		int byteCount = gzread(PW_gzFile, readBuffer, remainingLength);
+		NSAssert(byteCount != -1, @"Error reading gzip file.");
+		
+		NSString *newString = [[NSString alloc] initWithData:data encoding:PW_fileEncoding];
+		[PW_cachedFileContent appendString:newString];
+		[data release];
+		[newString release];
+		
+		PW_currCachedOffset = gztell(PW_gzFile);
+		
+		NSAssert(PW_currCachedOffset == offset, @"Offsets should be equal after reading.");
+		
+		if (gzeof(PW_gzFile))
+		{
+			gzclose(PW_gzFile);
+			PW_gzFile = Z_NULL;
+			
+			[PW_lastLine release];
+			PW_lastLine = nil;
+			
+			PW_isFullFileCached = YES;
+			PW_cachedFileContentEndIndex = [PW_cachedFileContent length];
+			PW_isLastLineInCache = YES;
+		}
+	}
+}
+
+
+- (BOOL)rewindLine // <PWReader>
 {
 	BOOL success = NO;
 	

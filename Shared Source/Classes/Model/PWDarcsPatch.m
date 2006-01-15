@@ -14,6 +14,7 @@
 #import "PWDarcsTagPatch.h"
 #import "NSData+PWzlib.h"
 #import "PWGzipFileReader.h"
+#import "PWStringReader.h"
 #import <OgreKit/OgreKit.h>
 
 
@@ -30,13 +31,27 @@ static OGRegularExpression *emailRegexp = nil;
 
 + (id)patchWithContentsOfFile:(NSString *)path error:(NSError **)outError
 {
-	return [[(PWDarcsPatch *)[self alloc] initWithContentsOfURL:[NSURL fileURLWithPath:path] error:outError] autorelease];
+	PWGzipFileReader *reader = [[PWGzipFileReader alloc] initWithContentsOfFile:path encoding:PWDarcsPatchStringEncoding error:outError];
+	PWDarcsPatch *patch = nil;
+	if (!*outError)
+	{
+		patch = [[[self alloc] initWithReader:reader error:outError] autorelease];
+		[reader release];
+	}
+	return patch;
 }
 
 
 + (id)patchWithContentsOfURL:(NSURL *)patchURL error:(NSError **)outError
 {
-	return [[(PWDarcsPatch *)[self alloc] initWithContentsOfURL:patchURL error:outError] autorelease];
+	PWGzipFileReader *reader = [[PWGzipFileReader alloc] initWithContentsOfURL:patchURL encoding:PWDarcsPatchStringEncoding error:outError];
+	PWDarcsPatch *patch = nil;
+	if (!*outError)
+	{
+		patch = [[[self alloc] initWithReader:reader error:outError] autorelease];
+		[reader release];
+	}
+	return patch;
 }
 
 
@@ -67,55 +82,16 @@ static OGRegularExpression *emailRegexp = nil;
 }
 
 
-- (id)initWithContentsOfURL:(NSURL *)patchURL error:(NSError **)outError // Designated initializer
+- (id)initWithReader:(NSObject <PWReader> *)reader error:(NSError **)outError // Designated initializer
 {
 	if (self = [super init])
 	{
 		// Do not set any instance variables on this object -- 'self' will be
 		// deallocated shortly below, and so they will not hold.
 		
-		PWGzipFileReader *patchFile = nil;
-		NSString *currPatchString = nil;
-		if ([patchURL isFileURL])
-		{
-			patchFile = [[[PWGzipFileReader alloc] initWithContentsOfURL:patchURL encoding:PWDarcsPatchStringEncoding error:outError] autorelease];
-			
-			if (*outError)
-			{
-				[self release];
-				return nil;
-			}
-			else
-			{
-				// Read in the first two lines of the file (as our patch type regexp needs only those two)
-				[patchFile readNextLine:YES];
-				[patchFile readNextLine:YES];
-				
-				currPatchString = [patchFile cachedFileContent];
-			}
-		}
-		else
-		{
-			// If we can't handle the URL (it isn't a file path), hand it off to NSData to worry about
-			NSData *data = [NSData dataWithContentsOfURL:patchURL options:0 error:outError];
-			if (*outError)
-			{
-				[self release];
-				return nil;
-			}
-			else
-			{
-				NSData *uncompressedData;
-				
-				if ([data isZlibCompressed])
-					uncompressedData = [data inflate];
-				else
-					uncompressedData = data;
-				
-				currPatchString = [[[NSString alloc] initWithData:uncompressedData encoding:PWDarcsPatchStringEncoding] autorelease];
-				
-			}
-		}
+		// Read in the first two lines (as our patch type regexp needs only those two)
+		[reader readNextLine:YES];
+		[reader readNextLine:YES];
 		
 		// We have at least two lines -- Find the appropriate patch concrete subclass
 		Class concretePatchClass = nil;
@@ -126,7 +102,7 @@ static OGRegularExpression *emailRegexp = nil;
 			// patchTypeRegexp unescaped pattern: "^\[(?<is_tag>TAG )?.+?\n.*?\*(?:\*|-)(?:\d{14}|\w{3} \w{3} [\d ]\d \d\d:\d\d:\d\d \w+ \d{4})(?:\] (?: < > )?{?)?$";
 			patchTypeRegexp = [[OGRegularExpression alloc] initWithString:@"^\\[(?<is_tag>TAG )?.+?\\n.*?\\*(?:\\*|-)(?:\\d{14}|\\w{3} \\w{3} [\\d ]\\d \\d\\d:\\d\\d:\\d\\d \\w+ \\d{4})(?:\\] (?: < > )?{?)?$"];
 		
-		OGRegularExpressionMatch *match = [patchTypeRegexp matchInString:currPatchString];
+		OGRegularExpressionMatch *match = [patchTypeRegexp matchInString:[reader cachedContent]];
 		if (match && [match count] > 0)
 		{
 			if ([[match substringNamed:@"is_tag"] isEqualToString:@"TAG "])
@@ -136,13 +112,7 @@ static OGRegularExpression *emailRegexp = nil;
 		}
 		
 		if (concretePatchClass)
-		{
-			if (patchFile)
-				newPatch = [[concretePatchClass alloc] initWithGzipFile:patchFile error:outError];
-			else
-				// We have the full patch string already
-				newPatch = [[concretePatchClass alloc] initWithFullPatchString:currPatchString error:outError];
-		}
+			newPatch = [[concretePatchClass alloc] initWithReader:reader error:outError];
 		else
 			*outError = [NSError errorWithDomain:PWDarcsPatchErrorDomain
 			                                code:PWDarcsPatchUnknownTypeError
@@ -157,16 +127,8 @@ static OGRegularExpression *emailRegexp = nil;
 
 - (void)dealloc
 {
-	if (PW_fullPatchString)
-	{
-		[PW_fullPatchString release];
-		PW_fullPatchString = nil;
-	}
-	else
-	{
-		[PW_patchFile release];
-		PW_patchFile = nil;
-	}
+	[PW_patchReader release];
+	PW_patchReader = nil;
 	
 	[self setName:nil];
 	[self setAuthor:nil];
@@ -184,9 +146,7 @@ static OGRegularExpression *emailRegexp = nil;
 	BOOL equal = NO;
 	
 	if ([otherObject isKindOfClass:[PWDarcsPatch class]])
-	{
-		equal = [[(PWDarcsPatch *)otherObject patchString] isEqualToString:[self patchString]];
-	}
+		equal = [[otherObject patchString] isEqualToString:[self patchString]];
 	
 	return equal;
 }
@@ -197,12 +157,7 @@ static OGRegularExpression *emailRegexp = nil;
 
 - (NSString *)patchString
 {
-	NSString *patchString = nil;
-	if (PW_fullPatchString)
-		patchString = PW_fullPatchString;
-	else
-		patchString = [PW_patchFile fullFileContent];
-	return patchString;
+	return [PW_patchReader fullContent];
 }
 
 

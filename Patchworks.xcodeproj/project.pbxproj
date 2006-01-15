@@ -91,6 +91,8 @@
 		28261BB40951B680008F1B53 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28261BB30951B680008F1B53 /* SenTestingKit.framework */; };
 		28261BB50951B680008F1B53 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28261BB30951B680008F1B53 /* SenTestingKit.framework */; };
 		28261BB60951B680008F1B53 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28261BB30951B680008F1B53 /* SenTestingKit.framework */; };
+		282F78F0097A7CAB009086D7 /* PWStringReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 282F78EE097A7CAB009086D7 /* PWStringReader.m */; };
+		282F792D097A88BF009086D7 /* PWStringReaderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 282F792B097A88BF009086D7 /* PWStringReaderTest.m */; };
 		283E482608FA503B00772738 /* Test Repository in Resources */ = {isa = PBXBuildFile; fileRef = 283E481A08FA503B00772738 /* Test Repository */; };
 		283E49D708FA9BBB00772738 /* PWDarcsPatchProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 284841C308FA384700EDFDD3 /* PWDarcsPatchProxy.m */; };
 		283E4BF608FB46B000772738 /* PWDarcsPatchImporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 283E4BB108FB451300772738 /* PWDarcsPatchImporter.m */; };
@@ -323,6 +325,11 @@
 		28261C320951BA59008F1B53 /* Metadata Importer Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "Metadata Importer Debug.xcconfig"; sourceTree = "<group>"; };
 		28261C330951BA59008F1B53 /* Metadata Importer Shared.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "Metadata Importer Shared.xcconfig"; sourceTree = "<group>"; };
 		28261CB20951C1B7008F1B53 /* Cocoa Test Suite Unit Tests.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "Cocoa Test Suite Unit Tests.xcconfig"; sourceTree = "<group>"; };
+		282F7887097A796F009086D7 /* PWReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWReader.h; sourceTree = "<group>"; };
+		282F78ED097A7CAB009086D7 /* PWStringReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWStringReader.h; sourceTree = "<group>"; };
+		282F78EE097A7CAB009086D7 /* PWStringReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWStringReader.m; sourceTree = "<group>"; };
+		282F792B097A88BF009086D7 /* PWStringReaderTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWStringReaderTest.m; sourceTree = "<group>"; };
+		282F792C097A88BF009086D7 /* PWStringReaderTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWStringReaderTest.h; sourceTree = "<group>"; };
 		283E481A08FA503B00772738 /* Test Repository */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Test Repository"; sourceTree = "<group>"; };
 		283E4BB008FB451300772738 /* PWDarcsPatchImporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWDarcsPatchImporter.h; sourceTree = "<group>"; };
 		283E4BB108FB451300772738 /* PWDarcsPatchImporter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWDarcsPatchImporter.m; sourceTree = "<group>"; };
@@ -549,8 +556,11 @@
 			children = (
 				28015C8D08ED4A1C00C83A75 /* NSData+PWzlib.h */,
 				28015C8E08ED4A1D00C83A75 /* NSData+PWzlib.m */,
+				282F7887097A796F009086D7 /* PWReader.h */,
 				28D4FA5B09729996004679E0 /* PWGzipFileReader.h */,
 				28D4FA5C09729996004679E0 /* PWGzipFileReader.m */,
+				282F78ED097A7CAB009086D7 /* PWStringReader.h */,
+				282F78EE097A7CAB009086D7 /* PWStringReader.m */,
 				289F12DC08F04D3500E9D926 /* PWDarcsPatch.h */,
 				289F146008F700C500E9D926 /* PWDarcsPatch+PWProtectedMethods.h */,
 				289F12DB08F04D3500E9D926 /* PWDarcsPatch.m */,
@@ -597,6 +607,8 @@
 				28015CBB08ED52AD00C83A75 /* PWzlibTest.m */,
 				28D4FA8309729ECA004679E0 /* PWGzipFileReaderTest.h */,
 				28D4FA8409729ECA004679E0 /* PWGzipFileReaderTest.m */,
+				282F792C097A88BF009086D7 /* PWStringReaderTest.h */,
+				282F792B097A88BF009086D7 /* PWStringReaderTest.m */,
 				289F12E608F04D4A00E9D926 /* PWDarcsPatchTest.h */,
 				289F12E508F04D4A00E9D926 /* PWDarcsPatchTest.m */,
 				289F15D508F7A3C700E9D926 /* PWDarcsPatch+PWTestingMethods.h */,
@@ -1263,6 +1275,8 @@
 				284842A308FA451200EDFDD3 /* PWDarcsPatchProxy.m in Sources */,
 				28D4FA63097299AC004679E0 /* PWGzipFileReader.m in Sources */,
 				28D4FA8609729ECA004679E0 /* PWGzipFileReaderTest.m in Sources */,
+				282F78F0097A7CAB009086D7 /* PWStringReader.m in Sources */,
+				282F792D097A88BF009086D7 /* PWStringReaderTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,8 +9,7 @@
 
 #import <Foundation/Foundation.h>
 #import "PWDarcsPatch.h"
-
-@class PWGzipFileReader;
+#import "PWReader.h"
 
 
 /*
@@ -25,8 +24,7 @@
 
 
 #pragma mark Initialization and Deallocation
-- (id)initWithGzipFile:(PWGzipFileReader *)gzipFile error:(NSError **)outError; // Designated initializer
-- (id)initWithFullPatchString:(NSString *)patchString error:(NSError **)outError;
+- (id)initWithReader:(NSObject <PWReader> *)reader error:(NSError **)outError; // Designated initializer
 
 @end
 

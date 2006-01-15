@@ -67,62 +67,46 @@
 
 #pragma mark Initialization and Deallocation
 
-- (id)initWithGzipFile:(PWGzipFileReader *)gzipFile error:(NSError **)outError
+- (id)initWithReader:(NSObject <PWReader> *)reader error:(NSError **)outError // Designated initializer
 {
 	if (self = [super init])
 	{
-		PW_patchFile = [gzipFile retain];
-		PW_fullPatchString = nil;
-		self = [self commonInitError:outError];
-	}
-	return self;
-}
-
-
-- (id)initWithFullPatchString:(NSString *)patchString error:(NSError **)outError
-{
-	if (self = [super init])
-	{
-		PW_patchFile = nil;
-		PW_fullPatchString = [patchString retain];
-		self = [self commonInitError:outError];
-	}
-	return self;
-}
-
-
-- (id)commonInitError:(NSError **)outError // PWDarcsTagPatch (PWPrivateMethods)
-{
-	// Parse patch
-	// Cache the tag regular expression
-	static OGRegularExpression *tagRegexp = nil;
-	if (!tagRegexp)
-		// tagRegexp unescaped pattern: "^\[TAG (?<name>.*?)\n(?<author>.*?)\*(?<rollback_flag>\*|-)((?<new_date>\d{14})|(?<old_date>\w{3} \w{3} [\d ]\d \d\d:\d\d:\d\d \w+ \d{4}))] \n<$)";
-		tagRegexp = [[OGRegularExpression alloc] initWithString:@"^\\[TAG (?<name>.*?)\\n(?<author>.*?)\\*(?<rollback_flag>\\*|-)((?<new_date>\\d{14})|(?<old_date>\\w{3} \\w{3} [\\d ]\\d \\d\\d:\\d\\d:\\d\\d \\w+ \\d{4}))] \\n<$"];
-	
-	OGRegularExpressionMatch *match = nil;
-	
-	BOOL doesMatch = NO, definitelyDoesNotMatch = NO;
-	do
-	{
-		if (PW_fullPatchString || [PW_patchFile isFullFileRead])
+		PW_patchReader = [reader retain];
+		
+		// Parse patch
+		// Cache the tag regular expression
+		static OGRegularExpression *tagRegexp = nil;
+		if (!tagRegexp)
+			// tagRegexp unescaped pattern: "^\[TAG (?<name>.*?)\n(?<author>.*?)\*(?<rollback_flag>\*|-)((?<new_date>\d{14})|(?<old_date>\w{3} \w{3} [\d ]\d \d\d:\d\d:\d\d \w+ \d{4}))] \n<$)";
+			tagRegexp = [[OGRegularExpression alloc] initWithString:@"^\\[TAG (?<name>.*?)\\n(?<author>.*?)\\*(?<rollback_flag>\\*|-)((?<new_date>\\d{14})|(?<old_date>\\w{3} \\w{3} [\\d ]\\d \\d\\d:\\d\\d:\\d\\d \\w+ \\d{4}))] \\n<$"];
+		
+		OGRegularExpressionMatch *match = nil;
+		
+		BOOL doesMatch = NO, definitelyDoesNotMatch = NO;
+		
+		// Check if the existing string is enough to be certain of a match
+		NSString *currPatchString = [reader cachedContent];
+		unsigned int currPatchStringLength = [currPatchString length];
+		if ((currPatchStringLength >= 3) && ([[currPatchString substringFromIndex:(currPatchStringLength - 3)] isEqualToString:@"\n<\n"]))
 		{
-			if (PW_fullPatchString)
-				match = [tagRegexp matchInString:PW_fullPatchString];
-			else
-				match = [tagRegexp matchInString:[PW_patchFile fullFileContent]];
+			match = [tagRegexp matchInString:currPatchString];
 			doesMatch = ([match count] > 0);
 			definitelyDoesNotMatch = !doesMatch;
 		}
-		else
+		
+		// Read in more lines to see if we get a match
+		while (!doesMatch && !definitelyDoesNotMatch)
 		{
-			// Check if the current patch string matches. If it doesn't, read some more and try again.
-			match = [tagRegexp matchInString:[PW_patchFile cachedFileContent]];
-			doesMatch = ([match count] > 0);
-			if (!doesMatch)
+			if ([reader isEntireContentRead])
+			{
+				match = [tagRegexp matchInString:[reader fullContent]];
+				doesMatch = ([match count] > 0);
+				definitelyDoesNotMatch = !doesMatch;
+			}
+			else
 			{
 				// Read in the next line of the patch. If we read "<\n" then we know this patch will definitely never match the regexp.
-				NSString *newLine = [PW_patchFile readNextLine:YES];
+				NSString *newLine = [reader readNextLine:YES];
 				if (!newLine)
 				{
 					[self release];
@@ -135,43 +119,42 @@
 				{
 					if ([newLine isEqualToString:@"<\n"])
 					{
-						match = [tagRegexp matchInString:[PW_patchFile cachedFileContent]];
+						match = [tagRegexp matchInString:[reader cachedContent]];
 						doesMatch = ([match count] > 0);
 						definitelyDoesNotMatch = !doesMatch;
 					}
 				}
 			}
-		}
-	} while (!doesMatch && !definitelyDoesNotMatch);
-	
-	
-	if (!match || ([match count] == 0))
-	{
-		[self release];
-		self = nil;
-		*outError = [NSError errorWithDomain:PWDarcsPatchErrorDomain
-		                                code:PWDarcsPatchParseError
-		                            userInfo:nil];
-	}
-	else
-	{
-		[self setName:[match substringNamed:@"name"]];
-		[self setAuthor:[match substringNamed:@"author"]];
-		if ([match substringNamed:@"old_date"])
-			[self setDate:[[self class] calendarDateFromOldDarcsDateString:[match substringNamed:@"old_date"]]];
-		else
-			[self setDate:[[self class] calendarDateFromDarcsDateString:[match substringNamed:@"new_date"]]];
+		} while (!doesMatch && !definitelyDoesNotMatch);
 		
-		NSString *rollbackFlag = [match substringNamed:@"rollback_flag"];
-		if ([rollbackFlag isEqualToString:@"*"])
-			PW_isRollbackPatch = NO;
-		else if ([rollbackFlag isEqualToString:@"-"])
-			PW_isRollbackPatch = YES;
+		
+		if (!match || ([match count] == 0))
+		{
+			[self release];
+			self = nil;
+			*outError = [NSError errorWithDomain:PWDarcsPatchErrorDomain
+			                                code:PWDarcsPatchParseError
+			                            userInfo:nil];
+		}
 		else
-			[NSException raise:NSInternalInconsistencyException
-			            format:@"Patch regular expression matched patch string, but rollback_flag was '%@' instead of '*' or '-'", rollbackFlag];
+		{
+			[self setName:[match substringNamed:@"name"]];
+			[self setAuthor:[match substringNamed:@"author"]];
+			if ([match substringNamed:@"old_date"])
+				[self setDate:[[self class] calendarDateFromOldDarcsDateString:[match substringNamed:@"old_date"]]];
+			else
+				[self setDate:[[self class] calendarDateFromDarcsDateString:[match substringNamed:@"new_date"]]];
+			
+			NSString *rollbackFlag = [match substringNamed:@"rollback_flag"];
+			if ([rollbackFlag isEqualToString:@"*"])
+				PW_isRollbackPatch = NO;
+			else if ([rollbackFlag isEqualToString:@"-"])
+				PW_isRollbackPatch = YES;
+			else
+				[NSException raise:NSInternalInconsistencyException
+				            format:@"Patch regular expression matched patch string, but rollback_flag was '%@' instead of '*' or '-'", rollbackFlag];
+		}
 	}
-	
 	return self;
 }
 

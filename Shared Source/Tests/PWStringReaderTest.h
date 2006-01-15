@@ -1,34 +1,22 @@
 //
-//  PWDarcsChangePatch.h
+//  PWStringReaderTest.h
 //  Patchworks
 //
-//  Created by Jonathon Mah on 2005-09-30.
-//  Copyright 2005 Playhaus. All rights reserved.
+//  Created by Jonathon Mah on 2006-01-15.
+//  Copyright 2006 Playhaus. All rights reserved.
 //  License information is contained at the bottom of this file and in the
 //  'LICENSE.txt' file.
 //
 
-#import <Foundation/Foundation.h>
-#import "PWDarcsPatch.h"
-#import "PWReader.h"
+#import <SenTestingKit/SenTestingKit.h>
 
 
-@interface PWDarcsChangePatch : PWDarcsPatch
+@interface PWStringReaderTest : SenTestCase
 {
-	@private
-	NSString *PW_cleanedLongComment; // Cached version of the cleaned long comment
-	
-	@protected
-	NSString *PW_longComment;
 }
 
 
-#pragma mark Initialization and Deallocation
-- (id)initWithReader:(NSObject <PWReader> *)reader error:(NSError **)outError; // Designated initializer
-
-#pragma mark Accessor Methods
-- (NSString *)longComment;
-- (NSString *)cleanedLongComment;
+- (void)testReadingByLine;
 
 @end
 

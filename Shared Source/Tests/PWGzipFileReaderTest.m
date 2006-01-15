@@ -30,18 +30,18 @@
 		@"Failed to open gzip file.");
 	STAssertNil(error,
 		@"Gzip file generated an error.");
-	STAssertFalse([compressedPatch isFullFileRead],
-		@"Gzip file reported full file as read.");
+	STAssertFalse([compressedPatch isEntireContentRead],
+		@"Gzip file reported full content as read.");
 	
 	NSString *realContent = [NSString stringWithContentsOfFile:uncompressedPath
 	                                                  encoding:NSASCIIStringEncoding
 	                                                     error:nil];
 	
-	STAssertEqualObjects([compressedPatch fullFileContent], realContent,
+	STAssertEqualObjects([compressedPatch fullContent], realContent,
 		@"Gzip file was not inflated correctly.");
-	STAssertTrue([compressedPatch isFullFileRead],
-		@"Gzip file reported full file as not read.");
-	STAssertEqualObjects([compressedPatch fullFileContent], [compressedPatch cachedFileContent],
+	STAssertTrue([compressedPatch isEntireContentRead],
+		@"Gzip file reported full content as not read.");
+	STAssertEqualObjects([compressedPatch fullContent], [compressedPatch cachedContent],
 		@"Gzip file cached content was not full content.");
 	
 	[compressedPatch release];
@@ -62,26 +62,26 @@
 		@"Gzip file generated an error.");
 	
 	// Test cached reading
-	STAssertFalse([gzipFile isFullFileRead],
-		@"Gzip file reported full file read.");
+	STAssertFalse([gzipFile isEntireContentRead],
+		@"Gzip file reported full content read.");
 	STAssertEqualObjects([gzipFile readNextLine:YES], @"This is a test file compressed with gzip.\n",
 		@"Failed to read cached line.");
 	STAssertEqualObjects([gzipFile readNextLine:YES], @"Line 2\n",
 		@"Failed to read cached line.");
-	STAssertFalse([gzipFile isFullFileRead],
-		@"Gzip file reported full file read.");
+	STAssertFalse([gzipFile isEntireContentRead],
+		@"Gzip file reported full content read.");
 	
-	STAssertEqualObjects([gzipFile cachedFileContent], @"This is a test file compressed with gzip.\nLine 2\n",
+	STAssertEqualObjects([gzipFile cachedContent], @"This is a test file compressed with gzip.\nLine 2\n",
 		@"Gzip cached content was not as read.");
 	
 	STAssertTrue([gzipFile rewindLine],
 		@"Rewinding line failed.");
-	STAssertEqualObjects([gzipFile cachedFileContent], @"This is a test file compressed with gzip.\n",
+	STAssertEqualObjects([gzipFile cachedContent], @"This is a test file compressed with gzip.\n",
 		@"Cached contents did not reflect rewind.");
 	
 	STAssertEqualObjects([gzipFile readNextLine:NO], @"Line 2\n",
 		@"Failed to read uncached line.");
-	STAssertEqualObjects([gzipFile cachedFileContent], @"This is a test file compressed with gzip.\n",
+	STAssertEqualObjects([gzipFile cachedContent], @"This is a test file compressed with gzip.\n",
 		@"Cached contents did not reflect uncached read.");
 	
 	STAssertEqualObjects([gzipFile readNextLine:NO], @"Line 3\n",
@@ -95,15 +95,15 @@
 	STAssertEqualObjects([gzipFile readNextLine:NO], @"Last line\n",
 		@"Failed to read uncached line.");
 	
-	STAssertFalse([gzipFile isFullFileRead],
-		@"Gzip file reported full file read.");
+	STAssertFalse([gzipFile isEntireContentRead],
+		@"Gzip file reported full content read.");
 	STAssertTrue([gzipFile rewindLine],
 		@"Gzip file failed to rewind line.");
 	STAssertEqualObjects([gzipFile readNextLine:YES], @"Last line\n",
 		@"Failed to read cached line.");
 	
-	STAssertTrue([gzipFile isFullFileRead],
-		@"Gzip file reported full file as not read.");
+	STAssertTrue([gzipFile isEntireContentRead],
+		@"Gzip file reported full content as not read.");
 	
 	[gzipFile release];
 }

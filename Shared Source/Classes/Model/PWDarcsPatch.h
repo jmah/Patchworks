@@ -9,6 +9,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "PWReader.h"
 
 @class PWGzipFileReader;
 
@@ -36,8 +37,7 @@ typedef enum _PWDarcsPatchType {
 	NSString *PW_authorNameOnly; // Cached version of the author name only
 	
 	@protected
-	PWGzipFileReader *PW_patchFile; // Nil if PW_fullPatchString is non-nil
-	NSString *PW_fullPatchString; // Nil if PW_patchFile is non-nil
+	NSObject <PWReader> *PW_patchReader;
 	NSString *PW_name;
 	NSString *PW_author;
 	NSCalendarDate *PW_date;
@@ -50,7 +50,7 @@ typedef enum _PWDarcsPatchType {
 + (id)patchWithContentsOfURL:(NSURL *)patchURL error:(NSError **)outError;
 
 #pragma mark Initialization and Deallocation
-- (id)initWithContentsOfURL:(NSURL *)patchURL error:(NSError **)outError; // Designated initializer
+- (id)initWithReader:(NSObject <PWReader> *)reader error:(NSError **)outError; // Designated initializer
 
 #pragma mark Accessor Methods
 - (NSString *)patchString;
