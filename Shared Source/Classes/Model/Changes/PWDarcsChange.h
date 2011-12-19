@@ -1,36 +1,37 @@
 //
-//  PWDarcsChangePatch.h
+//  PWDarcsChange.h
 //  Patchworks
 //
-//  Created by Jonathon Mah on 2005-09-30.
+//  Created by Jonathon Mah on 2005-12-18.
 //  Copyright 2005 Playhaus. All rights reserved.
 //  License information is contained at the bottom of this file and in the
 //  'LICENSE.txt' file.
 //
 
-#import <Foundation/Foundation.h>
-#import "PWDarcsPatch.h"
+#import <Cocoa/Cocoa.h>
 #import "PWReader.h"
 
+@class PWDarcsChangePatch;
 
-@interface PWDarcsChangePatch : PWDarcsPatch
+
+@interface PWDarcsChange : NSObject
 {
-	@private
-	NSString *PW_cleanedLongComment; // Cached version of the cleaned long comment
-	
 	@protected
-	NSString *PW_longComment;
-	NSMutableArray *PW_changes; // Can be nil
+	PWDarcsChangePatch *PW_changePatch;
+	NSString *PW_oldChangedPath;
+	NSString *PW_newChangedPath;
+	PWReader *PW_patchReader;
+	NSRange PW_changeRange;
 }
 
 
 #pragma mark Initialization and Deallocation
-- (id)initWithReader:(NSObject <PWReader> *)reader error:(NSError **)outError; // Designated initializer
+- (id)initWithReader:(NSObject <PWReader> *)reader cacheWholeChange:(BOOL)cache error:(NSError **)outError; // Designated initializer
 
 #pragma mark Accessor Methods
-- (NSString *)longComment;
-- (NSString *)cleanedLongComment;
-- (NSArray *)changes; // Array of PWDarcsChange objects
+- (NSString *)oldChangedPath;
+- (NSString *)newChangedPath;
+- (NSString *)changeString;
 
 @end
 

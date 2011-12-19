@@ -38,7 +38,7 @@ static NSMutableDictionary *existingWrappers = nil; // Initialized in +initializ
 		if (![[self ignoredTimeZoneNames] containsObject:currName])
 		{
 			NSTimeZone *timeZone = [NSTimeZone timeZoneWithName:currName];
-			if (![existingWrappers objectForKey:timeZone])
+			if (timeZone && ![existingWrappers objectForKey:timeZone])
 				[existingWrappers setObject:[self timeZoneWrapperWithTimeZone:timeZone] forKey:timeZone];
 		}
 	
@@ -51,7 +51,8 @@ static NSMutableDictionary *existingWrappers = nil; // Initialized in +initializ
 	static NSArray *ignoredTimeZoneNames = nil;
 	
 	if (!ignoredTimeZoneNames)
-		ignoredTimeZoneNames = [[NSArray alloc] initWithObjects:@"zone.tab", @"posixrules", nil];
+#warning This is a bit fragile; not all /usr/share/zoneinfo/ directories will contain all these files
+		ignoredTimeZoneNames = [[NSArray alloc] initWithObjects:@"zone.tab", @"posixrules", @"iso3166.tab", @"+VERSION", nil];
 	
 	return ignoredTimeZoneNames;
 }

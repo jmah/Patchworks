@@ -56,7 +56,7 @@
 
 - (void)testKnownTimeZones
 {
-	STAssertEquals([[PWTimeZoneWrapper knownTimeZoneWrappers] count], [[NSTimeZone knownTimeZoneNames] count] - [[PWTimeZoneWrapper ignoredTimeZoneNames] count],
+	STAssertEquals([[PWTimeZoneWrapper knownTimeZoneWrappers] count] + [[PWTimeZoneWrapper ignoredTimeZoneNames] count], [[NSTimeZone knownTimeZoneNames] count],
 		@"Known time zone wrappers differed in number to known time zone names.");
 	STAssertTrue([[PWTimeZoneWrapper knownTimeZoneWrappers] containsObject:[PWTimeZoneWrapper timeZoneWrapperWithName:@"US/Pacific"]],
 		@"Wrapper for US/Pacific not included in known wrappers.");

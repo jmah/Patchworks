@@ -12,19 +12,6 @@
 			buildConfigurationList = 28015B5D08EC9DE300C83A75 /* Build configuration list for PBXAggregateTarget "Unit Tests" */;
 			buildPhases = (
 			);
-			buildSettings = {
-				OPTIMIZATION_CFLAGS = "";
-				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = "";
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = "Unit Tests";
-				SECTORDER_FLAGS = "";
-				WARNING_CFLAGS = (
-					"-Wmost",
-					"-Wno-four-char-constants",
-					"-Wno-unknown-pragmas",
-				);
-			};
 			dependencies = (
 				28E7042408FC09C500B5E7CD /* PBXTargetDependency */,
 				28015B4608EC9D9000C83A75 /* PBXTargetDependency */,
@@ -40,19 +27,6 @@
 			buildPhases = (
 				28E703E708FBFEC000B5E7CD /* ShellScript */,
 			);
-			buildSettings = {
-				OPTIMIZATION_CFLAGS = "";
-				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = "";
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = "Verify Plists";
-				SECTORDER_FLAGS = "";
-				WARNING_CFLAGS = (
-					"-Wmost",
-					"-Wno-four-char-constants",
-					"-Wno-unknown-pragmas",
-				);
-			};
 			dependencies = (
 			);
 			name = "Verify Plists";
@@ -151,33 +125,6 @@
 		28FCD3F908EC577900A970FA /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 28FCD3F208EC577900A970FA /* Info.plist */; };
 		8D15AC340486D014006FF6A4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXBuildStyle section */
-		4A9504D0FFE6A4CB11CA0CBA /* Debug */ = {
-			isa = PBXBuildStyle;
-			buildSettings = {
-				COPY_PHASE_STRIP = NO;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				PREBINDING = NO;
-				ZERO_LINK = YES;
-			};
-			name = Debug;
-		};
-		4A9504D1FFE6A4CB11CA0CBA /* Release */ = {
-			isa = PBXBuildStyle;
-			buildSettings = {
-				COPY_PHASE_STRIP = YES;
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
-				PREBINDING = NO;
-				ZERO_LINK = NO;
-			};
-			name = Release;
-		};
-/* End PBXBuildStyle section */
 
 /* Begin PBXContainerItemProxy section */
 		28015B4508EC9D9000C83A75 /* PBXContainerItemProxy */ = {
@@ -325,6 +272,8 @@
 		28261C320951BA59008F1B53 /* Metadata Importer Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "Metadata Importer Debug.xcconfig"; sourceTree = "<group>"; };
 		28261C330951BA59008F1B53 /* Metadata Importer Shared.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "Metadata Importer Shared.xcconfig"; sourceTree = "<group>"; };
 		28261CB20951C1B7008F1B53 /* Cocoa Test Suite Unit Tests.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "Cocoa Test Suite Unit Tests.xcconfig"; sourceTree = "<group>"; };
+		28261E6309545FAE008F1B53 /* PWDarcsChange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWDarcsChange.h; sourceTree = "<group>"; };
+		28261E6409545FAE008F1B53 /* PWDarcsChange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWDarcsChange.m; sourceTree = "<group>"; };
 		282F7887097A796F009086D7 /* PWReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWReader.h; sourceTree = "<group>"; };
 		282F78ED097A7CAB009086D7 /* PWStringReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWStringReader.h; sourceTree = "<group>"; };
 		282F78EE097A7CAB009086D7 /* PWStringReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWStringReader.m; sourceTree = "<group>"; };
@@ -388,7 +337,7 @@
 		28FCD3F208EC577900A970FA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Info.plist; sourceTree = "<group>"; };
 		2A37F4C4FDCFA73011CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		2A37F4C5FDCFA73011CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
-		8D15AC370486D014006FF6A4 /* Patchworks.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Patchworks.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D15AC370486D014006FF6A4 /* Patchworks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Patchworks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -554,13 +503,7 @@
 		2801594D08EC767C00C83A75 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				28015C8D08ED4A1C00C83A75 /* NSData+PWzlib.h */,
-				28015C8E08ED4A1D00C83A75 /* NSData+PWzlib.m */,
-				282F7887097A796F009086D7 /* PWReader.h */,
-				28D4FA5B09729996004679E0 /* PWGzipFileReader.h */,
-				28D4FA5C09729996004679E0 /* PWGzipFileReader.m */,
-				282F78ED097A7CAB009086D7 /* PWStringReader.h */,
-				282F78EE097A7CAB009086D7 /* PWStringReader.m */,
+				2852BD2D098E465000BE1E2F /* Reading */,
 				289F12DC08F04D3500E9D926 /* PWDarcsPatch.h */,
 				289F146008F700C500E9D926 /* PWDarcsPatch+PWProtectedMethods.h */,
 				289F12DB08F04D3500E9D926 /* PWDarcsPatch.m */,
@@ -570,6 +513,7 @@
 				289F12DD08F04D3500E9D926 /* PWDarcsTagPatch.m */,
 				284841C208FA384600EDFDD3 /* PWDarcsPatchProxy.h */,
 				284841C308FA384700EDFDD3 /* PWDarcsPatchProxy.m */,
+				2852BD33098E472100BE1E2F /* Changes */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -653,6 +597,29 @@
 				28261C310951BA59008F1B53 /* Metadata Importer Release.xcconfig */,
 			);
 			path = "Common Build Configurations";
+			sourceTree = "<group>";
+		};
+		2852BD2D098E465000BE1E2F /* Reading */ = {
+			isa = PBXGroup;
+			children = (
+				28015C8D08ED4A1C00C83A75 /* NSData+PWzlib.h */,
+				28015C8E08ED4A1D00C83A75 /* NSData+PWzlib.m */,
+				282F7887097A796F009086D7 /* PWReader.h */,
+				28D4FA5B09729996004679E0 /* PWGzipFileReader.h */,
+				28D4FA5C09729996004679E0 /* PWGzipFileReader.m */,
+				282F78ED097A7CAB009086D7 /* PWStringReader.h */,
+				282F78EE097A7CAB009086D7 /* PWStringReader.m */,
+			);
+			path = Reading;
+			sourceTree = "<group>";
+		};
+		2852BD33098E472100BE1E2F /* Changes */ = {
+			isa = PBXGroup;
+			children = (
+				28261E6309545FAE008F1B53 /* PWDarcsChange.h */,
+				28261E6409545FAE008F1B53 /* PWDarcsChange.m */,
+			);
+			path = Changes;
 			sourceTree = "<group>";
 		};
 		28BC08F808FBBD1C00BE7895 /* Tests */ = {
@@ -792,58 +759,11 @@
 			);
 			buildRules = (
 			);
-			buildSettings = {
-				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
-				GCC_MODEL_TUNING = G5;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
-				INFOPLIST_FILE = "Metadata Importer-Info.plist";
-				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
-				LIBRARY_STYLE = BUNDLE;
-				OPTIMIZATION_CFLAGS = "";
-				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					AppKit,
-				);
-				OTHER_REZFLAGS = "";
-				PREBINDING = NO;
-				PRODUCT_NAME = "Metadata Importer";
-				SECTORDER_FLAGS = "";
-				WARNING_CFLAGS = (
-					"-Wmost",
-					"-Wno-four-char-constants",
-					"-Wno-unknown-pragmas",
-				);
-			};
 			dependencies = (
 			);
 			name = "Patchworks Importer";
 			productName = "Metadata Importer";
 			productReference = 280159A808EC781900C83A75 /* Patchworks.mdimporter */;
-			productSettingsXML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
-<!DOCTYPE plist PUBLIC \"-//Apple Computer//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">
-<plist version=\"1.0\">
-<dict>
-	<key>CFBundleDevelopmentRegion</key>
-	<string>English</string>
-	<key>CFBundleExecutable</key>
-	<string>Metadata Importer</string>
-	<key>CFBundleIdentifier</key>
-	<string>com.yourcompany.Metadata_Importer</string>
-	<key>CFBundleInfoDictionaryVersion</key>
-	<string>6.0</string>
-	<key>CFBundlePackageType</key>
-	<string>APPL</string>
-	<key>CFBundleSignature</key>
-	<string>????</string>
-	<key>CFBundleVersion</key>
-	<string>1.0</string>
-</dict>
-</plist>
-";
 			productType = "com.apple.product-type.bundle";
 		};
 		28015AF408EC9C9700C83A75 /* Patchworks Test */ = {
@@ -858,60 +778,11 @@
 			);
 			buildRules = (
 			);
-			buildSettings = {
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
-				GCC_MODEL_TUNING = G5;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Cocoa.framework/Headers/Cocoa.h";
-				INFOPLIST_FILE = "Patchworks Test-Info.plist";
-				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
-				LIBRARY_STYLE = BUNDLE;
-				OPTIMIZATION_CFLAGS = "";
-				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = (
-					"-framework",
-					Cocoa,
-					"-framework",
-					SenTestingKit,
-				);
-				OTHER_REZFLAGS = "";
-				PREBINDING = NO;
-				PRODUCT_NAME = "Patchworks Test";
-				SECTORDER_FLAGS = "";
-				WARNING_CFLAGS = (
-					"-Wmost",
-					"-Wno-four-char-constants",
-					"-Wno-unknown-pragmas",
-				);
-				WRAPPER_EXTENSION = octest;
-			};
 			dependencies = (
 			);
 			name = "Patchworks Test";
 			productName = "Patchworks Test";
 			productReference = 28015AF508EC9C9700C83A75 /* Patchworks Test.octest */;
-			productSettingsXML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
-<!DOCTYPE plist PUBLIC \"-//Apple Computer//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">
-<plist version=\"1.0\">
-<dict>
-	<key>CFBundleDevelopmentRegion</key>
-	<string>English</string>
-	<key>CFBundleExecutable</key>
-	<string>Patchworks Test</string>
-	<key>CFBundleIdentifier</key>
-	<string>com.yourcompany.Patchworks_Test</string>
-	<key>CFBundleInfoDictionaryVersion</key>
-	<string>6.0</string>
-	<key>CFBundlePackageType</key>
-	<string>APPL</string>
-	<key>CFBundleSignature</key>
-	<string>????</string>
-	<key>CFBundleVersion</key>
-	<string>1.0</string>
-</dict>
-</plist>
-";
 			productType = "com.apple.product-type.bundle";
 		};
 		28015B3308EC9D4800C83A75 /* Shared Source Test */ = {
@@ -926,60 +797,11 @@
 			);
 			buildRules = (
 			);
-			buildSettings = {
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
-				GCC_MODEL_TUNING = G5;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Cocoa.framework/Headers/Cocoa.h";
-				INFOPLIST_FILE = "Shared Source Test-Info.plist";
-				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
-				LIBRARY_STYLE = BUNDLE;
-				OPTIMIZATION_CFLAGS = "";
-				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = (
-					"-framework",
-					Cocoa,
-					"-framework",
-					SenTestingKit,
-				);
-				OTHER_REZFLAGS = "";
-				PREBINDING = NO;
-				PRODUCT_NAME = "Shared Source Test";
-				SECTORDER_FLAGS = "";
-				WARNING_CFLAGS = (
-					"-Wmost",
-					"-Wno-four-char-constants",
-					"-Wno-unknown-pragmas",
-				);
-				WRAPPER_EXTENSION = octest;
-			};
 			dependencies = (
 			);
 			name = "Shared Source Test";
 			productName = "Shared Source Test";
 			productReference = 28015B3408EC9D4800C83A75 /* Shared Source Test.octest */;
-			productSettingsXML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
-<!DOCTYPE plist PUBLIC \"-//Apple Computer//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">
-<plist version=\"1.0\">
-<dict>
-	<key>CFBundleDevelopmentRegion</key>
-	<string>English</string>
-	<key>CFBundleExecutable</key>
-	<string>Shared Source Test</string>
-	<key>CFBundleIdentifier</key>
-	<string>com.yourcompany.Shared_Source_Test</string>
-	<key>CFBundleInfoDictionaryVersion</key>
-	<string>6.0</string>
-	<key>CFBundlePackageType</key>
-	<string>APPL</string>
-	<key>CFBundleSignature</key>
-	<string>????</string>
-	<key>CFBundleVersion</key>
-	<string>1.0</string>
-</dict>
-</plist>
-";
 			productType = "com.apple.product-type.bundle";
 		};
 		28015B7F08EC9F3D00C83A75 /* Patchworks Importer Test */ = {
@@ -994,60 +816,11 @@
 			);
 			buildRules = (
 			);
-			buildSettings = {
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
-				GCC_MODEL_TUNING = G5;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Cocoa.framework/Headers/Cocoa.h";
-				INFOPLIST_FILE = "Patchworks Importer Tets-Info.plist";
-				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
-				LIBRARY_STYLE = BUNDLE;
-				OPTIMIZATION_CFLAGS = "";
-				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = (
-					"-framework",
-					Cocoa,
-					"-framework",
-					SenTestingKit,
-				);
-				OTHER_REZFLAGS = "";
-				PREBINDING = NO;
-				PRODUCT_NAME = "Patchworks Importer Tets";
-				SECTORDER_FLAGS = "";
-				WARNING_CFLAGS = (
-					"-Wmost",
-					"-Wno-four-char-constants",
-					"-Wno-unknown-pragmas",
-				);
-				WRAPPER_EXTENSION = octest;
-			};
 			dependencies = (
 			);
 			name = "Patchworks Importer Test";
 			productName = "Patchworks Importer Tets";
 			productReference = 28015B8008EC9F3D00C83A75 /* Patchworks Importer Test.octest */;
-			productSettingsXML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
-<!DOCTYPE plist PUBLIC \"-//Apple Computer//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">
-<plist version=\"1.0\">
-<dict>
-	<key>CFBundleDevelopmentRegion</key>
-	<string>English</string>
-	<key>CFBundleExecutable</key>
-	<string>Patchworks Importer Tets</string>
-	<key>CFBundleIdentifier</key>
-	<string>com.yourcompany.Patchworks_Importer_Tets</string>
-	<key>CFBundleInfoDictionaryVersion</key>
-	<string>6.0</string>
-	<key>CFBundlePackageType</key>
-	<string>APPL</string>
-	<key>CFBundleSignature</key>
-	<string>????</string>
-	<key>CFBundleVersion</key>
-	<string>1.0</string>
-</dict>
-</plist>
-";
 			productType = "com.apple.product-type.bundle";
 		};
 		8D15AC270486D014006FF6A4 /* Patchworks */ = {
@@ -1062,17 +835,6 @@
 			);
 			buildRules = (
 			);
-			buildSettings = {
-				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = Patchworks_Prefix.pch;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = Info.plist;
-				INSTALL_PATH = "$(HOME)/Applications";
-				PRODUCT_NAME = Patchworks;
-				WRAPPER_EXTENSION = app;
-			};
 			dependencies = (
 				283E4CE808FB58D200772738 /* PBXTargetDependency */,
 			);
@@ -1088,12 +850,7 @@
 		2A37F4A9FDCFA73011CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			buildConfigurationList = 28FCD3D508EC56D000A970FA /* Build configuration list for PBXProject "Patchworks" */;
-			buildSettings = {
-			};
-			buildStyles = (
-				4A9504D0FFE6A4CB11CA0CBA /* Debug */,
-				4A9504D1FFE6A4CB11CA0CBA /* Release */,
-			);
+			compatibilityVersion = "Xcode 2.4";
 			hasScannedForEncodings = 1;
 			knownRegions = (
 				English,
@@ -1105,6 +862,7 @@
 			);
 			mainGroup = 2A37F4AAFDCFA73011CA2CEA /* Patchworks */;
 			projectDirPath = "";
+			projectRoot = "";
 			targets = (
 				8D15AC270486D014006FF6A4 /* Patchworks */,
 				280159A708EC781900C83A75 /* Patchworks Importer */,
@@ -1185,7 +943,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
-			shellScript = "# Run the unit tests in this test bundle.\n# Limit the amount of time and memory.\nlet \"MAXTIME_SECS=30\"\nlet \"MAXRAM_KB=100*1024\"\n\nTEST_OUTPUT_FILE=\"${TEMP_FILE_DIR}/UnitTests.out\"\necho \"Unit test output for target '${TARGETNAME}' in project '${PROJECT}'\" | tee \"${TEST_OUTPUT_FILE}\"\necho \"------------------------------------------------------------------------------\" | tee -a \"${TEST_OUTPUT_FILE}\"\necho | tee -a \"${TEST_OUTPUT_FILE}\"\necho | tee -a \"${TEST_OUTPUT_FILE}\"\nenv\n\nulimit -S -m $MAXRAM_KB -t $MAXTIME_SECS\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\" 2>&1 | tee -a \"${TEST_OUTPUT_FILE}\"\nulimit unlimited\n\nif [ \"${CONFIGURATION}\" = 'Unit Tests' ]; then\n\tif [ \"${OPEN_OUTPUT_FILES}\" = 'YES' ]; then\n\t\topen -b com.apple.Xcode \"${TEST_OUTPUT_FILE}\"\n\tfi\nfi\n\n# Show code coverage results\nif [ \"${CONFIGURATION}\" = 'Code Coverage' ]; then\n\tCOVERAGE_OUTPUT_FILE=\"${TEMP_FILE_DIR}/CodeCoverage.out\"\n\techo \"Code coverage for target '${TARGETNAME}' in project '${PROJECT}'\" | tee \"${COVERAGE_OUTPUT_FILE}\"\n\techo \"------------------------------------------------------------------------------\" | tee -a \"${COVERAGE_OUTPUT_FILE}\"\n\techo | tee -a \"${COVERAGE_OUTPUT_FILE}\"\n\techo | tee -a \"${COVERAGE_OUTPUT_FILE}\"\n\t\n\tTARGET_OBJ_DIR=\"${OBJROOT}/${PROJECT}.build/${CONFIGURATION}/${TARGETNAME}.build/Objects-normal/${NATIVE_ARCH}\"\n\tmkdir -p \"${TEMP_FILE_DIR}/coverage\"\n\tcd \"${TEMP_FILE_DIR}/coverage\"\n\tfind \"${OBJROOT}\" -name *.gcda -exec gcov --branch-probabilities --object-directory \"${TARGET_OBJ_DIR}\" {} \\; 2>&1 | tee -a \"${COVERAGE_OUTPUT_FILE}\"\n\tcd -\n\t\n\tif [ \"${OPEN_OUTPUT_FILES}\" = 'YES' ]; then\n\t\topen -b com.apple.Xcode \"${COVERAGE_OUTPUT_FILE}\"\n\tfi\nfi\n";
+			shellScript = "# Run the unit tests in this test bundle.\n# Limit the amount of time and memory.\nlet \"MAXTIME_SECS=30\"\nlet \"MAXRAM_KB=100*1024\"\n\nTEST_OUTPUT_FILE=\"${TEMP_FILE_DIR}/UnitTests.out\"\necho \"Unit test output for target '${TARGETNAME}' in project '${PROJECT}'\" | tee \"${TEST_OUTPUT_FILE}\"\necho \"------------------------------------------------------------------------------\" | tee -a \"${TEST_OUTPUT_FILE}\"\necho | tee -a \"${TEST_OUTPUT_FILE}\"\necho | tee -a \"${TEST_OUTPUT_FILE}\"\nenv\n\nulimit -S -m $MAXRAM_KB -t $MAXTIME_SECS\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\" 2>&1 | tee -a \"${TEST_OUTPUT_FILE}\"\nRUNUNITTESTS_EXIT=${PIPESTATUS[0]}\nulimit unlimited\n\nif [ \"${CONFIGURATION}\" = 'Unit Tests' ]; then\n\tif [ \"${OPEN_OUTPUT_FILES}\" = 'YES' ]; then\n\t\topen -b com.apple.Xcode \"${TEST_OUTPUT_FILE}\"\n\tfi\nfi\n\n# Show code coverage results\nif [ \"${CONFIGURATION}\" = 'Code Coverage' ]; then\n\tCOVERAGE_OUTPUT_FILE=\"${TEMP_FILE_DIR}/CodeCoverage.out\"\n\techo \"Code coverage for target '${TARGETNAME}' in project '${PROJECT}'\" | tee \"${COVERAGE_OUTPUT_FILE}\"\n\techo \"------------------------------------------------------------------------------\" | tee -a \"${COVERAGE_OUTPUT_FILE}\"\n\techo | tee -a \"${COVERAGE_OUTPUT_FILE}\"\n\techo | tee -a \"${COVERAGE_OUTPUT_FILE}\"\n\t\n\tTARGET_OBJ_DIR=\"${OBJROOT}/${PROJECT}.build/${CONFIGURATION}/${TARGETNAME}.build/Objects-normal/${NATIVE_ARCH}\"\n\tmkdir -p \"${TEMP_FILE_DIR}/coverage\"\n\tcd \"${TEMP_FILE_DIR}/coverage\"\n\tfind \"${OBJROOT}\" -name *.gcda -exec gcov --branch-probabilities --object-directory \"${TARGET_OBJ_DIR}\" {} \\; 2>&1 | tee -a \"${COVERAGE_OUTPUT_FILE}\"\n\tcd -\n\t\n\tif [ \"${OPEN_OUTPUT_FILES}\" = 'YES' ]; then\n\t\topen -b com.apple.Xcode \"${COVERAGE_OUTPUT_FILE}\"\n\tfi\nfi\n\nexit $RUNUNITTESTS_EXIT";
 		};
 		28015B3208EC9D4800C83A75 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1198,7 +956,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
-			shellScript = "# Run the unit tests in this test bundle.\n# Limit the amount of time and memory.\nlet \"MAXTIME_SECS=30\"\nlet \"MAXRAM_KB=100*1024\"\n\nTEST_OUTPUT_FILE=\"${TEMP_FILE_DIR}/UnitTests.out\"\necho \"Unit test output for target '${TARGETNAME}' in project '${PROJECT}'\" | tee \"${TEST_OUTPUT_FILE}\"\necho \"------------------------------------------------------------------------------\" | tee -a \"${TEST_OUTPUT_FILE}\"\necho | tee -a \"${TEST_OUTPUT_FILE}\"\necho | tee -a \"${TEST_OUTPUT_FILE}\"\nenv\n\nulimit -S -m $MAXRAM_KB -t $MAXTIME_SECS\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\" 2>&1 | tee -a \"${TEST_OUTPUT_FILE}\"\nulimit unlimited\n\nif [ \"${CONFIGURATION}\" = 'Unit Tests' ]; then\n\tif [ \"${OPEN_OUTPUT_FILES}\" = 'YES' ]; then\n\t\topen -b com.apple.Xcode \"${TEST_OUTPUT_FILE}\"\n\tfi\nfi\n\n# Show code coverage results\nif [ \"${CONFIGURATION}\" = 'Code Coverage' ]; then\n\tCOVERAGE_OUTPUT_FILE=\"${TEMP_FILE_DIR}/CodeCoverage.out\"\n\techo \"Code coverage for target '${TARGETNAME}' in project '${PROJECT}'\" | tee \"${COVERAGE_OUTPUT_FILE}\"\n\techo \"------------------------------------------------------------------------------\" | tee -a \"${COVERAGE_OUTPUT_FILE}\"\n\techo | tee -a \"${COVERAGE_OUTPUT_FILE}\"\n\techo | tee -a \"${COVERAGE_OUTPUT_FILE}\"\n\t\n\tTARGET_OBJ_DIR=\"${OBJROOT}/${PROJECT}.build/${CONFIGURATION}/${TARGETNAME}.build/Objects-normal/${NATIVE_ARCH}\"\n\tmkdir -p \"${TEMP_FILE_DIR}/coverage\"\n\tcd \"${TEMP_FILE_DIR}/coverage\"\n\tfind \"${OBJROOT}\" -name *.gcda -exec gcov --branch-probabilities --object-directory \"${TARGET_OBJ_DIR}\" {} \\; 2>&1 | tee -a \"${COVERAGE_OUTPUT_FILE}\"\n\tcd -\n\t\n\tif [ \"${OPEN_OUTPUT_FILES}\" = 'YES' ]; then\n\t\topen -b com.apple.Xcode \"${COVERAGE_OUTPUT_FILE}\"\n\tfi\nfi\n";
+			shellScript = "# Run the unit tests in this test bundle.\n# Limit the amount of time and memory.\nlet \"MAXTIME_SECS=30\"\nlet \"MAXRAM_KB=100*1024\"\n\nTEST_OUTPUT_FILE=\"${TEMP_FILE_DIR}/UnitTests.out\"\necho \"Unit test output for target '${TARGETNAME}' in project '${PROJECT}'\" | tee \"${TEST_OUTPUT_FILE}\"\necho \"------------------------------------------------------------------------------\" | tee -a \"${TEST_OUTPUT_FILE}\"\necho | tee -a \"${TEST_OUTPUT_FILE}\"\necho | tee -a \"${TEST_OUTPUT_FILE}\"\nenv\n\nulimit -S -m $MAXRAM_KB -t $MAXTIME_SECS\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\" 2>&1 | tee -a \"${TEST_OUTPUT_FILE}\"\nRUNUNITTESTS_EXIT=${PIPESTATUS[0]}\nulimit unlimited\n\nif [ \"${CONFIGURATION}\" = 'Unit Tests' ]; then\n\tif [ \"${OPEN_OUTPUT_FILES}\" = 'YES' ]; then\n\t\topen -b com.apple.Xcode \"${TEST_OUTPUT_FILE}\"\n\tfi\nfi\n\n# Show code coverage results\nif [ \"${CONFIGURATION}\" = 'Code Coverage' ]; then\n\tCOVERAGE_OUTPUT_FILE=\"${TEMP_FILE_DIR}/CodeCoverage.out\"\n\techo \"Code coverage for target '${TARGETNAME}' in project '${PROJECT}'\" | tee \"${COVERAGE_OUTPUT_FILE}\"\n\techo \"------------------------------------------------------------------------------\" | tee -a \"${COVERAGE_OUTPUT_FILE}\"\n\techo | tee -a \"${COVERAGE_OUTPUT_FILE}\"\n\techo | tee -a \"${COVERAGE_OUTPUT_FILE}\"\n\t\n\tTARGET_OBJ_DIR=\"${OBJROOT}/${PROJECT}.build/${CONFIGURATION}/${TARGETNAME}.build/Objects-normal/${NATIVE_ARCH}\"\n\tmkdir -p \"${TEMP_FILE_DIR}/coverage\"\n\tcd \"${TEMP_FILE_DIR}/coverage\"\n\tfind \"${OBJROOT}\" -name *.gcda -exec gcov --branch-probabilities --object-directory \"${TARGET_OBJ_DIR}\" {} \\; 2>&1 | tee -a \"${COVERAGE_OUTPUT_FILE}\"\n\tcd -\n\t\n\tif [ \"${OPEN_OUTPUT_FILES}\" = 'YES' ]; then\n\t\topen -b com.apple.Xcode \"${COVERAGE_OUTPUT_FILE}\"\n\tfi\nfi\n\nexit $RUNUNITTESTS_EXIT";
 		};
 		28015B7E08EC9F3D00C83A75 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1211,7 +969,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
-			shellScript = "# Run the unit tests in this test bundle.\n# Limit the amount of time and memory.\nlet \"MAXTIME_SECS=30\"\nlet \"MAXRAM_KB=100*1024\"\n\nTEST_OUTPUT_FILE=\"${TEMP_FILE_DIR}/UnitTests.out\"\necho \"Unit test output for target '${TARGETNAME}' in project '${PROJECT}'\" | tee \"${TEST_OUTPUT_FILE}\"\necho \"------------------------------------------------------------------------------\" | tee -a \"${TEST_OUTPUT_FILE}\"\necho | tee -a \"${TEST_OUTPUT_FILE}\"\necho | tee -a \"${TEST_OUTPUT_FILE}\"\nenv\n\nulimit -S -m $MAXRAM_KB -t $MAXTIME_SECS\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\" 2>&1 | tee -a \"${TEST_OUTPUT_FILE}\"\nulimit unlimited\n\nif [ \"${CONFIGURATION}\" = 'Unit Tests' ]; then\n\tif [ \"${OPEN_OUTPUT_FILES}\" = 'YES' ]; then\n\t\topen -b com.apple.Xcode \"${TEST_OUTPUT_FILE}\"\n\tfi\nfi\n\n# Show code coverage results\nif [ \"${CONFIGURATION}\" = 'Code Coverage' ]; then\n\tCOVERAGE_OUTPUT_FILE=\"${TEMP_FILE_DIR}/CodeCoverage.out\"\n\techo \"Code coverage for target '${TARGETNAME}' in project '${PROJECT}'\" | tee \"${COVERAGE_OUTPUT_FILE}\"\n\techo \"------------------------------------------------------------------------------\" | tee -a \"${COVERAGE_OUTPUT_FILE}\"\n\techo | tee -a \"${COVERAGE_OUTPUT_FILE}\"\n\techo | tee -a \"${COVERAGE_OUTPUT_FILE}\"\n\t\n\tTARGET_OBJ_DIR=\"${OBJROOT}/${PROJECT}.build/${CONFIGURATION}/${TARGETNAME}.build/Objects-normal/${NATIVE_ARCH}\"\n\tmkdir -p \"${TEMP_FILE_DIR}/coverage\"\n\tcd \"${TEMP_FILE_DIR}/coverage\"\n\tfind \"${OBJROOT}\" -name *.gcda -exec gcov --branch-probabilities --object-directory \"${TARGET_OBJ_DIR}\" {} \\; 2>&1 | tee -a \"${COVERAGE_OUTPUT_FILE}\"\n\tcd -\n\t\n\tif [ \"${OPEN_OUTPUT_FILES}\" = 'YES' ]; then\n\t\topen -b com.apple.Xcode \"${COVERAGE_OUTPUT_FILE}\"\n\tfi\nfi\n";
+			shellScript = "# Run the unit tests in this test bundle.\n# Limit the amount of time and memory.\nlet \"MAXTIME_SECS=30\"\nlet \"MAXRAM_KB=100*1024\"\n\nTEST_OUTPUT_FILE=\"${TEMP_FILE_DIR}/UnitTests.out\"\necho \"Unit test output for target '${TARGETNAME}' in project '${PROJECT}'\" | tee \"${TEST_OUTPUT_FILE}\"\necho \"------------------------------------------------------------------------------\" | tee -a \"${TEST_OUTPUT_FILE}\"\necho | tee -a \"${TEST_OUTPUT_FILE}\"\necho | tee -a \"${TEST_OUTPUT_FILE}\"\nenv\n\nulimit -S -m $MAXRAM_KB -t $MAXTIME_SECS\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\" 2>&1 | tee -a \"${TEST_OUTPUT_FILE}\"\nRUNUNITTESTS_EXIT=${PIPESTATUS[0]}\nulimit unlimited\n\nif [ \"${CONFIGURATION}\" = 'Unit Tests' ]; then\n\tif [ \"${OPEN_OUTPUT_FILES}\" = 'YES' ]; then\n\t\topen -b com.apple.Xcode \"${TEST_OUTPUT_FILE}\"\n\tfi\nfi\n\n# Show code coverage results\nif [ \"${CONFIGURATION}\" = 'Code Coverage' ]; then\n\tCOVERAGE_OUTPUT_FILE=\"${TEMP_FILE_DIR}/CodeCoverage.out\"\n\techo \"Code coverage for target '${TARGETNAME}' in project '${PROJECT}'\" | tee \"${COVERAGE_OUTPUT_FILE}\"\n\techo \"------------------------------------------------------------------------------\" | tee -a \"${COVERAGE_OUTPUT_FILE}\"\n\techo | tee -a \"${COVERAGE_OUTPUT_FILE}\"\n\techo | tee -a \"${COVERAGE_OUTPUT_FILE}\"\n\t\n\tTARGET_OBJ_DIR=\"${OBJROOT}/${PROJECT}.build/${CONFIGURATION}/${TARGETNAME}.build/Objects-normal/${NATIVE_ARCH}\"\n\tmkdir -p \"${TEMP_FILE_DIR}/coverage\"\n\tcd \"${TEMP_FILE_DIR}/coverage\"\n\tfind \"${OBJROOT}\" -name *.gcda -exec gcov --branch-probabilities --object-directory \"${TARGET_OBJ_DIR}\" {} \\; 2>&1 | tee -a \"${COVERAGE_OUTPUT_FILE}\"\n\tcd -\n\t\n\tif [ \"${OPEN_OUTPUT_FILES}\" = 'YES' ]; then\n\t\topen -b com.apple.Xcode \"${COVERAGE_OUTPUT_FILE}\"\n\tfi\nfi\n\nexit $RUNUNITTESTS_EXIT";
 		};
 		28E703E708FBFEC000B5E7CD /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1459,7 +1217,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 28261BAC0951B630008F1B53 /* Cocoa Test Suite.xcconfig */;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/Frameworks\"";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(DEVELOPER_FRAMEWORKS_DIR_QUOTED)",
+				);
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/Frameworks\"";
 				GCC_PREFIX_HEADER = "Application Source/Other Sources/Patchworks Test_Prefix.pch";
 				INFOPLIST_FILE = "Application Source/Resources/Patchworks Test-Info.plist";
 				OTHER_LDFLAGS = "-lz";
@@ -1471,7 +1233,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 28261BAC0951B630008F1B53 /* Cocoa Test Suite.xcconfig */;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/Frameworks\"";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(DEVELOPER_FRAMEWORKS_DIR_QUOTED)",
+				);
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/Frameworks\"";
 				GCC_PREFIX_HEADER = "Application Source/Other Sources/Patchworks Test_Prefix.pch";
 				INFOPLIST_FILE = "Application Source/Resources/Patchworks Test-Info.plist";
 				OTHER_LDFLAGS = "-lz";
@@ -1483,7 +1249,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 28261BAC0951B630008F1B53 /* Cocoa Test Suite.xcconfig */;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/Frameworks\"";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(DEVELOPER_FRAMEWORKS_DIR_QUOTED)",
+				);
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/Frameworks\"";
 				GCC_PREFIX_HEADER = "Shared Source/Other Sources/Shared Source Test_Prefix.pch";
 				INFOPLIST_FILE = "Shared Source/Resources/Shared Source Test-Info.plist";
 				OTHER_LDFLAGS = "-lz";
@@ -1495,7 +1265,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 28261BAC0951B630008F1B53 /* Cocoa Test Suite.xcconfig */;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/Frameworks\"";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(DEVELOPER_FRAMEWORKS_DIR_QUOTED)",
+				);
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/Frameworks\"";
 				GCC_PREFIX_HEADER = "Shared Source/Other Sources/Shared Source Test_Prefix.pch";
 				INFOPLIST_FILE = "Shared Source/Resources/Shared Source Test-Info.plist";
 				OTHER_LDFLAGS = "-lz";
@@ -1545,7 +1319,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 28261BAC0951B630008F1B53 /* Cocoa Test Suite.xcconfig */;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/Frameworks\"";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(DEVELOPER_FRAMEWORKS_DIR_QUOTED)",
+				);
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/Frameworks\"";
 				GCC_PREFIX_HEADER = "Importer Source/Other Sources/Patchworks Importer Test_Prefix.pch";
 				INFOPLIST_FILE = "Importer Source/Resources/Patchworks Importer Test-Info.plist";
 				OTHER_LDFLAGS = "-lz";
@@ -1557,11 +1335,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 28261BAC0951B630008F1B53 /* Cocoa Test Suite.xcconfig */;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/Frameworks\"";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(DEVELOPER_FRAMEWORKS_DIR_QUOTED)",
+				);
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/Frameworks\"";
 				GCC_PREFIX_HEADER = "Importer Source/Other Sources/Patchworks Importer Test_Prefix.pch";
 				INFOPLIST_FILE = "Importer Source/Resources/Patchworks Importer Test-Info.plist";
-				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
-				LIBRARY_STYLE = BUNDLE;
 				OTHER_LDFLAGS = (
 					"-lz",
 					"-framework",
@@ -1570,7 +1350,6 @@
 					SenTestingKit,
 				);
 				PRODUCT_NAME = "Patchworks Importer Test";
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
 		};
@@ -1625,7 +1404,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 28261CB20951C1B7008F1B53 /* Cocoa Test Suite Unit Tests.xcconfig */;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/Frameworks\"";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(DEVELOPER_FRAMEWORKS_DIR_QUOTED)",
+				);
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/Frameworks\"";
 				GCC_PREFIX_HEADER = "Application Source/Other Sources/Patchworks Test_Prefix.pch";
 				INFOPLIST_FILE = "Application Source/Resources/Patchworks Test-Info.plist";
 				OTHER_LDFLAGS = (
@@ -1640,7 +1423,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 28261CB20951C1B7008F1B53 /* Cocoa Test Suite Unit Tests.xcconfig */;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/Frameworks\"";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(DEVELOPER_FRAMEWORKS_DIR_QUOTED)",
+				);
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/Frameworks\"";
 				GCC_PREFIX_HEADER = "Importer Source/Other Sources/Patchworks Importer Test_Prefix.pch";
 				INFOPLIST_FILE = "Importer Source/Resources/Patchworks Importer Test-Info.plist";
 				OTHER_LDFLAGS = (
@@ -1655,7 +1442,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 28261CB20951C1B7008F1B53 /* Cocoa Test Suite Unit Tests.xcconfig */;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/Frameworks\"";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(DEVELOPER_FRAMEWORKS_DIR_QUOTED)",
+				);
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/Frameworks\"";
 				GCC_PREFIX_HEADER = "Shared Source/Other Sources/Shared Source Test_Prefix.pch";
 				INFOPLIST_FILE = "Shared Source/Resources/Shared Source Test-Info.plist";
 				OTHER_LDFLAGS = (
@@ -1744,7 +1535,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 28261CB20951C1B7008F1B53 /* Cocoa Test Suite Unit Tests.xcconfig */;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/Frameworks\"";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(DEVELOPER_FRAMEWORKS_DIR_QUOTED)",
+				);
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/Frameworks\"";
 				GCC_PREFIX_HEADER = "Application Source/Other Sources/Patchworks Test_Prefix.pch";
 				INFOPLIST_FILE = "Application Source/Resources/Patchworks Test-Info.plist";
 				OTHER_LDFLAGS = "-lz";
@@ -1756,7 +1551,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 28261CB20951C1B7008F1B53 /* Cocoa Test Suite Unit Tests.xcconfig */;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/Frameworks\"";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(DEVELOPER_FRAMEWORKS_DIR_QUOTED)",
+				);
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/Frameworks\"";
 				GCC_PREFIX_HEADER = "Importer Source/Other Sources/Patchworks Importer Test_Prefix.pch";
 				INFOPLIST_FILE = "Importer Source/Resources/Patchworks Importer Test-Info.plist";
 				OTHER_LDFLAGS = "-lz";
@@ -1768,7 +1567,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 28261CB20951C1B7008F1B53 /* Cocoa Test Suite Unit Tests.xcconfig */;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/Frameworks\"";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(DEVELOPER_FRAMEWORKS_DIR_QUOTED)",
+				);
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/Frameworks\"";
 				GCC_PREFIX_HEADER = "Shared Source/Other Sources/Shared Source Test_Prefix.pch";
 				INFOPLIST_FILE = "Shared Source/Resources/Shared Source Test-Info.plist";
 				OTHER_LDFLAGS = "-lz";

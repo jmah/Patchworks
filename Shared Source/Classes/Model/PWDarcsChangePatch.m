@@ -176,6 +176,9 @@
 
 - (void)dealloc
 {
+	[PW_changes release];
+	PW_changes = nil;
+	
 	[PW_cleanedLongComment release];
 	PW_cleanedLongComment = nil;
 	
@@ -230,6 +233,18 @@
 - (PWDarcsPatchType)type // PWDarcsPatch
 {
 	return PWDarcsChangePatchType;
+}
+
+
+- (NSArray *)changes
+{
+	// Array of PWDarcsChange objects
+	if (!PW_changes)
+	{
+		// Generate uncached changes
+	}
+	
+	return PW_changes;
 }
 
 

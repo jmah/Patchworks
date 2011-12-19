@@ -1,36 +1,55 @@
 //
-//  PWDarcsChangePatch.h
+//  PWDarcsChange.m
 //  Patchworks
 //
-//  Created by Jonathon Mah on 2005-09-30.
+//  Created by Jonathon Mah on 2005-12-18.
 //  Copyright 2005 Playhaus. All rights reserved.
 //  License information is contained at the bottom of this file and in the
 //  'LICENSE.txt' file.
 //
 
-#import <Foundation/Foundation.h>
+#import "PWDarcsChange.h"
 #import "PWDarcsPatch.h"
-#import "PWReader.h"
 
 
-@interface PWDarcsChangePatch : PWDarcsPatch
+@implementation PWDarcsChange
+
+#pragma mark Initialization and Deallocation
+
+- (id)initWithReader:(NSObject <PWReader> *)reader cacheWholeChange:(BOOL)cache error:(NSError **)outError // Designated initializer
 {
-	@private
-	NSString *PW_cleanedLongComment; // Cached version of the cleaned long comment
-	
-	@protected
-	NSString *PW_longComment;
-	NSMutableArray *PW_changes; // Can be nil
+	if (self = [super init])
+	{
+	}
+	return self;
 }
 
 
-#pragma mark Initialization and Deallocation
-- (id)initWithReader:(NSObject <PWReader> *)reader error:(NSError **)outError; // Designated initializer
 
 #pragma mark Accessor Methods
-- (NSString *)longComment;
-- (NSString *)cleanedLongComment;
-- (NSArray *)changes; // Array of PWDarcsChange objects
+
+- (NSString *)oldChangedPath
+{
+	return PW_oldChangedPath;
+}
+
+
+- (NSString *)newChangedPath
+{
+	return PW_newChangedPath;
+}
+
+
+- (NSString *)changeString
+{
+	if (!PW_isWholeChangeRead)
+	{
+#error Read whole change
+	}
+	
+	return PW_patchContent;
+}
+
 
 @end
 
